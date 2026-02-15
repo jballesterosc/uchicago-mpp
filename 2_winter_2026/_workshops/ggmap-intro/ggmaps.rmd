@@ -1,0 +1,176 @@
+---
+title: "ggmap"
+author: "Khushi Desai"
+date: "2026-02-03"
+output: html_document
+---
+
+## Introduction to ggmap - Visualizing Spatial Data in R Workshop
+
+```{r}
+# Install packages (run once)
+#install.packages(c("tidyverse", "ggmap", "ggplot2"))
+```
+
+
+```{r load libraries}
+library(tidyverse)
+library(ggmap)
+library(ggplot2)
+```
+
+```{r API-key}
+register_stadiamaps("") #add your API key
+```
+
+```{r load-data}
+crimes <- read_csv("crimes.csv")
+glimpse(crimes)
+```
+
+## MAKE A MAP OBJECT: CHICAGO
+
+# Available tones: “stamen_terrain”, “stamen_toner”, “stamen_toner_lite”, “stamen_watercolor”, “alidade_smooth”, # “alidade_smooth_dark”, “outdoors”, “stamen_terrain_background”, “stamen_toner_background”, “stamen_terrain_labels”, “stamen_terrain_lines”, “stamen_toner_labels”, “stamen_toner_lines”
+
+# Preview each one from the link provided in the ppt to see what tone fits the best.
+ https://info5940.infosci.cornell.edu/notes/geoviz/raster-maps-with-ggmap/
+ 
+```{r make-chicago-object}
+chicago <- get_stadiamap(
+  bbox = c(left = -87.9, bottom = 41.6, right = -87.5, top = 42.1),
+  zoom = 11,
+  maptype = "stamen_terrain" # you can change this
+)
+```
+
+```{r preview }
+ggmap(chicago)
+```
+
+```{r geom-point}
+ggmap(chicago) +
+  geom_point(
+    data = crimes,
+    mapping = aes(
+      x = Longitude,
+      y = Latitude
+    )
+  )
+```
+
+```{r geom-point-alpha}
+ggmap(chicago) +
+  geom_point(
+    data = crimes,
+    mapping = aes(
+      x = Longitude,
+      y = Latitude
+    ),
+    size = 0.25,
+    alpha = 0.01
+  )
+```
+
+```{r stat_density_2d}
+ggmap(chicago) +
+  stat_density_2d(
+    data = crimes,
+    mapping = aes(
+      x = Longitude,
+      y = Latitude,
+      fill = after_stat(level)
+    ),
+    geom = "polygon"
+  )
+```
+
+```{r stat_density_2d_fancy}
+ggmap(chicago) +
+  stat_density_2d(
+    data = crimes,
+    mapping = aes(
+      x = Longitude,
+      y = Latitude,
+      fill = after_stat(level)
+    ),
+    alpha = .2, 
+    bins = 25, 
+    geom = "polygon"
+  ) + scale_fill_viridis_c(option = "inferno")
+```
+
+
+```{r facet_by_crime}
+ggmap(chicago) +
+  stat_density_2d(
+    data = crimes %>%
+      filter(`Primary Type` %in% c(
+        "BURGLARY", "MOTOR VEHICLE THEFT",
+        "NARCOTICS", "ROBBERY"
+      )),
+    mapping = aes(
+      x = Longitude,
+      y = Latitude,
+      fill = after_stat(level)
+    ),
+    alpha = .4,
+    bins = 10,
+    geom = "polygon"
+  ) +
+  facet_wrap(facets = vars(`Primary Type`), labeller = label_wrap_gen(10))
+```
+
+### EXERCISE: Create a map of complaints about potholes in Hyde Park.
+
+```{r}
+chi_311 <- read_csv("chicago-311.csv")
+glimpse(chi_311)
+```
+
+# Create Hyde Park Map Object
+```{r hyde-park-object}
+# store bounding box coordinates
+hp_bb <- c(
+  left = -87.61,
+  bottom = 41.78,
+  right = -87.58,
+  top = 41.8
+)
+
+# retrieve bounding box
+hyde_park <- get_stadiamap(
+  bbox = hp_bb,
+  zoom = 15,
+  maptype = "stamen_terrain" # you can change this
+)
+
+# plot the raster map
+ggmap(hyde_park)
+```
+
+
+```{r initialize}
+# initialize the map
+ggmap(hyde_park) +
+  # add a scatterplot layer
+  geom_point(
+    data = filter(chi_311, sr_short_code == "SGQ"), #add code for pothole complaints
+    mapping = aes(
+      x = longitude,
+      y = latitude
+    )
+  )
+
+
+
+ggmap(chicago) +
+  geom_point(
+    data = crimes,
+    mapping = aes(
+      x = Longitude,
+      y = Latitude
+    ),
+    size = 0.25,
+    alpha = 0.01
+  )
+```

@@ -1,0 +1,103 @@
+---
+title: "Problem set 7"
+subtitle: "PPHA 32300 Microeconomics and Public Policy I"
+author: "Jay Ballesteros"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+---
+
+
+# 1. George is planning his breakfast for the week.
+
+He has utility function:
+$$U(Q_A, Q_T) = Q_A^{1/2} Q_T^{1/2}$$
+where $Q_A$ is the quantity of avocados and $Q_T$ is the quantity of toast. The price of avocados is $P_A$, the price of toast is $P_T$, and George has a budget of $M$ to spend on breakfast.
+
+## (a) Solve for the tangency condition.
+
+Considering the marginal utilities:
+  
+$$MU_A = \frac{1}{2}Q_A^{-1/2}$$
+$$MU_A = \frac{1}{2}Q_T^{-1/2}$$
+
+$$\frac{Q_T^{-1/2}}{Q_A^{-1/2}} = \frac{P_A}{P_T}$$
+
+## (b) What is the demand function for avocados? What is the demand function for toast?
+
+Considering the tangency condition:
+$$Q_T = Q_A \left(\frac{P_A}{P_T}\right)^2$$
+Substituting into the budget constraint:
+
+$$M = P_A Q_A + P_T \left[ Q_A \left(\frac{P_A}{P_T}\right)^2 \right]$$
+
+$$M = P_A Q_A + \frac{P_A^2}{P_T} Q_A$$
+
+$$M = Q_A P_A \left(1 + \frac{P_A}{P_T}\right)$$
+
+Thus, the demand function for avocados is:
+
+$$Q_A = \frac{M}{P_A \left(1 + \frac{P_A}{P_T}\right)}$$
+
+Substituting back to find the demand function for toast:
+
+$$Q_T = \frac{M}{P_T \left(1 + \frac{P_T}{P_A}\right)}$$
+
+
+## (c) (5 points) Are avocados normal goods? Justify your answer by mathematical derivation.
+
+# 2. Chloe makes $500 per week and spends all her income on books and tea. Books cost $25 each, and Chloe buys 16 each week. Tea costs $5 per cup, and Chloe buys 20 cups. When Chloe’s income falls to $450 per week, she cuts her consumption of books by 3 books and purchases 5 more cups of tea. Find the income elasticity of the demand for books; are books normal goods or inferior good for Chloe? Find the income elasticity of the demand for tea; is tea a normal good or an inferior good for Chloe?
+
+The income elasticity of the demand for books is:
+
+$$E_B = \frac{\Delta Q_B}{\Delta M} \cdot \frac{M_{initial}}{Q_{B initial}} = \frac{-3}{-50} \cdot \frac{500}{16} = 1.875$$
+Considering the income elasticity of demand for books is positive, books are normal goods for Chloe.
+
+The income elasticity of the demand for tea is:
+
+$$E_T = \frac{\Delta Q_T}{\Delta M} \cdot \frac{M_{initial}}{Q_{T initial}} = \frac{5}{-50} \cdot \frac{500}{20} = -2.5$$
+Since the income elasticity of demand for tea is negative, tea is an inferior good for Chloe.
+
+
+
+# 3. You are the alderman for the 20th ward of Chicago. In your ward, there are vacant lots that you are in charge of selling. Currently, the city sells a full lot for $150,000. Buyers can purchase a little or a much of a lot as the wish. For example, if someone buys half of a lot, they would pay $75,000.
+
+Utility: 
+
+$$U(Q_R,Q_G) = 500,000Q_R - 250,000Q_R^2 + 2Q_G$$
+
+## (a) Solve for a buyer’s demand for real estate and demand for all other goods. 
+
+Considering budget, $Q_G$ in terms of $Q_R$:
+$$Q_G = M - P_RQ_R$$
+
+Substituting into utility function:
+$$U(Q_R) = 500,000Q_R - 250,000Q_R^2 + 2(M - P_RQ_R)$$
+
+Taking the derivative with respect to $Q_R$ and setting to zero:
+$$\frac{dU}{dQ_R} = 500,000 - 500,000Q_R - 2P_R = 0$$
+
+Solving for $Q_R$:
+$$Q_R = 1 - \frac{2P_R}{500,000}$$
+Substituting back to find $Q_G$:
+
+$$Q_G = M - P_R \left(1 - \frac{2P_R}{500,000}\right) = M - P_R + \frac{2P_R^2}{500,000}$$
+
+
+## (b) When the city is selling land for $150,000 per lot, how much real estate does each buyer purchase? How about all other goods?
+
+Substituting $P_R = 150,000$ into the demand functions:
+$$Q_R = 1 - \frac{2(150,000)}{500,000} = 0.4$$
+$$Q_G = M - 150,000 + \frac{2(150,000)^2}{500,000} = M - 150,000 + 90,000 = M - 60,000$$
+
+## (c) With the upcoming opening of the Obama Foundation headquarters, the city is going to raise the price of real estate to $200,000. Now how much real estate and other goods will each buyer purchase?
+
+Substituting $P_R = 200,000$ into the demand functions:
+$$Q_R = 1 - \frac{2(200,000)}{500,000} = 0.2$$
+$$Q_G = M - 200,000 + \frac{2(200,000)^2}{500,000} = M - 200,000 + 160,000 = M - 40,000$$
+
+## (d) Using the Lasperyres approach, find out how much residents’ incomes would have to rise in order to ensure they can afford their old bundle.
+
+The original bundle consists of $Q_R = 0.4$ and $Q_G = M - 60,000$. So the cost at the new prices is:
+$$Cost = P_R \cdot Q_R + Q_G = 200,000 \cdot 0.4 + (M - 60,000) = 80,000 + M - 60,000 = M + 20,000$$
+## (e) Given a choice between the compensated income and new prices you discovered in 3d and a return to old prices, what would consumers prefer? 
+

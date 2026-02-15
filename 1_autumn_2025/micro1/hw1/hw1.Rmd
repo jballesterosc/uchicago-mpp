@@ -1,0 +1,69 @@
+---
+title: "Problem set 1"
+subtitle: "PPHA 32300 Microeconomics and Public Policy I"
+author: "Jay Ballesteros"
+date: "October 9, 2025"
+output: pdf_document
+---
+
+# 1. Consider the following market for headphones
+
+$$Q_d=1200-4p$$
+
+$$Q_s=10p-200$$
+
+**(a) What is the inverse demand curve? What is the inverse supply curve?**
+
+For $Q_d$:
+
+$$P=\frac{1200}{4}-\frac{1}{4} = 300-0.25$$
+
+For $Q_s$:
+
+$$P=\frac{200}{10}-\frac{1}{10}=20-0.1$$
+
+**(b) What is the price above which no consumers will participate in this market? What is the\
+price below which no producers will participate in this market?**
+
+No consumer one will participate above 300, since that's the y intercept of the inverse demand function.
+
+In the case of producers, price has to be above 20.
+
+**(c) Suppose that the price is** $p = 150$**. Show that there would be an excess supply of 700 units.\
+(Hint: Excess supply is** $Qs-Qd$**.)**
+
+Are they asking about equilibrium?
+
+Maybe first I need to find equilibrium from original equations to plug in the $p=150$. Thus
+
+$$1200-4p=10p-200$$
+
+$$1400=14p$$
+
+$$P*=100$$
+
+Instead of plugin in the $P*=100$, now the $P=150$. So,
+
+$$Q_d=1200-4p(150)=1200-600=600$$
+
+$$Q_s=10p(150)-200=1500-200=1300$$
+
+$$Q_s-Q_d=1300-600=700$$
+
+**(d) Find the equilibrium price and quantity in this market.**
+
+I already had the $P*=100$, so let's move on to $Q*$. Thus,
+
+$$Q_d=1200-4p(100)=1200-400=800$$
+
+$$Q_s=10p(100)-200=1000-200=800$$
+
+Since for $Q*$ is $Q_s=Q_d$, then: $$Q*=800$$
+
+# True/False about New York price of health services
+
+**In New York, the price of health care services is higher than it is in Oregon. Nevertheless, consumers buy more health care services in New York than in Oregon. This suggests that the supply and demand model does not apply to markets of things like health care.**
+
+False. On the contrary, it can provide us with additional information on how does this market looks like in both cities. Assuming both cities have the same supply, the reason of New York having a higher price o health care services, is that it also has higher demand. For instance, graphically it looks like this:
+
+![Higher demand of health care services in NY means higher P\* and Q\* (assuming Supply curve is the same in both cities).](images/Untitled Diagram (1).jpg){width="200"}

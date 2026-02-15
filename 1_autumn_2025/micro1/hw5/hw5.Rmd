@@ -1,0 +1,87 @@
+---
+title: "Problem Set 5"
+subtitle: "PPHA 32300 | Microeconomics and Public Policy I"
+output: pdf_document
+author: "Jay Ballesteros"
+date: "November 6, 2025"
+---
+
+# Q1. 
+## a. After the price ceiling is implemented, what is the new quantity demanded QD, quantity supplied QS, and the excess demand? At what price P would consumers demand only QS units?
+
+Considering that $Pmax = 5$, the new quantity demanded is $QD = 20 - 5 = 15$ while quantity supplied $QS = 5$. Given this change scenario, excess demand result is: 
+
+$$QD - QS = 15-5 = 10$$
+When it comes to the price in which consumers will demand only Qs units, the result is:
+
+$$QS= Pmax = 5$$
+$$20-P=QS=5$$
+$$P = 15$$
+
+## b. Depict this market graphically. Clearly mark the vertical intercepts of the demand and supply curves, P, Q, Pmax, QD, QS, and P. Use the actual numerical values, not just the variable name. What is the producer surplus in this market after the implementation of the price ceiling? Are producers better off or worse off? 
+
+After the implementation of the ceiling, the producer surplus is $PS=12.5$. To get this result, I calculated considering that the base is $Qs = 5$ and height $Pmax=5$:
+$PS = (0.5)(5)(5) = 12.5$
+
+Answering to the question regarding producers status (better off or worse off), they are worse off. Considering an scenario with no $Pmax$, producer surplus would be 50. See calculation below for reference:
+
+$$PS = (0.5)(10)(10)=50$$
+
+# Q2. Consider two countries, Atlantica and Pacifica, with workers that can produce olive oil or chocolate. A worker in Atlantica can produce 10 pounds of chocolate or 5 barrels of olive oil in a month. A worker in Pacifica can produce 12 pounds of chocolate or 3 barrels of olive oil in a month. Assume that the two countries have the same number of workers.
+
+## a. Which country has an absolute advantage in making chocolate? Which country has an absolute advantage in making olive oil?
+
+Pacifica has an absolute advantage in making $chocolate$, since it can produce more $chocolate$ than Atlantica ($12$ vs $10$ from Atlantica) with the same amount of workers. Whereas, Atlantica has an absolute advantage agains Pacifica in making $olive oil$ ($5$ vs $3$ from Pacifica).
+
+## b. Which country has a comparative advantage in making 
+chocolate? Why?
+
+Pacifica has the comparative advantage in chocolate due to lower opportunity cost. For instance, in one hand, given that Pacifica produces $12chocolate$ and $3 olive oil$, each increase of $chocolate$ by one unit would be equivalent to $0.25 olive oil$ ($\frac{3}{12}=0.25$). 
+
+In the other hand, each increase in $chocolate$ units in Atlantica would translate in higher loss in the production of $olive oil$ compared to Pacifica. Specifically, for one unit increase in $chocolate$, a $0.5 olive oil$ loss ($\frac{5}{10}=0.5$).
+
+## c. Explain how both countries could benefit from specializing and trading (assuming both countries value chocolate and olive oil). Note that there may be multiple correct answers.
+
+Since Pacifica's $chocolate$ is cheaper in terms of foregone $olive oil$, they should specialize in chocolate. Whereas Atlantica's $olive oil$ is cheaper in terms of foregone $chocolate$, signaling that they should specialize in olive oil. 
+
+For instance, if Pacifica put its workers entirely in the production of $olive oil$ and makes about $5 oliveoil$ only, while $Atlantica$ workers produces only $12 chocolate$, they can trade based in their internal trade-offs.
+
+# 3. Consider the US market for corn. Domestic demand is P= 20-2Q and domestic supply is P= 2 + 2Q, where Q= millions of bushels and P= price per bushel.
+
+## a. Calculate the equilibrium price and quantity if trade is not allowed (i.e. Autarky; closed economy). What is consumer surplus and producer surplus?
+
+Under the asumption of Autarky, considering the given information, the $P*$ and $Q*$ are the following:
+
+$$20-2Q = 2 + 2Q$$
+$$4Q=18$$
+$$Q*=4.5$$
+$$P*=11$$
+Based in the latest results, $CS=20.25$, $PS=20.25$, therefore $TS=40.5$. This is the calculation:
+
+$$CS = \frac{1}{2} (20-P*)Q* = \frac{1}{2}(9)(4.5) = 20.25$$
+$$PS = \frac{1}{2} (P*-2)Q* = \frac{1}{2}(9)(4.5) = 20.25$$
+
+$$TS=CS+PS=20.25+20.25=40.5$$
+
+## b. Now suppose import of corn is allowed. Imports are supplied from international market with perfect elasticity at PW = 4. Under free trade, calculate the new equilibrium price, and quantity consumed by domestic customers. How much corn is imported to the US? Calculate the new consumer surplus and (domestic) producer surplus. (To keep the problem simple, assume transporting corn does not damage quality, and shipping costs are zero.)
+
+Assuming the new prices is at $P_W4$:
+$$4=20-2Q$$
+$$Q_D=8$$
+$$4=2+2Q$$
+$$Q_S=1$$
+Given this results, the output of resulting imports is $7$:
+$$Imports=Q_D-Q_S=8-1=7$$
+When it comes to consumer and producer surplus:
+
+$$CS=\frac{1}{2}(20-4)(8)=(0.5)(16)(8)=64$$
+$$PS=\frac{1}{2}(4-2)(1)=1$$
+
+## c. Compare your answers from (a) and (b), what is the value of (surplus) gains from free trade? Who are the winners and losers from free trade?
+
+Under free trade with a perfect elasticity assumption, the domestic price would decrease generating a large consumer surplus gain. Nonetheless, in this scenario of free trade producer surplus is only 1 vs 20.5 from the autarky scenario. Despite this, TS from free trade surpasses by 24.5 units agains the TS from the autarky (64 vs TSautarky 20.25).
+
+This gain in TS exceeds the seller opportunity given the wider overall welfare provided by the free market scenario.
+
+
+

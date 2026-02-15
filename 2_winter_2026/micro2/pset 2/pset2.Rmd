@@ -1,0 +1,130 @@
+---
+title: "Problem set 2"
+subtitle: "PPHA 32400 Microeconomics and Public Policy II"
+author: "Jay Ballesteros"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+geometry: margin=1in
+fontsize: 12pt
+---
+
+## Question 1 (32 points)
+
+Consider the market for hot new fruit "lemberries", a lemon that tastes like blueberries. In this market, the demand curve is $Q_D = 60 - 3P$ where $Q_D$ is the quantity produced and $P$ is the price. The inverse demand curve is $P = 20 - \frac{1}{3}Q_D$. The marginal cost of producing a lemberry is $MC = 15$. The market is controlled by a firm who funded the research & development into the fruit and is using a patent to prevent entry into the market.
+
+### (a)
+
+**What is the monopolist's marginal revenue curve? What are the monopoly price and quantities?**
+
+Given the inverse demand curve $P = 20 - \frac{1}{3}Q_D$, then marginal revenue is $MR(q) = A - 2 \times B \times q$. So since $A = 20$ and $B = \frac{1}{3}$ then
+
+$$MR(Q) = 20 - 2 \times \frac{1}{3} \times Q = 20 - \frac{2}{3}Q$$
+
+
+For the monopoly quantity, where $MR = MC$,
+$$20 - \frac{2}{3}Q = 15$$
+$$\frac{2}{3}Q = 5$$
+$$Q = 7.5$$
+
+To find the monopoly price, we plug in the monopoly quantity into the inverse demand curve:
+
+$$P = 20 - \frac{1}{3}(7.5) = 20 - 2.5 = 17.5$$
+
+### (b) (6 points)
+
+**Find consumer surplus earned by consumers and the producer surplus earned by the monopolist in this market.**
+
+For the consumer surplus, multiplying the base and height of the triangle:
+
+$$CS = \frac{1}{2} \times 7.5 \times 2.5 = 9.375$$
+
+And for the producer surplus:
+$$PS = (17.5 - 15) \times 7.5 = 18.75$$
+
+
+### (c) (4 points)
+
+**What is the welfare maximizing (AKA competitive) price? What is the corresponding quantity?**
+
+So to find the welfare-maximizing price, we set $P = MC$:
+
+$$20 - \frac{1}{3}Q = 15$$
+$$\frac{1}{3}Q = 5$$
+$$Q = 15$$
+
+Now to find the competitive price, we plug in the quantity into the inverse demand curve:
+$$P = 20 - \frac{1}{3}(15) = 20 - 5 = 15$$
+
+### (d) (3 points)
+
+**What is the consumer surplus and producer surplus given the price and quantity in 1c?**
+
+At the competitive equilibrium, $P_C = 15$ and $Q_C = 15$, for the consumer surplus we have:
+
+$$CS = \frac{1}{2} \times 15 \times 5 = 37.5$$
+
+And for the producer surplus:
+
+$$PS = (15 - 15) \times 15 = 0$$
+
+### (e) (3 points)
+
+**What is the deadweight loss of monopoly in this market?**
+
+So comparing the total surplus (TS) in the monopoly and competitive markets, we have:
+
+- TS under monopoly:
+
+$$9.375 + 18.75 = 28.125$$
+
+- TS under competition:
+$$37.5 + 0 = 37.5$$
+
+Thus, the DWL is:
+$$DWL = 37.5 - 28.125 = 9.375$$
+
+### (f) (3 points)
+
+**Suppose that the cost of research & development for a new type of lemon is $C_R = 10$. Would the firm have funded this project if they knew they would get the producer surplus they secured in 1b? What if a regulator set a price ceiling equal to the welfare-maximizing price in 1c? Given your answer, should a regulator who is interested only in maximizing consumer surplus impose a price ceiling?**
+
+From part (b), the producer surplus under monopoly is $PS = 18.75$.
+
+Since $PS = 18.75 > C_R = 10$, the firm would have funded the R&D project because they earn enough producer surplus to cover the development cost.
+
+Now, if a regulator sets a price ceiling equal to $P_C = 15$, the quantity produced would be $Q_C = 15$. The producer surplus under this price ceiling would be: 
+
+$$PS = (15 - 15) \times 15 = 0$$
+
+Since $PS = 0 < C_R = 10$, the firm would not have funded the R&D project under the price ceiling.
+
+Given this, a regulator should not impose price ceiling at competitive price, as this would eliminate incentive for innovation.
+
+### (g) (5 points)
+
+**The government is highly concerned about the resurgence of scurvy, a disease once thought to be defeated. To encourage the consumption of lemberries, the government proposes a per-unit subsidy of $s$ where $s$ is some constant. This lowers the marginal cost to $MC = 15 - s$, while the marginal revenue function remains unchanged. What must $s$ be in order to induce the monopolist to produce the welfare-maximizing (AKA competitive) quantity found in 1c?**
+
+The monopolist still maximizes profit where $MR = MC$, but now with a subsidy.
+
+Given $MR(Q) = 20 - \frac{2}{3}Q$ from the first part (1a), with the subsidy, the new marginal cost is $MC = 15 - s$.
+
+Now setting $MR = MC$:
+
+$$20 - \frac{2}{3}Q = 15 - s$$
+
+Since we want the monopolist to produce, at a competitive quantity $Q = 15$, we can plug that in:
+
+$$20 - \frac{2}{3}(15) = 15 - s$$
+
+$$20 - 10 = 15 - s$$
+
+$$10 = 15 - s$$
+
+$$s = 5$$
+
+That said, $s$ must be 5 in order to induce the monopolist to produce the welfare-maximizing quantity of $Q_C=15$.
+
+### (h) (4 points)
+
+**Given your answers to these questions, explain, in your own words, when monopoly regulators might prefer to subsidize the production of instead of imposing a price ceiling. Limit your answer to 50 words or less.**
+
+Regulators might prefer subsidies when they want to encourage costs or investments like R&D. Price ceilings, in the other hand, can eliminate producer surplus, discouraging firms from developing new products. That said, subsidies could allow firms to maintain profit incentives while increasing production to efficient levels, and supporting both innovation and consumer welfare.

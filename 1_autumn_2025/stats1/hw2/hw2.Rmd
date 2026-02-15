@@ -1,0 +1,241 @@
+---
+title: "PPHA 31002 | Statistics: Homework 2"
+output: pdf_document
+author: "Jay Ballesteros"
+---
+
+# STATISTICAL EXERCISES
+
+## Q1. What is the expected value of A?
+
+  $$E(A) = 0(0.3) + 2(0.4) + 4(0.3) = 0 + 0.8 + 1.2 = 2$$
+
+## Q2. What is the variance and standard deviation of A?
+  
+  $$Var(A) = (0-2)^2(0.3) + (2-2)^2(0.4) + (4-2)^2(0.3) = 1.2 + 0 + 1.2 = 2.4$$
+  
+  $$SD(A) = \sqrt{2.4} \approx 1.55$$
+  
+## Q3. Is the skewness of A positive, negative, or zero? How do you know?
+
+The skewness of A is zero. This is because the distribution is symmetric around the mean (2), with equal probabilities for values below and above the mean (0 and 4 are equally distant from 2, and both have the same probability of 0.3).
+
+## Q4. Is the expected value of B less than, greater than, or equal to the expected value of A? Briefly explain how you know.
+
+  $$E(B) = 0(0.4) + 2(0.2) + 4(0.4) = 0 + 0.4 + 1.6 = 2$$
+
+The expected value of B is equal to the expected value of A. 
+
+## Q5. Is the variance of B less than, greater than, or equal to the variance of A? Briefly explain how you know.
+  
+  $$Var(B) = (0-2)^2(0.4) + (2-2)^2(0.4) + (4-2)^2(0.4) = 0 + 0.8 + 6.4 = 7.2$$
+
+The variance of B is greater than the variance of A. This is because the probabilities in B are more concentrated at the extremes (0 and 4 both with 0.4) compared to A, leading to a higher spread of values around the mean.
+
+## Q6. Is the skewness of B the same as the skewness of A? If not, how is it different?
+
+It's the same: 0. Because even if B differs to A in spread because of mode 0 or 4, the distribution is still symmetric around the mean (2).
+
+## Q7. What is the probability that a randomly drawn match was exciting?
+
+  $$P(X>=6) = 1 - F(5) ) 1 - 0.906 ) 0.094$$
+  
+## Q8. What is the mean number of goals scored in a game at this world cup?
+
+Considering that the table is equivalent to a CDF, I need to translate it to a PMF in order to calculate the mean. Therefore: 
+
+  $$E(X) = 0(0.109) + 1(0.157) + 2(0.281) + 3(0.203) + 4(0.063) + 5(0.093) + 6(0.047) + 7(0.031) + 8(0.016) = 2.672$$
+
+## Q9. What is the variance of goals in a game? What is the standard deviation?
+
+  $$Var(X) = \sum_{x}(x-2.672)^2p(x) = 3.5364$$
+  
+  $$SD(X) = \sqrt{3.5364} \approx 1.88$$
+
+## Q10. Is the skewness of the goals scored in a game positive, negative, or zero? Briefly explain how you know.
+
+It is positive. First of all because the median doesn't equal the mean (median is 2 and mean 2.67). Second of all the distribution has a long right tail (values go up to 8).
+
+
+# CORE EXERCISE
+
+```{r setup, message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(ggthemes)
+library(lubridate)
+library(skimr)
+
+setwd("/Users/jayballesteros/_github/uchicago-mpp-autumn25/stats1/hw2")
+cbo <- read.csv("_data/cbo-4.csv")
+```
+
+## Q20. How many observations are there in the sample? Are these households or individuals?
+```{r include=FALSE}
+nrow(cbo)
+```
+
+There are `r nrow(cbo)` observations in the sample. These are households, since the data set contains rows per `hrecord` (unique identifier for each household), and the subsequent variables are at household level (e.g., household income, taxes, transfers).
+
+## Q21. Plot a histogram of household income before taxes and transfers ("htotval"). 
+```{r echo = FALSE}
+cbo$htotval[cbo$htotval == "None"] <- 0
+cbo$htotval <- as.numeric(cbo$htotval)
+
+hist(cbo$htotval, freq=F, 
+     main="Household income before taxes and transfers", 
+     xlab="Income before taxes and transfers",
+     ylab="")
+```
+
+
+## Q22. What is the mean and median household income before taxes and transfers in this period?
+```{r include=FALSE}
+mean(cbo$htotval)
+median(cbo$htotval)
+```
+
+The mean household income before taxes and transfers in this period is `135,477.2`. The median household income before taxes and transfers in this period is `101,000`.
+
+## Q23. Based on the above sample statistics and histogram, is skewness = 0, > 0 or < 0? Briefly explain.
+The skewness is > 0. This is because the mean is greater than the median, and the histogram shows a longer tail on the right side of the distribution, indicating a positive skew.
+
+## Q24. The same household can pay taxes (federal or state taxes > 0) and receive transfers (transfers > 0). What does it mean that federal taxes < 0? What fraction of the sample has federal taxes < 0 at baseline?
+
+A federal tax < 0 indicates that the household is receiving more in return than it is paying in taxes. That money in return, can be for example, tax credits or refunds.
+
+```{r include=FALSE}
+mean(cbo$fed_tax_base < 0, na.rm = TRUE) * 100
+```
+
+The fraction of the sample that has federal taxes < 0 at baseline is `r round(mean(cbo$fed_tax_base < 0)*100, 2)`%.
+
+## Q25. Create three variables that represent the difference between the BBB policy scenario and the baseline policy for the three sets of variables that start with inkind, states_response, and other_spending. 
+
+```{r include=FALSE}
+cbo$inkind_diff <- cbo$inkind_sim - cbo$inkind_base
+cbo$states_response_diff <- cbo$states_response_sim - cbo$states_response_base
+cbo$other_spending_diff <- cbo$other_spending_sim - cbo$other_spending_base
+```
+
+### a) What is the mean for each of these new variables?
+
+The mean for the difference in in-kind spending is `r mean(cbo$inkind_diff, na.rm=TRUE)`. Whereas the mean for the difference in state response spending is `r mean(cbo$states_response_diff, na.rm=TRUE)`. Finally, the mean for the difference in other spending is `r mean(cbo$other_spending_diff, na.rm=TRUE)`.
+
+### b) What does it imply if a mean value is positive?
+A positive mean value implies that, on average, the spending in the BBB policy scenario is higher than in the baseline policy for that particular channel (variable or indicator). 
+
+## Q26. Create a variable for the difference in the federal taxes and transfers in a way that is consistent with the CBO memo. What is the mean value of this new variable?
+
+```{r include=FALSE}
+cbo$fedtaxes_transfers_diff <- cbo$fedtaxes_transfers_sim - cbo$fedtaxes_transfers_base
+
+cbo$fedtaxes_transfers_diff <- -1 * cbo$fedtaxes_transfers_diff
+```
+
+The mean value for the difference in the federal taxes and transfer is `r mean(cbo$fedtaxes_transfers_diff, na.rm=TRUE)`.
+
+## Q27. Create a variable that is the sum of the four changes in questions 25-26. What is the mean value of this new variable?
+```{r include=FALSE}
+cbo$sum_diff <- rowSums(cbo[, c("inkind_diff", 
+                                "states_response_diff", 
+                                "other_spending_diff", 
+                                "fedtaxes_transfers_diff")], 
+                        na.rm=TRUE)
+```
+
+The mean value of the new variable `sum_diff` is `r mean(cbo$sum_diff, na.rm=TRUE)`.
+
+## Q28. Create this variable (cbo_income) at baseline in the data by adding transfers to htotval and subtracting off state and federal taxes. Calculate the mean and the median. Why would CBO use this definition of income? Answer in 5 lines or less. [2pt]
+
+```{r include=FALSE}
+cbo$cbo_income <- cbo$htotval + cbo$transfers_base - cbo$state_tax_base - cbo$fed_tax_base
+```
+
+The mean of `cbo_income` is 120704.2, and the median is 95833.79. CBO uses this definition of income because it provides a more precise measure of a household's financial resources by accounting for both government transfers and tax obligations, which can significantly impact final disposable income.
+
+## Q29. Use the `quantile` function to create a new variable that divides the sample into 10 equal-sized groups according to income. How many households are in each decile group?
+
+```{r include=FALSE}
+cbo$cbo_income_decile <- cut(cbo$cbo_income,
+                             breaks=quantile(cbo$cbo_income, probs=seq(0, 1, by=0.1), na.rm=TRUE),
+                             include.lowest=TRUE,
+                             labels=1:10)
+```
+
+The following table illustrates how many households are in each decile group. The first row accounts for deciles and the second one for the number of households in each group. 
+
+```{r echo=FALSE}
+table(cbo$cbo_income_decile)
+```
+
+## Q30. The CBO excludes households with negative income from their analysis. How many households with negative CBO income are there? How many households with zero CBO income? Recorde the decible variable to be missing for these two types of households.
+
+```{r include=FALSE}
+negative_income_count <- sum(cbo$cbo_income < 0,  na.rm = TRUE)
+zero_income_count <- sum(cbo$cbo_income == 0, na.rm = TRUE)
+```
+
+There are `r negative_income_count` households with negative CBO income and `r zero_income_count` households with zero CBO income.
+
+```{r include=FALSE}
+cbo$cbo_income_decile[cbo$cbo_income <= 0] <- NA
+```
+
+## Q31. Create a bar plot that displays the mean change in household resources for each income group from question 27. 
+```{r echo=FALSE}
+cbo.decile <- cbo %>%
+  group_by(cbo_income_decile) %>%
+  summarise(mean_change = mean(sum_diff, na.rm = TRUE), .groups = "drop") %>%
+  filter(!is.na(cbo_income_decile)) %>%
+  mutate(
+    cbo_income_decile = factor(
+      cbo_income_decile,
+      levels = as.character(1:10),
+      labels = c("Lowest","2nd","3rd","4th","5th","6th","7th","8th","9th","Highest")
+    )
+  )
+
+ggplot(cbo.decile, aes(x = cbo_income_decile, y = mean_change)) +
+  geom_col() +
+  labs(
+    title = "Average annual change in resources per household, 2026 to 2034",
+    x = "Household income group (deciles)",
+    y = "2025 dollars"
+  ) +
+  theme_minimal()
+```
+
+The bar plot displays the same overall pattern as figure 1 in the CBO memo. The average change in household resources rises across income deciles, with the highest-income households seeing the largest gains. While the magnitudes differ slightly, but despite those differences, both figures show an upward trend in resources with household income.
+
+## Q32. Let’s now reproduce part of Figure 2 from the CBO memo. In particular, we will create a bar plot in which the height of each bar corresponds to the height of the diamonds in Figure 2.Take the mean annual change in resources for a given decile that you calculated in question 31 and divide that value by the mean cbo_income for households in that decile.
+
+```{r echo=FALSE}
+cbo.pct <- cbo %>%
+  filter(!is.na(cbo_income_decile)) %>%              
+  group_by(cbo_income_decile) %>%
+  summarise(
+    mean_change  = mean(sum_diff,    na.rm = TRUE),  
+    mean_income  = mean(cbo_income,  na.rm = TRUE),  
+    .groups = "drop"
+  ) %>%
+  mutate(
+    pct_change = 100 * mean_change / mean_income,    # percent of resources
+    cbo_income_decile = factor(
+      cbo_income_decile,
+      levels = as.character(1:10),
+      labels = c("Lowest","2nd","3rd","4th","5th","6th","7th","8th","9th","Highest")
+    )
+  )
+
+ggplot(cbo.pct, aes(x = cbo_income_decile, y = pct_change)) +
+  geom_col() +
+  labs(
+    title = "Change in household resources as a % of current income after transfers and taxes, by decile",
+    x = "Household income group (deciles)",
+    y = "Percent"
+  ) +
+  theme_minimal()
+```
+
+The pattern in the bar plot matches the CBO figure: the change in household resources increases steadily across income deciles, with the lowest-income households experiencing the largest losses and higher-income households the largest gains as a share of income.
+

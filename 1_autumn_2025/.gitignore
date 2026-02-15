@@ -1,0 +1,14 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store
+.Rbuildignore
+.Rproj.user/*
+.Rproj.user/shared/notebooks/*
+.Rprofile
+.Renviron
+# common temp/output
+*/.ipynb_checkpoints/*
+*.tmp
+*.log

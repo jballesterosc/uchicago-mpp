@@ -1,0 +1,86 @@
+---
+title: "Problem set 3"
+subtitle: "PPHA 31102 Statistics for Data Analysis II: Regressions"
+author: "Jay Ballesteros"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+geometry: margin=1in
+fontsize: 12pt
+---
+
+# Q1
+
+**Consider a market where a monopolist can provide two versions of a product: Cool and Generic. There are two types of consumers: Hipsters and Normies. The monopolist cannot tell them apart and must rely on versioning to induce them to self-select. Consider the willingness to pay of each type presented below:**
+
+|          | Generic | Cool |
+|----------|---------|------|
+| Hipster  | \$5     | \$10 |
+| Normie   | \$3     | \$6  |
+
+**The Generic version of the product is priced at \$3. Let the price of the Cool version be $p$.**
+
+## (a)
+
+**What is the consumer surplus that Hipsters get from buying the Generic version? What is the consumer surplus that Hipsters get from buying the Cool version? For what values of $p$ do Hipsters prefer the Cool version?***(Hint: your answer to the final sub-question will take the form of an inequality – either $p < A$ or $p > A$ where $A$ is some constant)*
+
+From buying the generic version, hipsters get a $CS$ of $5 - 3 = 2$. From buying the cool version, hipsters get a $CS$ of $10 - p$.
+
+Hipsters prefer the cool version only when the $CS$ is higher than that of the generic version. That said, the $CS$ for cool has to be $10-p > 2 \rightarrow p<8$.
+
+
+## (b)
+
+**What is the consumer surplus that Normies get from buying the Generic version? What is the consumer surplus that Normies get from buying the Cool version? For what values of $p$ do Normies prefer the Generic version?**
+
+From buying the generic version, normies get a $CS$ of $3 - 3=0$. From buying the cool version, they get a $CS$ of $6 - p$.
+
+Normies prefer the generic version only when its $CS$ is higher than that of the cool version. So, we need $0>6 - p\rightarrow p>6$.
+
+## (c)
+
+**What are the prices $p$ such that Hipsters self-select into buying the Cool version and Normies self-select into buying the Generic version?**
+
+From the answers above, hipsters prefer cool when $p<8$ and normies prefer generic when $p>6$. Therefore, for both conditions we need $6<p<8$.
+
+\newpage
+
+# Q2
+
+**ClayBrick is a corporation selling proprietary video and audio editing software, targeting creative people such as filmmakers and musicians. For simplicity, assume there is a single filmmaker and a single musician, and their willingness to pay is shown in the table below:**
+
+|            | Video editor | Audio editor | Bundle |
+|------------|--------------|--------------|--------|
+| Filmmaker  | 300          | 100          | 400    |
+| Musician   | 100          | 300          | 400    |
+
+**Assume that the marginal cost in this market is $MC = 0$.**
+
+## (a)
+
+**Suppose ClayBrick were to sell each piece of software separately. For each good, what is the profit maximizing price?**
+
+For the video editor, pricing at 300 generates a profit of 300 (only filmmaker buys), while pricing at 100 yields 200 (both buy). Since $300 > 200$ the profit-maximizing price is 300.
+
+For the audio editor, pricing at 300 also generates 300 (only musician buys), while pricing at 1100 yields 200 (both buy). So the profit-maximizing price is also 300. Therefore, the profit-maximizing price for both the video editor and the audio editor is 300 each.
+
+## (b)
+
+**Consider your answer to Question 2a. What is the producer surplus, consumer surplus, and total surplus in this market?**
+
+Since only the filmmaker buys the video editor and only the musician buys the audio editor, the producer surplus is $PS = 300 + 300 = 600$.
+
+## (c)
+
+**Suppose ClayBrick were to sell its software as a bundle. What is the profit maximizing price? What is the producer surplus, consumer surplus and total surplus in this market?**
+
+The profit-maximizing price for the bundle is 400, since both the filmmaker and musician would buy it at that price. Therefore, the producer surplus is $PS = 400 + 400 = 800$.
+
+## (d)
+
+**Imagine a world where the audio editor does not exist, and ClayBrick sells video editors. William Fence is an entrepreneur looking to make some money in tech. How much would Mr. Fence be willing to invest in the development of an audio editor? How much would ClayBrick be willing to invest in the development of an audio editor?***You may assume that Mr. Fence owns no other software, and that ClayBrick can sell software as bundles.*
+
+
+## (e)
+
+**Explain, in your own words, why a firm with market power in market A might be willing to fund research and development in a different market B. Base your explanation on your answer above. Keep your response intuitive, non-technical and under 60 words.**
+

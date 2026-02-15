@@ -1,0 +1,121 @@
+---
+title: "Final project"
+subtitle: "PPHA 30110 | Coding Lab for Public Policy"
+output: pdf_document
+author: "Jay Ballesteros"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+
+\newpage
+
+# Introduction
+
+In this final project for the coding lab course, I will analyze the _[UCPD dataset](https://chicagomaroon.com/uchicago-police-department-incident-reporter/)_ (scrapped by Chicago Maroon) to explore patterns in campus crime reports. The dataset includes various types of incidents reported on campus, along with details such as date, time, location, and description of the incidents. For simplicity, the graph below illustrates the trend of the top 5 incidents reported on campus during 2025 (the last 10 months).
+
+The results shows that specifically `theft` and its subcategory `information / theft` lead the number of reports during this period, with a noticeable peaks in June and October. Other incidents like `information`, `medical call`, and `found property` also show high incidence but with less noticeable trends. 
+
+As a side note (technical-no so technical), it is worth to mention that the variable selected for data is `reported_date`. Whereas there is also a variable called `occurred` which could be more relevant to analyze when the crimes actually happened, has limitations in its format, since all dates and minutes have heterogeneous formats. Therefore, I decided to focus on `reported_date` for this analysis.
+
+# Graph
+
+```{r setup, include=TRUE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(knitr)
+library(scales) 
+df <- read_csv("_data/ucpd_data.csv")
+df <- df %>%
+  filter(reported_date >= as.Date("2025-01-01") & reported_date <= as.Date("2025-10-31"))
+```
+
+```{r fixes, include=FALSE, message = FALSE, warning = FALSE}
+# i did this additional dataframes as subsets to do some exploratory analysis. nonetheless, the focus stills in the graphs showed in this section.
+df$reported_wd <- weekdays(df$reported_date)
+df$reported_hour <- as.numeric(format(df$reported, "%H"))
+df$reported_month <- as.numeric(format(df$reported_date, "%m"))
+```
+
+
+```{r monthly, echo=TRUE, message = FALSE, warning = FALSE}
+
+df_month_incident <- df %>%
+  mutate(
+    reported_month = month(reported_date, label = TRUE, abbr = TRUE),
+    incident_group = fct_lump_n(incident, n = 5, other_level = "Other")) %>%
+  filter(
+    incident_group != "Other") %>%  #here i filtered to not show others because the graph gets a little bit disproportionate because of incidence of others. wanted to expand n to 10 main incidents but difficult to read or perceive among so many lines 
+  count(
+    reported_month, incident_group, name = "count")
+
+ggplot(df_month_incident,
+       aes(x = reported_month,
+           y = count,
+           group = incident_group,
+           color = incident_group)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 1) +
+  labs(
+    title = "Monthly number of reports by top 5 incident types during 2025 (Jan-Oct)",
+    x = "Reported month",
+    y = "Number of reports",
+    color = "Incident"
+  ) +
+  theme_minimal()
+```
+
+# Table
+
+To better show proportions of main incidents by month, in the following table I expand to showcase the top 10 incidents reported on campus during the same period and grouping the remaining ones as `Other`.
+
+```{r table, echo=TRUE, message = FALSE, warning = FALSE}
+df_month_incident <- df %>%
+  mutate(
+    reported_month = month(reported_date, label = TRUE, abbr = TRUE),
+    incident_group = fct_lump_n(incident, n = 10, other_level = "Other incidents")) %>%
+  count(
+    reported_month, incident_group, name = "count")
+
+summary_table <- df_month_incident %>%
+  group_by(reported_month) %>%
+  mutate(
+    month_total = sum(count),              
+    month_proportion = count / month_total
+  ) %>%
+  arrange(reported_month, desc(count))
+
+summary_table %>%
+knitr::kable()
+```
+
+# Appendix
+
+A funny thing that I noticed when I was doing the exploratory analysis, was that the day with the most reports was September 27, 2025 --- this was the first Saturday after back-to-school. The main driver was the incidence of liquor law violations.
+
+```{r daily, echo=TRUE, message = FALSE, warning = FALSE}
+df_daily_reports <- df %>%
+  count(reported_date, name = "count")
+
+ggplot(df_daily_reports,
+       aes(x = reported_date,
+           y = count)) +
+  geom_line() +
+  labs(
+    title = "Daily number of reports during 2025 (Jan-Oct)",
+    x = "Reported date",
+    y = "Number of reports"
+  ) +
+  theme_minimal()
+```
+
+```{r sep27, echo=TRUE, message = FALSE, warning = FALSE}
+df_sep27 <- df %>%
+  filter(reported_date == as.Date("2025-09-27")) %>%
+  count(incident, name = "count") %>%
+  mutate(
+    total_day = sum(count),              
+    proportion_day = count / total_day
+  ) %>%
+  arrange(desc(count))
+
+df_sep27 %>%
+  knitr::kable()
+```

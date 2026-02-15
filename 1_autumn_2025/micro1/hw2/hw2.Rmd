@@ -1,0 +1,79 @@
+---
+title: "Problem set 2"
+subtitle: "PPHA 32300 Microeconomics and Public Policy I"
+author: "Jay Ballesteros"
+date: "October 16, 2025"
+output: pdf_document
+---
+
+\newpage
+
+# 1. In both the United States and France, the demand for haircuts is given by
+
+$$Q_D=300-10P$$
+
+$$P=30-0.1Q_D$$
+
+**In the US the supply is given by:**
+
+$$Q_S = -300 + 20P$$
+
+$$P=15+0.05Qs$$
+
+**while in France, the supply is:**
+
+$$Q_S=-\frac{100}{3}+\frac{20}{3}P$$
+
+$$P=5+0.15Q_S$$
+
+1.  **Solve for the equilibrium price and quantity of a haircut in each country.**
+
+2.  **Without computing the elasticity of supply, which country has a more elastic supply\
+    curve? (Hint: What can you infer about the slopes of the supply curves from the equations?)**
+
+3.  **Suppose that due that a popular new hairstyle has emerged, fueled by a social media in-\
+    fluencer. This trend drives more people to seek professional haircuts, leading to a higher quantity\
+    demanded across the board. The demand for haircuts in the United States increases by 100 units at every price point. Hence, the new demand is QD = 400 - 10P. Solve for the new equilibrium\
+    price and quantity in the United States.**
+
+4.  **Suppose that, in a similar fashion, the demand for haircuts in France increases by 100\
+    units at each price as well. Solve for the new equilibrium price and quantity in France.**
+
+5.  **Drawing on your answers to (3) and (4), judge whether the following statement is true or\
+    false: “The impact of an increase in demand depends critically on the slope of the supply curve.**
+
+# 2. Consider the market for owner-occupied houses in Chicago, IL.
+
+For each scenario, describe how\
+the supply and/or demand curves will shift, and the effects on the equilibrium price and quantity.
+
+1.  Rental prices for apartments decrease
+
+2.  The state of Illinois makes public colleges free for residents
+
+3.  The Federal Reserve Board signals that it will raise interest rates in the future.
+
+# 3. Consider the market for dry cleaning.
+
+**Dry cleaners need to pay for labor, rent, and chemicals to produce one additional unit of cleaned clothing, resulting in the following market supply curve: Q = 8P and inverse supply curve: P = Q/8. The market demand curve for dry cleaning is: Q = 100 - 2P and the inverse demand curve is: P = 50 -1/2 Q. However, the chemicals used in the dry cleaning process contaminate the soil around the facility which generates a cost to nearby residents of 5 per unit of clothing cleaned.**
+
+1.  **What are the private market equilibrium price and quantity?**
+
+2.  **What is the social marginal cost function? What is the efficient (surplus-maximizing)\
+    quantity and price? (Hint: For the price, it can be determined by the intersection of the SMC curve and the demand curve.**
+
+3.  **Draw a diagram with the supply, demand, and social marginal cost curves. Label the\
+    market price, the market quantity, the efficient (surplus-maximizing) price, and the efficient\
+    (surplus-maximizing) quantities, and the vertical intercepts (AKA choke-prices) of the supply\
+    curve, demand curve, and SMC curve. (Hint: For your own benefit in subsequent questions, what\
+    is the private marginal cost faced by the producer of the optimal quantity? Mark that on the diagram as\
+    well.)**
+
+4.  **At the market equilibrium, what will consumer surplus and producer surplus be? How\
+    large will the external costs be?**
+
+5.  **At the efficient (surplus-maximizing) equilibrium, what will consumer surplus and pro-\
+    ducer surplus be? How large will the external costs be? (Hint: To find the producer surplus, calculate\
+    the total revenue earned by producers and subtract the total private costs.)**
+
+6.  **How much deadweight loss does this externality cause?**

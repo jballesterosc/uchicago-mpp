@@ -1,0 +1,130 @@
+---
+title: "Problem Set 4"
+subtitle: "PPHA 32300 | Microeconomics and Public Policy I"
+output: pdf_document
+author: "Jay Ballesteros"
+date: "October 31, 2025"
+---
+
+# Part II
+
+## Q1. The long winters in Chicago lead some young adults to go to indoor tanning salons. Their inverse demand for hours of indoor tanning is: P= 30-1/10 Q. However, they fail to take into account that indoor tanning increases the risk of skin cancer and the true marginal benefit of hours of indoor tanning is: MB= 15-1/10  Q. The inverse supply curve is: P=1/10 Q.
+
+
+### a. What is the private market equilibrium quantity and price for indoor tanning?
+The market equilibrium, in this context prior taking into account the true marginal benefit, is:
+
+$$P*=15$$
+$$Q*=150$$
+To achieve this result, first I calculate both supply and demand curves based in the already given inverse curves. After that, calculate the equilibrium both $P*$ and $Q*$.
+
+For instance, for $P*$:
+$$300-10P=10P$$
+$$300=20P$$
+$$P*=15$$
+Whereas for $Q*$, parting from the $QD$:
+$$QD=300-10(15)$$
+$$QD=300-150$$
+$$Q*=150$$
+
+### b. What is the size of the internality caused by individuals not being fully informed of the health consequences of indoor tanning?
+
+The size of the internality is $15 per tanning hour.
+
+To achieve this result, considering the difference between PMB (demand) and MB, the process was the following:
+
+Since $PMB=30-\frac{1}{10}Q$ and $MB=15-\frac{1}{10}Q$, then:
+
+$$(30-\frac{1}{10})-(15-\frac{1}{10}Q)=15$$
+### c. Suppose the city of Chicago was able to implement an information campaign to inform people about the true health risks of indoor tanning. How many hours of indoor tanning would be consumed and at what price?
+
+
+Considering this scenario, the PMB (demand curve) is replaced by the MB. Therefore the new equilibrium is:
+
+$Q=75 hours$ and $P=7$
+
+To get this answer, I plugged in the functions of supply and MB:
+$$15-\frac{1}{10}Q=\frac{1}{10}Q$$
+$$15=\frac{2}{10}Q$$
+$$Q=75$$
+Then, to get the price:
+$$P=\frac{1}{10}(75)$$
+$$P=7.5$$
+
+### d. Suppose the education campaign costs the city $1500 and policymakers only care about maximizing total surplus. Should Chicago implement the information campaign?
+
+No. Because the campaign's welfare gain (562.5) is smaller than its actual cost ($1500).So the net effect on total surplus is negative. 
+
+To calculate the total surplus gained from the campaign, I found the area of the triangle formed between the true marginal benefit (MB) and the supply curve:
+
+$$TS=\frac{1}{2}*75*15=562.5$$
+Then, to find the net total surplus, I subtracted the cost of the campaign from the welfare gain:
+
+$$TS=562.5-1500=-937.5$$
+Since the result is negative, the city should not implement the campaign.
+
+### e. What would be an alternative policy that the city of Chicago could consider for correcting this internality?
+
+
+
+## Q2. Electricity from coal-fired power plants (“coal energy”) and electricity from solar farms (“solar energy”) are substitutes in consumption. Neither market has perfectly elastic or perfectly inelastic supply or demand. Suppose the government grants a subsidy to the consumers of solar energy. Provide a brief answer for each of the following questions.
+
+### a. Why might the owners of solar farms benefit from this subsidy?
+
+The owners of solar farms benefit because the consumer subsidy will increase the demand for solar energy.
+
+When subsidizing consumers, it lowers the price consumers pay for solar energy while keeping the price producers receive higher. Therefore, there's a higher equilibrium price received by sellers and a larget quantity of solar energy sold. 
+
+### b. What impact would this have on the price and quantity of coal energy? Why might the owners of coal-fired power plants dislike subsidies for solar energy?
+
+Since solar and coal energy are substitutes, a subsidy that makes solar energy cheaper for consumers will cause demand to switch from coal to solar.
+
+Therefore, as demand for coal energy decreases, causes that both the price and quantity of coal energy fall.
+
+### c. Suppose coal energy generates external costs. What impact would the subsidy have on the magnitude of these external costs? 
+
+Given the decrease in demand of coal, coal quantity falls as well, influencing total external costs.
+
+Since the marginal external cost is constant, the total external costs will decrease as the quantity of coal energy consumed decreases.
+
+For instance:
+
+$$EC= MEC x (Q after the subsidy - Q before the subsidy)$$
+
+
+### d. Consider your answer to 2c. Solar power itself generates no positive externalities or internalities. How might the subsidies for solar energy nonetheless increase total surplus? 
+
+
+## Q3. Cadshey sells chocolate eggs with a mystery filling. What consumers don’t know is that the mystery filling is nougat. Some consumers love nougat, others hate it. Below is a table with the WTP of buying a chocolate egg for all of the consumers in Townsville, as well as what their WTP would be if they knew the filling was nougat (labeled as MB, their marginal benefit). Assume that the marginal cost to produce a chocolate egg for Townsville consumers is $5/egg and that Cadshey behaves like a producer in a competitive market.
+
+### a. At the market price, who buys a chocolate egg? How much consumer surplus is there in this market? (Hint: For each consumer, the consumer surplus is CS= MB-P.)
+
+All consumers with a WTP greater than or equal to 5 will buy a chocolate egg. These consumers are: Aaron, Barbara and Charlotte. 
+
+The total consumer surplus in this market is 10 Because considering that $CS=MB-5$,$CS$ for Aaron is 8, -1 for Barbara and 3 for Charlotte. Therefore:
+
+$$CStotal=8-1+3=10$$
+
+### b. Cadshey thinks that consumers aren’t buying enough chocolate eggs because they don’t know there is nougat inside. He asks the mayor for a subsidy so he can sell more. He proposes a $3/egg subsidy. Who would benefit from this policy? Who would be hurt? How much consumer surplus will there be in this market?
+
+With a 3/egg subsidy, the price consumers pay is 2/egg. Therefore, consumer will now buy chocolate eggs if their WTP is greater than or equal to 2. 
+
+Based on this scenario, all consumers will benefit from this policy. Now considering the new CS per consumer, the updated TCS is:
+
+$$CStotal=11+2+6-2+10=27$$
+
+
+### c. The mayor’s chief of staff proposes that the CEO just tell consumers that there is nougat in the chocolate eggs, and that the government will put up a billboard to guarantee that consumers all learn this. Who would benefit from this policy? Who would be hurt? What would the total consumer surplus be in this market? (Compare this proposal to the baseline setup of this problem, not to the proposal in (b).)
+
+With this information, each consumer’s WTP equals MB, so a consumer buys if MB is greater than or equal to 5. With this new MB, only Aaron, Charlotte and Eden (benefits from this policy, because in its original WTP would not have bought the eggs) buys at 5. 
+
+Therefore, the new TCS is:
+
+$$CStotal=8+3+7=18$$
+
+
+## Q3.1. Assume that the welfare for everyone in Townsville only comes from the market for chocolate eggs (i.e., each person’s welfare only comes from the surplus they receive in that market). Assume that the two proposals would have the same cost to the government. 
+
+### d. If the mayor is a simple utilitarian, which proposal would she pick?
+
+The mayor would pick the proposal of the 3/egg because it generates a higher total consumer surplus (27) compared to the proposal in c (18).

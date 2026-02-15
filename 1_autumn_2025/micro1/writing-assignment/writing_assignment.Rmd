@@ -1,0 +1,153 @@
+---
+title: "Writing Assignment"
+subtitle: "PPHA 32300 Microeconomics and Public Policy I"
+author: 
+  - "Jay Ballesteros"
+  - "Nelson Coelho"
+  - "Mingyang Li"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 2
+---
+
+\newpage
+
+# 1. Technical report
+Plastic packaging is supplied in a competitive national market, resulting in a uniform supply curve across all states. Analysis of states with producer-side taxes reveals the fundamental nature of this supply. In Oregon, California, and Ohio, the observed market price minus the tax yields an identical net-of-tax price for producers of \$1,000 per ton, despite different quantities supplied. This indicates that the national supply curve is perfectly elastic at $P_s = \$1,000$ over the observed range. Producers are willing to supply any quantity demanded by individual states at this constant price. The demand curve for Illinois is derived from two key pieces of information. First, Illinois and Ohio have identical demand conditions due to matching population and preferences. Second, we observe the pre-tax equilibrium in Illinois, where the price is \$1,000 and the quantity is 2.4 million tons. Using Ohio's data point where a consumer price of \$1,120 at a quantity of 1.8 million tons, and Illinois's pre-tax point, we derive the Illinois demand curve as $P_s= 1480 - 200Q(million tons)$. Consequently, the pre-tax equilibrium in Illinois is naturally established at a price of \$1,000 per ton and a quantity of 2.4 million tons.
+
+The analysis assumes plastic production generates a negative externality, and evidence confirms this External Marginal Cost (EMC) is increasing with quantity. Policymakers in California, Oregon, and Texas have implemented efficient Pigouvian taxes, meaning the tax rate equals the EMC at the socially optimal quantity in each state. Oregon's $100 tax at a quantity of 2.0 million tons implies an EMC of \$100 at that output level. California's $150 tax at 3.0 million tons implies an EMC of \$150. These two data points allow us to model the External Marginal Cost curve as $EMC(Q) = 50Q(million tons)$, confirming that pollution costs rise linearly with production.
+
+In the absence of a tax, the market equilibrium in Illinois fails to account for social costs. At a quantity of 2.4 million tons, the consumer surplus is \$576 million. Because the supply curve is perfectly elastic, producer surplus is zero and thus have total surplus of $576 million. However, the total external cost imposed on society is significant, calculated as the area under the EMC curve up to the market quantity, which amounts to \$144 million. Therefore, the total social surplus—the sum of consumer and producer surplus minus external costs—is \$432 million. This outcome is inefficient; the market overproduces plastic because the private cost (\$1,000) is far below the true social cost at that quantity (\$1,120), creating a deadweight loss of \$28.8 million relative to the social optimum.
+
+Imposing a \$100 per ton tax on Illinois producers shifts the effective supply price faced by consumers to \$1,100. This reduces the equilibrium quantity to 1.9 million tons. The consumer surplus falls to \$361 million due to the higher price. Government revenue is generated, totaling \$190 million. Crucially, the reduction in quantity leads to a substantial decrease in total external costs to \$90.25 million. The total social surplus, which now includes government revenue as a social benefit, rises to \$460.75 million. This represents a net social gain of nearly \$29 million compared to the pre-tax scenario, creating a deadweight loss of $0.05 million.
+
+\newpage
+
+# 2. Op-Ed
+
+Next time you’re buying groceries at any supermarket, pay attention to the aisles lined with colorful, perfectly aligned, attention-grabbing products, sometimes packed in clever shapes or with carefully designed branding, calling you to pick them up. Aside from competing for your attention and preference, a huge majority of them share two things: they’re meant for you to buy them and, of course, they come wrapped in plastic. From the bread in the bakery section to fruits and vegetables, snacks, and drinks, plastic packaging is everywhere. 
+
+That said, plastic packaging does play an important role: it protects the products you buy, from the store to your home, until you decide to consume them. But once we’re done and its job is finished, that packaging disappears from our immediate sight—though not from the world. It has to be collected, transported, processed, or dumped, and along the way it sets off a chain of effects that turn into real costs for air quality, garbage collection systems, public health, and the environment as a whole. And right now, those costs don’t show up on the price tag of our products, and the only ones being held accountable for them are consumers. And for a market and industry that involves a yearly production of 100 million tons of plastic, it doesn't necessarily have to be that way. 
+
+The ongoing conversations regarding the Plastic Packaging Tax (PPT), a federal proposed \$100-per-ton plastic packaging tax, are an attempt to put the incentives in place to fix the costs associated with this market. And based on the available data, Illinois has the conditions to implement it, since it would raise overall social welfare, even after accounting for higher prices. Furthermore, this tax is nearly Pigouvian (true Piguouvian for Illinois is at \$96 per ton). I'll explain the rationale in the following lines. 
+
+In the current system, our plastic market looks competitive and efficient on the surface. For instance, producers from a national market will supply any amount of plastic to Illinois for \$1,000 per ton, so the supply curve is essentially flat at that price. At that going rate, Illinois consumers demand 2.4 million tons of plastic packaging per year. From a purely private perspective, this outcome looks great: consumers enjoy their respective surplus, and producers cover their opportunity costs. But there is a missing piece. Each additional ton of plastic creates environmental damages—through waste, pollution, and cleanup—that grow with total consumption. Using observed policies in other states, we can infer that the EMC of plastic in Illinois is roughly \$50 times the number of millions of tons consumed. At our current production level in the state, the total external costs imposed on society reach around \$144 million per year. 
+
+Once we factor those damages in, we notice the inefficiency in the market and how a \$100 tax can help to alleviate the social costs. In our analysis, going from no tax to a \$100 tax disincentivizes the production of half a million tons, cuts external costs by more than \$50 million, and generates about \$190 million in government revenue. When you put these pieces together (considering consumer surplus, producer surplus, tax revenue and EMC), total social surplus rises to a net gain of nearly \$29 million for Illinois society. 
+
+Nonetheless, the tax could carry undesirable effects that could be hard to ignore: consumers will pay more, since the entire tax will be transferred to them. In our analysis, we noticed that, if the tax is implemented, consumers would lose more than \$200 million in surplus compared to the status quo. That said, critics may reasonably worry that the state is imposing an environmental tax that might be regressive to for lower-income consumers, punishing them for choosing packaged goods. And without a clear plan for how the revenue will be used, a tax can be framed as a way to "squeeze" the regular shopper. 
+
+Yet, even once we take that concern seriously, the numbers still favor the PPT and predicted gains in surplus have the potential to exceed the consumers loss in the future. The key point is that the lost consumer surplus does not simply disappear. Implementing the tax in the state of Illinois represents a gain in welfare of almost \$29 million. And the main drivers are the \$53 million in reduced environmental damage (the gap between \$144 million in external costs without the tax and \$90 million with it). Moreover, the additional \$190 million transformed into tax revenue. From a welfarist perspective, the tax overall improves the situation. 
+ 
+\newpage
+
+# 3. Dissenting Opinion
+
+Although the analysis on Part I defends a Pigouvian tax on the plastic production market, arguing that it increases total surplus, minimizes externality costs, and generates government revenue, we find that this tax is regressive. 
+
+The supply and demand curve economic model shows us that when the supply curve is perfectly elastic, the total cost of a tax imposed on the market will be paid by the consumer. Given a supply curve that is perfectly elastic on the plastic packaging production market, the burden to pay the tax falls entirely on the consumers who engage in this market. 
+ 
+A couple of the issues found with similar taxes are the following: 
+
+- Higher cost for low income consumers 
+
+- Fails to support welfare criterions (does not support the well-being of low income households, who are those most affected by this tax) 
+
+Given that the plastic packaging production market competes with different types of packaging, higher income consumers may be inclined to switch to products with different types of packaging. Since the price of plastic packaging products has increased due to the tax falling entirely on consumers, the cost of switching to different packaging types is diminished. However, consumers with lower purchasing power will be unable to switch and will be forced to pay the tax. 
+
+This type of fixed value tax affects low income consumers disproportionately, thus we do not see this as a value alternative to minimize the external costs of plastic packaging market externalities. 
+
+Economists may be inclined to defend this tax based solely on economic models, but fail to see the burden being placed on people who really need this product. At times, market needs for simple solutions to these external costs can be to the detriment of consumers. 
+
+\newpage
+
+
+# Appendix
+
+## 1. Technical report calculation
+
+### Pre-tax scenario
+
+#### Demand and supply curves derivation
+
+Given the two points on the demand curve: $(Q_1,P_1) = (2.4, 1000)$ and $(Q_2,P_2) = (1.8, 1120)$, we can calculate the slope ($m$) of the demand curve using the formula:
+
+$$m = \frac{P_2-P_1}{Q_2-Q_1}$$
+
+$$m = \frac{1120 - 1000}{2.4- 1.8} = \frac{-120}{0.6}= -200$$
+
+The demand curve for Illinois is: $P_d = 1480 - 200Q$
+
+While the supply curve: $P_s = 1000$
+
+External costs: $EMC(Q) = 50Q$
+
+#### Surplus calculations
+
+Pre-tax consumer surplus: $CS = \frac{1}{2} \times (1480 - 1000) \times 2.4 = 576\ million$
+
+Pre-tax producer surplus is zero as the supply curve is perfectly elastic. 
+
+Pre-tax total surplus: $TS = CS + PS = 576 + 0 = 576\ million$
+
+#### External cost calculations
+
+Total external cost: $TEC = \frac{1}{2} \times EMC(Q_A) \times Q_A = \frac{1}{2} \times 50 \times 2.4 \times 2.4 = 144\ million$
+
+#### Deadweight loss calculation from externalities
+
+
+$$SMC = P_s + EMC(Q) = 1000 + 50Q$$
+Setting $P_d = SMC$ to find $Q^*$:
+
+$$1480 - 200Q = 1000 + 50Q$$
+$$480 = 250Q$$
+$$Q^* = 1.92\ million\ tons$$
+
+Next, we compute the deadweight loss (DWL) due to externality:
+
+$$DWL_Ext = \frac{1}{2} \times (MSC(Q_A) - P_d(Q_A)) \times (Q_A - Q)$$
+At $Q_A = 2.4$ million tons:
+
+$$MSC(Q_A) = 1000 + 50 \times 2.4 = 1120$$
+
+$$P_d(Q_A) = 1000 = P_s(Q_A)$$
+
+$$DWL_Ext = \frac{1}{2} \times (1120 - 1000) \times (2.4 - 1.92) = 28.8\ million$$
+
+### Post-tax scenario
+
+After the tax is implemented, the new equilibrium price and quantity for conssumers:
+$$Pconsumer = 1480 - 200 \times Q_d = 1100$$
+$$Q_d = 1.9 $$
+
+For producers:
+
+$$Pproducer = 1100 - 100 = 1000$$
+
+#### Surplus calculations
+
+$$CSpost-tax = \frac{1}{2} \times (1480 - 1100) \times 1.9 = 361\ million$$
+Post-tax producer surplus remains zero.
+
+Post-tax total surplus:
+$$TSpost-tax = CS + PS = 361 + 0  = 361\ million$$
+Total external cost:
+
+$$EMC(1.9) = 50 \times 1.9 = 95$$
+$$TECpost-tax = \frac{1}{2} \times 95 \times 1.9 = 90.25\ million$$
+Government revenue from the tax:
+$$GR = Tax \times Q_d = 100 \times 1.9 = 190\ million$$
+
+#### Deadweight loss calculation
+
+Next, we compute the DWL due to externality after the tax:
+
+$$DWLpost-tax = \frac{1}{2} \times (MSC(Q_A) - P_d(Q_A)) \times (Q_A - Q*)$$
+At $Q_A = 1.9$ million tons:
+$$MSC(Q_A) = 1000 + 50 \times 1.9 = 1095$$
+$$P_d(Q_A) = 1100$$
+$$DWLpost-tax = \frac{1}{2} \times (1095 - 1100) \times (1.9 - 1.92) = 0.05\ million$$
+
