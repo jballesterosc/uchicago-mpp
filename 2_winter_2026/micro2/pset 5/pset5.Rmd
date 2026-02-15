@@ -1,0 +1,72 @@
+---
+title: "Problem set 5"
+subtitle: "PPHA 31102 Statistics for Data Analysis II: Regressions"
+author: "Jay Ballesteros"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+geometry: margin=1in
+fontsize: 12pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Part II: Problems
+
+## Question 1 (25 points)
+
+Consider the following simplified duopoly game. Each firm simultaneously chooses whether to Cooperate or Defect. Payoffs are shown in the table below, and given as $(\pi_1, \pi_2)$:
+
+|           | Cooperate     | Defect        |
+|-----------|---------------|---------------|
+| Cooperate | $(100, 100)$  | $(0, 150)$    |
+| Defect    | $(150, 0)$    | $(X, X)$      |
+
+Suppose the firms interact infinitely many times, with common discount factor $\delta \in (0, 1)$. They attempt to sustain cooperation using a grim trigger strategy: both firms cooperate unless a defection occurs, in which case both defect forever after.
+
+### (a) (5 points)
+
+What is the present value of cooperating in each time period, assuming that the other firm will also cooperate in each time period? *(Hint: your answer will be a function of $\delta$ and $X$)*
+
+**Answer:**
+
+
+
+
+### (b) (5 points)
+
+What is the present value of defecting today, assuming that the other firm will cooperate today, but defect in each time period in the future? *(Hint: your answer will be a function of $\delta$ and $X$)*
+
+**Answer:**
+
+
+
+
+### (c) (5 points)
+
+Suppose $X = 0$. For what values of $\delta$ can cooperation be sustained?
+
+**Answer:**
+
+
+
+
+### (d) (5 points)
+
+Suppose $X = 50$. For what values of $\delta$ can cooperation be sustained?
+
+**Answer:**
+
+
+
+
+### (e) (5 points)
+
+Consider your answer to the previous two questions. Does a higher $X$ make cooperation more likely or less likely? Provide a concise explanation.
+
+**Answer:**
+
+
+
+
