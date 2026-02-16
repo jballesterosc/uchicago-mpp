@@ -8,13 +8,9 @@ geometry: margin=1in
 fontsize: 12pt
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+# Part II
 
-# Part II: Problems
-
-## Question 1 (25 points)
+## Question 1
 
 Consider the following simplified duopoly game. Each firm simultaneously chooses whether to Cooperate or Defect. Payoffs are shown in the table below, and given as $(\pi_1, \pi_2)$:
 
@@ -27,46 +23,48 @@ Suppose the firms interact infinitely many times, with common discount factor $\
 
 ### (a) (5 points)
 
-What is the present value of cooperating in each time period, assuming that the other firm will also cooperate in each time period? *(Hint: your answer will be a function of $\delta$ and $X$)*
+**What is the present value of cooperating in each time period, assuming that the other firm will also cooperate in each time period?**
 
-**Answer:**
+If both firms cooperate in each period, each firm earns the $\pi = 100$ per period. The present value is for this scenario is:
 
+$$PV_C = \frac{100}{1 - \delta}$$
 
+### (b)
 
+**What is the present value of defecting today, assuming that the other firm will cooperate today, but defect in each time period in the future?**
 
-### (b) (5 points)
+If a firm defects today while the other cooperates, it earns 150. Under grim trigger, both firms then defect forever, earning 
 
-What is the present value of defecting today, assuming that the other firm will cooperate today, but defect in each time period in the future? *(Hint: your answer will be a function of $\delta$ and $X$)*
+$$PV_D = 150 + \frac{\delta X}{1 - \delta}$$
 
-**Answer:**
+### (c) 
 
+**Suppose $X = 0$. For what values of $\delta$ can cooperation be sustained?**
 
+Cooperation is sustainable under grim trigger if $PV_C \geq PV_D$. With $X=0$, 
 
+$$\frac{100}{1 - \delta} \geq 150$$
 
-### (c) (5 points)
+Solving $100 \geq 150(1 - \delta)$, we get $\delta \geq \frac{1}{3}$
 
-Suppose $X = 0$. For what values of $\delta$ can cooperation be sustained?
+Therefore, cooperation can be sustained for $\delta \geq \frac{1}{3}$.
 
-**Answer:**
+### (d)
 
+**Suppose $X = 50$. For what values of $\delta$ can cooperation be sustained?**
 
+Cooperation is sustainable if $PV_C \geq PV_D$. With $X = 50$:
 
+$$\frac{100}{1 - \delta} \geq 150 + \frac{50\delta}{1 - \delta}$$
 
-### (d) (5 points)
+Multiplying by $(1 - \delta)$: $100 \geq 150(1 - \delta) + 50\delta$, we get $\delta \geq \frac{1}{2}$
 
-Suppose $X = 50$. For what values of $\delta$ can cooperation be sustained?
+Cooperation can be sustained for $\delta \geq \frac{1}{2}$.
 
-**Answer:**
+### (e) 
 
+**Consider your answer to the previous two questions. Does a higher $X$ make cooperation more likely or less likely? Provide a concise explanation.**
 
+A higher $X$ makes cooperation less likely. When $X = 0$, cooperation requires $\delta \geq \frac{1}{3}$. When $X = 50$, cooperation requires $\delta \geq \frac{1}{2}$.
 
-
-### (e) (5 points)
-
-Consider your answer to the previous two questions. Does a higher $X$ make cooperation more likely or less likely? Provide a concise explanation.
-
-**Answer:**
-
-
-
-
+In this case, $X$ represents the punishment payoff from mutual defection. A higher $X$ translates to a less severe punishment, reducing the incentive to cooperate, as the cost of defection is lower. 
