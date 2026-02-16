@@ -12,14 +12,14 @@ fontsize: 12pt
 
 ## Question 1
 
-Consider the following simplified duopoly game. Each firm simultaneously chooses whether to Cooperate or Defect. Payoffs are shown in the table below, and given as $(\pi_1, \pi_2)$:
+**Consider the following simplified duopoly game. Each firm simultaneously chooses whether to Cooperate or Defect. Payoffs are shown in the table below, and given as $(\pi_1, \pi_2)$:**
 
 |           | Cooperate     | Defect        |
 |-----------|---------------|---------------|
 | Cooperate | $(100, 100)$  | $(0, 150)$    |
 | Defect    | $(150, 0)$    | $(X, X)$      |
 
-Suppose the firms interact infinitely many times, with common discount factor $\delta \in (0, 1)$. They attempt to sustain cooperation using a grim trigger strategy: both firms cooperate unless a defection occurs, in which case both defect forever after.
+**Suppose the firms interact infinitely many times, with common discount factor $\delta \in (0, 1)$. They attempt to sustain cooperation using a grim trigger strategy: both firms cooperate unless a defection occurs, in which case both defect forever after.**
 
 ### (a) (5 points)
 
