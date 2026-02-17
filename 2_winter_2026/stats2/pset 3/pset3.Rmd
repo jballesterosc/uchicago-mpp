@@ -10,7 +10,8 @@ fontsize: 12pt
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+df <- read.csv("~/_github/uchicago-mpp/2_winter_2026/stats2/pset 3/_data/OHIE.csv")
 ```
 
 # 1. The Oregon Health Insurance Experiment, Revisited (16 points)
@@ -23,30 +24,64 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **The regression controlling for family size is given as follows:**
 
-$$Y = \beta_0 + \beta_1 Treated + \beta_2 numhh\_list + u \quad (1)$$
+$$Y = \beta_0 + \beta_1 Treated + \beta_2 numhh\_list + u$$
 
 **Recall in problem set #1, you ran the following regression:**
 
-$$Y = \beta'_0 + \beta'_1 Treated + v \quad (2)$$
+$$Y = \beta'_0 + \beta'_1 Treated + v$$
 
 **For each of the five outcomes, calculate the bias from not including `numhh_list` as a control, filling in the table below. Are any of these biases quantitatively large enough to fundamentally change any of your qualitative conclusions about the OHIE?**
 
-
+### Answer
 
 | Outcome | Bias |
 |---------|------|
-| count_visit_dr | |
-| count_visit_er | |
-| out_of_pocket_spend | |
-| health_score | |
-| happy | |
+| count_visit_dr | -0.1978184  |
+| count_visit_er | -0.03814492  |
+| out_of_pocket_spend | -5.841552 |
+| health_score |-0.00206248 |
+| happy | 0.007311952 |
 
+### Code
 
-```{r q1}
-# Your code here
+```{r q1-visitdr, include=TRUE}
+true_model <- lm(count_visit_dr ~ treated + numhh_list, data=df, na.action = na.omit)
+under_model <- lm(count_visit_dr ~ treated, data=df, na.action = na.omit)
 
+bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
+bias
+```
+```{r q1-visiter, include=TRUE}
+true_model <- lm(count_visit_er ~ treated + numhh_list, data=df, na.action = na.omit)
+under_model <- lm(count_visit_er ~ treated, data=df, na.action = na.omit)
+
+bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
+bias
 ```
 
+```{r q1-outof, include=TRUE}
+true_model <- lm(out_of_pocket_spend ~ treated + numhh_list, data=df, na.action = na.omit)
+under_model <- lm(out_of_pocket_spend ~ treated, data=df, na.action = na.omit)
+
+bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
+bias
+```
+
+```{r q1-health, include=TRUE}
+true_model <- lm(health_score ~ treated + numhh_list, data=df, na.action = na.omit)
+under_model <- lm(health_score ~ treated, data=df, na.action = na.omit)
+
+bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
+bias
+```
+
+```{r q1-happy, include=TRUE}
+true_model <- lm(happy ~ treated + numhh_list, data=df, na.action = na.omit)
+under_model <- lm(happy ~ treated, data=df, na.action = na.omit)
+
+bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
+bias
+```
 
 ## Question 2 (3 points)
 
