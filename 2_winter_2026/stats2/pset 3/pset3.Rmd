@@ -2,7 +2,7 @@
 title: "Problem set 3"
 subtitle: "PPHA 31102 Statistics for Data Analysis II: Regressions"
 author: "Jay Ballesteros"
-date: "`r format(Sys.time(), '%B %d,%Y')`"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: pdf_document
 geometry: margin=1in
 fontsize: 12pt
@@ -18,23 +18,21 @@ library(tidyverse)
 df <- read.csv("~/_github/uchicago-mpp/2_winter_2026/stats2/pset 3/_data/OHIE.csv")
 ```
 
-# 1. The Oregon Health Insurance Experiment, Revisited (16 points)
-
-**For this assignment, you can refer to any output that comes from the `lm()` function in R.**
+# 1. The Oregon Health Insurance Experiment, Revisited
 
 ## Q1. Question
 
-**In Problem Set #1, we found that one of the baseline characteristics, `numhh_list`, was statistically significant from zero at the 5 percent level. Oh no, did randomization fail? It turns out that the researchers expected this. The reason this happened is because treatment was assigned at the household level, and households with more eligible individuals had more chances to win the lottery. Fortunately, we can easily deal with this violation of balance using multivariate regression techniques!**
+In Problem Set #1, we found that one of the baseline characteristics, `numhh_list`, was statistically significant from zero at the 5 percent level. Oh no, did randomization fail? It turns out that the researchers expected this. The reason this happened is because treatment was assigned at the household level, and households with more eligible individuals had more chances to win the lottery. Fortunately, we can easily deal with this violation of balance using multivariate regression techniques!
 
-**The regression controlling for family size is given as follows:**
+The regression controlling for family size is given as follows:
 
 $$Y = \beta_0 + \beta_1 Treated + \beta_2 numhh\_list + u$$
 
-**Recall in problem set #1, you ran the following regression:**
+Recall in problem set #1, you ran the following regression:
 
 $$Y = \beta'_0 + \beta'_1 Treated + v$$
 
-**For each of the five outcomes, calculate the bias from not including `numhh_list` as a control, filling in the table below. Are any of these biases quantitatively large enough to fundamentally change any of your qualitative conclusions about the OHIE?**
+For each of the five outcomes, calculate the bias from not including `numhh_list` as a control, filling in the table below. Are any of these biases quantitatively large enough to fundamentally change any of your qualitative conclusions about the OHIE?
 
 ### Q1. Answer
 
@@ -94,9 +92,9 @@ bias
 
 ## Q2. Question
 
-**Let's look at which groups increased their doctor office visits the most in response to the treatment. Fill in the table below by running separate regressions of `visit_dr` on `treated`, and controlling for `numhh_list`, i.e. by running model (1) above, for each of the groups listed in the table.**
+Let's look at which groups increased their doctor office visits the most in response to the treatment. Fill in the table below by running separate regressions of `visit_dr` on `treated`, and controlling for `numhh_list`, i.e. by running model (1) above, for each of the groups listed in the table.
 
-**Discuss your findings: which group has the largest estimated treatment effects, which group has the smallest? Be sure to also consider the statistical significance.**
+Discuss your findings: which group has the largest estimated treatment effects, which group has the smallest? Be sure to also consider the statistical significance.
 
 ### Q2. Answer
 
@@ -176,13 +174,13 @@ coef(summary(model))["treated", 1:4]
 \newpage
 
 
-## Q3. 
+## Q3. Question
 
-**Returning to the full data and still focusing on the number of doctor office visits, let's also try controlling for education.**
+Returning to the full data and still focusing on the number of doctor office visits, let's also try controlling for education.
 
-**Using information in the variables `hs_degree` and `college_degree`, create a new indicator variable if someone DOES NOT have a high-school degree, call this new variable `NO_hs_degree`.**
+Using information in the variables `hs_degree` and `college_degree`, create a new indicator variable if someone DOES NOT have a high-school degree, call this new variable `NO_hs_degree`.
 
-**Try running each of the following regressions. Discuss how your estimated treatment effect, the precision of this estimate (standard error), and $R^2$ changes from just including `numhh_list`, i.e. model (1) above. If you cannot estimate a coefficient, explain why.**
+Try running each of the following regressions. Discuss how your estimated treatment effect, the precision of this estimate (standard error), and $R^2$ changes from just including `numhh_list`, i.e. model (1) above. If you cannot estimate a coefficient, explain why.
 
 $$count\_visit\_dr = \beta_0 + \beta_1 treated + \beta_2 numhh\_list + \beta_3 hs\_degree + \beta_4 college\_degree + u$$
 
@@ -222,9 +220,9 @@ summary(model_4)
 
 \newpage
 
-## Question 4 (2 points)
+## Q4. Question
 
-**Now, let's try including all the baseline characteristics as controls to the regression. Rerun the regression of `count_visit_dr` on `treated`, and control for:**
+Now, let's try including all the baseline characteristics as controls to the regression. Rerun the regression of `count_visit_dr` on `treated`, and control for:
 
 - `numhh_list`
 - `female`
@@ -234,31 +232,37 @@ summary(model_4)
 - `college_degree`
 - `health_baseline`
 
-**How does your estimated treatment effect, the precision of this estimate (standard error), and $R^2$ change from the model just including `numhh_list`?**
+How does your estimated treatment effect, the precision of this estimate (standard error), and $R^2$ change from the model just including `numhh_list`?
 
-```{r q4}
-# Your code here
+### Q4. Answer
 
+The estimated treatment effect in this model with all controls is 0.585611, which is slightly lower than the estimated treatment effect of the model that only includes `numhh_list` (difference of 0.007889). We have a similar history with the standard error: when comparing both both models we get a difference of only 0.003. Finally, the $R^2$ of this model is 0.03257, which is higher significantly higher than the $R^2$ of 0.006276 in the model with only `numhh_list`, indicating that including all baseline characteristics as controls improves the fit of the model and explains more of the variation in the `count_visit_dr` variable.
+
+### Q4. Code
+```{r q4_model5, include=TRUE, echo=TRUE, collapse=TRUE}
+model_5 <- lm(count_visit_dr ~ treated + numhh_list + female + age + race_white + hs_degree + college_degree + health_baseline, data=df, na.action = na.omit)
+summary(model_5)
 ```
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem.
 
 \newpage
 
-## Question 5 (1 point)
+## Q5. Question
 
-**Do you think we should include all these other baseline characteristics as controls to ensure that the treatment effects are unbiased, or is it sufficient to just control for `numhh_list`? Explain.**
+Do you think we should include all these other baseline characteristics as controls to ensure that the treatment effects are unbiased, or is it sufficient to just control for `numhh_list`? Explain.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem.
+### Q5. Answer
 
-## Question 6 (1 point)
+For unbiasenes, no. It is sufficient to just control for `numhh_list`. Since this is an RCT, treatment is randomly assigned and therefore uncorrelated with all other baseline characteristics, so there is no omitted variable bias from excluding them.
 
-**Do you think we should include all these other baseline characteristics as controls to improve the precision of our estimated treatment effects? Explain.**
+## Q6. Question
+
+Do you think we should include all these other baseline characteristics as controls to improve the precision of our estimated treatment effects? Explain.
+
+### Q6. Answer
+Yes, including additional baseline characteristics can help improve precision. We saw in Q4 that $R^2$ increased from 0.6% to 3.3%, indicating these controls do explain some variation in doctor visits. However, in practice, the standard error only decreased slightly (from 0.2166 to 0.2137), so the precision gains for this case are minimal.
 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem.
-
-## Question 7 (3 points)
+## Q7. Question
 
 **Using the model with the full set of controls estimated in Question 4, conduct a hypothesis test that the treatment effect on the number of doctor office visits is equal to the effect of having a high school degree.**
 
@@ -266,9 +270,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Se
 
 **To receive full credit, you should code this test manually in the manner we discussed in class and not use the `anova()` function or other such functions to perform hypothesis testing.**
 
+### Q7. Answer
+
+The null hypothesis is for this question is:
+$$H_0: \beta_{treated} = \beta_{hs\_degree}$$
+
+For the alternative hypothesis: $$H_A: \beta_{treated} \neq \beta_{hs\_degree}$$.
+
+
+
+### Q7. Code
 ```{r q7}
-# Your code here
 
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem.
