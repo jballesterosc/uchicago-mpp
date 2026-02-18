@@ -6,6 +6,10 @@ date: "`r format(Sys.time(), '%B %d,%Y')`"
 output: pdf_document
 geometry: margin=1in
 fontsize: 12pt
+header-includes:
+  - \usepackage{fvextra}
+  - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+  - \fvset{fontsize=\small}
 ---
 
 
@@ -18,7 +22,7 @@ df <- read.csv("~/_github/uchicago-mpp/2_winter_2026/stats2/pset 3/_data/OHIE.cs
 
 **For this assignment, you can refer to any output that comes from the `lm()` function in R.**
 
-## Q1 
+## Q1. Question
 
 **In Problem Set #1, we found that one of the baseline characteristics, `numhh_list`, was statistically significant from zero at the 5 percent level. Oh no, did randomization fail? It turns out that the researchers expected this. The reason this happened is because treatment was assigned at the household level, and households with more eligible individuals had more chances to win the lottery. Fortunately, we can easily deal with this violation of balance using multivariate regression techniques!**
 
@@ -48,14 +52,14 @@ The main take-away of the results, is than in four outcomes, the bias was close 
 
 ### Q1. Code
 
-```{r q1-visitdr, include=TRUE}
+```{r q1-visitdr, include=TRUE, echo=TRUE, collapse=TRUE}
 true_model <- lm(count_visit_dr ~ treated + numhh_list, data=df, na.action = na.omit)
 under_model <- lm(count_visit_dr ~ treated, data=df, na.action = na.omit)
 
 bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
 bias
 ```
-```{r q1-visiter, include=TRUE}
+```{r q1-visiter, include=TRUE, echo=TRUE, collapse=TRUE}
 true_model <- lm(count_visit_er ~ treated + numhh_list, data=df, na.action = na.omit)
 under_model <- lm(count_visit_er ~ treated, data=df, na.action = na.omit)
 
@@ -63,7 +67,7 @@ bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
 bias
 ```
 
-```{r q1-outof, include=TRUE}
+```{r q1-outof, include=TRUE, echo=TRUE, collapse=TRUE}
 true_model <- lm(out_of_pocket_spend ~ treated + numhh_list, data=df, na.action = na.omit)
 under_model <- lm(out_of_pocket_spend ~ treated, data=df, na.action = na.omit)
 
@@ -71,7 +75,7 @@ bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
 bias
 ```
 
-```{r q1-health, include=TRUE}
+```{r q1-health, include=TRUE, echo=TRUE, collapse=TRUE}
 true_model <- lm(health_score ~ treated + numhh_list, data=df, na.action = na.omit)
 under_model <- lm(health_score ~ treated, data=df, na.action = na.omit)
 
@@ -79,7 +83,7 @@ bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
 bias
 ```
 
-```{r q1-happy, include=TRUE}
+```{r q1-happy, include=TRUE, echo=TRUE, collapse=TRUE}
 true_model <- lm(happy ~ treated + numhh_list, data=df, na.action = na.omit)
 under_model <- lm(happy ~ treated, data=df, na.action = na.omit)
 
@@ -88,7 +92,7 @@ bias
 ```
 \newpage
 
-## Q2
+## Q2. Question
 
 **Let's look at which groups increased their doctor office visits the most in response to the treatment. Fill in the table below by running separate regressions of `visit_dr` on `treated`, and controlling for `numhh_list`, i.e. by running model (1) above, for each of the groups listed in the table.**
 
@@ -96,70 +100,83 @@ bias
 
 ### Q2. Answer
 
-| Group | $\hat{\beta}_1$ | S.E.$(\hat{\beta}_1)$ |
-|-------|-----------------|----------------------|
-| female==0 | 0.3420393 | 0.2836245 |
-| female==1 | 0.7926379 | 0.3118582 |
-| age<50 | 0.6440451 | 0.2588436 |
-| age>50 | 0.4097361 | 0.3933661 |
-| race_white==0 | 0.1638626 | 0.3303053 |
-| race_white==1 | 0.8066601 | 0.2760115 |
-| health_baseline==0 | 0.6450163 | 0.2393665 |
-| health_baseline==1 | 0.4180334 | 0.4681090 |
+| Group | $\hat{\beta}_1$ | S.E.$(\hat{\beta}_1)$ | p-value | 
+|-------|-----------------|----------------------|--------|
+| female==0 | 0.3420393 | 0.2836245 |0.2278876|
+| female==1 | 0.7926379 | 0.3118582 |0.01105449|
+| age<50 | 0.6440451 | 0.2588436 |0.01285882|
+| age=>50 | 0.4097361 | 0.3933661 |0.2976653|
+| race_white==0 | 0.1638626 | 0.3303053 |0.6198567|
+| race_white==1 | 0.8066601 | 0.2760115 |0.003480989|
+| health_baseline==0 | 0.6450163 | 0.2393665 |0.0070589|
+| health_baseline==1 | 0.4180334 | 0.4681090 |0.3719088|
+
+The group with the largest estimated treatment effect is `race_white==1` with a $\hat{\beta}_1$ of 0.8066601, while the group with the smallest estimated treatment effect is `race_white==0` with a $\hat{\beta}_1$ of 0.1638626.
+
+The only groups that show statistically significant treatment effects at the $\alpha=0.05$, are `female==1`, `age<50`, `race_white==1`, and `health_baseline==0`.
 
 ### Q2. Code
 
-```{r q2_male, include=TRUE}
-df_q2 <- df %>% filter (female == 0)
+```{r q2_male, include=TRUE, echo=TRUE, collapse=TRUE}
+df_q2 <- df %>% 
+  filter (female == 0)
 model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
-coef(summary(model))["treated", 1:2]
+coef(summary(model))["treated", 1:4]
 ```
 
-```{r q2_female, include=TRUE}
-df_q2 <- df %>% filter (female == 1)
+```{r q2_female, include=TRUE, echo=TRUE, collapse=TRUE}
+df_q2 <- df %>% 
+  filter (female == 1)
 model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
-coef(summary(model))["treated", 1:2]
+coef(summary(model))["treated", 1:4]
 
 ```
 
-```{r q2_below50, include=TRUE}
-df_q2 <- df %>% filter (age < 50)
+```{r q2_below50, include=TRUE, echo=TRUE, collapse=TRUE}
+df_q2 <- df %>% 
+  filter (age < 50)
 model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
-coef(summary(model))["treated", 1:2]
-```
-```{r q2_ge50, include=TRUE}
-df_q2 <- df %>% filter (age >= 50)
-model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
-coef(summary(model))["treated", 1:2]
+coef(summary(model))["treated", 1:4]
 ```
 
-```{r q2_nonwhite, include=TRUE}
-df_q2 <- df %>% filter (race_white == 0)
+```{r q2_ge50, include=TRUE, echo=TRUE, collapse=TRUE}
+df_q2 <- df %>% 
+  filter (age >= 50)
 model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
-coef(summary(model))["treated", 1:2]
+coef(summary(model))["treated", 1:4]
 ```
 
-```{r q2_white, include=TRUE}
-df_q2 <- df %>% filter (race_white == 1)
+```{r q2_nonwhite, include=TRUE, echo=TRUE, collapse=TRUE}
+df_q2 <- df %>% 
+  filter (race_white == 0)
 model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
-coef(summary(model))["treated", 1:2]
+coef(summary(model))["treated", 1:4]
 ```
 
-```{r q2_healthbaseline0, include=TRUE}
-df_q2 <- df %>% filter (health_baseline == 0)
+```{r q2_white, include=TRUE, echo=TRUE, collapse=TRUE}
+df_q2 <- df %>% 
+  filter (race_white == 1)
 model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
-coef(summary(model))["treated", 1:2]
+coef(summary(model))["treated", 1:4]
 ```
 
-```{r q2_healthbaseline1, include=TRUE}
-df_q2 <- df %>% filter (health_baseline == 1)
+```{r q2_healthbaseline0, include=TRUE, echo=TRUE, collapse=TRUE}
+df_q2 <- df %>% 
+  filter (health_baseline == 0)
 model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
-coef(summary(model))["treated", 1:2]
+coef(summary(model))["treated", 1:4]
+```
+
+```{r q2_healthbaseline1, include=TRUE, echo=TRUE, collapse=TRUE}
+df_q2 <- df %>% 
+  filter (health_baseline == 1)
+model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
+coef(summary(model))["treated", 1:4]
 ```
 \newpage
 
 
-## Question 3 (3 points)
+## Q3. 
 
 **Returning to the full data and still focusing on the number of doctor office visits, let's also try controlling for education.**
 
@@ -167,16 +184,43 @@ coef(summary(model))["treated", 1:2]
 
 **Try running each of the following regressions. Discuss how your estimated treatment effect, the precision of this estimate (standard error), and $R^2$ changes from just including `numhh_list`, i.e. model (1) above. If you cannot estimate a coefficient, explain why.**
 
-$$count\_visit\_dr = \beta_0 + \beta_1 treated + \beta_2 numhh\_list + \beta_3 hs\_degree + \beta_4 college\_degree + u \quad (3)$$
+$$count\_visit\_dr = \beta_0 + \beta_1 treated + \beta_2 numhh\_list + \beta_3 hs\_degree + \beta_4 college\_degree + u$$
 
-$$count\_visit\_dr = \beta'_0 + \beta'_1 treated + \beta'_2 numhh\_list + \beta'_3 NO\_hs\_degree + \beta_4 hs\_degree + \beta_5 college\_degree + u' \quad (4)$$
+$$count\_visit\_dr = \beta'_0 + \beta'_1 treated + \beta'_2 numhh\_list + \beta'_3 NO\_hs\_degree + \beta_4 hs\_degree + \beta_5 college\_degree + u'$$
 
-```{r q3}
-# Your code here
+### Q3. Answer
 
+| | Model (1) | Model (3) | Model (4) |
+|---|---|---|---|
+| $\hat{\beta}_1$ (treated) | 0.5935 |0.5745 |0.5745 |
+| S.E.$(\hat{\beta}_1)$ |0.2166 | 0.2163 |0.2163 |
+| $R^2$ |0.006276 | 0.009592 |0.009592 |
+
+The coefficient of treated changes slightly from 0.5935 in model (1) to 0.5745 in models (3) and (4). This might indicate that including additional education controls does not have an important effect on the estimated treatment effect. The standard error faces a similar conclusion, as it remains almost unchanged across the three models. For the $R^2$, we see a slight increase from 0.006276 in model (1) to 0.009592 in models (3) and (4), meaning that education explains a small portion of the variation in the number of doctor office visits, but it does not significantly improve the model's fit.
+
+### Q3. Code
+
+```{r q3_nohs, include=TRUE, echo=TRUE, collapse=TRUE}
+df <- df %>%
+  mutate(NO_hs_degree = ifelse(hs_degree == 0 & college_degree == 0, 1, 0))
 ```
 
----
+```{r q3_model1, include=TRUE, echo=TRUE, collapse=TRUE}
+model_1 <- lm(count_visit_dr ~ treated + numhh_list, data=df, na.action = na.omit)
+summary(model_1)
+```
+
+```{r q3_model3, include=TRUE, echo=TRUE, collapse=TRUE}
+model_3 <- lm(count_visit_dr ~ treated + numhh_list + hs_degree + college_degree, data=df, na.action = na.omit)
+summary(model_3)
+```
+
+```{r q3_model4, include=TRUE, echo=TRUE, collapse=TRUE}
+model_4 <- lm(count_visit_dr ~ treated + numhh_list + NO_hs_degree + hs_degree + college_degree, data=df, na.action = na.omit)
+summary(model_4)
+```
+
+\newpage
 
 ## Question 4 (2 points)
 
@@ -199,7 +243,7 @@ $$count\_visit\_dr = \beta'_0 + \beta'_1 treated + \beta'_2 numhh\_list + \beta'
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem.
 
-
+\newpage
 
 ## Question 5 (1 point)
 
