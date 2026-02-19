@@ -22,9 +22,9 @@ df <- read.csv("~/_github/uchicago-mpp/2_winter_2026/stats2/pset 3/_data/OHIE.cs
 
 ## Q1. Question
 
-In Problem Set #1, we found that one of the baseline characteristics, `numhh_list`, was statistically significant from zero at the 5 percent level. Oh no, did randomization fail? It turns out that the researchers expected this. The reason this happened is because treatment was assigned at the household level, and households with more eligible individuals had more chances to win the lottery. Fortunately, we can easily deal with this violation of balance using multivariate regression techniques!
+**In Problem Set #1, we found that one of the baseline characteristics, `numhh_list`, was statistically significant from zero at the 5 percent level. Oh no, did randomization fail? It turns out that the researchers expected this. The reason this happened is because treatment was assigned at the household level, and households with more eligible individuals had more chances to win the lottery. Fortunately, we can easily deal with this violation of balance using multivariate regression techniques!**
 
-The regression controlling for family size is given as follows:
+**The regression controlling for family size is given as follows:**
 
 $$Y = \beta_0 + \beta_1 Treated + \beta_2 numhh\_list + u$$
 
@@ -32,7 +32,7 @@ Recall in problem set #1, you ran the following regression:
 
 $$Y = \beta'_0 + \beta'_1 Treated + v$$
 
-For each of the five outcomes, calculate the bias from not including `numhh_list` as a control, filling in the table below. Are any of these biases quantitatively large enough to fundamentally change any of your qualitative conclusions about the OHIE?
+**For each of the five outcomes, calculate the bias from not including `numhh_list` as a control, filling in the table below. Are any of these biases quantitatively large enough to fundamentally change any of your qualitative conclusions about the OHIE?**
 
 ### Q1. Answer
 
@@ -88,13 +88,12 @@ under_model <- lm(happy ~ treated, data=df, na.action = na.omit)
 bias <- coef(under_model)["treated"] - coef(true_model)["treated"]
 bias
 ```
-\newpage
 
 ## Q2. Question
 
-Let's look at which groups increased their doctor office visits the most in response to the treatment. Fill in the table below by running separate regressions of `visit_dr` on `treated`, and controlling for `numhh_list`, i.e. by running model (1) above, for each of the groups listed in the table.
+**Let's look at which groups increased their doctor office visits the most in response to the treatment. Fill in the table below by running separate regressions of `visit_dr` on `treated`, and controlling for `numhh_list`, i.e. by running model (1) above, for each of the groups listed in the table.**
 
-Discuss your findings: which group has the largest estimated treatment effects, which group has the smallest? Be sure to also consider the statistical significance.
+**Discuss your findings: which group has the largest estimated treatment effects, which group has the smallest? Be sure to also consider the statistical significance.**
 
 ### Q2. Answer
 
@@ -109,9 +108,9 @@ Discuss your findings: which group has the largest estimated treatment effects, 
 | health_baseline==0 | 0.6450163 | 0.2393665 |0.0070589|
 | health_baseline==1 | 0.4180334 | 0.4681090 |0.3719088|
 
-The group with the largest estimated treatment effect is `race_white==1` with a $\hat{\beta}_1$ of 0.8066601, while the group with the smallest estimated treatment effect is `race_white==0` with a $\hat{\beta}_1$ of 0.1638626.
+**The group with the largest estimated treatment effect is `race_white==1` with a $\hat{\beta}_1$ of 0.8066601, while the group with the smallest estimated treatment effect is `race_white==0` with a $\hat{\beta}_1$ of 0.1638626.**
 
-The only groups that show statistically significant treatment effects at the $\alpha=0.05$, are `female==1`, `age<50`, `race_white==1`, and `health_baseline==0`.
+**The only groups that show statistically significant treatment effects at the $\alpha=0.05$, are `female==1`, `age<50`, `race_white==1`, and `health_baseline==0`.**
 
 ### Q2. Code
 
@@ -171,16 +170,15 @@ df_q2 <- df %>%
 model <- lm(count_visit_dr ~ treated + numhh_list, data=df_q2, na.action = na.omit)
 coef(summary(model))["treated", 1:4]
 ```
-\newpage
 
 
 ## Q3. Question
 
-Returning to the full data and still focusing on the number of doctor office visits, let's also try controlling for education.
+**Returning to the full data and still focusing on the number of doctor office visits, let's also try controlling for education.**
 
-Using information in the variables `hs_degree` and `college_degree`, create a new indicator variable if someone DOES NOT have a high-school degree, call this new variable `NO_hs_degree`.
+**Using information in the variables `hs_degree` and `college_degree`, create a new indicator variable if someone DOES NOT have a high-school degree, call this new variable `NO_hs_degree`.**
 
-Try running each of the following regressions. Discuss how your estimated treatment effect, the precision of this estimate (standard error), and $R^2$ changes from just including `numhh_list`, i.e. model (1) above. If you cannot estimate a coefficient, explain why.
+**Try running each of the following regressions. Discuss how your estimated treatment effect, the precision of this estimate (standard error), and $R^2$ changes from just including `numhh_list`, i.e. model (1) above. If you cannot estimate a coefficient, explain why.**
 
 $$count\_visit\_dr = \beta_0 + \beta_1 treated + \beta_2 numhh\_list + \beta_3 hs\_degree + \beta_4 college\_degree + u$$
 
@@ -218,11 +216,10 @@ model_4 <- lm(count_visit_dr ~ treated + numhh_list + NO_hs_degree + hs_degree +
 summary(model_4)
 ```
 
-\newpage
 
 ## Q4. Question
 
-Now, let's try including all the baseline characteristics as controls to the regression. Rerun the regression of `count_visit_dr` on `treated`, and control for:
+**Now, let's try including all the baseline characteristics as controls to the regression. Rerun the regression of `count_visit_dr` on `treated`, and control for:**
 
 - `numhh_list`
 - `female`
@@ -232,7 +229,7 @@ Now, let's try including all the baseline characteristics as controls to the reg
 - `college_degree`
 - `health_baseline`
 
-How does your estimated treatment effect, the precision of this estimate (standard error), and $R^2$ change from the model just including `numhh_list`?
+**How does your estimated treatment effect, the precision of this estimate (standard error), and $R^2$ change from the model just including `numhh_list`?**
 
 ### Q4. Answer
 
@@ -244,11 +241,10 @@ model_5 <- lm(count_visit_dr ~ treated + numhh_list + female + age + race_white 
 summary(model_5)
 ```
 
-\newpage
 
 ## Q5. Question
 
-Do you think we should include all these other baseline characteristics as controls to ensure that the treatment effects are unbiased, or is it sufficient to just control for `numhh_list`? Explain.
+**Do you think we should include all these other baseline characteristics as controls to ensure that the treatment effects are unbiased, or is it sufficient to just control for `numhh_list`? Explain.**
 
 ### Q5. Answer
 
@@ -256,7 +252,7 @@ For unbiasenes, no. It is sufficient to just control for `numhh_list`. Since thi
 
 ## Q6. Question
 
-Do you think we should include all these other baseline characteristics as controls to improve the precision of our estimated treatment effects? Explain.
+**Do you think we should include all these other baseline characteristics as controls to improve the precision of our estimated treatment effects? Explain.**
 
 ### Q6. Answer
 Yes, including additional baseline characteristics can help improve precision. We saw in Q4 that $R^2$ increased from 0.6% to 3.3%, indicating these controls do explain some variation in doctor visits. However, in practice, the standard error only decreased slightly (from 0.2166 to 0.2137), so the precision gains for this case are minimal.
@@ -277,10 +273,34 @@ $$H_0: \beta_{treated} = \beta_{hs\_degree}$$
 
 For the alternative hypothesis: $$H_A: \beta_{treated} \neq \beta_{hs\_degree}$$.
 
-
+Using a F-test (code and results below), we fail to reject the $H_0$. The F-statistic is 0.90, and the critical value at the 5% significance level is 3.84. Since the F-statistic is less than the critical value, we do not have enough evidence to reject the null hypothesis.
 
 ### Q7. Code
-```{r q7}
+```{r q7ftest, include=TRUE, echo=TRUE, collapse=TRUE}
 
+#unrestricted model (the same from q4)
+unr_model <- lm(count_visit_dr ~ treated + numhh_list + female + age + race_white + hs_degree + college_degree + health_baseline, data = df, na.action = na.omit)
+unr_SSR <- sum(unr_model$residuals^2)
+
+#restricted model
+df$combined <- df$treated + df$hs_degree
+res_model <- lm(count_visit_dr ~ combined + numhh_list + female + age + race_white + college_degree + health_baseline, data = df, na.action = na.omit)
+res_SSR <- sum(res_model$residuals^2)
+
+q <- 1       
+n <- nobs(unr_model)
+k <- length(coef(unr_model)) - 1
+
+F2 <- ((res_SSR - unr_SSR) / q) / (unr_SSR / (n - k - 1))
+F2
+```
+
+```{r q7cv, include=TRUE, echo=TRUE, collapse=TRUE}
+#critical value for test
+qf(.95, df1 = q, df2 = n - k - 1)
+```
+```{r q7pvalue, include=TRUE, echo=TRUE, collapse=TRUE}
+#computing p-value for tes
+pf(F2, q, n - k - 1, lower.tail = FALSE)
 ```
 
