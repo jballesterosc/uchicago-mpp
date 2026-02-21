@@ -1,0 +1,61 @@
+---
+title: "Problem set 6"
+subtitle: "PPHA 32400 Microeconomics and Public Policy II"
+author: "Jay Ballesteros"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+geometry: margin=1in
+fontsize: 12pt
+---
+
+## Q1 
+
+**A beekeeper and a farmer are neighbors, and the bees pollinate the farmer's crop, which increases the farmer's payoff. The farmer would prefer that their neighbor maintain a large bee population, but keeping bees is difficult and expensive. The annual payoff to the beekeeper & the farmer under different numbers of hives is given below:**
+
+| No. of hives | Beekeeper | Farmer | Joint |
+|:------------:|:---------:|:------:|:-----:|
+| One          | \$35K     | \$10K  | \$45K |
+| Two          | \$30K     | \$30K  | \$60K |
+| Three        | \$20K     | \$35K  | \$55K |
+
+**Note that the joint profit maximizing number of hives is two. You may assume that the beekeeper has property rights (i.e., they have a right to keep as many — or as few — bees as they please).**
+
+### (a) (5 points)
+
+**Absent the ability to bargain, how many hives will the beekeeper maintain? How much does the farmer make in this scenario? How much does the beekeeper make? What is the total surplus?**
+
+Without negotiation, the beekeeper maximizes its own benefit at one hive for 35k. In this scenario, the farmer makes 10k, the beekeeper makes 35k, and the total surplus is 45k.
+
+### (b) (6 points)
+
+**Suppose that they bargain, and the farmer promises to make a side payment of $s$ to the beekeeper in exchange for the beekeeper maintaining two hives. For what range of $s$ is this agreement mutually beneficial? You may assume that transaction costs are zero.**
+
+In the farmer makes a side payment ($s$) to the beekeeper in exchange for maintaining two hives, the beekeeper earns 30 + $s$ and needs this to exceed their defaul of 35k, so $s > 5$. The farmer earns 30 - $s$ and needs this to exceed their default of 10k, so $s < 20$. Thus, the agreement is mutually beneficial for $5 < s < 20$.
+
+### (c) (4 points)
+
+**What are the range of possible earnings for the beekeeper under an arrangement reached in 1b? What about the farmer? What is the total surplus? How much has total surplus increased relative to 1a?**
+
+Under the arrangement from question (b), the beekeeper earns 30 + $s$ where $s$ is in $(5, 20)$, so their earnings range from 35 to 50k. The farmer earns $30 - s$, so their earnings range from 10 to 25k. The total surplus is 60k regardless of $s$. Relative to (a), total surplus has increased by $60 - 45 = 15$.
+
+**Suppose that the beekeeper can accept the side payment, and then neglect the second hive, causing the post-harvest profits to be the same as in 1a. The only way to enforce this agreement is to hire a neutral third party observer to regularly inspect the hives. This observer must be paid for their services.**
+
+### (d) (6 points)
+
+**Suppose the observer must be paid \$10K/year. Can bargaining lead the two to achieve the optimal outcome? (You may assume that the farmer pays the observer.)**
+
+Assuming the farmer pays the observer 10k a year, the beekeeper still needs $30 + s > 35$, so $s > 5$. The farmer now earns $30 - s - 10$ and needs this to exceed their default of 10k, so $30 - s - 10 > 10$, which gives $s < 10$. Since $s$ in $(5, 10)$ is non-empty, bargaining can still lead to the optimal outcome.
+
+### (e) (4 points)
+
+**Suppose the observer must be paid \$18K/year. Can bargaining lead the two to achieve the optimal outcome?**
+
+Assuming the farmer pays the observer 18k a year, the beekeeper still needs $30 + s > 35$, so $s > 5$. The farmer now earns $30 - s - 18$ and needs this to exceed their default of 10k, so $30 - s - 18 > 10$, which results in $s < 2$. Since there is no $s$ that satisfies both inequalities, bargaining cannot lead to the optimal outcome.
+
+### (f) (5 points)
+
+**Explain, in your own words, why an agreement was possible when transaction costs were low (in 1b and 1d) but not when they were high (in 1e). Keep your answer concise (no more than sixty words).**
+
+An agreement is possible when transaction costs are low enough that the surplus gained from moving to the optimal outcome can still be split in a way that benefits both sides. The move from one to two hives generates 15k in extra surplus. When transaction costs are 0 or 10k, there is room to negotiate. At 18k, the costs consume more than the gains, making any deal unfeasible.
+
+\vspace{3cm}
