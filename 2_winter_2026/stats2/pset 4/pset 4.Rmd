@@ -1,0 +1,167 @@
+---
+title: "Problem set 4"
+subtitle: "PPHA 31102 Statistics for Data Analysis II: Regressions"
+author: "Jay Ballesteros"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+geometry: margin=1in
+fontsize: 12pt
+header-includes:
+  - \usepackage{fvextra}
+  - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+  - \fvset{fontsize=\small}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r libraries}
+library(tidyverse)
+library(AER)
+```
+
+**Study Group Members:** [List names here]
+
+---
+
+# 1. Trade Policy (8 points)
+
+```{r load-trade-data}
+# Load the trade policy data
+trade <- read.csv("trade_policy.csv")
+```
+
+## Question 1.1 (4 points)
+
+*Use a difference-in-differences design to estimate the impact of the tariff on exports of air conditioners. Regress air_conditioners_pc on post, treat, and the interaction of post and treat. Which coefficient reveals the change in exports after the tariff was introduced? Explain and interpret the result.*
+
+```{r q1-1}
+# DiD regression
+
+```
+
+**Answer:** [Your interpretation here]
+
+## Question 1.2 (2 points)
+
+*A friend is suggesting that you should consider taking the log of your outcome, air_conditioners_pc. What are some potential concerns regarding this suggestion? Describe two.*
+
+**Answer:** [Your answer here]
+
+## Question 1.3 (2 points)
+
+*The difference-in-differences design is valid when treatment and control have common trends. What is a common trend? Write down the definition. Next, give an example (about this case) when this assumption is likely violated.*
+
+**Answer:** [Your answer here]
+
+---
+
+# 2. The Oregon Health Insurance Experiment, Revisited (16 points)
+
+```{r load-ohie-data}
+# Load the OHIE data
+ohie <- read.csv("OHIE.csv")
+```
+
+## Question 2.1 (2 points)
+
+*Consider the variable ever_medicaid. Did everyone who won the lottery take up Medicaid? Calculate the mean of ever_medicaid among those who won the lottery. Are there some people who lost the lottery who take up Medicaid? Calculate the mean of ever_medicaid for those that lost the lottery. Is the causal effect of winning the lottery likely to be the same as the causal effect of actually receiving Medicaid?*
+
+```{r q2-1}
+# Mean of ever_medicaid among lottery winners
+
+# Mean of ever_medicaid among lottery losers
+
+```
+
+**Answer:** [Your interpretation here]
+
+## Question 2.2 (2 points)
+
+*Estimate the "First-stage" regression: ever_medicaid = α0 + α1*treated + α2*numhh_list + e. Interpret the regression coefficient on α1.*
+
+```{r q2-2}
+# First-stage regression
+
+```
+
+**Answer:** [Your interpretation here]
+
+## Question 2.3 (3 points)
+
+*Is treated likely to be a valid instrument for ever_medicaid in terms of the three key assumptions: instrument relevance, independence assumption, and the exclusion restriction?*
+
+**Answer:** [Your answer here]
+
+## Question 2.4 (2 points)
+
+*Calculate and report the ratio of the reduced form to the first stage for the outcome count_visit_dr. Note: use the same observations (exclude rows with missing count_visit_dr).*
+
+```{r q2-4}
+# Subset to non-missing count_visit_dr
+
+# Reduced form regression
+
+# First-stage regression (same sample)
+
+# Calculate ratio
+
+```
+
+**Answer:** [Your interpretation here]
+
+## Question 2.5 (3 points)
+
+*Manually estimate the two stages of 2SLS. How does your result compare to the previous estimate? Is the IV estimate statistically significant?*
+
+```{r q2-5}
+# (a) First-stage and predicted values
+
+# (b) Second-stage regression
+
+```
+
+**Answer:** [Your interpretation here]
+
+## Question 2.6 (2 points)
+
+*Re-estimate the 2SLS model including the full set of controls (numhh_list, female, age, age^2, race_white, hs_degree, college_degree, health_baseline). Compare the coefficient on ever_medicaid and the standard error to the results in part (5).*
+
+```{r q2-6}
+# Create age squared variable
+
+# 2SLS with full controls
+
+```
+
+**Answer:** [Your comparison here]
+
+## Question 2.7 (2 points)
+
+*For each endline outcome, run the IV regressions including controls using ivreg(). Fill in the table and discuss findings.*
+
+```{r q2-7}
+# IV regression for visit_dr
+
+# IV regression for visit_er
+
+# IV regression for out_of_pocket_spend
+
+# IV regression for health_score
+
+# IV regression for happy
+
+```
+
+| Endline outcome    | (1) IV estimate | (2) S.E. |
+|--------------------|-----------------|----------|
+| visit_dr           |                 |          |
+| visit_er           |                 |          |
+| out_of_pocket_spend|                 |          |
+| health_score       |                 |          |
+| happy              |                 |          |
+
+**Answer:** [Your discussion here]
+
