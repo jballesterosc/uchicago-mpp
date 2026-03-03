@@ -6,43 +6,30 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: pdf_document
 geometry: margin=1in
 fontsize: 12pt
-header-includes:
-  - \usepackage{fvextra}
-  - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
-  - \fvset{fontsize=\small}
 ---
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
-
-```{r libraries}
 library(tidyverse)
-library(AER)
+library(stargazer)
+tp <- read.csv("~/_github/uchicago-mpp/2_winter_2026/stats2/pset 4/_data/trade_policy.csv")
+ohie <- read.csv("~/_github/uchicago-mpp/2_winter_2026/stats2/pset 4/_data/ohie.csv")
 ```
 
-**Study Group Members:** [List names here]
+# 1. Trade Policy
 
----
+**Tariffs frequently impact the flow of goods internationally. In this section, you will draw on data from one of these tariffs, investigating how these disruptions impact exports. For the next five questions, you will use the data posted on Canvas as $trade\_policy.csv$. This data contains several variables: post is a binary variable indicating the tariff has been introduced (post = 1, pre = 0); $treat$ is a binary variable that equals 1 if a country is “impacted” by the tariff barrier (i.e., a regulation increasing the cost of exports) and 0 if a country is “not impacted”; $air\_conditioners\_pc$ is the number of air conditioners exported per capita by a given country in a year.**
 
-# 1. Trade Policy (8 points)
+## Question 1.1 
 
-```{r load-trade-data}
-# Load the trade policy data
-trade <- read.csv("trade_policy.csv")
+**Use a difference-in-differences design to estimate the impact of the tariff on exports of air conditioners. Regress air_conditioners_pc on post, treat, and the interaction of post and treat. Which coefficient reveals the change in exports after the tariff was introduced? Explain and interpret the result.**
+
+```{r q1-1, include=TRUE, echo=TRUE, collapse=TRUE}
+tp$interaction <- tp$treat * tp$post
+model <- lm(air_conditioners_pc ~ treat + post + interaction, data = tp)
+stargazer(model, type="text",  out="models.txt")
 ```
 
-## Question 1.1 (4 points)
-
-*Use a difference-in-differences design to estimate the impact of the tariff on exports of air conditioners. Regress air_conditioners_pc on post, treat, and the interaction of post and treat. Which coefficient reveals the change in exports after the tariff was introduced? Explain and interpret the result.*
-
-```{r q1-1}
-# DiD regression
-
-```
-
-**Answer:** [Your interpretation here]
 
 ## Question 1.2 (2 points)
 
@@ -62,7 +49,6 @@ trade <- read.csv("trade_policy.csv")
 
 ```{r load-ohie-data}
 # Load the OHIE data
-ohie <- read.csv("OHIE.csv")
 ```
 
 ## Question 2.1 (2 points)
@@ -80,7 +66,11 @@ ohie <- read.csv("OHIE.csv")
 
 ## Question 2.2 (2 points)
 
-*Estimate the "First-stage" regression: ever_medicaid = α0 + α1*treated + α2*numhh_list + e. Interpret the regression coefficient on α1.*
+Estimate the "First-stage" regression: 
+
+$$ever\_medicaid = \alpha0 + \alpha1*treated + \alpha2*numhh_list + e$$
+
+Interpret the regression coefficient on $\alpha1$.
 
 ```{r q2-2}
 # First-stage regression
