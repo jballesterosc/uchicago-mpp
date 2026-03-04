@@ -18,53 +18,59 @@ ohie <- read.csv("~/_github/uchicago-mpp/2_winter_2026/stats2/pset 4/_data/ohie.
 
 # 1. Trade Policy
 
-**Tariffs frequently impact the flow of goods internationally. In this section, you will draw on data from one of these tariffs, investigating how these disruptions impact exports. For the next five questions, you will use the data posted on Canvas as $trade\_policy.csv$. This data contains several variables: post is a binary variable indicating the tariff has been introduced (post = 1, pre = 0); $treat$ is a binary variable that equals 1 if a country is “impacted” by the tariff barrier (i.e., a regulation increasing the cost of exports) and 0 if a country is “not impacted”; $air\_conditioners\_pc$ is the number of air conditioners exported per capita by a given country in a year.**
+Tariffs frequently impact the flow of goods internationally. In this section, you will draw on data from one of these tariffs, investigating how these disruptions impact exports. For the next five questions, you will use the data posted on Canvas as $trade\_policy.csv$. This data contains several variables: post is a binary variable indicating the tariff has been introduced (post = 1, pre = 0); $treat$ is a binary variable that equals 1 if a country is “impacted” by the tariff barrier (i.e., a regulation increasing the cost of exports) and 0 if a country is “not impacted”; $air\_conditioners\_pc$ is the number of air conditioners exported per capita by a given country in a year.
 
-## Question 1.1 
+## 1.1.
 
-**Use a difference-in-differences design to estimate the impact of the tariff on exports of air conditioners. Regress air_conditioners_pc on post, treat, and the interaction of post and treat. Which coefficient reveals the change in exports after the tariff was introduced? Explain and interpret the result.**
+Use a difference-in-differences design to estimate the impact of the tariff on exports of air conditioners. Regress air_conditioners_pc on post, treat, and the interaction of post and treat. Which coefficient reveals the change in exports after the tariff was introduced? Explain and interpret the result.
 
-```{r q1-1, include=TRUE, echo=TRUE, collapse=TRUE}
+### Answer
+
+```{r q1-1}
 tp$interaction <- tp$treat * tp$post
 model <- lm(air_conditioners_pc ~ treat + post + interaction, data = tp)
-stargazer(model, type="text",  out="models.txt")
+summary(model)
 ```
 
+The coefficient that reveals the change in exports after the tariff was introduced, is the coefficient on the interaction between $treat$ and $post$ ($treat*post$). In this case, the result of the interaction reveals that the treated group decreased, after the tariffs, by 0.63417 air conditioners per capita relative to the control group. 
 
-## Question 1.2 (2 points)
+## 1.2.
 
-*A friend is suggesting that you should consider taking the log of your outcome, air_conditioners_pc. What are some potential concerns regarding this suggestion? Describe two.*
+A friend is suggesting that you should consider taking the log of your outcome, air_conditioners_pc. What are some potential concerns regarding this suggestion? Describe two.
 
-**Answer:** [Your answer here]
+### Answer 
 
-## Question 1.3 (2 points)
+To consider the log of the outcomes from `air_conditioners_pc` might be misleading because of the near-zero values present in the dataframe, that after log(), generate extreme values that potentially distort the regression. Moreover, taking the log changes the interpretation from units to percentage changes, and the friend does not provide any theoretical justification for this transformation. Interpreting results in air conditioners per capita feels more intuitive in this context.
 
-*The difference-in-differences design is valid when treatment and control have common trends. What is a common trend? Write down the definition. Next, give an example (about this case) when this assumption is likely violated.*
+## 1.3
 
-**Answer:** [Your answer here]
+The difference-in-differences design is valid when treatment and control have common trends. What is a common trend? Write down the definition. Next, give an example (about this case) when this assumption is likely violated.
 
----
+### Answer
 
-# 2. The Oregon Health Insurance Experiment, Revisited (16 points)
+A common trend, in the context of difference-in-differences, refers to the idea that in the absence of treatment, both groups would have experienced the same change in the outcome over time. 
 
-```{r load-ohie-data}
-# Load the OHIE data
+The idea of a common trend might be likely violated if, for instance, the treated countries experienced an unusual increase in air conditioner demand during the pre-treatment period that the control countries did not. In this case, the two groups would have been on different trajectories even without the tariff.
+
+# 2. The Oregon Health Insurance Experiment
+
+## 2.1.
+
+Consider the variable ever_medicaid. Did everyone who won the lottery take up Medicaid? Calculate the mean of ever_medicaid among those who won the lottery. Are there some people who lost the lottery who take up Medicaid? Calculate the mean of ever_medicaid for those that lost the lottery. Is the causal effect of winning the lottery likely to be the same as the causal effect of actually receiving Medicaid?
+
+### Answer
+
+```{r q2-1won}
+mean(ohie$ever_medicaid[ohie$treated == 1])
 ```
 
-## Question 2.1 (2 points)
-
-*Consider the variable ever_medicaid. Did everyone who won the lottery take up Medicaid? Calculate the mean of ever_medicaid among those who won the lottery. Are there some people who lost the lottery who take up Medicaid? Calculate the mean of ever_medicaid for those that lost the lottery. Is the causal effect of winning the lottery likely to be the same as the causal effect of actually receiving Medicaid?*
-
-```{r q2-1}
-# Mean of ever_medicaid among lottery winners
-
-# Mean of ever_medicaid among lottery losers
-
+```{r q2-1lost}
+mean(ohie$ever_medicaid[ohie$treated == 0])
 ```
 
 **Answer:** [Your interpretation here]
 
-## Question 2.2 (2 points)
+### 2.2.
 
 Estimate the "First-stage" regression: 
 
@@ -79,13 +85,13 @@ Interpret the regression coefficient on $\alpha1$.
 
 **Answer:** [Your interpretation here]
 
-## Question 2.3 (3 points)
+### 2.3.
 
 *Is treated likely to be a valid instrument for ever_medicaid in terms of the three key assumptions: instrument relevance, independence assumption, and the exclusion restriction?*
 
 **Answer:** [Your answer here]
 
-## Question 2.4 (2 points)
+### 2.4.
 
 *Calculate and report the ratio of the reduced form to the first stage for the outcome count_visit_dr. Note: use the same observations (exclude rows with missing count_visit_dr).*
 
@@ -102,7 +108,7 @@ Interpret the regression coefficient on $\alpha1$.
 
 **Answer:** [Your interpretation here]
 
-## Question 2.5 (3 points)
+### 2.5.
 
 *Manually estimate the two stages of 2SLS. How does your result compare to the previous estimate? Is the IV estimate statistically significant?*
 
@@ -115,7 +121,7 @@ Interpret the regression coefficient on $\alpha1$.
 
 **Answer:** [Your interpretation here]
 
-## Question 2.6 (2 points)
+### 2.6.
 
 *Re-estimate the 2SLS model including the full set of controls (numhh_list, female, age, age^2, race_white, hs_degree, college_degree, health_baseline). Compare the coefficient on ever_medicaid and the standard error to the results in part (5).*
 
@@ -128,7 +134,7 @@ Interpret the regression coefficient on $\alpha1$.
 
 **Answer:** [Your comparison here]
 
-## Question 2.7 (2 points)
+### 2.7.
 
 *For each endline outcome, run the IV regressions including controls using ivreg(). Fill in the table and discuss findings.*
 
