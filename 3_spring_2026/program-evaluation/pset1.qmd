@@ -1,0 +1,17 @@
+---
+title: "Problem Set 1"
+subtitle: "PPHA 34410 Program Evaluation"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.15
+    number-sections: false
+    colorlinks: true
+---
+
