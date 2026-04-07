@@ -1,3 +1,6 @@
+import numpy as np
+rng = np.random.default_rng()
+
 # 1. Using Globals and Conditionals (No Functions)
 # 1.1 Global Setup: Configure the following global variables:
 # • p1 = "rock"
@@ -33,7 +36,6 @@ elif p1 == "scissors":
     elif p2 == "scissors":
         print("tie!")
 
-
 # 1.4 Dictionary: For simple conditionals where there is always a single value equated to a single result,
 # you can often use a dictionary where the key is the testing condition! Later we will see that this
 # is very common when, for example, renaming the columns of a dataframe. Rewrite your nested
@@ -45,11 +47,11 @@ elif p1 == "scissors":
 p1 = "scissors"
 p2 = "paper"
 
-dic_plays = {"rock": "scissors", "paper": "rock", "scissors": "paper"}
+rps_beats = {"rock": "scissors", "paper": "rock", "scissors": "paper"}
 
 if p1 == p2:
     print("tie!")
-elif dic_plays[p1] == p2:
+elif rps_beats[p1] == p2:
     print("p1 wins!")
 else:    print("p2 wins!")
 
@@ -63,22 +65,3 @@ else:    print("p2 wins!")
 # • Test your game!
 
 
-
-course = "programming"
-grades = {"Zhixin": {"programming": 95, "basket weaving": 100}, 
-          "Sarah": {"cooking": 100, "programming": 99}, 
-          "Anthony": {"math": 58, "econ": 77}, 
-          "Haoxuan": {"programming": 75, "econ": 100}, 
-          "Angela ": {"programming": 88, "programming 2": 91}, 
-          "Richard ": {"gardening": 60, "studying": 59}}
-
-for name, courses in grades.items():
-    if course in courses:
-        score = courses[course]
-        if score >= 60:
-            result = "passed"
-        else:
-            result = "failed"
-        print(f"The student {name} {result} the class with a score of {score}.")
-    else:
-        print(f"The student {name} did not take {course}.")
