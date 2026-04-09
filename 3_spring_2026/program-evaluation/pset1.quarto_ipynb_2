@@ -1,0 +1,99 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Problem Set 1\"\n",
+        "subtitle: \"PPHA 34600 Program Evaluation\"\n",
+        "author: \"Jay Ballesteros\"\n",
+        "date: today\n",
+        "date-format: \"MMMM DD, YYYY\"\n",
+        "format:\n",
+        "  pdf:\n",
+        "    documentclass: article\n",
+        "    geometry:\n",
+        "      - margin=1in\n",
+        "    fontsize: 12pt\n",
+        "    linestretch: 1.15\n",
+        "    number-sections: false\n",
+        "    colorlinks: true\n",
+        "---"
+      ],
+      "id": "f81ed1ca"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import altair as alt\n",
+        "import numpy as np\n",
+        "import statsmodels.api as sm\n",
+        "import statsmodels.formula.api as smf\n",
+        "df = pd.read_csv(\"_data/ps1_data_spring26.csv\")"
+      ],
+      "id": "cc965239",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Questions\n",
+        "\n",
+        "You have been asked by a prominent international research group, the Foundation for Agricultural Research and Microfinance Studies (FARMS), to help them evaluate the impacts of a new program being rolled out across rural Kenya. FARMS has been tasked with studying a program that provides smallholder farming households with access to microcredit (small loans at low interest rates), and hypothesizes that this increases agricultural investment and household income (this is a real area of active research in development economics!).**\n",
+        "\n",
+        "**1.** FARMS would like to know about the income impacts of microcredit. They say they’re interested in measuring the impact of providing households with access to microcredit, but don’t exactly know what that means. Use the potential outcomes framework to describe the impact of treatment (defined as “providing a household with access to microcredit”) for household i on income (“total household income in the past month, in USD”) formally (in math) and in words pertaining to the example. Word limit: 250 words."
+      ],
+      "id": "430058aa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "results = smf.ols('farms_trt ~ farms_got_loan', data=df).fit()\n",
+        "print(results.summary())"
+      ],
+      "id": "815899f1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "**2.** FARMS are extremely impressed. They are concerned about their budget – providing microcredit is costly to administer, after all – so they’d really like to give these loans to the households that will benefit the most. They would like you to tell them how they can go about measuring household-specific treatment effects (τᵢ). Let them down gently, but explain to them why estimating τᵢ is impossible. Word limit: 250 words.\n",
+        "\n",
+        "**3.** FARMS are on board with the idea that they can’t estimate household-specific treatment effects. They suggest estimating the average treatment effect instead. They are willing to give you some of their early data on household income. In particular, they have a survey of households that do and don’t have access to microcredit, and want you to compare the average monthly income across the two sets of households. Describe what this is actually measuring. How do we refer to this object? Provide one concrete example of why this may differ from the average treatment effect. Word limit: 250 words.\n",
+        "\n",
+        "**4.** FARMS have realized the error of their ways. Their board tells you, “Okay, we understand that our data won’t let us estimate the average treatment effect. But we have data on people who have microcredit! Can’t we estimate the average treatment effect on the treated?” First, formally (in math) define the ATT in this context. Will the FARMS data allow you to estimate it? If yes, describe how what you see in the data corresponds to the necessary components of the ATT. If no, explain why not, and describe what you can’t see in the data that you’d need to observe. Word limit: 250 words.\n",
+        "\n",
+        "**5.** FARMS forgot to tell you that they ran a randomized pilot study to estimate the effects of microcredit on household income. They’re happy to share those data with you: find it in ps1_data_spring26.csv. This experience has made you a little bit skeptical of FARMS’ skills, so start by plotting histograms of pre-treatment income (i.e., total household income in the past month) for treated and control households separately. What do you see? Next, check (with a proper statistical test) that the treatment group and control group are balanced in pre-treatment income, pre-treatment agricultural expenditure, household size, and whether the household owns any livestock. Use farms_trt as your treatment variable. Report your results. What do you find? What assumption do we need to make on unobserved characteristics in order to be able to estimate the causal effect of farms_trt? Word limit: 250 words.\n",
+        "\n",
+        "**6.** Plot a histogram of post-treatment income (i.e., total household income in the past month in USD) for treated and control households separately, including vertical lines to indicate the mean of each distribution. What is the difference in average income between the treatment and control group? Next, assuming that farms_trt is indeed randomly assigned, estimate the ATE using a regression. Please describe your estimate: what is the interpretation of your coefficient (be clear about your units)? Is your result statistically significant? How does this compare to the simple difference in means? Is the effect you find large or small, relative to the mean in the control group? Word limit: 250 words.\n",
+        "\n",
+        "**7.** FARMS is convinced that the reason microcredit leads to higher income is because households invest more in agricultural inputs (seeds, fertilizer, equipment). They want you to estimate the effects of microcredit, but controlling for the endline amount of agricultural investment households make. Is this a good idea? Why or why not? Run this regression and describe your estimates. How do they differ from your results in (6)? What about controlling for baseline agricultural investment? Run this regression and describe your estimates. How do they differ from your results in (6)? Word limit: 250 words.\n",
+        "\n",
+        "**8.** One of the FARMS RAs (the real workforce!) informs you that not everybody who was supposed to get microcredit -- (farms_trt = 1) actually received and used their loan. She tells you that the actual treatment indicator is farms_got_loan. (Since the loans require a repayment obligation, FARMS assures you that nobody in the control group took one). In light of this new information, what did you actually estimate in question (6)? How does this differ from the ATE, if at all? Word limit: 250 words.\n",
+        "\n",
+        "**9.** FARMS aren’t actually interested in the effect of assignment to treatment - they want to know about the effects of the microcredit itself. Describe (in math, and then in words pertaining to the context) what you can estimate using the two treatment variables we observe, farms_trt and farms_got_loan. What do we call this object? Estimate this object (you can ignore standard errors just for this once). Interpret your findings, being clear about units. Is this point estimate the same or different to what you obtained in (6)? Explain why. Word limit: 250 words.\n",
+        "\n",
+        "**10.** FARMS hypothesize that providing a household with microcredit is likely to improve their neighbors’ income as well (for example, by stimulating local market activity or creating agricultural wage labor opportunities). If they are correct, and some treatment households live near some control households, does this change how you interpret your estimates in (6)? Why or why not? Word limit: 250 words.\n"
+      ],
+      "id": "df664764"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/opt/miniconda3/envs/DAP/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

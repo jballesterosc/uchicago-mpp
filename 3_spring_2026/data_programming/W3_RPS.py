@@ -64,4 +64,35 @@ else:    print("p2 wins!")
 # • Use that to set p1 and p2 to random picks from a list of the three options in this game.
 # • Test your game!
 
+rps_beats = {"rock": "scissors", "paper": "rock", "scissors": "paper"}
 
+rng = np.random.default_rng()
+p1 = rng.choice(["rock", "paper", "scissors"])
+p2 = rng.choice(["rock", "paper", "scissors"])
+print(f"p1 plays {p1}, p2 plays {p2}")
+
+
+# 2. Using Functions
+# 2.1 The find winner Function: Building on your code from Question 1, create a function that holds
+# all of the logic to decide the winner of a single game:
+# • Your function should have two arguments, one for player 1’s move, and one for payer 2’s move.1
+# • Instead of printing the winner, instead pass the result out with a return statement.
+# • Hint: Move your conditional into the function.
+
+# 2.2 The ready set go Function: Right now we are using random choices for each player, but we
+# can imagine adopting many strategies! We might always play rock, or play scissors twice as often
+# as the others. Move your decision for what to play into a function. Even though it is currently
+# only a single line (returning the random choice) it is a place of organization that holds any future
+# development related to choosing what to play. Set both p1 and p2 equal to the result of this
+# function.
+# • Hint: This function should not take any arguments. It just needs to return the random choice
+# of rock, paper, or scissors.
+
+#2.3 The play once Function: You will now create what is commonly described as a main function.
+# This is a function that is responsible for calling all your other functions, with little or no code
+# besides that. To create the play once function, you should:
+# • Move the assignment of p1 and p2 into the function.
+# • Using a format string, print out what each player chooses.
+# • Call your find winner function.
+# • Print the winner using a format string.
+# • Finally, test your code by calling the play once function a few times.
