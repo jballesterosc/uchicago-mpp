@@ -45,15 +45,18 @@ elif p1 == "scissors":
 # • A single if statement that uses that dictionary to print the winner (only three conditions).
 
 p1 = "scissors"
-p2 = "paper"
+p2 = "rock"
 
 rps_beats = {"rock": "scissors", "paper": "rock", "scissors": "paper"}
 
 if p1 == p2:
     print("tie!")
-elif rps_beats[p1] == p2:
+elif p2 == rps_beats[p1]:
     print("p1 wins!")
-else:    print("p2 wins!")
+elif p1 == rps_beats[p2]:
+    print("p2 wins!")
+else:    
+    print("Something went wrong")
 
 # 1.5 Adding Randomness: Replace your static variables p1 and p2 with randomly generated choices:
 # • At the top of your file, write: import numpy as np
@@ -63,8 +66,6 @@ else:    print("p2 wins!")
 # • Look up the official documentation for the Numpy random.choice function for more details.
 # • Use that to set p1 and p2 to random picks from a list of the three options in this game.
 # • Test your game!
-
-rps_beats = {"rock": "scissors", "paper": "rock", "scissors": "paper"}
 
 rng = np.random.default_rng()
 p1 = rng.choice(["rock", "paper", "scissors"])
@@ -78,6 +79,16 @@ print(f"p1 plays {p1}, p2 plays {p2}")
 # • Your function should have two arguments, one for player 1’s move, and one for payer 2’s move.1
 # • Instead of printing the winner, instead pass the result out with a return statement.
 # • Hint: Move your conditional into the function.
+
+
+numbers = [55, 100, 5, 0, -5, 42]
+
+result = []
+for num in numbers:
+    new_num = (num * 2) / 100
+    result.append(new_num)
+
+print(result)
 
 # 2.2 The ready set go Function: Right now we are using random choices for each player, but we
 # can imagine adopting many strategies! We might always play rock, or play scissors twice as often
