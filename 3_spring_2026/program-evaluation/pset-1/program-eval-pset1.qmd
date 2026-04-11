@@ -1,0 +1,163 @@
+---
+title: "Problem Set 1"
+subtitle: "PPHA 34600 Program Evaluation"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+jupyter:
+  kernelspec:
+    name: DAP
+    language: python
+    display_name: Python (DAP)
+format:
+  pdf:
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.15
+    number-sections: false
+    colorlinks: true
+---
+
+
+# Questions
+
+**You have been asked by a prominent international research group, the Foundation for Agricultural Research and Microfinance Studies (FARMS), to help them evaluate the impacts of a new program being rolled out across rural Kenya. FARMS has been tasked with studying a program that provides smallholder farming households with access to microcredit (small loans at low interest rates), and hypothesizes that this increases agricultural investment and household income (this is a real area of active research in development economics!).**
+
+**1. FARMS would like to know about the income impacts of microcredit. They say they’re interested in measuring the impact of providing households with access to microcredit, but don’t exactly know what that means. Use the potential outcomes framework to describe the impact of treatment (defined as “providing a household with access to microcredit”) for household i on income (“total household income in the past month, in USD”) formally (in math) and in words pertaining to the example.**
+
+The potential outcomes framework, expressed as $\tau_i = Y_i(1) - Y_i(0)$, defines the treatment effect for household $i$, where $Y_i(1)$ is the potential outcome for household $i$ if they receive access to microcredit, and $Y_i(0)$ is the potential outcome for household $i$ if they do not receive access to microcredit. In this specific context, $\tau_i$ repesents the difference in income for household $i$ between these two scenarios. 
+
+**2. FARMS are extremely impressed. They are concerned about their budget – providing microcredit is costly to administer, after all – so they’d really like to give these loans to the households that will benefit the most. They would like you to tell them how they can go about measuring household-specific treatment effects. Let them down gently, but explain to them why estimating $\tau_i$ is impossible.**
+
+To estimate $\tau_i$, meaning the impact of treatment of each household, is impossible. The reason is that can only observe one of the potential outcomes for each unit _i_. For example, if a household receives access to microcredit, we can only observe $Y_i(1)$. Same case for a household that does not receive access to microcredit, we can only observe $Y_i(0)$. 
+
+Because of this impossibility, we can only estimate the average treatment effect (ATE) across all households. In this case, ATE will represent the average difference in income between households that receive access to microcredit and those that do not.
+
+**3. FARMS are on board with the idea that they can’t estimate household-specific treatment effects. They suggest estimating the average treatment effect instead. They are willing to give you some of their early data on household income. In particular, they have a survey of households that do and don’t have access to microcredit, and want you to compare the average monthly income across the two sets of households. Describe what this is actually measuring. How do we refer to this object? Provide one concrete example of why this may differ from the average treatment effect.**
+
+To merely get information about early data on household income, we are incurring in selection bias. And this bias comes from the fact that households that already have access to microcredit may be systematically different from those that have not yet accessed to it, therefore are maybe more likely to have a higher income due to other factors that are not related to microcredit.
+
+If we calculated the differences with this data, we might be measuring something different from ATE. In this case, we could be measuring a _Naive estimator_ ($\hat{\tau}_{naive} = \bar{Y}_1 - \bar{Y}_0$), which is the difference in average income between households with access to microcredit and those without. This estimator might overestimate the true ATE of microcredit.
+
+**4. FARMS have realized the error of their ways. Their board tells you, “Okay, we understand that our data won’t let us estimate the average treatment effect. But we have data on people who have microcredit! Can’t we estimate theget average treatment effect on the treated?” First, formally (in math) define the ATT in this context. Will the FARMS data allow you to estimate it? If yes, describe how what you see in the data corresponds to the necessary components of the ATT. If no, explain why not, and describe what you can’t see in the data that you’d need to observe.**
+
+The average treatment effect on the treated (ATT) is defined as:
+$$ATT = E[Y(1) - Y(0) | D=1]$$
+where $Y(1)$ is the potential outcome for treated households, $Y(0)$ is the potential outcome for treated households if they had not received treatment, and $D=1$ indicates that the household received treatment. In the context of FARMS, treatment means having access to microcredit. 
+
+Given the data provided by FARMS, we can only observe $Y(1)$, but the conterfactual outcome $Y(0)$ is not observable. Therefore, we cannot directly estimate the ATT.
+
+**5.FARMS forgot to tell you that they ran a randomized pilot study to estimate the effects of microcredit on household income. They’re happy to share those data with you: find it in ps1_data_spring26.csv. This experience has made you a little bit skeptical of FARMS’ skills, so start by plotting histograms of pre-treatment income (i.e., total household income in the past month) for treated and control households separately. What do you see? Next, check (with a proper statistical test) that the treatment group and control group are balanced in pre-treatment income, pre-treatment agricultural expenditure, household size, and whether the household owns any livestock. Use farms_trt as your treatment variable. Report your results. What do you find? What assumption do we need to make on unobserved characteristics in order to be able to estimate the causal effect of farms_trt?**
+
+```{python}
+import pandas as pd
+import altair as alt
+import numpy as np
+from scipy.stats import ttest_ind
+import statsmodels.formula.api as smf
+df = pd.read_csv("_data/ps1_data_spring26.csv")
+```
+```{python}
+chart = alt.Chart(df).mark_bar(opacity=0.7).encode(
+    alt.X('baseline_income:Q', bin=alt.Bin(maxbins=50)),
+    alt.Y('count()'),
+    alt.Color('farms_trt:N', title='Treatment')
+).facet(
+    'farms_trt:N', columns=2, title='Pre-treatment income'
+)
+chart
+```
+
+![Pre-treatment income](ps1_pre-treatmentincomedist.png)
+
+```{python}
+vars = ['baseline_income', 'baseline_agexp', 'baseline_hhsize', 'baseline_livestock']
+rows = []
+
+for var in vars:
+    res = smf.ols(f'{var} ~ farms_trt', data=df).fit()
+    rows.append({
+        'variable': var,
+        'coeff': round(res.params['farms_trt'], 3),
+        't-stat': round(res.tvalues['farms_trt'], 3),
+        'p-value': round(res.pvalues['farms_trt'], 3)
+    })
+
+print(pd.DataFrame(rows).to_string(index=False))
+```
+
+Both distrubutions look similar or don't show a clear difference between groups. Moreover, in the statistical test, we don't find statistical significant differences (fail to reject the null hypothersis in all four variables)
+
+**6. Plot a histogram of post-treatment incoe (i.e., total household income in the past month in USD) for treated and control households separately, including vertical lines to indicate the mean of each distribution. What is the difference in average income between the treatment and control group? Next, assuming that farms_trt is indeed randomly assigned, estimate the ATE using a regression. Please describe your estimate: what is the interpretation of your coefficient (be clear about your units)? Is your result statistically significant? How does this compare to the simple difference in means? Is the effect you find large or small, relative to the mean in the control group? Word limit: 250 words.**
+
+```{python}
+
+chart = alt.Chart(df).mark_bar(opacity=0.7).encode(
+    alt.X('endline_income:Q', bin=alt.Bin(maxbins=30)),
+    alt.Y('count()'),
+    alt.Color('farms_trt:N', title='Treatment')
+).facet('farms_trt:N', columns=2, title='Post-treatment income')
+
+chart
+```
+
+![Post-treatment income](ps1_post-treatmentincomedist.png)
+```{python}
+means = df.groupby('farms_trt')['endline_income'].mean().reset_index()
+print(pd.DataFrame(means).to_string(index=False))
+```
+
+```{python}
+print(smf.ols('endline_income ~ farms_trt', data=df).fit().summary())
+```
+
+The post-treatment income distribution shows that treated hourseld have a higher post-treatment income. Moreover, the difference in average incomme is 2,735.62 USD (4258.4-1521.8). The regression estimate for the ATE gives the same coefficient (2,735.62) and is statistically significant ($p$ close to 0). The interpretation of this result is that on average, households that received the microcredit earn 2,735.62 USD more than those that did not, representing a 180% increase relative to the control group mean. 
+
+**7. FARMS is convinced that the reason microcredit leads to higher income is because households invest more in agricultural inputs (seeds, fertilizer, equipment). They want you to estimate the effects of microcredit, but controlling for the endline amount of agricultural investment households make. Is this a good idea? Why or why not? Run this regression and describe your estimates. How do they differ from your results in (6)? What about controlling for baseline agricultural investment? Run this regression and describe your estimates. How do they differ from your results in (6)? Word limit: 250 words.**
+
+```{python}
+print(smf.ols('endline_income ~ farms_trt + endline_agexp', data=df).fit().summary())
+```
+
+In the case of the first regression, controlling for `endline_agexp`is not a good idea because it is a post-treatment variable that is very likely to be affected by the treatment itself. Therefore, by doing it, we are biasing our ATE estimate. 
+
+Another thing important to note, is that the coefficiente for this variable drops from 2735 to 71 (compared to results in Q6) and is no longer statistically significant. 
+
+```{python}
+print(smf.ols('endline_income ~ farms_trt + baseline_agexp', data=df).fit().summary())
+```
+
+In the second regression, controlling for `baseline_agexp` it is possible becasuse it is a pre-treatment variable that cannot be affected by the treatment. In thiscase, the coefficient is almost the same as in Q6, and is still statistically significant. 
+
+**8. One of the FARMS RAs (the real workforce!) informs you that not everybody who was supposed to get microcredit -- (farms_trt = 1) actually received and used their loan. She tells you that the actual treatment indicator is farms_got_loan. (Since the loans require a repayment obligation, FARMS assures you that nobody in the control group took one). In light of this new information, what did you actually estimate in question (6)? How does this differ from the ATE, if at all? Word limit: 250 words.**
+
+In Q6, we estimated the intention-to-treat (ITT) effect, that estimates the effect of being assigned to treatment, and not necessarily the effect of receiving the treatment. This ITT might differ from the ATE specifically because not all households that were assigned to treatment actually received the microcredit. Therefore, the ITT is likely to be smaller than the ATE.
+
+**9. FARMS aren’t actually interested in the effect of assignment to treatment - they want to know about the effects of the microcredit itself. Describe (in math, and then in words pertaining to the context) what you can estimate using the two treatment variables we observe, farms_trt and farms_got_loan. What do we call this object? Estimate this object (you can ignore standard errors just for this once). Interpret your findings, being clear about units. Is this point estimate the same or different to what you obtained in (6)? Explain why. Word limit: 250 words.**
+
+```{python}
+ITT = smf.ols('endline_income ~ farms_trt', data=df).fit().params['farms_trt']
+compliance = df[df['farms_trt']==1]['farms_got_loan'].mean()
+LATE = ITT / compliance
+print(f"ITT: {ITT:.3f}")
+print(f"Compliance rate: {compliance:.3f}")
+print(f"LATE: {LATE:.3f}")
+```
+
+The object we can estimate is the Local Average Treatment Effect (LATE), defined as:
+
+$$LATE = \frac{E[Y_i | Z_i = 1] - E[Y_i | Z_i = 0]}{E[D_i | Z_i = 1] - E[D_i | Z_i = 0]} = \frac{ITT}{\text{compliance rate}}$$
+
+where $Z_i$ is the assignment to treatment (`farms_trt`) and $D_i$ is the actual treatment received (`farms_got_loan`). In this context, the LATE captures the causal effect of actually receiving microcredit for **compliers** (households that take the loan when offered).
+
+Using our data: 
+$$LATE = \frac{2736.631}{0.733} = 3733.122$$
+
+This means that for compliers, receiving microcredit increases monthly household income by 3,733.12 USD. This is larger than the ITT (2,736.63) because the ITT averages over all assigned households, including those who never took the loan.
+
+**10. FARMS hypothesize that providing a household with microcredit is likely to improve their neighbors’ income as well (for example, by stimulating local market activity or creating agricultural wage labor opportunities). If they are correct, and some treatment households live near some control households, does this change how you interpret your estimates in (6)? Why or why not? Word limit: 250 words.**
+
+This might violate the Stable Unit Treatment Value Assumption (SUTVA), more specifically the no interference assumption. If there exists spillover effects, then the control group income might be higher than it would be without the treatment. Therefore, in this case, the $E[Y_i(1) - Y_i(0)]$ might be biased.
+
