@@ -117,6 +117,7 @@ p1_payoff = game_payoffs[p1][p2]
 p2_payoff = game_payoffs[p2][p1]
 
 print(f"Game is ({p1},{p2}), so payoffs are ({p1_payoff},{p2_payoff})")
+
 p1 = defect()
 p2 = random_strategy()
 p1_payoff = game_payoffs[p1][p2]

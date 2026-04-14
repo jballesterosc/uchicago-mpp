@@ -1,0 +1,383 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  12pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{setspace}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Problem Set 1},
+  pdfauthor={Jay Ballesteros},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Problem Set 1}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{PPHA 34410 Corporate Finance}
+\author{Jay Ballesteros}
+\date{April 13, 2026}
+\begin{document}
+\maketitle
+
+
+\setstretch{1.15}
+\subsection{Part 1. Multiple Choice
+Questions}\label{part-1.-multiple-choice-questions}
+
+\textbf{1) Disney's new CEO emphasizes theme parks and streaming as core
+growth drivers, while the company faces mixed investor sentiment and a
+declining stock price. Which is the best interpretation of this
+strategy?}
+
+B. Disney is doubling down on its strongest proven segments to stabilize
+investor expectations.
+
+\textbf{2) SpaceX historically resisted going public but is now pursuing
+an IPO to fund space-based data centers. What is the most accurate
+explanation?)}
+
+C. The company needs large, immediate capital for a high-risk,
+capital-intensive project
+
+\textbf{3) Which of the following represents potential benefits and
+drawbacks of going public for SpaceX? Select all that apply}
+
+A. Access to large-scale capital B. Increased short-term performance
+pressure D. Greater liquidity for employees
+
+\textbf{4) SpaceX conducts insider share sales at
+\textasciitilde\$420/share to ``level-set'' valuation ahead of IPO. What
+is the primary economic function of this?}
+
+B. Providing a credible market-based signal of valuation
+
+\textbf{5) Neom executives used overly optimistic assumptions and
+shielded leadership from bad news. What is the core failure?}
+
+C. Principal-agent problem with distorted information flow
+
+\textbf{6) Which factors contributed to Neom's challenges? Select all
+that apply.}
+
+A. Unrealistic assumptions in financial models B. Information asymmetry
+between leadership and operators D. Incentives to justify continued
+investment
+
+\textbf{7) Which best explains why SpaceX's ambitious projects may be
+more credible than Neom's?}
+
+B. SpaceX has demonstrated execution capability and cash flow generation
+
+\textbf{8) Which conditions increase the probability that large,
+visionary projects succeed? Select all that apply.}
+
+A. Strong feedback loops B. Transparent information flow D. Proven
+intermediate milestones
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Part 2. Short Calculation Questions (show your work for full
+credit)}\label{part-2.-short-calculation-questions-show-your-work-for-full-credit}
+
+\textbf{9) Calculate how much money (future value) you will have if you
+invest \$100,000 today. (Hint: think about ``the rule of 72''.)}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  at 10\% annually for 7.2 years: 198,621
+\item
+  at 4.5\% annually for 16 years: 202,237
+\item
+  at 8.0\% annually for 9 years: 199,900
+\item
+  at 9.0\% annually for 8 years: 199,256
+\end{enumerate}
+
+\textbf{10) Calculate the future value of \$100,000 invested today,
+given the following rates and time periods, compounding annually}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  r = 4\%, t = 5 years: 121,665
+\item
+  r = 10\%, t = 5 years: 161,051
+\item
+  r = 4\%, t = 20 years: 219,110
+\item
+  r = 10\%, t = 20 years: 672,749
+\end{enumerate}
+
+\textbf{11) Calculate the present value of \$100,000 received in t
+number of years, given the following rates and time periods, compounding
+annually}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  r = 4\%, t = 5 years: 82,192.90
+\item
+  r = 10\%, t = 5 years: 62,092.13
+\item
+  r = 4\%, t = 20 years: 45,639.17
+\item
+  r = 10\%, t = 20 years: 14,864.36
+\end{enumerate}
+
+\textbf{12) You are building a new office headquarters that is estimated
+to create efficiencies, saving your company \$25,000,000 annually for
+ten years. (Assume the first savings appear one year from completion.)
+You will move in immediately upon completion. The building cost, which
+you will pay upon completion, is \$140,000,000. If your company's cost
+of capital is 11\% annually, does this appear to be a good investment?
+Why or why not?}
+
+Considering that the present value of the savings is 147,232,250, then
+the NPV is \(-140,000,000 + 147,232,250 = 7,232,250\). Since the NPV is
+positive, this is a good investment.
+
+\textbf{13) Perpetuity and Annuity}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  You have the opportunity to invest in a growing perpetuity paying
+  \$100,000 per annum in year 1. The rate of growth is expected to be
+  6\% annually. If the market rate of interest is 9\% annually, how much
+  should you be willing to pay for this perpetuity?
+\end{enumerate}
+
+Considering the information given, the present is
+\(100,000/(0.09-0.06) = 3,333,333.33\). Therefore I will be willing to
+pay 3,333,333.33 for this perpetuity.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  You have the opportunity to invest in a growing 10 year annuity paying
+  \$100,000 per annum in year 1. The growth rate is expected to be 6\%
+  annually. If the market rate of interest is 9\% annually, how much
+  should you be willing to pay for this annuity? What would you pay for
+  the annuity if instead of 10 years, the annuity's term is 20 years?
+\end{enumerate}
+
+For the 10 year annuity, the present value is
+\(100,000 * (1 - (1.06/1.09)^{10}) / (0.09 - 0.06) = 811,653\). For the
+20 year annuity, the present value is
+\(100,000 * (1 - (1.06/1.09)^{20}) / (0.09 - 0.06) = 1,425,673\).
+
+\textbf{14) You won your state lottery and the prize is available in
+several alternative payments. Which would you choose if the available
+market interest rate is 6\% annually? Which, if the rate were 10\%? Show
+your calculations.}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \$100,000,000 today: At 6\%: \$100,000,000 At 10\%: \$100,000,000
+\item
+  \$18,000,000 per annum for 8 years: At 6\%:
+  \(18,000,000 * (1 - (1.06)^{-8}) / 0.06 = 111,776,220\) At 10\%:
+  \(18,000,000 * (1 - (1.10)^{-8}) / 0.10 = 96,028,740\)
+\item
+  \$6,000,000 per annum in perpetuity: At 6\%:
+  \(6,000,000 / 0.06 = 100,000,000\) At 10\%:
+  \(6,000,000 / 0.10 = 60,000,000\)
+\item
+  \$10,000,000 per annum for 20 years: At 6\%:
+  \(10,000,000 * (1 - (1.06)^{-20}) / 0.06 = 114,699,200\) At 10\%:
+  \(10,000,000 * (1 - (1.10)^{-20}) / 0.10 = 85,135,600\)
+\item
+  \$2,500,000 in year one, growing at 3.5\% per annum in perpetuity At
+  6\%: \(2,500,000 / (0.06 - 0.035) = 100,000,000\) At 10\%:
+  \(2,500,000 / (0.10 - 0.035) = 38,461,538\)
+\end{enumerate}
+
+At 6\% interest rate, I will choose option d (\$114,699,200), as it has
+the highest PV. At 10\%, option a (\$100,000,000 today), since higher
+discount rates reduce the value of future payments significantly.
+
+\textbf{15) Robert Downey Jr.~is reportedly earning over \$100 million
+to return as Doctor Doom in Avengers: Doomsday and Avengers: Secret
+Wars. Instead of taking the \$100 million in a lump sum payment in 2026,
+Downey is considering an option where he would earn \$8 million per year
+for 25 years starting in 2035. What is the internal rate of return he
+would earn by forfeiting the immediate \$100 million in favor of the
+deferred stream of income?}
+
+We need to find r such that
+\(100,000,000 = [8,000,000 * (1 - (1+r)^{-25}) / r] / (1+r)^8\). By
+trial and error, at r = 3.5\%, the right side equals approximately
+\$100,137,000, which is very close to 100,000,000. Therefore, the IRR is
+approximately 3.5\%. This is a low return, suggesting Downey would be
+better off taking the \$100 million lump sum today.
+
+
+
+
+\end{document}
