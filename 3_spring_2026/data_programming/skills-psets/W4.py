@@ -1,4 +1,13 @@
 import numpy as np
+import pandas as pd
+
+
+
+# p1 = Player("Chris")
+# p2 = Player("Jeff")
+
+print(p1.name, p2.name)
+
 
 """4. Using Classes"""
 # 4.1 Class Design: Using classes gives us the flexibility to grow our program’s
@@ -6,10 +15,20 @@ import numpy as np
 # expand what you have so far. For example:
 # • Create “players” that will use different strategies.
 
-p1 = Player("Chris")
-p2 = Player("Jeff")
 
-print(p1.name, p2.name)
+
+
+
+
+class Player():
+    def _init_(self, name):
+        self.name = name
+        self.wins = 0
+        self.choices = ["rock", "paper", "scissors"]
+    pass
+
+
+
 
 class PlayerPlays():
     def _init_(self, plays, random_strategy):
@@ -28,17 +47,25 @@ class PlayerPlays():
 
 
 # • Having “players” keep track of how many wins they have after playing repeatedly.
+def find_winner(p1, p2):
+    """Needs to find the winner of each game and update the wins for each player"""
+    pass
 
 
 
 # • Design the “game” to interact two or more players N times and report results.
+def play_once(p1, p2):
+    """Needs to play one game, update wins, and report the winner and their total wins"""
+    pass
+
 # • Many other possibilities! Before you continue, think for a minute about how you would
 # implement these examples. Some of these we will implement in this assignment, while others
 # are just thought exercises to help you understand planning a class. No answer needs to be
 # submitted for this question.
 
-
-
+def find_winner(p1, p2):
+    """Needs to find the winner of each game and update the wins for each player"""
+    pass
 
 # 4.2 The Player Class: First, create a class that plays a random choice with equal weight:
 # • The initialization method should require
@@ -53,6 +80,12 @@ class PlayerPlays():
 # Step 2: add the non-argument (internal) instance variables and test!
 # Step 3: add the ready_set_go() method and test!
 
+def ready_set_go(p1, p2):
+    """Needs to play one game, update wins, and report the winner and their total wins"""
+    pass
+
+
+
 # 4.3 Adding kwargs to the Player Class: Modify your class from Question 4.2 to take a key word
 # argument that controls the playing behavior. It should default to the random equal-weight choice
 # as before, but allow for different weights to be applied to each of the three choices when the kwarg
@@ -61,6 +94,10 @@ class PlayerPlays():
 # Step 2: read the docuentation, add a kwarg of probabilities to the __init__, and test!
 # Step 3: test adding kwarg of probabilities to the choice method outside of the class!
 # Step 4: add kwarg of probabilities to ready_set_go() and test!
+
+def ready_set_go(p1, p2):
+    """Needs to play one game, update wins, and report the winner and their total wins"""
+    pass 
 
 # 4.4 The Game Class: Finally, create a class that handles all of the setup and execution of the game:
 # • The initialization method should have no arguments, but should set up attributes named p1
