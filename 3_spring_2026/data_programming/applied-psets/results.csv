@@ -1,0 +1,101 @@
+round,player,choice,payoff
+0,TitForTat,c,3
+0,Random Strategy,c,3
+1,TitForTat,c,1
+1,Random Strategy,d,5
+2,TitForTat,d,1
+2,Random Strategy,d,1
+3,TitForTat,d,1
+3,Random Strategy,d,1
+4,TitForTat,d,5
+4,Random Strategy,c,1
+5,TitForTat,c,3
+5,Random Strategy,c,3
+6,TitForTat,c,1
+6,Random Strategy,d,5
+7,TitForTat,d,5
+7,Random Strategy,c,1
+8,TitForTat,c,1
+8,Random Strategy,d,5
+9,TitForTat,d,5
+9,Random Strategy,c,1
+10,TitForTat,c,3
+10,Random Strategy,c,3
+11,TitForTat,c,3
+11,Random Strategy,c,3
+12,TitForTat,c,3
+12,Random Strategy,c,3
+13,TitForTat,c,1
+13,Random Strategy,d,5
+14,TitForTat,d,1
+14,Random Strategy,d,1
+15,TitForTat,d,5
+15,Random Strategy,c,1
+16,TitForTat,c,3
+16,Random Strategy,c,3
+17,TitForTat,c,1
+17,Random Strategy,d,5
+18,TitForTat,d,5
+18,Random Strategy,c,1
+19,TitForTat,c,1
+19,Random Strategy,d,5
+20,TitForTat,d,1
+20,Random Strategy,d,1
+21,TitForTat,d,5
+21,Random Strategy,c,1
+22,TitForTat,c,1
+22,Random Strategy,d,5
+23,TitForTat,d,5
+23,Random Strategy,c,1
+24,TitForTat,c,3
+24,Random Strategy,c,3
+25,TitForTat,c,1
+25,Random Strategy,d,5
+26,TitForTat,d,1
+26,Random Strategy,d,1
+27,TitForTat,d,1
+27,Random Strategy,d,1
+28,TitForTat,d,1
+28,Random Strategy,d,1
+29,TitForTat,d,1
+29,Random Strategy,d,1
+30,TitForTat,d,5
+30,Random Strategy,c,1
+31,TitForTat,c,1
+31,Random Strategy,d,5
+32,TitForTat,d,1
+32,Random Strategy,d,1
+33,TitForTat,d,1
+33,Random Strategy,d,1
+34,TitForTat,d,5
+34,Random Strategy,c,1
+35,TitForTat,c,3
+35,Random Strategy,c,3
+36,TitForTat,c,1
+36,Random Strategy,d,5
+37,TitForTat,d,1
+37,Random Strategy,d,1
+38,TitForTat,d,5
+38,Random Strategy,c,1
+39,TitForTat,c,1
+39,Random Strategy,d,5
+40,TitForTat,d,1
+40,Random Strategy,d,1
+41,TitForTat,d,5
+41,Random Strategy,c,1
+42,TitForTat,c,3
+42,Random Strategy,c,3
+43,TitForTat,c,3
+43,Random Strategy,c,3
+44,TitForTat,c,1
+44,Random Strategy,d,5
+45,TitForTat,d,5
+45,Random Strategy,c,1
+46,TitForTat,c,1
+46,Random Strategy,d,5
+47,TitForTat,d,5
+47,Random Strategy,c,1
+48,TitForTat,c,3
+48,Random Strategy,c,3
+49,TitForTat,c,1
+49,Random Strategy,d,5
