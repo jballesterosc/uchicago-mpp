@@ -182,19 +182,9 @@ To do this without groupby and merge (coming next week!), you will need to do th
 """
 
 for flower in ["setosa", "versicolor", "virginica"]:
-    
-    csv_mean = df_iris_means[df_iris_means["species"] == flower] 
-    csv_mean = csv_mean["petal_width"] 
-    csv_mean = csv_mean.iloc[0]  
-    
-    # --- Tu media calculada ---
-    calc_mean = df_iris.loc["setosa"].mean()["petal_width"] 
-    calc_mean = calc_mean.mean(numeric_only=True)           
-    calc_mean = calc_mean['petal width']             
-    
-
-    print(f"{flower}: CSV = {round(csv_mean, 2)}, Calculada = {round(calc_mean, 2)}")
-    assert round(csv_mean, 2) == round(calc_mean, 2), f"Mismatch para {flower}!"
+    # Paso A: del df_iris_means, obtener el valor de "petal width" para esta flor
+    # Paso B: del df_iris, calcular la media de "petal width" para esta flor
+    # Paso C: imprimir ambos redondeados y hacer assert
 
 
 # MATPLOTLIB

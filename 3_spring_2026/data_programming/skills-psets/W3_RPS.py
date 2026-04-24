@@ -199,3 +199,10 @@ def play_once(*players):
 
 play_once("rock", "scissors")
 play_once("rock", "scissors", "paper")
+
+
+
+payoffs = {"c": {"c": 3, "d": 1}, "d": {"c": 5, "d": 1}}
+p1 = "d"
+p2 = "c"
+print(payoffs[p2][p1])
