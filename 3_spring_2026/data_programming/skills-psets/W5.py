@@ -2,6 +2,8 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+plt.style.use('fivethirtyeight') https://matplotlib.org/stable/gallery/style_sheets/fivethirtyeight.html
+
 
 
 # Pandas
@@ -181,11 +183,19 @@ To do this without groupby and merge (coming next week!), you will need to do th
                 that they are equal (documentation).
 """
 
-for flower in ["setosa", "versicolor", "virginica"]:
-    # Paso A: del df_iris_means, obtener el valor de "petal width" para esta flor
-    # Paso B: del df_iris, calcular la media de "petal width" para esta flor
-    # Paso C: imprimir ambos redondeados y hacer assert
+df_iris_means = pd.read_csv(os.path.join(PATH, "iris_means.csv"))
 
+
+for flower in ["setosa", "versicolor", "virginica"]:
+    filter_species_mean = df_iris_means[df_iris_means["species"] == flower]
+    means = filter_species_mean["petal_width"]
+    means = means.iloc[0]
+
+    filter_species = df_iris.loc[df_iris["species"] == flower]
+    calculated_means = filter_species["petal_width"].mean()
+
+    print(f"{flower}. Results from df_iris_means = {round(means, 2)}. Calculated mean from df_iris = {round(calculated_means, 2)}")
+    assert round(means, 2) == round(calculated_means, 2)
 
 # MATPLOTLIB
 
@@ -206,3 +216,82 @@ steps in the Matplotlib Examples lecture, ending with a tidy for-loop! Clean up 
 some of the basic operations we’ve covered, or looking up others.
 """
 
+fig, ax = plt.subplots(1, 2)
+
+flowers = ["setosa", "versicolor", "virginica"]
+colors = ["blue", "orange", "green"]
+
+for flower, color in zip(flowers, colors):
+    filtered = df_iris[df_iris["species"] == flower]
+    ax[0].scatter(filtered["sepal_width"], filtered["sepal_length"], color=color)
+    ax[1].scatter(filtered["petal_width"], filtered["petal_length"], color=color, label=flower)
+fig.legend(loc="upper right")
+#fig.supxlabel("Width")
+#fig.supylabel("Length")
+plt.show()
+
+# 2.2.
+
+"""
+Looking at your figures, you should see that both plots show a pretty good separation of the flower
+types, which is crucial to a type of problem called “classification”, but one of them is quite a bit
+better than the other at cleanly separating one flower type from the other two.
+
+Using that visual, identify a straight (vertical or horizontal) line that you could use to subset
+the data so that one flower type is separated from the other two. Subset the data using just the
+numeric columns at the point you identified. Do NOT separate based on the species column - we
+want to know how well the point of separation works on some new flower where we only observe
+the four numeric values, but not the species label! Once you have subsetted your data, use the
+value counts method to see how many of each species you got into each dataframe.
+"""
+df_petal_1 = df_iris[df_iris["petal_length"] < 2]
+df_petal_2 = df_iris[df_iris["petal_length"] >= 2]
+
+df_petal_1["species"].value_counts()
+df_petal_2["species"].value_counts()
+
+# 2.3.
+
+"""
+2.3 Some stretch goals for yourself:
+• Focus on the subset with the two species of flower that aren’t separated, and see if you can
+identify another reasonable split point. Try that out and see what your new results are!
+• If you aren’t happy with how your figure looks, try finding some more methods to improve the
+visual. Everything in Matplotlib can be controlled, though the code tends to become verbose
+quickly.
+• Look up how to add vertical and horizontal lines to your Matplotlib output, and then add a
+line at the point you split your data.
+"""
+
+# here an additional viz based on the filter I used in 2.2.
+fig, ax = plt.subplots(1, 2)
+
+flowers = ["setosa", "versicolor", "virginica"]
+colors = ["blue", "orange", "green"]
+
+for flower, color in zip(flowers, colors):
+    filtered = df_petal_2[df_petal_2["species"] == flower]
+    ax[0].scatter(filtered["sepal_width"], filtered["sepal_length"], color=color)
+    ax[1].scatter(filtered["petal_width"], filtered["petal_length"], color=color, label=flower)
+fig.legend(loc="upper right")
+#fig.supxlabel("Width")
+#fig.supylabel("Length")
+plt.show()
+
+
+# here the horizontal line in the original df.
+
+fig, ax = plt.subplots(1, 2)
+
+flowers = ["setosa", "versicolor", "virginica"]
+colors = ["blue", "orange", "green"]
+
+for flower, color in zip(flowers, colors):
+    filtered = df_iris[df_iris["species"] == flower]
+    ax[0].scatter(filtered["sepal_width"], filtered["sepal_length"], color=color)
+    ax[1].scatter(filtered["petal_width"], filtered["petal_length"], color=color, label=flower)
+    ax[1].axhline(y=2, color="gray", linestyle="--", linewidth=2)
+fig.legend(loc="upper right")
+#fig.supxlabel("Width")
+#fig.supylabel("Length")
+plt.show()
