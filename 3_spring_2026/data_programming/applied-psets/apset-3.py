@@ -47,12 +47,25 @@ a value of 3 meaning normally-distributed data. Report the kurtosis of defense s
 sentence comment, what does the kurtosis value tell us? Feel free to look up the interpretation if
 necessary."""
 
+print(df_nato["constant_2022_USD_billions"].kurt().round(2))
 
+print(df_nato[["country_iso3", "constant_2022_USD_billions"]].sort_values(by="constant_2022_USD_billions", ascending=False))
+
+# The kurtosis of 28.85 indicates the distribution is far from normal, with extremely heavy tails. 
+# This is likely driven by US defense spending, which is a significant outlier.
 
 """1.4 USA in Standard Deviations: Massive US defense spending seems to have skewed the data.
 Use Pandas methods to extract the standard deviation and the mean into their own variables, then
 use these to calculate how many standard deviations US spending is above the mean. All values
 used must be extracted from the DataFrame, not typed in directly."""
+
+mean = df_nato["constant_2022_USD_billions"].mean()
+std = df_nato["constant_2022_USD_billions"].std()
+
+usa_spending = df_nato[df_nato["country_iso3"] == "USA"]["constant_2022_USD_billions"]
+
+result_usa = (usa_spending-mean)/std
+print(result_usa)
 
 
 
@@ -60,13 +73,31 @@ used must be extracted from the DataFrame, not typed in directly."""
 the distribution of the rest of the data. Run the same descriptive statistics on the rest of the NATO
 members with the US removed. What did this do to kurtosis, and was it what you expected?"""
 
+ex_usa = df_nato[df_nato["country_iso3"] != "USA"]
+ex_usa["country_iso3"].value_counts()
+
+print(ex_usa["constant_2022_USD_billions"].describe().round(2))
+
+print(ex_usa["constant_2022_USD_billions"].kurt().round(2))
+
+# The 4.12 result/output is way closer to 0. So distribution is more even without the US.
+
 
 """1.6 Sorting: Sort the data excluding the US in descending order of spending.
 """
 
+print(ex_usa[["country_iso3", "constant_2022_USD_billions"]].sort_values(by="constant_2022_USD_billions", ascending=False))
+
+
 """1.7 Spending Share: On the full data, calculate a new column named “spending share percent”
 that shows each country’s defense spending as a percentage of total defense spending by NATO
 members. Make sure the values of the new column sum to 100 with an assert statement."""
+
+total_spending = df_nato["constant_2022_USD_billions"].sum()
+
+df_nato["spending_share_percent"] = (df_nato["constant_2022_USD_billions"] / total_spending) * 100
+
+assert (df_nato["spending_share_percent"].sum() == 100).all()
 
 # 2. Russian Energy Imports
 """2.1 Long Data: We’ve learned that the US spends a lot on defense, but let’s explore more of the story.
@@ -77,6 +108,24 @@ Load the data on imports of Russian energy resources by NATO members, “rus imp
 each row. Show code to test that those columns really do uniquely identify each row, then list
 the columns in a comment."""
 
+rus_imports = pd.read_csv(os.path.join(PATH, "rus_imports.csv"))
+
+rus_imports.columns
+rus_imports.head()
+rus_imports.tail()
+rus_imports.dtypes
+rus_imports.shape
+
+rus_imports["period"].max()
+rus_imports["period"].min()
+
+rus_imports["period"].unique()
+
+# the period covered is from 2014 to 2023.
+
+assert (rus_imports[["reporter_code", "reporter_iso", "period", "cmd_code"]].value_counts() == 1).all()
+
+# Some columns that are unique per row are (not limited to, I guess) reporter_code, reporter_iso, period, and cmd_code
 
 """2.2 Wide Data: Load in the wide version of the Russian imports data (next week we will do this step
 with code).
@@ -87,6 +136,19 @@ good from Russia, calculate a new column named “total imports” that is equal
 the three resource types.
 • Transform that column to be in millions of dollars with two decimal points."""
 
+rus_imports_wide = pd.read_csv(os.path.join(PATH, "rus_imports_wide.csv"))
+
+rus_imports_wide.isnull().sum()
+
+rus_imports_wide.isnull().sum(axis=1)
+
+rus_imports_wide_filtered = rus_imports_wide[rus_imports_wide["ref_year"].isin([2021, 2022])].copy()
+
+rus_imports_wide_filtered["total_imports"] = rus_imports_wide_filtered[["Coal (value)", "Gas (value)", "Oil (value)"]].fillna(0).sum(axis=1)
+
+rus_imports_wide_filtered["total_imports"] = rus_imports_wide_filtered["total_imports"] / 1000000
+
+rus_imports_wide_filtered["total_imports"] = rus_imports_wide_filtered["total_imports"].round(2)
 
 """2.3 Import Rankings: In 2021, which country imported the least from Russia? Show your answer
 with code by sorting so that the country with the lowest value is at the top.
@@ -95,12 +157,30 @@ Show your code with an answer in comments, and include a percentage change.
 • Is this result surprising? Write 1-2 sentences in a comment for the rest of the research team
 explaining why."""
 
+print(rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2021][["reporter_iso", "total_imports"]].sort_values(by="total_imports", ascending=True))
+
+total_imports_2021 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2021]["total_imports"].sum()
+total_imports_2022 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2022]["total_imports"].sum()
+
+total_imports_change = ((total_imports_2022 - total_imports_2021) / total_imports_2021) * 100
+print(total_imports_change) # 15.813820200667033
+
+# I googled what happen with Russia during 2022 and I realized that this same year the conflict with Ukraine began and got worse. 
+# But this might be related to or drive by prices instead of increased outputs or production. 
 
 """2.4 Resources by Weight: While the results in total value may seem surprising, you do some
 investigating and realize that the invasion of Ukraine also set off major energy price shocks world-
 wide. Repeat your exploration, but looking at the weight (in kgs) of individual resources instead.
 Using a for-loop over the three types of energy resources in this data, print out the percentage
 change in each."""
+
+resources = ["Coal (weight)", "Gas (weight)", "Oil (weight)"]
+
+for resource in resources:
+    total_2021 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2021][resource].fillna(0).sum()
+    total_2022 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2022][resource].fillna(0).sum()
+    total_imports_change = ((total_2022 - total_2021) / total_2021) * 100
+    print(f"{resource}, {total_imports_change:.2f}%")
 
 
 """2.5 Estimating 2022 Change in Value: If each country had maintained the imports of 2021 by
