@@ -161,9 +161,8 @@ print(rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2021][[
 
 total_imports_2021 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2021]["total_imports"].sum()
 total_imports_2022 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2022]["total_imports"].sum()
-
 total_imports_change = ((total_imports_2022 - total_imports_2021) / total_imports_2021) * 100
-print(total_imports_change) # 15.813820200667033
+print(f" The total imports change between 2021 and 2022 is {total_imports_change:.2f}%")
 
 # I googled what happen with Russia during 2022 and I realized that this same year the conflict with Ukraine began and got worse. 
 # But this might be related to or drive by prices instead of increased outputs or production. 
@@ -180,8 +179,7 @@ for resource in resources:
     total_2021 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2021][resource].fillna(0).sum()
     total_2022 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2022][resource].fillna(0).sum()
     total_imports_change = ((total_2022 - total_2021) / total_2021) * 100
-    print(f"{resource}, {total_imports_change:.2f}%")
-
+    print(f"{resource}: {total_imports_change}% change.")
 
 """2.5 Estimating 2022 Change in Value: If each country had maintained the imports of 2021 by
 weight, while the prices had remained at their observed 2022 levels, how much additional money
@@ -190,6 +188,20 @@ not per country)? You can use a for-loop to solve this again.
 • When printing your total, look up how to format a numeric value with comma separators for
 the thousand’s place and two decimal points in an f-string, so that your output looks nice."""
 
+resources_v = ["Coal (value)", "Gas (value)", "Oil (value)"]
+resources_w = ["Coal (weight)", "Gas (weight)", "Oil (weight)"]
+
+df_2021 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2021]
+df_2022 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2022]
+
+additional_spending = 0
+
+for val, wgt in zip(resources_v, resources_w):
+    price_2022 = df_2022[val].fillna(0).sum() / df_2022[wgt].fillna(0).sum()
+    hypothetical = df_2021[wgt].fillna(0).sum() * price_2022
+    additional_spending += hypothetical - df_2022[val].fillna(0).sum()
+
+print(f"Additional spending: ${additional_spending:,.2f}")
 
 # 3. Ukraine Aid Data
 """3.1 Total Aid by Category: Load in the direct aid to Ukraine data, “nato ukraine aid.csv”. Note
@@ -197,9 +209,39 @@ that, despite the filename, some of the countries in this data are not in NATO! 
 was spent on each of humanitarian, military, and financial aid by NATO members? Show the
 answers with code that splits the data by category of aid before summing, again using a for-loop."""
 
+df_ukraine = pd.read_csv(os.path.join(PATH, "nato_ukraine_aid.csv"))
+
+nato_members = ["ALB", "BEL", "BGR", "CAN", "HRV", "CZE", "DNK", "EST", 
+                "FIN", "FRA", "DEU", "GRC", "HUN", "ISL", "ITA", "LVA", 
+                "LTU", "LUX", "MKD", "NLD", "NOR", "POL", "PRT", "ROU", 
+                "SVK", "SVN", "ESP", "SWE", "TUR", "GBR", "USA"]
+
+df_2022 = df_ukraine[(df_ukraine["new_year"] == 2022) & (df_ukraine["country_iso3"].isin(nato_members))]
+
+categories = ["Ukraine Humanitarian Aid", "Ukraine Military Aid", "Ukraine Financial Aid"]
+
+for cat in categories:
+    total = df_2022[df_2022["variable_name"] == cat]["constant_2022_USD_billions"].fillna(0).sum()
+    print(f"{cat}: ${total:,.2f}")
+
 """3.2 Total Aid by Place: Next, load the NATO Ukraine aid totals data, “nato ukraine aid totals.csv”
 and, using subsetting, split it up by: 1. USA, 2. Canada, 3. Rest of NATO. Print out the total
 aid from each of these three groups, alongside the percent of the total aid that it represents."""
+
+df_ukraine_totals = pd.read_csv(os.path.join(PATH, "nato_ukraine_aid_totals.csv"))
+
+df_nato_aid = df_ukraine_totals[df_ukraine_totals["country_iso3"].isin(nato_members)]
+
+usa_aid = df_nato_aid[df_nato_aid["country_iso3"] == "USA"]["constant_2022_USD_billions"].sum()
+canada_aid = df_nato_aid[df_nato_aid["country_iso3"] == "CAN"]["constant_2022_USD_billions"].sum()
+rest_nato_aid = df_nato_aid[~df_nato_aid["country_iso3"].isin(["USA", "CAN"])]["constant_2022_USD_billions"].sum()
+
+total_aid = usa_aid + canada_aid + rest_nato_aid
+
+print(f"USA: ${usa_aid:,.2f} ({(usa_aid / total_aid) * 100:.2f}%)")
+print(f"Canada: ${canada_aid:,.2f} ({(canada_aid / total_aid) * 100:.2f}%)")
+print(f"Rest of NATO: ${rest_nato_aid:,.2f} ({(rest_nato_aid / total_aid) * 100:.2f}%)")
+
 
 """4. GDP Weighting: While the level of contribution is a meaningful value (especially if you’re a
 commander in Ukraine trying to buy equipment!), it does not accurately represent the burden each
@@ -211,8 +253,21 @@ percentage of each member country’s GDP.
 size of their economy, and explain in 1-2 sentences why you think these three countries might
 be contributing so much."""
 
+df_gdp = pd.read_csv(os.path.join(PATH, "gdp.csv"))
 
-# 5. Creating a “Headline” Figure
+common_countries = set(df_ukraine_totals["country_iso3"].unique()) & set(df_gdp["iso3c"].unique())
+
+for country in sorted(common_countries):
+    aid = df_ukraine_totals[df_ukraine_totals["country_iso3"] == country]["constant_2022_USD_billions"].sum()
+    gdp = df_gdp[df_gdp["iso3c"] == country]["NY.GDP.MKTP.CD"].values[0]
+    pct = (aid / gdp) * 100
+    print(f"{country}: {pct:.4f}%")
+
+# Latvia, Estonia and Poland are the countries with the largest burden. The reason might be that these
+# countries are strategically located between the EU, more specifically between Ukraine and Russia. Therefore
+# these countries have a direct interest in the security of the region because of potential threats from Russia.
+
+
 """5.1 It is often important to anchor your empirical results with a headline figure. We will set up a rough
 figure here, that we will use as a starting point to improve when we introduce new tools next week.
 • Create a figure using Matplotlib that has two axis in it, one at the top and one below it.
@@ -225,15 +280,60 @@ energy imports.
 • Add a title and axis labels to make the figure more clear, but do not worry about fixing other
 issues with the display."""
 
+
+# aid to ukraine by country
+aid_countries = []
+aid_values = []
+for country in common_countries:
+    aid = df_ukraine_totals[df_ukraine_totals["country_iso3"] == country]["constant_2022_USD_billions"].sum()
+    aid_countries.append(country)
+    aid_values.append(aid)
+
+df_aid_chart = pd.DataFrame({"country": aid_countries, "aid": aid_values})
+df_aid_chart = df_aid_chart.sort_values(by="aid", ascending=False)
+
+# total imports from Russia in 2022
+df_2022 = rus_imports_wide_filtered[rus_imports_wide_filtered["ref_year"] == 2022]
+imports_countries = []
+imports_values = []
+for country in df_2022["reporter_iso"].unique():
+    total = df_2022[df_2022["reporter_iso"] == country]["total_imports"].sum()
+    imports_countries.append(country)
+    imports_values.append(total)
+
+df_imports_chart = pd.DataFrame({"country": imports_countries, "imports": imports_values})
+df_imports_chart = df_imports_chart.sort_values(by="imports", ascending=False)
+
+# plot
+
+fig, ax = plt.subplots(2, 1, figsize=(14, 8))
+
+ax[0].bar(df_aid_chart["country"], df_aid_chart["aid"])
+ax[0].set_title("Total aid sent to Ukraine")
+ax[0].set_ylabel("Aid (millions USD)")
+ax[0].tick_params(axis="x", rotation=90)
+ax[1].bar(df_imports_chart["country"], df_imports_chart["imports"])
+ax[1].set_title("Total energy imports from Russia during 2022")
+ax[1].set_ylabel("Imports (millions USD)")
+ax[1].tick_params(axis="x", rotation=90)
+
+
+plt.tight_layout()
+plt.show()
+
 """5.2 This figure roughly shows money sent to Ukraine at the top, and money sent to Russia at the
 bottom. Imagine the story you are trying to tell with this figure, and what ways would quickly
 and clearly communicate that story to a viewer. In comments (no code necessary) identify three
 ways to improve this figure. As with the other parts of this analysis, we will revisit this later!"""
 
+# First of all, the top chart y-axis shows the text "1e10", which is hard to read and not intuitive at all. 
+# Also, I consider that illustrating only the top 10 per chart might be more useful, mostly for the top chart.
+# Finally, I think that considering proportions of total instead of USD amount can be also enlightening.
 
-# 6. Extra Credit
 """6.1 Time Reporting: For one free point, write in a comment an estimate of how many hours you
 spent on Data and Programming this week (Monday morning to Sunday at midnight). Include
 time spent watching lectures, attending lab, and doing work and study. Your answer will in no way
 be used in assessing you; it is purely for our internal information to be used in balancing workloads
 in this class in future quarters!"""
+
+# Somewhere around 12-15 hours

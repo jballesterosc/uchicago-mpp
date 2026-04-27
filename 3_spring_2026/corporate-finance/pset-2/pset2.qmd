@@ -1,0 +1,107 @@
+---
+title: "Problem Set 2"
+subtitle: "PPHA 34410 Corporate Finance"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.15
+    number-sections: false
+    colorlinks: true
+---
+
+## Part 1. Multiple Choice Questions (Select all answers that apply)
+
+**1) According to the Illinois pension article, using a higher assumed discount rate will:** (3 marks)
+
+<u>a. Increase reported pension liabilities
+c. Increase required contributions today</u>
+
+**2) Why are overly optimistic pension return assumptions problematic?** (3 marks)
+
+a. They understate liabilities
+b. They shift risk to future taxpayers
+
+**3) According to the Nuveen/Schroders article, consolidation in asset management is primarily driven by:** (3 marks)
+a. Regulatory capital requirements
+b. Need for scale
+c. Fee compression from passive investing
+d. Declining demand for investment products
+
+**4) What types of synergies are expected in the Nuveen–Schroders deal?** (3 marks)
+a. Geographic diversification
+b. Complementary distribution channels
+c. Reduction in portfolio risk through diversification
+d. Increased pricing power
+
+**5) From the hedge fund weather modeling article, why are firms willing to pay large sums for meteorologists?** (3 marks)
+a. Weather directly impacts commodity prices
+b. Weather models create arbitrage opportunities
+c. Climate volatility increases forecasting value
+d. Regulation requires weather risk expertise
+
+**6) If SpaceX is added to the S&P 500 shortly after IPO, which of the following are likely consequences?** (3 marks)
+a. Immediate increase in firm profitability
+b. Temporary upward pressure on tax rates
+c. Index funds will purchase the stock
+d. Decreased liquidity for SpaceX bonds
+
+**7) Based on the "Bonds Are Still Safe" article, key dimensions investors must choose include:** (3 marks)
+a. Duration (maturity)
+b. Credit quality
+c. Dividend yield
+d. Currency exposure
+
+**8) According to the Microsoft bond article, why might AAA corporate bonds trade at lower yields than Treasuries?** (3 marks)
+a. Corporates are less risky than the U.S. government
+b. Extremely strong demand for high-quality corporate bonds
+c. Corporate bonds generally have lower fees
+d. Pension funds are not allowed to buy corporate bonds due to regulatory constraints
+
+**9) If banning dividends and buybacks leads firms to reinvest more in their core business, why might shareholders still oppose such a policy?** (3 marks)
+a. Managers may allocate capital inefficiently
+b. Shareholders prefer increased regulation
+c. Firms may overinvest in negative NPV projects
+d. Retained earnings eliminate all financial risk
+
+**10) Which of the following best describes a socially valuable role of dividends and share repurchases?** (3 marks)
+a. They allow firms to permanently increase their stock price
+b. They recycle capital from mature firms to investors, who can reallocate it to higher-return opportunities elsewhere in the economy
+c. They reduce firms' tax liabilities and therefore increase government revenue
+d. They eliminate the need for firms to invest in long-term projects
+
+**11) A firm is choosing between two depreciation methods for a new investment:** (3 marks)
+Method A: Straight-line depreciation over 5 years (capital expenses recognized evenly)
+Method B: Accelerated depreciation (more expense recognized in earlier years)
+Assuming the firm is profitable and can fully utilize tax deductions, which of the following best explains why the firm might prefer Method B?
+a. It increases total depreciation over the life of the asset
+b. It reduces total taxes paid over the life of the asset
+c. It reduces taxes earlier, increasing the present value of tax savings
+d. It increases reported accounting earnings in early years
+
+## Part 2. Short Calculation Question (please show your work to get full credit)
+
+**12) You own the common stock of Grid Batteries. Grid will pay its first annual dividend of $3.00 one year from today. Grid's dividends are predicted to grow by 15% per annum in perpetuity. If this prediction is correct, what is the present value of the dividend stream of this company? Assume the appropriate discount rate is 20% annually.** (5 marks)
+
+**13) I recently purchased a house for $1.4 million. As part of this transaction, I took out a mortgage from a bank where I put down a downpayment equal to 25% of the home value and borrowed the rest of the money from the bank at an interest rate of 6.375%. My expected property taxes on this property are $32,000 per year. What is my leverage ratio?** (5 marks)
+
+**14) I have been raising money from venture capital investment firms for my start-up company, DeepDish Labs. Here is a list of the companies I have raised money from. What is the best estimate for the current post-money valuation of DeepDish Labs?** (5 marks)
+
+Catalyst Ridge Ventures – June 2024, bought 5% of DeepDish Labs for $1.0 million
+Foundry Peak Capital – December 2024, bought 3% of DeepDish Labs for $1.3 million
+North Harbor Ventures – May 2025, bought 3.7% of DeepDish Labs for $2.0 million
+SignalFire Partners – October 2025, bought 4% of DeepDish Labs for $2.3 million
+Summit Arc Capital - March 2026, bought 5.5% of DeepDish Labs for $3.3 million
+
+**15) An auto plant for a new line of magnetic induction autos will cost $1,400 billion to construct. Assume that the plant is available immediately. If successful, the present value of revenues will be $2,400 billion. If unsuccessful, the present value of revenues will be $800 billion. The probability of success is estimated at 35%. We will know immediately after plant completion whether the new auto line will be successful.** (10 marks)
+
+**a. Would you agree to build the plant?** (5 marks)
+
+**b. Would you agree to build the plant if you knew that you could sell the plant for $900 billion to another automaker immediately after you learn whether the new auto line is successful or unsuccessful?** (5 marks)
+
