@@ -25,6 +25,7 @@ import os
 import pandas as pd
 import numpy as np
 import statsmodels.formula.api as smf
+import statsmodels.api as sm
 
 PATH = ("/Users/jayballesteros/_github/uchicago-mpp/3_spring_2026/program-evaluation/pset-2/_data")
 
@@ -35,25 +36,30 @@ df = pd.read_csv(os.path.join(PATH, "ps2_data_Spring26.csv"))
 
 PEDAP are interested in answering the following question: **What is the average effect of grid electricity connection on firm annual revenues (measured in USD)?** To make sure everybody is on the same page, explain to them what the ideal experiment would be for answering this question. Next, use math (the potential outcomes framework) and words to explain what you would estimate and how you would do so. Make sure to be clear about the unit of analysis (i.e., what is "i" here?). *Word limit: 250 words.*
 
-The ideal experiment would be to compare the average treatment effects of two populations: treated (firms connected to the grid) vs control (firms not connected). In more simpler terms, calculating the difference in outcomes (average) for the treatment and control groups.
+The ideal experiment would be to compare the average treatment effects of two populations: treated (firms connected to the grid) vs control (firms not connected). In more simpler terms, calculating the difference in outcomes (annual revenues) for the treatment and control groups.
 
-In math terms, following the next equation:
+$T^{ATE} = E[Y_i(1)] − E[Y_i(0)]$
 
-$ATE = E[Y_i(1)] − E[Y_i(0)]$
+Where $i$ is a firm, $E[Y_i(1)]$ is the average annual revenue for the treated group, and $E[Y_i(0)]$ is the same but for the control.
 
-Where average outcome $E[Y_i(1)]$ is the treated group, and $E[Y_i(0)]$ the average outcome for the control group. $i$ stand for firms. 
-
-Additonally, in this ideal scenario, both groups need to be randomly assigned. thi
+Additonally, in this ideal scenario, both groups need to be randomly assigned to eliminate selection bias. Therefore, the connection to the grid must be randomly distributed among a specific set of firms with comparable characteristics. 
 
 ## Q2
 
 PEDAP has some data available, and they believe they can compare firms that are connected to the grid, to those who aren't. They make a dataset available to you. Explain what you would recover if you simply compared connected to non-connected firms. Produce a **balance table** which displays the differences on observable characteristics between firms that are connected to the grid versus those that are not connected. Interpret this table. Does this table give you more or less faith in the comparison PEDAP would like to make? *Word limit: 250 words.*
 
-```{python}
-# Balance table code here
-```
+If we compare both groups with the pre-treatment characteristics in the available data and without randomization of assignment to treatment and control, instead of getting the estimate of ATE, we are getting the $NAIVE$ estime, which is basically the same but with selection bias.  we can get we can get information about the assignation to both treatment and control. The lower the difference (or non-existent) the better for our main assumption of random assignment. 
 
-> Q2 – Naive estimator, selection bias, y balance table. Comparar conectadas vs. no conectadas es el naive estimator, que recupera τ_ATE + selection bias. La balance table muestra si los observables difieren entre grupos (evidencia de selección). → Lectures 01–02 (naive estimator, selection bias), Lecture 06 (balance tables en contexto SOO).
+| Observable variables | Difference (coef) | p-value |
+|:--------------------:|:----------:|:-------:|
+| `owner_older40`| 0.3856 | 0.000|
+| `owner_male` | 0.1957 | 0.000 | 
+| `numm_livestock` | 0.0683 | 0.419 | 
+| `years_edu` | 0.5883 | 0.000 |
+| `num_employees` | 0.1205 | 0.095 |
+
+
+Given the results, more specifically the p-value in each of the differences, we can infer that in most of the observables (except `num_livestock` and `num_employees`), we have statistical significance of a difference between both groups. This suggests that groups are not comparables. 
 
 ## Q3 (Optional)
 
@@ -63,8 +69,6 @@ PEDAP acknowledges that a simple comparison may not work, but they still want an
 # SOO regression code here
 ```
 
-> Q3 (opcional) – Regression adjustment (SOO). Controlar por observables en una regresión: Y_i = α + τD_i + γX_i + ν_i. Requiere conditional independence, y la pregunta te pide comparar con el naive estimator. → Lecture 06 (regression bajo SOO, supuestos, fortalezas/debilidades).
-
 ## Q4
 
 Use an **exact matching** approach to estimate the effect of a grid connection on firm revenue. What variables did you decide to include in the matching procedure (remember you don't have to use all the variables at your disposal)? Interpret your results. What are the strengths and weaknesses of this approach? How do your results differ from what you find if you use the naive estimator? Did you run into the **Curse of Dimensionality** with this analysis? If yes, describe how it affected your approach. If not, describe how the Curse could have generated problems in this setting. *Word limit: 250 words.*
@@ -73,21 +77,25 @@ Use an **exact matching** approach to estimate the effect of a grid connection o
 # Exact matching code here
 ```
 
-> Q4 – Exact matching y Curse of Dimensionality. Parear unidades tratadas con controles que tengan exactamente los mismos valores de X. Elegir qué variables incluir, discutir common support, y qué pasa cuando aumentas dimensiones (pierdes matches). → Lecture 06 (matching, curse of dimensionality).
+- Creo que vale la pena incluir aquellas que son más determinantes o que influyan más en el revenue. Por ejemplo
+
+> Q4 – Exact matching y Curse of Dimensionality. Parear unidades tratadas con controles que tengan exactamente los mismos valores de X. Elegir qué variables incluir, discutir common support, y qué pasa cuando aumentas dimensiones (pierdes matches). -> Lecture 06 (matching, curse of dimensionality).
+
+
 
 
 ## Q5
 
 PEDAP has decided they are not interested in using a selection-on-observables approach after your discussions with them. Instead, they mention that they have also heard about a strategy called **instrumental variables (IV)** and are considering using **land gradient** as an instrument. They would like you to discuss the plausibility of this instrument and outline its limitations. They would also like you to propose an **alternative instrumental variable** that could be used to evaluate the effect of grid electricity connection on firm revenues. Why would your proposed instrument be a good one? Do you have any concerns about your ability to estimate the treatment effect using your instrument? If so, explain why; if not, explain why not. *Word limit: 250 words.*
 
-> Q5 – Instrumental variables: plausibilidad del instrumento. Discutir si "land gradient" cumple las dos condiciones de un IV válido: first stage (Cov(Z,D) ≠ 0) y exclusion restriction (Cov(Z,ε) = 0, es decir, Z solo afecta Y a través de D). Proponer un IV alternativo y defender su plausibilidad. → Lectures 07–09 (IV basics, exclusion vs. independence, ejemplos).
+> Q5 – Instrumental variables: plausibilidad del instrumento. Discutir si "land gradient" cumple las dos condiciones de un IV válido: first stage (Cov(Z,D) != 0) y exclusion restriction (Cov(Z,epsilon) = 0, es decir, Z solo afecta Y a través de D). Proponer un IV alternativo y defender su plausibilidad. -> Lectures 07–09 (IV basics, exclusion vs. independence, ejemplos).
 
 
 ## Q6
 
 PEDAP is convinced that this approach is the most feasible given their data limitations. After an internal discussion, they've come back to you with great news! It turns out that one of the many well-meaning development economists at the University of Chicago ran a small pilot program where they randomly offered a **grid connection subsidy** (covering hookup fees and initial wiring costs) to some firms as part of an attempt to publish a paper in the American Economic Review (it is still unpublished). With this new information, please explain how you would use the subsidy program to estimate the impact of actually connecting to the grid on firm revenues. Use both words and math. *Word limit: 250 words.*
 
-> Q6 – Usar el subsidio aleatorio como IV (IV/2SLS en contexto de non-compliance). El subsidio es Z (asignado aleatoriamente), la conexión real a la red es D (endógena). Esto es exactamente el marco ITT → LATE que ya conoces del PS1 con FARMS. Explicar el Wald estimator / 2SLS con palabras y math. → Lectures 04 (non-compliance, LATE), 07 (2SLS).
+> Q6 – Usar el subsidio aleatorio como IV (IV/2SLS en contexto de non-compliance). El subsidio es Z (asignado aleatoriamente), la conexión real a la red es D (endógena). Esto es exactamente el marco ITT -> LATE que ya conoces del PS1 con FARMS. Explicar el Wald estimator / 2SLS con palabras y math. -> Lectures 04 (non-compliance, LATE), 07 (2SLS).
 
 
 ## Q7
@@ -98,7 +106,7 @@ PEDAP agree that your approach is a good one. So good, in fact, that they'd like
 # First stage regression code here
 ```
 
-> Q7 – First stage regression. Regresión de D (grid_connection) sobre Z (grid_subsidy_amount). Esto estima el first stage, y el coeficiente te dice cuánto aumenta la probabilidad de conexión por cada unidad de subsidio. El parámetro es la "relevancia" del instrumento. → Lecture 07 (first stage, F-test).
+> Q7 – First stage regression. Regresión de D (grid_connection) sobre Z (grid_subsidy_amount). Esto estima el first stage, y el coeficiente te dice cuánto aumenta la probabilidad de conexión por cada unidad de subsidio. El parámetro es la "relevancia" del instrumento. -> Lecture 07 (first stage, F-test).
 
 
 ## Q8
@@ -109,7 +117,7 @@ PEDAP want you to use the pilot for the next steps of your analysis (they are ig
 # Reduced form / ITT regression code here
 ```
 
-> Q8 – Reduced form / ITT. Regresión de Y (firm_revenue) sobre Z (grid_subsidy_amount). Esto estima el ITT (o reduced form): el efecto del subsidio sobre revenues, sin distinguir si la firma realmente se conectó. Discutir utilidad para policy. → Lectures 04 y 07 (ITT, reduced form).
+> Q8 – Reduced form / ITT. Regresión de Y (firm_revenue) sobre Z (grid_subsidy_amount). Esto estima el ITT (o reduced form): el efecto del subsidio sobre revenues, sin distinguir si la firma realmente se conectó. Discutir utilidad para policy. -> Lectures 04 y 07 (ITT, reduced form).
 
 
 ## Q9
@@ -120,15 +128,15 @@ Finally, PEDAP wants you to use the pilot to estimate the impacts of grid electr
 # 2SLS / IV regression code here
 ```
 
-> Q9 – 2SLS / IV estimate. Juntar Q7 y Q8: usar el subsidio como instrumento para conexión en una regresión 2SLS. El parámetro es el LATE. Necesitas usar una rutina "canned" (como IV2SLS en linearmodels o ivreg en R) para obtener standard errors correctos. → Lecture 07 (2SLS, SEs correctos).
+> Q9 – 2SLS / IV estimate. Juntar Q7 y Q8: usar el subsidio como instrumento para conexión en una regresión 2SLS. El parámetro es el LATE. Necesitas usar una rutina "canned" (como IV2SLS en linearmodels o ivreg en R) para obtener standard errors correctos. -> Lecture 07 (2SLS, SEs correctos).
 
 
 ## Q10
 
 PEDAP like your analysis and are now intrigued by using the subsidy as a policy tool. But they're a bit worried about the quality of their data. While the firm revenue survey data were of extremely high quality, the pilot research team did not keep great records of the subsidy amounts that were disbursed to firms. The development economist describes two possibilities and wants your opinion.
 
-> Q10 – Measurement error. Dos escenarios: (a) ruido aleatorio en el subsidio = classical measurement error en D → attenuation bias, y sí se puede resolver con IV; (b) error que depende del tamaño del subsidio = non-classical measurement error → bias que IV generalmente no resuelve. → Lecture 08 (classical vs. non-classical measurement error, attenuation bias, cuándo IV ayuda y cuándo no).
-En resumen, el pset recorre una progresión muy clara: potential outcomes (L01–02) → SOO/matching (L06) → IV (L07–09) → measurement error (L08). Si quieres, podemos arrancar pregunta por pregunta.
+> Q10 – Measurement error. Dos escenarios: (a) ruido aleatorio en el subsidio = classical measurement error en D -> attenuation bias, y sí se puede resolver con IV; (b) error que depende del tamaño del subsidio = non-classical measurement error -> bias que IV generalmente no resuelve. -> Lecture 08 (classical vs. non-classical measurement error, attenuation bias, cuándo IV ayuda y cuándo no).
+En resumen, el pset recorre una progresión muy clara: potential outcomes (L01–02) -> SOO/matching (L06) -> IV (L07–09) -> measurement error (L08). Si quieres, podemos arrancar pregunta por pregunta.
 
 **First**, she wants to know if it would be a problem for your analysis — looking at the causal effect of the subsidy on firm revenues — if the subsidy amount data included **random noise**? Why or why not? If yes, can you use an instrumental variables approach to address this problem?
 
