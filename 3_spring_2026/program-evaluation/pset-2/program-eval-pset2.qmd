@@ -20,7 +20,6 @@ format:
 
 
 ```{python}
-#| echo: false
 import os 
 import pandas as pd
 import numpy as np
@@ -59,34 +58,73 @@ If we compare both groups with the pre-treatment characteristics in the availabl
 | `num_employees` | 0.1205 | 0.095 |
 
 
-Given the results, more specifically the p-value in each of the differences, we can infer that in most of the observables (except `num_livestock` and `num_employees`), we have statistical significance of a difference between both groups. This suggests that groups are not comparables. 
+Given the results, more specifically the p-value in each of the differences, we can infer that in most of the observables (except `num_livestock` and `num_employees`), we have statistical significance of a difference between both groups. This suggests that groups are not comparables--at least based on observables. 
+
+```{python}
+# ARMA AQUÍ LAS REGRESIONES Y SOLO DALE PRINT AL COEF Y P-VVALUE
+```
 
 ## Q3 (Optional)
 
 PEDAP acknowledges that a simple comparison may not work, but they still want an estimate of the impacts of being connected to the grid. PEDAP's CEO recently took a class on impact evaluation and learned about selection-on-observables designs. They have asked you to apply this methodology. Use a **regression-based approach** to estimate the effect of the grid-connection on firm revenue. Interpret your results. What are the strengths and weaknesses of this approach? How do your results differ from what you find if you instead use the naive estimator? *Word limit: 250 words.*
 
-```{python}
-# SOO regression code here
-```
-
 ## Q4
 
 Use an **exact matching** approach to estimate the effect of a grid connection on firm revenue. What variables did you decide to include in the matching procedure (remember you don't have to use all the variables at your disposal)? Interpret your results. What are the strengths and weaknesses of this approach? How do your results differ from what you find if you use the naive estimator? Did you run into the **Curse of Dimensionality** with this analysis? If yes, describe how it affected your approach. If not, describe how the Curse could have generated problems in this setting. *Word limit: 250 words.*
 
+I included `num_livestock`, `years_edu` and `num_employees` because they're discrete variables and pre-treatment. AS a result, I got 847 potential cells, where only 210 had common support. Around 2,500 observsations, where matched 210. The weakness is Curse of Dimensionality, where by adding more variables to the matching, the less likely we are to have a match -- because less people are alike between a combination of variables.  
+
+And this specific course potentially affected in the way of having 210 cells with common support and dropping around 339 observations out of 2500 (13.6%).
+
+The matching estimate of ATE in this case is $12,947.00
+
+**I included num_livestock, years_edu, and num_employees as matching variables because they are pre-treatment, discrete, and plausibly related to both grid connection and firm revenue. With 3 variables, there are 847 possible cells; 210 had common support, matching 2,161 of 2,500 observations (86.4%) and dropping 339 (13.6%).
+
+The exact matching estimate of the ATE is $12,947, meaning that grid-connected firms earn approximately $12,947 more in annual revenue than observably identical non-connected firms. This is close to the naive estimator ($12,992), suggesting that these observable characteristics explain only a small portion of the selection bias — or that selection is primarily driven by unobservables.
+
+The strengths of exact matching are that it makes no functional form assumptions and creates comparisons between units that are identical on observables. The main weakness is that it only controls for observables, so if unobserved factors drive selection, the estimate remains biased. Additionally, it suffers from the Curse of Dimensionality: each additional matching variable multiplies the number of cells, reducing the likelihood of common support. In this case, matching on one variable retained 100% of observations, two variables retained 98.4%, and three variables dropped to 86.4% — illustrating this tradeoff directly.**
+
 ```{python}
-# Exact matching code here
+match_vars = ['num_livestock', 'years_edu', 'num_employees']
+
+# mean revenue by cell and treatment status
+cell_means = df.groupby(match_vars + ['grid_connection'])['firm_revenue'].mean().unstack()
+
+# cells where common support is met
+cell_means = cell_means.dropna()
+
+# difference in each cell
+cell_means['delta'] = cell_means[1] - cell_means[0]
+
+# cell size + weighted average 
+cell_sizes = df.groupby(match_vars).size()
+cell_means['n'] = cell_sizes[cell_means.index]
+cell_means['weight'] = cell_means['n'] / cell_means['n'].sum()
+
+
+# ate!
+tau_matching = (cell_means['weight'] * cell_means['delta']).sum()
+n_matched = cell_means['n'].sum()
+
+print(f"Cells with common support: {len(cell_means)}")
+print(f"Matched: {n_matched} / {len(df)} ({100*n_matched/len(df):.1f}%)")
+print(f"Dropped: {len(df) - n_matched} ({100*(len(df)-n_matched)/len(df):.1f}%)")
+print(f"\nATE: {tau_matching:,.2f}")
+
+# naive estimator
+tau_naive = df.groupby('grid_connection')['firm_revenue'].mean().diff().iloc[-1]
+print(f"NAIVE: {tau_naive:,.2f}")
 ```
 
-- Creo que vale la pena incluir aquellas que son más determinantes o que influyan más en el revenue. Por ejemplo
-
 > Q4 – Exact matching y Curse of Dimensionality. Parear unidades tratadas con controles que tengan exactamente los mismos valores de X. Elegir qué variables incluir, discutir common support, y qué pasa cuando aumentas dimensiones (pierdes matches). -> Lecture 06 (matching, curse of dimensionality).
-
 
 
 
 ## Q5
 
 PEDAP has decided they are not interested in using a selection-on-observables approach after your discussions with them. Instead, they mention that they have also heard about a strategy called **instrumental variables (IV)** and are considering using **land gradient** as an instrument. They would like you to discuss the plausibility of this instrument and outline its limitations. They would also like you to propose an **alternative instrumental variable** that could be used to evaluate the effect of grid electricity connection on firm revenues. Why would your proposed instrument be a good one? Do you have any concerns about your ability to estimate the treatment effect using your instrument? If so, explain why; if not, explain why not. *Word limit: 250 words.*
+
+
 
 > Q5 – Instrumental variables: plausibilidad del instrumento. Discutir si "land gradient" cumple las dos condiciones de un IV válido: first stage (Cov(Z,D) != 0) y exclusion restriction (Cov(Z,epsilon) = 0, es decir, Z solo afecta Y a través de D). Proponer un IV alternativo y defender su plausibilidad. -> Lectures 07–09 (IV basics, exclusion vs. independence, ejemplos).
 
