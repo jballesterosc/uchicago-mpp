@@ -1,0 +1,45 @@
+---
+title: "Problem Set 3"
+subtitle: "PPHA 34410 Corporate Finance"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.15
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+---
+
+# Part 1. Multiple choice questions
+
+**1) Why has private equity increasingly targeted smaller, founder-owned businesses recently?**
+
+
+**2) What was the primary financial cause of Toys “R” Us’s downfall?**
+
+**3) What is the key difference between the two private equity strategies discussed?**
+
+# Part 2. Short answer question
+
+**4) A company issues a one-year zero-coupon bond with the following expected return profile. What is the most that you should pay for it?**
+
+**5) Apple’s most recent annual dividend was $1.00/share. The market price is $232.00 per share.**
+
+**6) Given the following information, calculate the PVGO for the following companies:**
+
+
+**7) Calculate the horizon value and stock price for Apple as of the year end of 2025. Assume that all earnings are paid as a cash dividend at the end of each year.**
+
+**8) Compare the following two bonds, assuming the discount rate is 5% annually:**
+
+  a. Which note has more interest rate risk according to modified duration?
+
+  b. Does this result surprise you? Give a common-sense explanation of this result. 
