@@ -22,24 +22,106 @@ format:
 
 **1) Why has private equity increasingly targeted smaller, founder-owned businesses recently?**
 
+b. They are relatively recession-resistant
+c. They exist in fragmented markets with consolidation potential
 
 **2) What was the primary financial cause of Toys “R” Us’s downfall?**
 
+c. Excessive debt from the leveraged buyout
+
 **3) What is the key difference between the two private equity strategies discussed?**
+
+b. One uses debt heavily, the other avoids it
+d. One emphasizes operational consolidation, the other leveraged financial engineering
 
 # Part 2. Short answer question
 
 **4) A company issues a one-year zero-coupon bond with the following expected return profile. What is the most that you should pay for it?**
 
+$EV = (1000 \times 0.40) + (600 \times 0.30) + (300 \times 0.20) + (100 \times 0.10) =650$
+
+$PV = \frac{650}{(1+0.06)^1} = 613.21$
+
+The more I should pay for it is 613.21.
+
 **5) Apple’s most recent annual dividend was $1.00/share. The market price is $232.00 per share.**
+
+  a) Compute Apple’s expected price using the dividend model with no growth and a discount rate of 8.0% annually. Does Apple appear to be expensive or cheap using the dividend model? Why might the market price still be correct? 
+
+      Using the dividend model without growth, we get $P=\frac{DIV}{r-g}=\frac{1}{0.08-0}=12.5$.
+
+      Considering the result, Apple seems expensive. Nonetheless, the market price might be correct because it potentially includes growth.
+
+  b) Now use the dividend discount model with growth to calculate Apple’s price, given a growth rate of 7.25% annually and the same discount rate above. Does Apple appear to be expensive or cheap using the dividend discount model with growth? What aspects of this model seem more or less realistic than the no-growth model?
+  
+      $P=\frac{DIV}{r-g}=\frac{1}{0.08-0.0725}=\frac{1}{0.0075}=133.33$
+
+      Using the model with growth, Apple's market price is continuing to look expensive. Nonetheless, this model is way more realistic than the previous one with no growth, because of course, one of the assumptions we can make is that growth in the future is very likely.
 
 **6) Given the following information, calculate the PVGO for the following companies:**
 
+  For $PVGO = P - \frac{EPS}{r}$
+
+  a) Apple Computer: Price = $232.00/share; Annual EPS = $6.50; discount rate 8% per annum (5 marks)
+
+      $PVGO= 232- \frac{6.50}{0.08}=150.75$
+
+  b) Exxon Mobile: Price = $109.00/share; Annual EPS = $8.30; discount rate 5% per annum. (5 marks)
+
+      $PVGO= 109- \frac{8.30}{0.05}=-57$
+
+  c) What do the PVGO numbers say about the market’s belief in the prospects for earnings growth at these two companies? If we believe that the market pricing is correct, what should Exxon do differently? Briefly give your reasoning. (6 marks)
+
+      In the case of apple, investors paying 232 instead of the dividend model without growth, means that they are considering the potential growth of the company in the future. Also, including PVGO in the growth assumption model, we get a resulting price that is nearly equal to value of the shares. Therefore the models considering PVGO are more realistic than the ones that only consider the dividend discount model with or without growth. 
+
+      $P_0 = \frac{EPS}{r}+PVGO = \frac{6.50}{0.08}+150.72=231.97$
+
+      In the case of Exxon, the negative PVGO of -57 means that the market believes Exxon is destroying value when it reinvests its earnings. If we believe the market pricing is correct, Exxon should return more of its earnings to shareholders through dividends or buybacks instead of reinvesting in projects that earn below its cost of capital. 
+
+      $P_0 = \frac{EPS}{r}+PVGO = \frac{8.30}{0.05}+(-57)=109$
 
 **7) Calculate the horizon value and stock price for Apple as of the year end of 2025. Assume that all earnings are paid as a cash dividend at the end of each year.**
 
+Considering that the earnings from 2030 onward are at 14 per share in perpetuity:
+
+$H = \frac{EPS_{2030}}{r} = \frac{14.00}{0.08} = 175.00$
+
+And the stock price as of the year end of 2025
+
+$P_{2025} = \frac{6.50}{(1.08)^1} + \frac{10.00}{(1.08)^2} + \frac{12.00}{(1.08)^3} + \frac{13.50 + 175.00}{(1.08)^4}$
+
+$P_{2025} = \frac{6.50}{1.08} + \frac{10.00}{1.1664} + \frac{12.00}{1.2597} + \frac{188.50}{1.3605} = 162.67$
+
+Since the model price of 162.67 is below the current market price of 232, the stock appears overvalued and would I considered to sell.  
+
 **8) Compare the following two bonds, assuming the discount rate is 5% annually:**
 
-  a. Which note has more interest rate risk according to modified duration?
+For the six-year maturity zero coupon note (A):
 
-  b. Does this result surprise you? Give a common-sense explanation of this result. 
+$P_A = \frac{1000}{(1.05)^6} = \frac{1000}{1.3401} = 746.22$
+
+$D_A = 6 \text{ years}$
+
+Given the equation for the Mecaulay Duration $MD = \frac{D}{1+r}$:
+
+$MD_A = \frac{6}{1.05} = 5.71$
+
+For the seven-year coupon (B):
+
+$P_B = \frac{120}{1.05} + \frac{120}{(1.05)^2} + \frac{120}{(1.05)^3} + \frac{120}{(1.05)^4} + \frac{120}{(1.05)^5} + \frac{120}{(1.05)^6} + \frac{1120}{(1.05)^7}$
+
+$P_B = 114.29 + 108.84 + 103.66 + 98.72 + 94.02 + 89.54 + 795.92 = 1404.99$
+
+$D_B = \frac{1}{1404.99} \left[ 1(114.29) + 2(108.84) + 3(103.66) + 4(98.72) + 5(94.02) + 6(89.54) + 7(795.92) \right]$
+
+$D_B = \frac{7616.61}{1404.99} = 5.42$
+
+$MD_B = \frac{5.42}{1.05} = 5.16$
+
+a. Which note has more interest rate risk according to modified duration?
+
+Bond A (MD = 5.71) has more interest rate risk than Bond B (MD = 5.16).
+
+b. Does this result surprise you? Give a common-sense explanation of this result. 
+
+It is, because B has a longer maturity. However, B pays large 12% coupons a year, so the investor gets profit early on. Nonetheless, seems that those cash flows pull the average life of the bond down. A pays nothing until year 6, so the investor is fully exposed to interest rate changes for the entire period. 
