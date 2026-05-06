@@ -1,0 +1,75 @@
+---
+title: "Palmer Penguins Analysis"
+subtitle: "W7 skillset report"
+author: "Jay Ballesteros"
+format:
+  pdf:
+    colorlinks: true
+jupyter: dap
+---
+
+# Introduction 
+
+The Palmer Penguins dataset was collected from three islands near Palmer Station, Antarctica:
+
+- Biscoe
+- Dream
+- Torgersen
+
+The data originates from [this article](https://doi.org/10.1371/journal.pone.0090081).
+
+![Penguin Species](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/refs/heads/main/man/figures/lter_penguins.png){width=70%}
+
+# Data Analysis
+
+```{python}
+#| echo: false
+#| eval: true
+
+import pandas as pd
+import seaborn as sns
+import os
+sns.set_style("darkgrid")
+
+penguins = sns.load_dataset("penguins")
+
+PATH = "/Users/jayballesteros/_github/uchicago-mpp/3_spring_2026/data_programming/skills-psets/_data"
+penguin_years = pd.read_csv(os.path.join(PATH, "penguin_years.csv"))
+penguins = penguins.join(penguin_years)
+
+df = pd.read_csv(os.path.join(PATH, "PalmerStation_Monthly_Weather.csv"), index_col='Date', parse_dates=True)
+df["year"] = df.index.year
+df_year = df.groupby("year")["Mean Temperature (C)"].mean()
+
+penguins = penguins.merge(df_year, on="year", how="left")
+penguins.rename(columns={"Mean Temperature (C)": "mean_temperature"}, inplace=True)
+penguins['mean_temperature'] = penguins['mean_temperature'].round(2)
+```
+
+```{python}
+#| echo: true
+#| eval: true
+
+print(penguins.groupby("year")[["body_mass_g", 
+"flipper_length_mm", 
+"mean_temperature"]].mean().round(2))
+```
+
+```{python}
+#| echo: true
+#| eval: true
+
+print(penguins.groupby(["year", "species"])[["body_mass_g", 
+"flipper_length_mm", 
+"mean_temperature"]].mean().round(2))
+```
+
+```{python}
+#| echo: true
+#| eval: true
+
+sns.boxplot(data=penguins, x="year", y='body_mass_g', hue='species')
+```
+
+Across all three years, Gentoo penguins are consistently the heaviest species. Interestingly, 2009 has the highest average body mass and flipper length despite having the coldest temperature (-1.76°C), while 2008 was the warmest year (-0.78°C) but had lower averages. This suggests that annual mean temperature alone does not explain changes in penguin body size, and other factors likely play a wider role.
+
