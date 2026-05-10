@@ -8,7 +8,7 @@ format:
 jupyter: dap
 ---
 
-# Introduction 
+# Introduction
 
 The Palmer Penguins dataset was collected from three islands near Palmer Station, Antarctica:
 
@@ -16,9 +16,13 @@ The Palmer Penguins dataset was collected from three islands near Palmer Station
 - Dream
 - Torgersen
 
+The dataset considers three species: Adelie, Gentoo and Chistranp, with observations from 2007 to 2009 (for Chinstrap only from 2007 to 2008). 
+
+
+
 The data originates from [this article](https://doi.org/10.1371/journal.pone.0090081).
 
-![Penguin Species](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/refs/heads/main/man/figures/lter_penguins.png){width=70%}
+![Penguin Species](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/refs/heads/main/man/figures/lter_penguins.png){width="70%"}
 
 # Data Analysis
 
@@ -72,4 +76,3 @@ sns.boxplot(data=penguins, x="year", y='body_mass_g', hue='species')
 ```
 
 Across all three years, Gentoo penguins are consistently the heaviest species. Interestingly, 2009 has the highest average body mass and flipper length despite having the coldest temperature (-1.76°C), while 2008 was the warmest year (-0.78°C) but had lower averages. This suggests that annual mean temperature alone does not explain changes in penguin body size, and other factors likely play a wider role.
-

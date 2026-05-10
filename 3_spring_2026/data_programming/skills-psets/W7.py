@@ -104,3 +104,11 @@ sns.scatterplot(data=penguins, x='mean_temperature', y="body_mass_g", hue='speci
 
 sns.boxplot(data=penguins, x="year", y='body_mass_g', hue='species')
 
+sns.boxplot(data=penguins, x="year", y='body_mass_g', hue='sex')
+
+sns.boxplot(data=penguins, x="year", y='body_mass_g', hue='species')
+
+print(penguins.groupby(['year', "sex"])[['body_mass_g', 'flipper_length_mm', 'bill_length_mm', 'bill_depth_mm', 'mean_temperature']].mean().round(2))
+
+
+sns.boxplot(data=penguins, x="species", y='body_mass_g', hue='sex')
