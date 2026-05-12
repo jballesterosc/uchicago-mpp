@@ -1,0 +1,554 @@
+CAEMP25N Total full-time and part-time employment by NAICS industry 1
+CAEMP25N Total full-time and part-time employment by NAICS industry 1
+Micropolitan Statistical Area
+GeoFips,GeoName,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018
+10100,"Aberdeen, SD (Micropolitan Statistical Area)",560,598,602,597,606,588,569,565,553,566,559,540,522,493,488,512,491,476
+10140,"Aberdeen, WA (Micropolitan Statistical Area)",212,216,208,200,233,240,237,232,244,263,219,212,192,182,178,183,178,176
+10220,"Ada, OK (Micropolitan Statistical Area)",242,242,234,230,223,222,188,181,185,199,175,170,160,158,162,164,158,150
+10300,"Adrian, MI (Micropolitan Statistical Area)",225,230,232,224,222,227,226,221,226,237,206,199,189,185,190,195,195,193
+10460,"Alamogordo, NM (Micropolitan Statistical Area)",1970,2022,1922,1889,1988,2007,1925,1892,1912,2006,2034,1917,1842,1711,1744,1758,1720,1690
+10620,"Albemarle, NC (Micropolitan Statistical Area)",154,163,165,169,170,168,163,161,160,175,134,136,140,140,144,147,153,155
+10660,"Albert Lea, MN (Micropolitan Statistical Area)",104,106,105,100,96,98,97,92,92,94,84,85,80,84,85,75,74,74
+10700,"Albertville, AL (Micropolitan Statistical Area)",286,291,285,282,277,268,269,260,262,290,252,250,250,264,266,273,281,277
+10760,"Alexander City, AL (Micropolitan Statistical Area)",128,132,131,133,123,123,126,120,123,121,114,116,111,105,106,113,110,112
+10820,"Alexandria, MN (Micropolitan Statistical Area)",131,133,129,133,124,127,133,132,137,142,130,119,141,137,139,139,140,136
+10860,"Alice, TX (Micropolitan Statistical Area)",175,182,183,201,189,176,195,222,251,268,231,230,229,215,214,212,209,229
+10940,"Alma, MI (Micropolitan Statistical Area)",117,119,116,114,120,122,121,120,102,101,81,78,72,68,73,75,72,74
+10980,"Alpena, MI (Micropolitan Statistical Area)",101,109,116,107,99,97,99,108,106,129,118,115,113,118,122,135,140,144
+11060,"Altus, OK (Micropolitan Statistical Area)",1595,1681,1715,1688,1634,1640,1557,1521,1557,1542,1515,1405,1346,1315,1365,1394,1390,1401
+11140,"Americus, GA (Micropolitan Statistical Area)",139,152,150,144,146,149,146,146,151,149,144,144,136,131,128,129,127,131
+11220,"Amsterdam, NY (Micropolitan Statistical Area)",125,132,123,122,117,120,119,121,119,118,109,109,100,95,97,106,104,104
+11380,"Andrews, TX (Micropolitan Statistical Area)",22,23,21,19,20,19,21,18,18,24,15,14,14,14,13,14,13,13
+11420,"Angola, IN (Micropolitan Statistical Area)",79,80,75,78,77,76,77,81,82,89,68,66,61,62,61,60,62,58
+11580,"Arcadia, FL (Micropolitan Statistical Area)",55,53,53,51,52,50,44,45,47,43,39,47,46,51,61,71,64,55
+11620,"Ardmore, OK (Micropolitan Statistical Area)",152,155,151,145,145,136,137,136,140,146,135,127,118,117,120,132,124,120
+11660,"Arkadelphia, AR (Micropolitan Statistical Area)",111,113,110,108,102,100,99,96,104,111,102,94,85,81,83,87,89,89
+11740,"Ashland, OH (Micropolitan Statistical Area)",113,115,111,112,110,112,108,108,107,115,99,96,94,101,99,93,100,101
+11780,"Ashtabula, OH (Micropolitan Statistical Area)",254,259,249,243,240,237,231,230,221,233,197,188,187,191,189,195,195,196
+11820,"Astoria, OR (Micropolitan Statistical Area)",173,161,171,176,170,176,193,209,220,234,206,212,207,196,187,196,206,205
+11860,"Atchison, KS (Micropolitan Statistical Area)",52,56,56,55,54,52,49,51,52,49,50,47,44,47,46,46,45,46
+11900,"Athens, OH (Micropolitan Statistical Area)",253,281,272,258,265,278,254,246,260,265,252,249,247,228,225,230,230,235
+11940,"Athens, TN (Micropolitan Statistical Area)",122,126,124,124,118,121,116,116,120,128,104,102,95,93,99,104,104,110
+11980,"Athens, TX (Micropolitan Statistical Area)",102,107,108,106,105,103,104,106,107,144,97,88,84,86,84,88,85,91
+12120,"Atmore, AL (Micropolitan Statistical Area)",74,72,71,72,66,66,60,65,64,68,61,60,58,58,57,62,61,55
+12140,"Auburn, IN (Micropolitan Statistical Area)",89,92,87,86,89,89,95,93,92,103,90,85,84,81,80,83,80,83
+12180,"Auburn, NY (Micropolitan Statistical Area)",191,187,181,174,166,164,172,170,174,185,148,145,134,135,138,142,150,148
+12300,"Augusta-Waterville, ME (Micropolitan Statistical Area)",1641,1705,1716,1736,1772,1751,1825,1998,2002,2213,2154,2113,2060,2080,2150,2179,2160,2193
+12380,"Austin, MN (Micropolitan Statistical Area)",147,150,149,145,147,144,136,135,159,164,149,151,149,144,135,139,139,139
+12460,"Bainbridge, GA (Micropolitan Statistical Area)",62,68,67,64,63,61,60,61,65,66,59,57,49,48,47,52,53,50
+12660,"Baraboo, WI (Micropolitan Statistical Area)",150,156,147,143,149,151,152,156,155,174,159,151,148,150,152,156,161,167
+12680,"Bardstown, KY (Micropolitan Statistical Area)",97,98,94,95,96,97,98,93,92,99,82,80,78,78,78,81,82,84
+12740,"Barre, VT (Micropolitan Statistical Area)",313,316,312,294,286,301,306,304,300,308,275,266,258,252,247,240,238,236
+12780,"Bartlesville, OK (Micropolitan Statistical Area)",109,109,104,97,96,94,99,105,108,114,101,94,92,92,89,90,94,90
+12860,"Batavia, NY (Micropolitan Statistical Area)",579,699,713,712,694,693,709,715,720,630,604,587,589,589,577,583,584,574
+12900,"Batesville, AR (Micropolitan Statistical Area)",238,240,229,225,220,218,213,212,214,228,193,176,168,160,154,155,154,151
+13060,"Bay City, TX (Micropolitan Statistical Area)",94,93,94,97,96,95,92,93,93,86,84,83,80,80,82,81,79,78
+13100,"Beatrice, NE (Micropolitan Statistical Area)",119,126,127,114,117,117,113,110,114,120,109,101,95,90,89,85,84,82
+13180,"Beaver Dam, WI (Micropolitan Statistical Area)",196,202,207,201,204,214,196,198,201,215,187,185,183,177,176,174,172,174
+13260,"Bedford, IN (Micropolitan Statistical Area)",170,176,171,171,170,165,153,149,146,160,130,126,123,122,114,115,117,115
+13300,"Beeville, TX (Micropolitan Statistical Area)",48,47,47,47,50,49,48,48,47,54,38,35,35,35,33,32,31,33
+13340,"Bellefontaine, OH (Micropolitan Statistical Area)",148,153,153,149,147,149,146,148,146,158,138,126,119,118,116,123,127,122
+13420,"Bemidji, MN (Micropolitan Statistical Area)",345,357,369,373,383,376,376,381,397,431,406,412,401,404,411,414,396,386
+13500,"Bennettsville, SC (Micropolitan Statistical Area)",87,91,89,105,273,360,364,369,382,391,364,353,348,368,366,378,370,348
+13540,"Bennington, VT (Micropolitan Statistical Area)",134,132,132,134,131,128,127,160,192,201,172,170,156,163,170,177,173,179
+13620,"Berlin, NH (Micropolitan Statistical Area)",152,164,158,160,154,156,154,150,155,169,130,204,363,388,395,417,401,387
+13660,"Big Rapids, MI (Micropolitan Statistical Area)",97,96,93,90,93,95,96,98,96,111,91,88,87,88,95,96,99,96
+13700,"Big Spring, TX (Micropolitan Statistical Area)",813,858,871,861,829,843,846,862,933,939,929,932,918,888,920,958,965,954
+13720,"Big Stone Gap, VA (Micropolitan Statistical Area) *",262,284,274,274,264,256,248,252,255,276,238,237,236,222,217,226,222,218
+13940,"Blackfoot, ID (Micropolitan Statistical Area)",320,349,326,237,248,260,251,250,251,254,230,230,227,219,217,219,211,208
+14140,"Bluefield, WV-VA (Micropolitan Statistical Area) *",418,430,404,379,381,375,364,351,344,378,304,282,268,263,250,242,242,237
+14160,"Bluffton, IN (Micropolitan Statistical Area)",64,66,66,62,59,59,61,61,61,65,57,55,53,58,60,55,53,51
+14180,"Blytheville, AR (Micropolitan Statistical Area)",136,134,132,129,125,121,123,121,123,138,108,101,97,103,106,102,101,99
+14220,"Bogalusa, LA (Micropolitan Statistical Area)",106,105,101,107,108,114,108,113,114,120,98,98,96,97,102,102,100,105
+14300,"Bonham, TX (Micropolitan Statistical Area)",525,556,558,438,454,431,428,453,504,628,610,623,690,711,695,722,740,753
+14380,"Boone, NC (Micropolitan Statistical Area)",105,107,108,109,112,113,108,108,112,162,102,103,101,105,106,112,108,115
+14420,"Borger, TX (Micropolitan Statistical Area)",74,73,82,81,76,73,73,79,79,84,77,73,69,68,67,73,72,67
+14580,"Bozeman, MT (Micropolitan Statistical Area)",568,625,661,661,646,649,639,640,647,670,660,649,620,602,578,587,578,574
+14620,"Bradford, PA (Micropolitan Statistical Area)",501,500,502,488,481,476,462,455,463,468,433,424,409,418,423,438,431,406
+14660,"Brainerd, MN (Micropolitan Statistical Area)",403,419,429,421,412,409,400,396,410,497,430,429,420,444,448,453,461,466
+14700,"Branson, MO (Micropolitan Statistical Area)",106,111,111,107,97,102,104,103,107,165,163,166,172,175,176,179,180,182
+14720,"Breckenridge, CO (Micropolitan Statistical Area)",64,65,65,60,62,61,60,58,66,81,51,57,49,48,50,49,53,52
+14780,"Brenham, TX (Micropolitan Statistical Area)",71,69,69,70,82,85,84,82,84,80,81,80,77,80,73,76,76,80
+14820,"Brevard, NC (Micropolitan Statistical Area)",163,176,172,163,159,158,139,134,137,169,146,149,132,125,131,126,133,135
+15020,"Brookhaven, MS (Micropolitan Statistical Area)",101,110,103,98,97,102,103,105,103,108,94,88,87,89,94,100,104,102
+15060,"Brookings, OR (Micropolitan Statistical Area)",127,128,119,106,104,96,94,94,101,110,96,88,84,82,85,85,78,92
+15100,"Brookings, SD (Micropolitan Statistical Area)",149,157,155,166,166,166,166,166,160,163,157,150,149,151,150,136,134,132
+15140,"Brownsville, TN (Micropolitan Statistical Area)",55,65,61,62,55,49,59,63,76,95,94,96,98,96,93,95,93,91
+15220,"Brownwood, TX (Micropolitan Statistical Area)",111,116,119,122,101,111,118,114,128,140,125,124,128,124,126,125,126,125
+15340,"Bucyrus-Galion, OH (Micropolitan Statistical Area)",83,86,81,78,81,85,81,83,95,98,85,82,83,84,80,82,83,81
+15420,"Burley, ID (Micropolitan Statistical Area)",252,265,265,271,252,244,242,244,249,254,228,228,214,211,210,210,216,221
+15460,"Burlington, IA-IL (Micropolitan Statistical Area)",237,236,232,219,216,205,212,219,222,204,183,182,178,176,175,176,174,179
+15580,"Butte-Silver Bow, MT (Micropolitan Statistical Area)",318,332,331,310,304,301,299,310,307,297,290,280,256,235,215,215,221,223
+15620,"Cadillac, MI (Micropolitan Statistical Area)",201,212,209,205,202,197,178,179,183,200,164,154,152,152,155,153,152,148
+15660,"Calhoun, GA (Micropolitan Statistical Area)",97,100,100,100,90,95,100,103,96,107,87,86,86,90,87,89,88,94
+15700,"Cambridge, MD (Micropolitan Statistical Area)",127,131,131,130,132,133,137,185,189,213,200,197,191,181,177,178,172,175
+15740,"Cambridge, OH (Micropolitan Statistical Area)",123,124,116,122,125,120,113,117,122,140,128,126,119,114,114,119,120,116
+15780,"Camden, AR (Micropolitan Statistical Area)",140,148,148,147,147,144,140,134,132,143,114,105,103,104,103,105,102,106
+15820,"Campbellsville, KY (Micropolitan Statistical Area)",126,133,139,138,136,132,128,126,125,128,112,109,102,106,104,105,105,105
+15860,"Cañon City, CO (Micropolitan Statistical Area)",1120,1127,1140,1121,1065,1047,1081,1093,1113,1157,1128,1112,1117,1084,1077,1091,1093,1057
+16100,"Carlsbad-Artesia, NM (Micropolitan Statistical Area)",488,534,524,561,597,655,737,764,855,883,786,693,633,609,628,682,691,686
+16140,"Carroll, IA (Micropolitan Statistical Area)",103,108,105,104,103,102,102,97,95,98,90,88,84,83,80,78,76,74
+16260,"Cedar City, UT (Micropolitan Statistical Area)",312,360,377,372,341,320,319,319,347,362,342,320,303,295,284,284,281,277
+16340,"Cedartown, GA (Micropolitan Statistical Area)",65,73,74,76,71,71,68,69,67,74,58,60,65,68,67,69,71,74
+16380,"Celina, OH (Micropolitan Statistical Area)",107,109,107,106,102,101,100,106,107,110,104,99,96,96,100,94,92,93
+16420,"Central City, KY (Micropolitan Statistical Area)",626,648,638,634,618,628,628,606,605,583,566,559,549,526,490,474,419,345
+16460,"Centralia, IL (Micropolitan Statistical Area)",199,202,196,178,177,173,174,176,174,169,146,139,126,113,109,114,108,106
+16500,"Centralia, WA (Micropolitan Statistical Area)",290,276,264,237,240,233,226,217,242,250,230,225,223,223,224,224,223,221
+16660,"Charleston-Mattoon, IL (Micropolitan Statistical Area)",180,183,178,174,176,177,177,177,181,203,165,156,163,168,170,175,172,172
+17060,"Chillicothe, OH (Micropolitan Statistical Area)",1422,1430,1390,1359,1366,1367,1355,1468,1525,1594,1561,1601,1611,1627,1627,1640,1669,1687
+17220,"Clarksburg, WV (Micropolitan Statistical Area)",3942,3994,3944,3936,3907,3874,3852,3887,4079,4257,4176,4188,4202,4045,3975,4104,4247,4272
+17260,"Clarksdale, MS (Micropolitan Statistical Area)",88,92,88,84,85,79,80,78,74,86,71,61,66,64,59,60,60,56
+17340,"Clearlake, CA (Micropolitan Statistical Area)",144,156,162,158,162,160,155,150,160,190,144,151,150,144,146,154,156,147
+17380,"Cleveland, MS (Micropolitan Statistical Area)",95,98,94,96,98,101,101,99,93,105,84,77,78,76,72,76,74,77
+17500,"Clewiston, FL (Micropolitan Statistical Area)",109,111,102,100,91,86,84,82,87,92,84,77,73,73,71,70,71,72
+17540,"Clinton, IA (Micropolitan Statistical Area)",137,145,136,130,132,133,132,126,122,126,115,116,118,114,111,116,117,113
+17580,"Clovis, NM (Micropolitan Statistical Area)",891,887,870,857,879,854,783,783,840,898,944,917,865,831,852,869,871,876
+17700,"Coffeyville, KS (Micropolitan Statistical Area)",154,155,147,145,145,141,135,138,137,137,119,112,104,110,109,113,109,110
+17740,"Coldwater, MI (Micropolitan Statistical Area)",106,106,100,92,94,91,92,90,92,94,77,76,76,75,78,84,84,86
+18060,"Columbus, MS (Micropolitan Statistical Area)",861,890,906,883,874,884,846,837,858,890,943,881,833,826,816,841,845,855
+18100,"Columbus, NE (Micropolitan Statistical Area)",130,132,127,118,118,102,100,92,89,92,83,83,84,86,87,87,89,92
+18180,"Concord, NH (Micropolitan Statistical Area)",848,878,870,858,843,879,876,897,918,937,848,862,809,815,799,815,821,829
+18220,"Connersville, IN (Micropolitan Statistical Area)",61,63,58,55,57,59,51,50,52,50,47,45,45,44,45,44,45,40
+18260,"Cookeville, TN (Micropolitan Statistical Area)",342,353,350,354,341,338,335,333,350,393,321,306,299,294,300,309,312,308
+18300,"Coos Bay, OR (Micropolitan Statistical Area)",388,392,384,374,348,342,342,341,358,383,344,332,324,326,322,326,325,316
+18380,"Cordele, GA (Micropolitan Statistical Area)",59,62,59,60,59,59,58,57,60,64,55,52,53,53,54,53,53,52
+18420,"Corinth, MS (Micropolitan Statistical Area)",101,101,100,97,102,99,100,100,100,111,101,99,96,90,92,110,107,113
+18460,"Cornelia, GA (Micropolitan Statistical Area)",131,138,139,139,133,128,124,115,116,125,112,106,105,103,106,99,99,95
+18500,"Corning, NY (Micropolitan Statistical Area)",988,1031,1032,1013,1001,1009,1000,984,1033,1097,1061,1039,991,1022,1025,1021,1016,1005
+18620,"Corsicana, TX (Micropolitan Statistical Area)",110,111,114,114,117,116,111,110,115,149,101,98,97,97,93,95,90,92
+18660,"Cortland, NY (Micropolitan Statistical Area)",125,143,141,136,130,132,128,122,120,130,108,112,111,108,109,112,112,111
+18740,"Coshocton, OH (Micropolitan Statistical Area)",103,103,103,101,96,96,95,90,90,103,85,72,68,71,72,77,76,78
+18780,"Craig, CO (Micropolitan Statistical Area)",159,176,176,181,178,166,169,168,178,181,162,164,153,145,150,146,135,136
+18820,"Crawfordsville, IN (Micropolitan Statistical Area)",100,106,105,102,103,100,97,98,102,106,92,85,84,83,78,77,77,80
+18860,"Crescent City, CA (Micropolitan Statistical Area)",146,150,148,148,150,151,153,161,167,182,163,154,145,147,149,151,148,146
+18900,"Crossville, TN (Micropolitan Statistical Area)",101,103,101,102,99,104,106,106,112,124,101,104,102,100,107,118,120,123
+18980,"Cullman, AL (Micropolitan Statistical Area)",254,258,252,244,238,239,237,246,242,260,228,220,208,211,209,211,203,199
+19000,"Cullowhee, NC (Micropolitan Statistical Area)",380,375,332,306,312,295,275,263,263,306,261,272,252,248,213,210,211,197
+19220,"Danville, KY (Micropolitan Statistical Area)",143,145,140,140,137,140,139,137,136,144,121,119,118,123,123,123,121,120
+19260,"Danville, VA (Micropolitan Statistical Area) *",270,276,259,251,247,243,244,249,254,279,223,213,210,205,198,201,196,200
+19420,"Dayton, TN (Micropolitan Statistical Area)",832,851,825,816,781,787,762,845,1021,1157,1234,1262,1264,1172,1181,1144,1076,1079
+19540,"Decatur, IN (Micropolitan Statistical Area)",74,77,77,75,75,72,67,66,71,73,56,57,56,58,58,62,64,61
+19580,"Defiance, OH (Micropolitan Statistical Area)",112,121,117,112,112,113,111,111,118,111,98,90,87,86,85,84,82,83
+19620,"Del Rio, TX (Micropolitan Statistical Area)",1840,1931,1985,1968,1930,1932,2004,2078,2209,2268,2356,2243,2154,2086,2135,2175,2148,2132
+19700,"Deming, NM (Micropolitan Statistical Area)",198,217,223,248,293,350,422,529,558,594,575,569,562,530,476,434,407,413
+19760,"DeRidder, LA (Micropolitan Statistical Area)",113,116,117,86,79,78,75,74,74,87,67,66,68,69,72,73,70,75
+19860,"Dickinson, ND (Micropolitan Statistical Area)",239,238,244,249,259,269,264,262,270,273,250,236,225,233,215,237,236,240
+19940,"Dixon, IL (Micropolitan Statistical Area)",102,102,97,92,91,90,88,90,92,102,86,80,75,79,85,85,84,80
+19980,"Dodge City, KS (Micropolitan Statistical Area)",225,246,257,252,255,251,257,248,250,303,242,242,228,229,229,235,229,212
+20060,"Douglas, GA (Micropolitan Statistical Area)",143,154,157,151,140,145,141,140,131,119,123,122,123,125,125,132,129,128
+20140,"Dublin, GA (Micropolitan Statistical Area)",946,927,943,953,949,985,1019,1060,1130,1257,1243,1290,1347,1425,1496,1502,1577,1644
+20180,"DuBois, PA (Micropolitan Statistical Area)",268,272,269,268,266,261,264,258,255,298,261,252,244,252,240,240,243,234
+20300,"Dumas, TX (Micropolitan Statistical Area)",73,86,83,76,69,74,71,73,72,74,68,64,64,62,66,70,69,65
+20340,"Duncan, OK (Micropolitan Statistical Area)",107,106,106,105,102,98,94,98,99,93,83,79,78,79,78,80,80,80
+20420,"Durango, CO (Micropolitan Statistical Area)",364,421,467,455,450,440,427,407,407,428,388,387,366,343,332,329,316,319
+20460,"Durant, OK (Micropolitan Statistical Area)",127,129,129,123,119,122,121,121,124,128,104,102,99,101,96,93,85,87
+20540,"Dyersburg, TN (Micropolitan Statistical Area)",119,119,117,117,117,118,114,110,111,122,105,105,99,98,97,97,100,98
+20580,"Eagle Pass, TX (Micropolitan Statistical Area)",527,544,550,583,589,612,649,800,910,918,917,929,911,896,885,870,822,851
+20660,"Easton, MD (Micropolitan Statistical Area)",262,274,272,265,266,266,252,267,264,300,240,227,219,212,214,209,199,200
+20780,"Edwards, CO (Micropolitan Statistical Area)",145,155,168,162,156,139,138,140,141,170,141,147,136,128,122,125,127,125
+20820,"Effingham, IL (Micropolitan Statistical Area)",181,187,183,175,170,172,170,173,171,197,192,181,152,146,149,149,150,148
+20900,"El Campo, TX (Micropolitan Statistical Area)",105,107,104,103,104,104,100,98,98,94,92,89,84,82,85,83,84,79
+20980,"El Dorado, AR (Micropolitan Statistical Area)",199,202,190,187,193,196,195,200,176,169,149,152,147,145,144,143,146,143
+21020,"Elizabeth City, NC (Micropolitan Statistical Area)",653,674,693,704,711,716,750,747,759,776,758,756,764,759,746,751,754,770
+21120,"Elk City, OK (Micropolitan Statistical Area)",55,54,55,55,53,50,54,53,53,49,46,46,48,47,51,52,51,50
+21180,"Elkins, WV (Micropolitan Statistical Area)",286,296,284,249,232,212,198,194,197,205,188,178,166,170,160,158,161,163
+21220,"Elko, NV (Micropolitan Statistical Area)",416,461,468,452,440,432,417,403,421,428,395,379,372,358,361,357,359,346
+21260,"Ellensburg, WA (Micropolitan Statistical Area)",170,184,177,175,168,160,160,150,160,178,156,144,147,140,142,146,150,151
+21380,"Emporia, KS (Micropolitan Statistical Area)",186,194,189,189,188,185,181,159,145,152,137,131,123,122,118,112,111,108
+21460,"Enterprise, AL (Micropolitan Statistical Area)",154,184,188,218,199,192,193,186,195,220,211,223,200,209,231,235,243,289
+21540,"Escanaba, MI (Micropolitan Statistical Area)",228,232,233,238,239,237,223,224,215,225,204,198,191,190,193,192,200,196
+21580,"Española, NM (Micropolitan Statistical Area)",387,401,399,391,387,381,364,367,369,393,357,348,335,321,305,292,276,269
+21640,"Eufaula, AL-GA (Micropolitan Statistical Area)",76,75,75,70,68,69,67,66,70,82,69,66,61,60,63,61,61,58
+21700,"Eureka-Arcata, CA (Micropolitan Statistical Area)",826,883,900,858,797,781,758,785,807,899,756,726,705,716,774,798,810,754
+21740,"Evanston, WY (Micropolitan Statistical Area)",85,88,84,84,79,76,69,72,78,85,71,69,71,67,68,74,69,70
+21840,"Fairfield, IA (Micropolitan Statistical Area)",83,87,83,77,66,73,74,76,78,75,71,65,61,61,63,62,61,61
+21860,"Fairmont, MN (Micropolitan Statistical Area)",77,77,78,75,72,74,73,71,72,72,64,62,57,63,61,58,59,55
+21900,"Fairmont, WV (Micropolitan Statistical Area)",190,187,195,189,209,224,220,216,212,318,320,294,258,208,182,188,178,181
+21980,"Fallon, NV (Micropolitan Statistical Area)",667,678,668,640,599,595,583,589,599,617,622,609,592,587,603,600,594,578
+22060,"Faribault-Northfield, MN (Micropolitan Statistical Area)",147,153,151,153,148,149,151,148,149,158,134,136,136,129,133,137,134,139
+22100,"Farmington, MO (Micropolitan Statistical Area)",129,138,138,134,137,133,134,131,130,148,136,127,127,134,134,136,140,145
+22260,"Fergus Falls, MN (Micropolitan Statistical Area)",242,255,253,251,247,243,233,237,242,267,231,228,217,217,209,222,218,215
+22280,"Fernley, NV (Micropolitan Statistical Area)",71,75,73,68,71,74,80,80,81,96,75,69,65,64,67,72,72,68
+22300,"Findlay, OH (Micropolitan Statistical Area)",181,185,172,177,176,178,174,177,175,182,159,154,148,153,152,152,151,147
+22340,"Fitzgerald, GA (Micropolitan Statistical Area)",37,39,36,37,36,37,34,35,35,33,27,27,26,26,25,26,26,28
+22580,"Forest City, NC (Micropolitan Statistical Area)",122,124,123,118,115,116,118,118,124,131,102,96,101,105,109,112,117,114
+22620,"Forrest City, AR (Micropolitan Statistical Area)",417,426,426,479,613,646,647,655,658,674,665,672,666,663,690,681,669,639
+22700,"Fort Dodge, IA (Micropolitan Statistical Area)",297,292,289,291,280,257,245,243,237,225,216,211,207,192,182,187,191,185
+22780,"Fort Leonard Wood, MO (Micropolitan Statistical Area)",2682,2911,2951,3095,3399,3638,3519,3797,4284,4546,4520,4111,3871,3646,3621,3581,3495,3490
+22800,"Fort Madison-Keokuk, IA-IL-MO (Micropolitan Statistical Area)",246,250,242,233,230,231,224,221,222,230,208,202,209,206,206,205,196,196
+22820,"Fort Morgan, CO (Micropolitan Statistical Area)",136,141,141,143,146,145,143,147,147,137,135,127,120,116,115,112,118,111
+22840,"Fort Payne, AL (Micropolitan Statistical Area)",176,174,175,177,178,181,177,176,178,195,168,165,159,159,162,161,166,161
+22860,"Fort Polk South, LA (Micropolitan Statistical Area)",2660,2721,2333,2014,2176,2212,2122,2085,2192,2324,2450,2359,2247,2106,2128,2128,2059,2029
+23140,"Frankfort, IN (Micropolitan Statistical Area)",74,74,70,72,73,73,74,74,72,77,66,63,57,59,59,61,59,58
+23180,"Frankfort, KY (Micropolitan Statistical Area)",538,557,535,527,536,542,551,597,611,597,569,556,552,542,543,535,509,499
+23240,"Fredericksburg, TX (Micropolitan Statistical Area)",72,72,73,76,71,67,69,65,65,63,60,46,44,47,50,50,49,47
+23300,"Freeport, IL (Micropolitan Statistical Area)",157,152,147,143,140,136,134,133,134,142,137,151,131,130,125,127,123,122
+23340,"Fremont, NE (Micropolitan Statistical Area)",120,129,127,121,121,118,117,119,119,126,113,111,108,109,109,114,113,109
+23380,"Fremont, OH (Micropolitan Statistical Area)",125,124,123,120,117,119,118,123,121,128,110,108,109,110,108,111,111,109
+23500,"Gaffney, SC (Micropolitan Statistical Area)",93,97,94,95,96,92,94,96,98,101,94,101,102,104,101,105,101,100
+23620,"Gainesville, TX (Micropolitan Statistical Area)",77,81,78,75,74,74,74,72,73,75,61,57,55,58,59,60,63,63
+23660,"Galesburg, IL (Micropolitan Statistical Area)",211,206,192,187,186,183,179,179,170,204,186,174,165,171,167,163,168,164
+23700,"Gallup, NM (Micropolitan Statistical Area)",2382,2491,2556,2609,2598,2603,2543,2529,2575,2702,2596,2604,2519,2444,2447,2478,2510,2440
+23780,"Garden City, KS (Micropolitan Statistical Area)",171,159,161,154,151,150,149,149,151,162,145,140,138,142,140,147,137,135
+23820,"Gardnerville Ranchos, NV (Micropolitan Statistical Area)",108,109,112,107,109,104,101,110,117,118,104,97,88,88,95,87,84,86
+23860,"Georgetown, SC (Micropolitan Statistical Area)",113,114,117,119,115,116,121,126,134,169,129,124,115,118,121,125,124,126
+23940,"Gillette, WY (Micropolitan Statistical Area)",227,250,247,240,238,236,227,235,239,267,236,233,223,225,224,233,236,230
+23980,"Glasgow, KY (Micropolitan Statistical Area)",161,159,158,151,142,146,146,148,152,157,138,137,130,127,119,126,125,123
+24060,"Glenwood Springs, CO (Micropolitan Statistical Area)",398,411,423,398,387,377,385,398,423,436,398,396,368,358,346,355,353,343
+24100,"Gloversville, NY (Micropolitan Statistical Area)",112,115,115,111,108,102,97,94,97,121,84,83,78,77,77,80,82,83
+24180,"Granbury, TX (Micropolitan Statistical Area)",101,105,103,105,103,107,111,104,104,98,98,91,90,93,90,98,100,102
+24330,"Grand Rapids, MN (Micropolitan Statistical Area)",200,218,221,219,215,210,192,190,199,217,188,177,171,162,163,167,170,166
+24380,"Grants, NM (Micropolitan Statistical Area)",386,402,419,379,386,361,343,335,341,363,336,345,330,319,320,315,290,268
+24460,"Great Bend, KS (Micropolitan Statistical Area)",91,94,95,96,96,93,91,92,88,87,79,77,75,75,73,73,70,71
+24620,"Greeneville, TN (Micropolitan Statistical Area)",246,266,263,266,242,231,203,212,236,255,237,237,220,218,223,225,230,229
+24700,"Greensburg, IN (Micropolitan Statistical Area)",73,75,77,72,73,73,77,84,88,80,75,74,73,62,61,60,63,60
+24740,"Greenville, MS (Micropolitan Statistical Area)",565,575,569,559,562,534,520,527,524,540,516,495,469,433,420,419,414,388
+24820,"Greenville, OH (Micropolitan Statistical Area)",119,124,123,121,118,115,117,117,117,120,106,107,105,104,102,106,102,105
+24900,"Greenwood, MS (Micropolitan Statistical Area)",204,206,205,194,175,161,149,142,140,164,134,127,126,128,128,126,126,130
+24940,"Greenwood, SC (Micropolitan Statistical Area)",189,190,187,174,178,169,160,160,159,166,142,149,142,135,135,141,140,128
+24980,"Grenada, MS (Micropolitan Statistical Area)",258,260,241,245,230,264,262,271,253,266,257,256,243,232,232,233,235,204
+25100,"Guymon, OK (Micropolitan Statistical Area)",78,83,80,77,79,77,76,74,76,78,73,75,74,73,72,74,74,74
+25200,"Hailey, ID (Micropolitan Statistical Area)",124,131,135,138,146,142,136,134,141,149,132,130,119,126,123,129,125,123
+25300,"Hannibal, MO (Micropolitan Statistical Area)",136,144,145,143,142,142,139,139,141,148,136,133,130,130,131,134,130,129
+25460,"Harrison, AR (Micropolitan Statistical Area)",280,279,268,270,273,266,258,248,254,279,236,229,213,208,196,195,195,186
+25580,"Hastings, NE (Micropolitan Statistical Area)",122,127,118,117,115,115,112,114,113,113,103,113,110,110,106,105,105,100
+25700,"Hays, KS (Micropolitan Statistical Area)",168,172,174,164,157,156,150,154,162,170,156,149,140,138,134,133,138,137
+25720,"Heber, UT (Micropolitan Statistical Area)",164,165,155,151,151,145,130,127,131,153,112,108,102,100,105,104,109,108
+25740,"Helena, MT (Micropolitan Statistical Area)",1466,1540,1589,1568,1534,1580,1743,1909,2025,2040,1978,1963,1962,2033,1986,1989,1944,1919
+25760,"Helena-West Helena, AR (Micropolitan Statistical Area)",77,82,82,72,72,70,71,72,72,90,69,64,64,64,63,58,57,58
+25780,"Henderson, NC (Micropolitan Statistical Area)",106,108,106,103,101,102,95,98,100,110,88,82,85,85,90,96,96,92
+25820,"Hereford, TX (Micropolitan Statistical Area)",50,50,51,46,46,48,46,46,42,47,44,42,45,47,48,48,49,50
+25840,"Hermiston-Pendleton, OR (Micropolitan Statistical Area)",868,920,966,975,994,987,975,960,960,956,876,692,570,571,582,555,555,548
+25880,"Hillsdale, MI (Micropolitan Statistical Area)",124,127,118,119,122,121,123,123,120,130,114,107,96,95,96,93,88,89
+25900,"Hilo, HI (Micropolitan Statistical Area)",980,1103,1262,1294,1233,1248,1277,1334,1361,1499,1431,1453,1413,1371,1339,1356,1318,1267
+26020,"Hobbs, NM (Micropolitan Statistical Area)",119,121,117,114,114,109,106,105,106,121,94,88,88,86,86,91,88,90
+26090,"Holland, MI (Micropolitan Statistical Area)",187,199,188,181,180,181,193,194,197,214,171,164,164,159,169,176,178,181
+26220,"Hood River, OR (Micropolitan Statistical Area)",141,140,134,124,126,118,107,111,119,132,113,113,107,111,109,110,116,117
+26260,"Hope, AR (Micropolitan Statistical Area)",133,140,133,131,131,128,124,121,121,143,140,124,117,105,107,109,103,96
+26340,"Houghton, MI (Micropolitan Statistical Area)",232,249,244,227,225,220,215,211,222,240,211,203,186,189,186,187,186,194
+26460,"Hudson, NY (Micropolitan Statistical Area)",194,197,181,178,172,177,186,179,179,197,166,165,153,160,157,160,153,150
+26500,"Huntingdon, PA (Micropolitan Statistical Area)",131,136,136,134,131,126,134,135,138,146,122,120,122,127,111,112,109,108
+26540,"Huntington, IN (Micropolitan Statistical Area)",93,96,93,93,93,91,91,91,92,102,86,85,86,84,85,88,89,89
+26660,"Huntsville, TX (Micropolitan Statistical Area)",185,187,228,206,181,175,160,154,156,148,145,145,133,130,132,138,141,146
+26700,"Huron, SD (Micropolitan Statistical Area)",389,417,415,401,391,362,361,358,348,344,332,311,302,301,295,309,296,293
+26740,"Hutchinson, KS (Micropolitan Statistical Area)",253,255,242,239,234,236,226,222,221,224,195,182,168,166,168,170,173,162
+26780,"Hutchinson, MN (Micropolitan Statistical Area)",90,93,89,87,85,88,90,87,84,89,78,80,80,79,82,79,78,76
+26860,"Indiana, PA (Micropolitan Statistical Area)",270,266,256,251,244,239,238,234,243,249,210,195,201,204,192,196,191,192
+26940,"Indianola, MS (Micropolitan Statistical Area)",67,65,63,63,65,69,65,64,62,70,59,55,53,52,53,52,48,49
+27020,"Iron Mountain, MI-WI (Micropolitan Statistical Area)",627,641,640,626,624,620,617,608,701,824,840,845,861,857,854,829,784,788
+27160,"Jackson, OH (Micropolitan Statistical Area)",73,81,80,78,76,76,73,74,76,84,70,68,66,67,70,68,70,71
+27220,"Jackson, WY-ID (Micropolitan Statistical Area)",452,466,435,403,393,423,426,432,457,496,462,447,449,454,461,471,463,434
+27300,"Jacksonville, IL (Micropolitan Statistical Area)",138,136,131,128,130,126,123,121,127,134,111,102,99,92,97,99,91,86
+27380,"Jacksonville, TX (Micropolitan Statistical Area)",87,90,86,86,82,80,82,79,81,85,71,70,71,67,71,72,73,73
+27420,"Jamestown, ND (Micropolitan Statistical Area)",258,269,256,251,258,255,251,200,205,197,190,192,191,178,177,175,164,153
+27460,"Jamestown-Dunkirk-Fredonia, NY (Micropolitan Statistical Area)",424,433,413,406,388,383,383,370,375,405,344,321,305,301,300,307,310,306
+27530,"Jasper, AL (Micropolitan Statistical Area)",202,208,195,184,179,171,170,177,178,176,180,180,187,185,185,192,194,189
+27540,"Jasper, IN (Micropolitan Statistical Area)",155,157,151,150,154,152,149,151,154,157,140,136,133,135,136,133,140,137
+27600,"Jefferson, GA (Micropolitan Statistical Area)",105,120,119,124,124,126,131,138,142,164,136,133,136,138,142,156,160,158
+27660,"Jennings, LA (Micropolitan Statistical Area)",78,78,79,74,73,75,73,70,69,103,94,97,98,97,97,96,90,90
+27700,"Jesup, GA (Micropolitan Statistical Area)",391,408,396,392,383,376,378,387,398,419,407,401,388,395,406,408,385,366
+27940,"Juneau, AK (Micropolitan Statistical Area)",831,893,957,961,940,899,871,839,834,842,840,832,765,712,698,697,706,695
+28060,"Kalispell, MT (Micropolitan Statistical Area)",829,881,888,900,839,794,796,801,843,936,828,812,753,735,745,768,771,774
+28180,"Kapaa, HI (Micropolitan Statistical Area)",374,410,492,488,488,501,538,549,536,573,560,551,547,540,532,534,549,533
+28260,"Kearney, NE (Micropolitan Statistical Area)",196,210,215,208,199,192,195,203,193,200,176,165,160,163,156,157,156,154
+28300,"Keene, NH (Micropolitan Statistical Area)",197,207,195,198,189,185,183,185,182,195,167,159,155,156,158,160,167,167
+28340,"Kendallville, IN (Micropolitan Statistical Area)",95,100,100,91,91,93,96,96,95,97,76,74,74,79,77,77,80,82
+28380,"Kennett, MO (Micropolitan Statistical Area)",108,110,107,106,102,100,105,104,102,104,101,97,95,98,92,95,97,90
+28500,"Kerrville, TX (Micropolitan Statistical Area)",528,555,555,567,563,561,551,537,537,555,547,517,518,494,477,474,495,506
+28540,"Ketchikan, AK (Micropolitan Statistical Area) *",247,264,282,313,308,296,309,286,284,274,267,258,247,235,237,235,223,228
+28580,"Key West, FL (Micropolitan Statistical Area)",1252,1315,1330,1262,1193,1131,1137,1182,1252,1273,1280,1248,1195,1172,1205,1225,1203,1186
+28620,"Kill Devil Hills, NC (Micropolitan Statistical Area)",237,243,257,247,228,224,221,232,241,270,230,231,237,234,229,230,228,220
+28780,"Kingsville, TX (Micropolitan Statistical Area)",666,634,610,620,571,568,647,775,898,963,960,968,965,934,879,895,888,841
+28820,"Kinston, NC (Micropolitan Statistical Area)",331,335,307,302,302,288,293,292,289,279,256,267,199,186,195,202,203,197
+28860,"Kirksville, MO (Micropolitan Statistical Area)",123,130,128,120,117,123,127,120,121,120,116,108,106,102,111,110,106,108
+28900,"Klamath Falls, OR (Micropolitan Statistical Area)",924,933,973,950,937,913,909,895,944,966,922,897,886,870,866,874,909,874
+29060,"Laconia, NH (Micropolitan Statistical Area)",272,278,275,278,261,258,234,243,240,230,152,147,141,138,137,142,137,135
+29260,"La Grande, OR (Micropolitan Statistical Area)",236,239,239,229,222,223,219,236,254,256,239,233,224,231,228,229,238,238
+29300,"LaGrange, GA-AL (Micropolitan Statistical Area)",201,203,200,192,199,199,196,194,196,184,180,184,188,187,188,192,199,196
+29380,"Lake City, FL (Micropolitan Statistical Area)",1058,1044,1060,1023,1037,1032,1091,1140,1178,1369,1337,1276,1300,1332,1360,1289,1256,1228
+29500,"Lamesa, TX (Micropolitan Statistical Area)",59,63,63,66,74,73,66,75,64,72,55,51,52,51,60,61,66,61
+29660,"Laramie, WY (Micropolitan Statistical Area)",246,270,260,249,234,216,205,199,210,201,183,172,159,165,155,163,172,179
+29780,"Las Vegas, NM (Micropolitan Statistical Area)",218,231,216,199,194,194,193,199,208,226,195,190,185,185,177,169,164,165
+29860,"Laurel, MS (Micropolitan Statistical Area)",312,320,316,322,317,330,304,299,296,310,282,278,274,270,267,266,267,265
+29900,"Laurinburg, NC (Micropolitan Statistical Area)",57,57,55,55,53,55,55,55,58,61,48,45,43,44,47,48,47,49
+29980,"Lawrenceburg, TN (Micropolitan Statistical Area)",119,120,123,127,124,122,120,124,128,139,120,115,115,114,116,118,114,111
+30060,"Lebanon, MO (Micropolitan Statistical Area)",91,94,93,88,87,91,93,93,97,97,85,80,80,85,85,82,77,78
+30100,"Lebanon, NH-VT (Micropolitan Statistical Area)",2148,2182,2143,2135,2101,2097,2061,2063,2131,2248,2126,2084,2009,2063,2115,2251,2216,2193
+30220,"Levelland, TX (Micropolitan Statistical Area)",54,55,57,54,53,54,56,51,52,61,48,44,43,39,39,39,40,40
+30260,"Lewisburg, PA (Micropolitan Statistical Area)",1511,1533,1542,1518,1478,1458,1469,1472,1470,1543,1562,1547,1537,1557,1575,1601,1585,1430
+30280,"Lewisburg, TN (Micropolitan Statistical Area)",66,68,65,64,66,65,66,66,69,72,62,60,58,60,64,65,65,64
+30380,"Lewistown, PA (Micropolitan Statistical Area)",114,119,114,112,106,104,101,102,102,107,89,86,88,89,85,87,86,81
+30420,"Lexington, NE (Micropolitan Statistical Area)",123,124,123,124,125,122,120,121,123,133,118,118,114,117,116,115,111,106
+30580,"Liberal, KS (Micropolitan Statistical Area)",101,107,119,107,108,107,105,112,104,106,95,89,86,92,94,91,91,82
+30660,"Lincoln, IL (Micropolitan Statistical Area)",120,124,122,117,113,118,114,114,115,116,107,106,100,97,101,98,94,93
+30820,"Lock Haven, PA (Micropolitan Statistical Area)",142,146,148,149,145,145,144,139,146,162,132,128,131,138,141,145,150,142
+30900,"Logansport, IN (Micropolitan Statistical Area)",124,123,122,120,115,112,112,110,114,116,97,89,88,83,93,94,90,86
+30940,"London, KY (Micropolitan Statistical Area)",1025,1024,1022,1004,971,955,951,978,1006,1031,938,919,868,859,840,830,819,803
+31060,"Los Alamos, NM (Micropolitan Statistical Area)",207,246,245,236,250,275,271,283,299,313,294,308,283,253,234,233,236,234
+31220,"Ludington, MI (Micropolitan Statistical Area)",113,112,108,104,102,103,104,105,106,116,92,92,97,95,95,99,76,68
+31260,"Lufkin, TX (Micropolitan Statistical Area)",373,389,386,382,396,390,381,360,369,414,365,362,341,321,320,334,334,337
+31300,"Lumberton, NC (Micropolitan Statistical Area)",279,284,275,277,285,284,295,295,291,336,278,271,270,279,286,285,304,313
+31380,"Macomb, IL (Micropolitan Statistical Area)",108,107,104,101,99,102,104,107,107,110,98,96,95,95,95,97,95,91
+31500,"Madison, IN (Micropolitan Statistical Area)",98,101,98,99,98,99,91,90,94,86,82,82,76,80,78,79,78,74
+31580,"Madisonville, KY (Micropolitan Statistical Area)",167,168,159,157,161,164,167,165,167,174,159,160,156,167,169,168,170,170
+31620,"Magnolia, AR (Micropolitan Statistical Area)",51,54,54,49,49,50,48,47,50,56,44,42,41,42,37,37,36,36
+31660,"Malone, NY (Micropolitan Statistical Area)",153,174,196,200,178,170,171,179,180,170,158,163,163,159,159,163,169,166
+31680,"Malvern, AR (Micropolitan Statistical Area)",75,75,76,68,73,77,76,71,77,89,73,67,67,64,66,70,62,66
+31820,"Manitowoc, WI (Micropolitan Statistical Area)",193,196,194,192,192,190,187,207,201,211,199,195,188,189,193,196,195,196
+31930,"Marietta, OH (Micropolitan Statistical Area)",234,240,234,229,225,227,218,216,227,250,209,210,210,209,214,213,201,204
+31940,"Marinette, WI-MI (Micropolitan Statistical Area)",207,204,199,194,193,196,195,196,207,250,198,191,189,204,213,220,220,226
+31980,"Marion, IN (Micropolitan Statistical Area)",982,1040,1055,1085,1082,1099,1121,1158,1149,1150,1049,1023,997,996,1011,1039,1086,1095
+32000,"Marion, NC (Micropolitan Statistical Area)",104,113,105,105,102,93,81,82,86,101,81,82,76,77,72,77,79,81
+32020,"Marion, OH (Micropolitan Statistical Area)",157,159,159,154,155,150,144,144,141,148,125,117,110,111,110,114,112,108
+32100,"Marquette, MI (Micropolitan Statistical Area)",310,309,317,311,309,307,299,302,317,361,299,295,281,286,282,271,280,271
+32140,"Marshall, MN (Micropolitan Statistical Area)",141,140,134,133,140,138,126,128,133,136,129,123,121,118,116,118,118,117
+32180,"Marshall, MO (Micropolitan Statistical Area)",110,107,106,99,95,89,87,89,89,92,80,85,84,83,81,81,77,76
+32260,"Marshalltown, IA (Micropolitan Statistical Area)",135,142,143,139,139,140,135,130,134,128,130,125,118,117,116,114,118,110
+32280,"Martin, TN (Micropolitan Statistical Area)",143,143,139,139,137,138,144,144,141,139,128,119,115,115,120,126,126,127
+32300,"Martinsville, VA (Micropolitan Statistical Area) *",148,153,150,151,148,145,142,142,145,163,129,127,132,134,135,136,133,130
+32340,"Maryville, MO (Micropolitan Statistical Area)",96,103,100,96,95,96,96,101,100,104,98,89,88,92,87,84,82,84
+32380,"Mason City, IA (Micropolitan Statistical Area)",208,213,201,203,204,198,196,194,183,209,190,188,188,179,181,185,181,188
+32460,"Mayfield, KY (Micropolitan Statistical Area)",191,189,193,199,197,199,204,204,211,230,209,208,199,201,201,203,202,198
+32500,"Maysville, KY (Micropolitan Statistical Area)",67,67,66,65,59,57,57,56,59,62,51,47,48,53,53,52,50,49
+32540,"McAlester, OK (Micropolitan Statistical Area)",1344,1472,1733,1879,1855,1811,1649,1849,2047,2140,2042,1925,1696,1627,1709,1849,1910,2082
+32620,"McComb, MS (Micropolitan Statistical Area)",148,144,135,132,133,132,131,126,127,137,121,116,113,110,112,114,106,105
+32660,"McMinnville, TN (Micropolitan Statistical Area)",116,123,120,113,113,110,105,108,109,118,99,94,86,88,91,92,89,89
+32700,"McPherson, KS (Micropolitan Statistical Area)",97,100,99,96,95,97,96,93,93,98,87,85,81,82,79,87,87,86
+32740,"Meadville, PA (Micropolitan Statistical Area)",307,321,323,327,320,322,322,328,319,347,304,285,262,263,262,250,253,254
+32860,"Menomonie, WI (Micropolitan Statistical Area)",97,101,102,105,101,100,99,99,98,103,91,90,86,92,90,89,86,87
+32940,"Meridian, MS (Micropolitan Statistical Area)",920,876,905,878,904,892,888,916,937,975,884,869,855,873,895,891,870,853
+33020,"Mexico, MO (Micropolitan Statistical Area)",88,90,82,81,82,81,86,86,89,94,89,89,86,88,87,77,79,75
+33060,"Miami, OK (Micropolitan Statistical Area)",133,139,136,130,126,129,130,128,127,140,115,99,98,101,102,101,96,94
+33180,"Middlesborough, KY (Micropolitan Statistical Area)",157,161,163,166,171,163,164,151,152,178,158,146,141,131,126,123,121,119
+33300,"Milledgeville, GA (Micropolitan Statistical Area)",81,85,84,84,83,83,82,83,80,80,82,81,84,81,81,86,88,88
+33380,"Minden, LA (Micropolitan Statistical Area)",113,120,118,125,116,118,111,115,117,127,114,113,106,104,102,105,106,104
+33420,"Mineral Wells, TX (Micropolitan Statistical Area)",59,59,56,58,57,54,54,48,47,79,56,54,55,55,55,57,54,55
+33500,"Minot, ND (Micropolitan Statistical Area)",1362,1411,1455,1427,1455,1474,1418,1366,1422,1438,1387,1277,1228,1208,1277,1339,1324,1272
+33580,"Mitchell, SD (Micropolitan Statistical Area)",128,127,117,114,124,130,131,133,134,135,119,119,121,123,129,130,121,122
+33620,"Moberly, MO (Micropolitan Statistical Area)",85,90,90,84,83,84,84,82,86,93,85,76,68,68,70,70,68,66
+33940,"Montrose, CO (Micropolitan Statistical Area)",305,323,331,330,318,309,307,314,331,362,332,333,324,312,316,326,323,318
+33980,"Morehead City, NC (Micropolitan Statistical Area)",259,267,260,275,276,265,283,286,299,343,308,289,278,268,262,262,278,294
+34020,"Morgan City, LA (Micropolitan Statistical Area)",144,149,147,148,150,149,145,144,151,168,149,144,132,127,130,134,133,134
+34140,"Moscow, ID (Micropolitan Statistical Area)",211,225,227,229,229,221,204,204,210,209,193,182,170,166,166,163,165,163
+34180,"Moses Lake, WA (Micropolitan Statistical Area)",605,632,643,640,628,628,616,635,656,710,680,715,734,746,766,777,781,780
+34220,"Moultrie, GA (Micropolitan Statistical Area)",104,109,110,106,105,127,134,130,133,140,133,119,116,115,111,113,111,115
+34260,"Mountain Home, AR (Micropolitan Statistical Area)",165,170,170,158,154,153,159,163,161,176,152,145,140,131,132,133,133,136
+34300,"Mountain Home, ID (Micropolitan Statistical Area)",1150,1186,1160,1083,956,959,955,981,908,918,870,849,830,808,841,870,855,851
+34340,"Mount Airy, NC (Micropolitan Statistical Area)",170,173,171,165,168,165,163,165,171,184,157,154,158,165,166,169,177,176
+34350,"Mount Gay-Shamrock, WV (Micropolitan Statistical Area)",124,125,116,113,111,106,108,112,118,124,112,109,111,107,91,94,92,89
+34380,"Mount Pleasant, MI (Micropolitan Statistical Area)",150,154,150,140,140,141,142,138,141,193,179,162,158,156,160,167,163,154
+34420,"Mount Pleasant, TX (Micropolitan Statistical Area)",155,153,146,144,139,137,140,144,149,149,124,124,122,120,120,127,123,114
+34460,"Mount Sterling, KY (Micropolitan Statistical Area)",176,177,172,175,174,173,160,160,154,161,145,144,142,142,140,146,141,137
+34500,"Mount Vernon, IL (Micropolitan Statistical Area)",166,169,163,157,156,159,161,160,164,175,156,150,143,145,143,141,132,134
+34540,"Mount Vernon, OH (Micropolitan Statistical Area)",116,123,117,116,114,114,115,117,114,123,105,105,102,101,105,105,106,108
+34660,"Murray, KY (Micropolitan Statistical Area)",85,88,84,82,84,79,87,91,89,99,77,76,74,72,69,71,74,73
+34700,"Muscatine, IA (Micropolitan Statistical Area)",128,126,124,121,115,108,108,108,110,115,97,95,89,88,83,86,86,83
+34780,"Muskogee, OK (Micropolitan Statistical Area)",1531,1612,1592,1662,1736,1789,1930,2175,2524,2838,2755,2736,2876,2868,2919,2967,2989,3117
+34860,"Nacogdoches, TX (Micropolitan Statistical Area)",191,186,185,181,179,177,170,167,161,172,153,139,140,146,149,148,142,140
+35020,"Natchez, MS-LA (Micropolitan Statistical Area)",211,214,219,212,217,211,199,197,201,216,186,181,177,167,172,166,164,161
+35060,"Natchitoches, LA (Micropolitan Statistical Area)",202,209,208,210,213,211,200,195,198,213,189,180,166,164,165,171,168,158
+35140,"Newberry, SC (Micropolitan Statistical Area)",140,140,142,138,121,120,112,109,97,114,95,91,84,90,103,110,114,112
+35220,"New Castle, IN (Micropolitan Statistical Area)",101,107,104,103,106,107,107,106,106,104,98,97,91,90,90,95,93,95
+35260,"New Castle, PA (Micropolitan Statistical Area)",466,468,425,408,404,400,403,407,398,385,348,288,217,208,207,204,206,206
+35420,"New Philadelphia-Dover, OH (Micropolitan Statistical Area)",232,236,227,222,216,221,219,216,222,269,246,239,242,254,258,260,260,264
+35440,"Newport, OR (Micropolitan Statistical Area)",256,266,257,250,246,231,258,274,281,299,321,367,353,332,322,327,329,322
+35460,"Newport, TN (Micropolitan Statistical Area)",73,74,71,70,68,74,72,69,73,79,63,65,63,61,62,59,58,56
+35580,"New Ulm, MN (Micropolitan Statistical Area)",89,90,85,84,83,81,80,81,82,85,75,77,77,75,72,73,75,76
+35700,"Nogales, AZ (Micropolitan Statistical Area)",1069,1119,1120,1162,1198,1295,1375,1467,1560,1597,1731,1828,1788,1733,1664,1616,1586,1609
+35740,"Norfolk, NE (Micropolitan Statistical Area)",296,305,300,287,285,281,282,282,289,310,267,253,245,238,226,224,225,214
+35820,"North Platte, NE (Micropolitan Statistical Area)",238,250,249,239,242,238,230,230,233,310,256,252,253,253,259,264,270,263
+35860,"North Vernon, IN (Micropolitan Statistical Area)",66,68,73,70,69,70,74,83,89,85,79,73,70,70,74,73,80,81
+35900,"North Wilkesboro, NC (Micropolitan Statistical Area)",199,202,198,193,191,190,190,195,202,213,184,182,180,181,178,186,188,186
+35940,"Norwalk, OH (Micropolitan Statistical Area)",148,151,146,143,138,134,138,142,148,157,139,133,138,139,142,142,142,140
+36020,"Oak Harbor, WA (Micropolitan Statistical Area)",1428,1465,1455,1428,1341,1325,1351,1347,1339,1390,1409,1474,1399,1369,1339,1355,1345,1332
+36300,"Ogdensburg-Massena, NY (Micropolitan Statistical Area)",489,522,573,600,587,578,581,589,632,609,599,600,586,584,587,599,598,591
+36340,"Oil City, PA (Micropolitan Statistical Area)",144,148,143,143,131,126,123,122,123,130,102,92,96,105,104,105,108,108
+36380,"Okeechobee, FL (Micropolitan Statistical Area)",73,71,71,67,71,74,75,76,75,75,66,61,65,68,71,74,72,69
+36460,"Olean, NY (Micropolitan Statistical Area)",245,251,243,239,239,254,260,260,265,286,245,233,234,241,241,252,258,259
+36580,"Oneonta, NY (Micropolitan Statistical Area)",172,180,176,170,162,159,159,152,153,149,140,132,129,127,125,131,134,128
+36620,"Ontario, OR-ID (Micropolitan Statistical Area)",284,307,302,278,286,282,288,289,285,275,256,257,249,257,253,253,240,232
+36660,"Opelousas, LA (Micropolitan Statistical Area)",213,208,212,202,190,191,185,177,183,215,179,170,159,165,166,168,165,169
+36700,"Orangeburg, SC (Micropolitan Statistical Area)",217,214,208,212,210,202,202,207,203,231,200,204,198,203,212,218,214,219
+36820,"Oskaloosa, IA (Micropolitan Statistical Area)",77,76,77,73,70,72,72,67,68,61,60,54,55,60,56,58,56,55
+36830,"Othello, WA (Micropolitan Statistical Area)",54,59,51,45,50,48,44,40,48,50,43,38,34,34,34,37,36,39
+36837,"Ottawa, IL (Micropolitan Statistical Area)",517,539,539,540,530,528,523,542,547,566,515,495,487,484,486,480,469,463
+36840,"Ottawa, KS (Micropolitan Statistical Area)",88,91,90,87,76,77,74,78,81,69,70,66,66,68,66,66,68,68
+36900,"Ottumwa, IA (Micropolitan Statistical Area)",145,149,142,134,140,139,133,138,136,128,121,115,114,112,118,114,112,109
+36940,"Owatonna, MN (Micropolitan Statistical Area)",84,84,78,82,83,77,79,80,79,84,71,71,72,73,73,76,76,75
+37060,"Oxford, MS (Micropolitan Statistical Area)",353,368,357,345,345,335,338,337,346,356,339,334,328,325,325,328,328,335
+37120,"Ozark, AL (Micropolitan Statistical Area)",2791,2696,2687,2684,2700,2788,2770,2880,3018,3107,3212,3162,3139,3094,3059,3080,2996,2934
+37140,"Paducah, KY-IL (Micropolitan Statistical Area)",890,919,912,911,898,896,873,853,872,900,842,817,796,783,746,731,722,731
+37220,"Pahrump, NV (Micropolitan Statistical Area)",167,177,169,167,157,157,156,152,159,141,138,128,119,118,117,123,119,118
+37260,"Palatka, FL (Micropolitan Statistical Area)",155,155,147,144,144,137,135,137,147,155,127,114,112,109,112,112,116,124
+37300,"Palestine, TX (Micropolitan Statistical Area)",125,128,122,120,120,119,125,127,132,162,133,128,121,124,133,148,149,147
+37420,"Pampa, TX (Micropolitan Statistical Area)",75,79,78,77,71,73,70,67,64,70,55,48,48,44,47,49,46,45
+37500,"Paragould, AR (Micropolitan Statistical Area)",89,93,89,86,85,85,84,83,86,100,88,85,82,88,90,93,94,93
+37540,"Paris, TN (Micropolitan Statistical Area)",141,142,147,149,145,144,139,139,140,148,123,115,109,110,108,110,110,112
+37580,"Paris, TX (Micropolitan Statistical Area)",163,164,159,164,156,154,159,156,158,163,153,148,146,149,145,142,139,139
+37660,"Parsons, KS (Micropolitan Statistical Area)",90,90,87,80,79,76,74,80,77,79,74,74,73,80,80,79,82,80
+37740,"Payson, AZ (Micropolitan Statistical Area)",552,577,557,520,519,518,485,487,500,536,488,474,462,452,430,354,314,298
+37770,"Pearsall, TX (Micropolitan Statistical Area)",28,29,30,27,27,27,26,26,29,110,108,101,99,98,115,143,160,164
+37780,"Pecos, TX (Micropolitan Statistical Area)",83,87,82,83,78,76,81,89,89,92,79,79,77,75,68,66,68,65
+37800,"Pella, IA (Micropolitan Statistical Area)",753,770,753,605,549,562,602,614,467,197,148,142,133,138,134,131,130,126
+37940,"Peru, IN (Micropolitan Statistical Area)",658,576,677,703,678,656,632,624,606,661,686,661,653,648,632,636,617,602
+38100,"Picayune, MS (Micropolitan Statistical Area)",121,128,133,138,140,141,139,142,141,154,125,125,125,123,120,124,121,118
+38180,"Pierre, SD (Micropolitan Statistical Area)",280,289,285,298,294,292,297,309,308,318,310,306,290,290,282,291,281,278
+38240,"Pinehurst-Southern Pines, NC (Micropolitan Statistical Area)",163,167,155,164,183,166,151,151,151,171,139,145,139,150,157,164,175,189
+38260,"Pittsburg, KS (Micropolitan Statistical Area)",131,132,128,124,125,123,123,120,117,125,109,102,99,87,85,87,85,87
+38380,"Plainview, TX (Micropolitan Statistical Area)",128,132,132,127,126,123,125,126,125,129,120,119,88,75,74,77,79,76
+38420,"Platteville, WI (Micropolitan Statistical Area)",175,180,175,177,172,170,168,172,167,176,157,149,142,148,147,150,145,144
+38460,"Plattsburgh, NY (Micropolitan Statistical Area)",507,552,612,622,613,627,633,675,733,765,748,751,703,695,700,708,687,694
+38500,"Plymouth, IN (Micropolitan Statistical Area)",107,107,105,100,97,95,96,96,101,114,98,93,93,93,97,104,106,101
+38580,"Point Pleasant, WV-OH (Micropolitan Statistical Area)",286,292,291,258,263,215,209,206,214,230,196,198,188,184,180,171,162,159
+38620,"Ponca City, OK (Micropolitan Statistical Area)",153,155,152,151,154,155,149,146,126,126,109,112,111,97,102,105,105,106
+38700,"Pontiac, IL (Micropolitan Statistical Area)",116,122,120,118,114,116,117,117,113,114,103,102,102,103,106,105,100,94
+38740,"Poplar Bluff, MO (Micropolitan Statistical Area)",568,607,615,632,646,613,621,672,739,727,737,712,727,775,789,794,812,826
+38780,"Portales, NM (Micropolitan Statistical Area)",62,64,62,64,59,59,57,57,59,68,56,54,57,51,39,42,40,36
+38820,"Port Angeles, WA (Micropolitan Statistical Area)",482,506,474,443,450,428,414,439,477,531,475,465,437,429,446,456,460,456
+38920,"Port Lavaca, TX (Micropolitan Statistical Area)",45,44,43,41,42,45,44,42,39,38,37,35,34,34,37,38,38,35
+39020,"Portsmouth, OH (Micropolitan Statistical Area)",188,187,181,177,180,181,179,178,170,213,179,180,170,167,168,169,165,168
+39060,"Pottsville, PA (Micropolitan Statistical Area)",741,731,709,687,666,655,654,650,661,684,642,629,606,627,606,623,605,590
+39220,"Price, UT (Micropolitan Statistical Area)",166,177,180,180,183,175,166,161,163,172,169,168,160,144,145,147,145,149
+39260,"Prineville, OR (Micropolitan Statistical Area)",339,349,338,341,335,319,315,306,319,325,314,320,305,297,288,291,281,281
+39420,"Pullman, WA (Micropolitan Statistical Area)",279,293,306,276,279,279,283,279,274,282,272,256,229,223,230,239,248,242
+39500,"Quincy, IL-MO (Micropolitan Statistical Area)",386,403,399,379,376,367,364,364,383,419,375,354,315,286,282,280,281,283
+39700,"Raymondville, TX (Micropolitan Statistical Area)",34,34,34,32,32,33,34,34,36,152,98,30,27,28,29,30,31,30
+39780,"Red Bluff, CA (Micropolitan Statistical Area)",270,291,284,274,270,268,259,262,268,286,251,241,231,225,220,227,214,207
+39860,"Red Wing, MN (Micropolitan Statistical Area)",128,128,129,130,129,132,130,134,122,132,122,122,124,123,123,123,123,124
+39940,"Rexburg, ID (Micropolitan Statistical Area)",156,168,164,153,155,157,152,153,160,163,144,137,128,131,132,134,130,126
+39980,"Richmond, IN (Micropolitan Statistical Area)",167,169,167,160,163,163,161,162,158,166,163,156,157,157,158,161,167,164
+40080,"Richmond-Berea, KY (Micropolitan Statistical Area)",631,687,743,733,797,876,948,1107,1250,1373,1298,1211,1076,1040,1088,1103,1129,1173
+40100,"Rio Grande City-Roma, TX (Micropolitan Statistical Area)",285,338,373,392,396,409,484,542,598,617,604,645,762,777,747,783,801,811
+40180,"Riverton, WY (Micropolitan Statistical Area)",452,467,466,466,468,452,414,426,462,497,479,482,479,483,467,479,474,454
+40260,"Roanoke Rapids, NC (Micropolitan Statistical Area)",190,199,188,182,174,170,173,181,183,209,166,163,165,168,176,170,177,173
+40300,"Rochelle, IL (Micropolitan Statistical Area)",154,150,146,141,143,145,147,148,140,141,129,123,117,116,113,114,116,111
+40460,"Rockingham, NC (Micropolitan Statistical Area)",127,127,127,127,106,97,96,93,97,104,85,80,78,82,108,109,109,109
+40530,"Rockport, TX (Micropolitan Statistical Area)",24,22,22,24,23,22,21,21,24,32,20,18,18,18,19,20,19,20
+40540,"Rock Springs, WY (Micropolitan Statistical Area)",258,255,256,248,238,238,234,238,241,261,241,240,232,217,201,206,210,216
+40620,"Rolla, MO (Micropolitan Statistical Area)",524,549,548,494,468,424,381,377,391,409,412,377,365,353,343,340,332,333
+40700,"Roseburg, OR (Micropolitan Statistical Area)",1516,1556,1535,1517,1481,1432,1485,1538,1562,1506,1432,1385,1367,1369,1460,1468,1457,1465
+40740,"Roswell, NM (Micropolitan Statistical Area)",357,370,354,339,329,330,329,334,328,343,309,302,275,252,237,242,236,241
+40760,"Ruidoso, NM (Micropolitan Statistical Area)",112,119,118,123,123,119,114,114,119,134,114,111,114,102,96,94,94,95
+40780,"Russellville, AR (Micropolitan Statistical Area)",485,511,495,484,474,474,460,446,460,480,437,417,383,373,372,383,382,377
+40820,"Ruston, LA (Micropolitan Statistical Area)",118,118,114,120,118,116,116,115,111,121,109,113,115,111,106,110,112,114
+40860,"Rutland, VT (Micropolitan Statistical Area)",374,394,388,379,379,375,351,329,330,344,309,300,294,291,292,289,279,278
+40940,"Safford, AZ (Micropolitan Statistical Area)",323,341,328,318,330,417,404,405,416,439,430,426,419,414,408,405,394,384
+41220,"St. Marys, GA (Micropolitan Statistical Area)",2290,2331,2351,2342,2308,2278,2284,2352,2209,2215,2289,2377,2242,2197,2228,2380,2477,2590
+41260,"St. Marys, PA (Micropolitan Statistical Area)",110,109,146,135,123,123,118,113,114,125,107,106,109,104,106,83,88,87
+41400,"Salem, OH (Micropolitan Statistical Area)",589,600,590,574,560,567,590,601,590,631,589,593,591,593,611,616,618,587
+41460,"Salina, KS (Micropolitan Statistical Area)",337,346,341,342,335,317,319,322,318,321,295,298,302,292,276,268,264,251
+41760,"Sandpoint, ID (Micropolitan Statistical Area)",256,263,252,238,237,221,210,199,207,219,188,186,182,181,179,193,190,190
+41780,"Sandusky, OH (Micropolitan Statistical Area)",201,202,197,204,218,193,214,207,238,332,306,303,302,294,287,243,241,248
+41820,"Sanford, NC (Micropolitan Statistical Area)",164,170,169,163,163,161,164,165,173,192,154,153,151,155,156,158,160,171
+42300,"Sault Ste. Marie, MI (Micropolitan Statistical Area)",306,331,362,379,361,364,383,411,452,506,471,457,460,464,473,464,465,473
+42380,"Sayre, PA (Micropolitan Statistical Area)",212,216,211,215,213,207,206,205,210,257,216,208,205,211,210,212,216,207
+42420,"Scottsbluff, NE (Micropolitan Statistical Area)",195,211,219,209,207,201,200,205,202,211,194,183,170,171,174,167,168,158
+42460,"Scottsboro, AL (Micropolitan Statistical Area)",601,633,610,605,596,565,551,516,478,480,496,487,402,352,256,205,154,139
+42500,"Scottsburg, IN (Micropolitan Statistical Area)",59,62,58,54,54,55,57,52,52,71,62,61,66,73,76,75,76,77
+42620,"Searcy, AR (Micropolitan Statistical Area)",180,187,186,180,182,186,182,178,185,204,179,167,161,160,161,163,168,164
+42740,"Sedalia, MO (Micropolitan Statistical Area)",156,163,155,150,149,151,151,153,158,160,138,135,132,145,136,136,137,128
+42780,"Selinsgrove, PA (Micropolitan Statistical Area)",84,87,101,101,97,98,97,95,97,124,107,96,93,89,86,88,87,85
+42820,"Selma, AL (Micropolitan Statistical Area)",163,170,164,154,154,157,149,151,155,180,178,173,172,171,161,159,155,152
+42860,"Seneca, SC (Micropolitan Statistical Area)",168,171,162,166,148,146,153,150,132,157,132,133,134,135,154,170,174,178
+42900,"Seneca Falls, NY (Micropolitan Statistical Area)",120,123,123,117,111,106,103,102,101,109,92,93,92,89,83,85,86,86
+42940,"Sevierville, TN (Micropolitan Statistical Area)",365,378,354,354,362,366,356,367,372,415,349,346,335,337,334,343,352,362
+42980,"Seymour, IN (Micropolitan Statistical Area)",111,115,110,103,107,109,100,99,102,101,86,82,84,86,90,93,90,94
+43020,"Shawano, WI (Micropolitan Statistical Area)",129,136,136,139,135,134,133,136,140,152,127,124,117,119,117,114,117,115
+43060,"Shawnee, OK (Micropolitan Statistical Area)",190,190,186,181,182,183,181,180,178,177,150,143,140,137,142,147,142,151
+43140,"Shelby, NC (Micropolitan Statistical Area)",204,204,196,189,189,192,195,198,208,216,178,172,170,166,173,178,177,186
+43180,"Shelbyville, TN (Micropolitan Statistical Area)",97,103,101,95,79,72,74,73,75,80,64,59,60,63,65,68,69,67
+43220,"Shelton, WA (Micropolitan Statistical Area)",103,100,90,89,79,73,73,74,82,100,72,73,71,70,68,66,70,73
+43260,"Sheridan, WY (Micropolitan Statistical Area)",580,592,596,621,609,613,629,678,736,777,750,730,738,752,761,764,755,784
+43320,"Show Low, AZ (Micropolitan Statistical Area)",1663,1660,1635,1655,1649,1693,1676,1676,1724,1833,1725,1752,1699,1675,1659,1725,1801,1860
+43380,"Sidney, OH (Micropolitan Statistical Area)",100,103,100,99,98,95,91,93,94,100,89,80,72,72,71,73,72,75
+43460,"Sikeston, MO (Micropolitan Statistical Area)",114,117,116,111,110,110,104,103,97,94,86,95,97,104,100,104,101,99
+43500,"Silver City, NM (Micropolitan Statistical Area)",235,253,247,240,223,221,205,206,226,249,228,218,206,206,202,198,197,193
+43660,"Snyder, TX (Micropolitan Statistical Area)",42,45,44,43,42,45,44,43,40,46,40,37,32,34,34,37,34,35
+43700,"Somerset, KY (Micropolitan Statistical Area)",206,210,207,207,202,178,180,174,191,254,183,171,170,175,186,193,195,199
+43740,"Somerset, PA (Micropolitan Statistical Area)",240,240,237,233,228,223,222,220,226,241,200,189,185,193,186,189,188,191
+43760,"Sonora, CA (Micropolitan Statistical Area)",496,530,515,495,492,474,459,470,506,576,512,487,485,521,497,493,459,440
+43940,"Spearfish, SD (Micropolitan Statistical Area)",186,197,191,189,182,178,173,177,192,206,186,181,170,158,153,163,171,162
+43980,"Spencer, IA (Micropolitan Statistical Area)",89,89,85,79,82,81,81,77,75,78,69,66,59,58,59,60,57,55
+44020,"Spirit Lake, IA (Micropolitan Statistical Area)",56,55,53,52,51,52,59,62,68,72,64,64,63,68,72,73,74,76
+44260,"Starkville, MS (Micropolitan Statistical Area)",387,383,369,377,362,347,331,313,312,326,294,277,274,273,279,277,271,271
+44340,"Statesboro, GA (Micropolitan Statistical Area)",141,147,139,141,137,139,140,137,141,139,132,137,135,139,134,134,135,133
+44460,"Steamboat Springs, CO (Micropolitan Statistical Area)",118,135,143,139,133,132,129,126,136,150,125,124,112,106,103,109,116,111
+44500,"Stephenville, TX (Micropolitan Statistical Area)",88,88,84,80,81,80,78,76,74,75,77,73,73,77,74,73,70,75
+44540,"Sterling, CO (Micropolitan Statistical Area)",75,80,82,80,80,82,75,75,75,70,68,64,68,66,64,62,59,58
+44580,"Sterling, IL (Micropolitan Statistical Area)",186,191,193,185,178,180,177,170,175,179,157,150,147,154,153,161,156,151
+44620,"Stevens Point, WI (Micropolitan Statistical Area)",213,227,224,218,212,214,212,207,205,202,186,177,174,170,167,165,167,160
+44660,"Stillwater, OK (Micropolitan Statistical Area)",368,372,374,339,333,328,320,308,310,317,290,272,253,240,233,228,236,231
+44740,"Storm Lake, IA (Micropolitan Statistical Area)",65,66,98,97,97,95,112,133,134,136,129,122,114,106,95,90,92,84
+44780,"Sturgis, MI (Micropolitan Statistical Area)",136,138,129,119,118,120,119,116,120,123,103,101,97,98,105,109,111,110
+44860,"Sulphur Springs, TX (Micropolitan Statistical Area)",96,97,95,95,98,92,90,88,82,89,80,78,74,73,71,70,72,69
+44900,"Summerville, GA (Micropolitan Statistical Area)",31,38,34,40,38,36,37,37,38,48,34,33,33,33,34,36,37,36
+44980,"Sunbury, PA (Micropolitan Statistical Area)",230,233,236,231,230,231,232,231,234,224,183,173,166,170,162,162,157,154
+45000,"Susanville, CA (Micropolitan Statistical Area)",817,823,957,1003,1208,1251,1298,1372,1568,1871,1869,1926,1935,1841,1873,1918,1858,1782
+45020,"Sweetwater, TX (Micropolitan Statistical Area)",47,50,47,47,45,43,47,46,48,53,45,43,43,41,39,42,39,39
+45140,"Tahlequah, OK (Micropolitan Statistical Area)",532,571,607,615,648,636,608,575,416,442,334,306,282,267,252,226,215,199
+45180,"Talladega-Sylacauga, AL (Micropolitan Statistical Area)",501,510,499,485,469,464,474,472,485,488,484,523,476,481,464,463,469,446
+45340,"Taos, NM (Micropolitan Statistical Area)",307,338,346,330,317,305,301,319,318,347,301,298,283,281,280,270,260,255
+45380,"Taylorville, IL (Micropolitan Statistical Area)",95,98,98,93,90,89,87,88,87,92,80,77,73,74,73,74,72,72
+45520,"The Dalles, OR (Micropolitan Statistical Area)",380,398,382,360,342,324,321,326,332,327,390,299,289,284,283,294,292,293
+45580,"Thomaston, GA (Micropolitan Statistical Area)",46,51,48,49,44,47,46,45,45,44,44,40,36,37,39,43,43,42
+45620,"Thomasville, GA (Micropolitan Statistical Area)",181,206,202,199,189,191,202,202,204,202,189,188,193,190,189,187,180,174
+45660,"Tiffin, OH (Micropolitan Statistical Area)",147,147,142,138,136,140,136,137,137,140,120,118,120,123,122,128,126,120
+45700,"Tifton, GA (Micropolitan Statistical Area)",192,201,216,201,203,206,208,225,225,226,220,206,201,201,201,207,204,196
+45740,"Toccoa, GA (Micropolitan Statistical Area)",65,69,71,71,72,72,69,70,70,85,68,69,65,66,67,68,65,68
+45860,"Torrington, CT (Micropolitan Statistical Area)",371,368,382,375,368,369,484,479,551,515,442,430,410,418,426,438,447,444
+45900,"Traverse City, MI (Micropolitan Statistical Area)",685,688,694,671,669,678,678,698,711,826,689,690,677,684,686,693,691,682
+45980,"Troy, AL (Micropolitan Statistical Area)",67,68,67,85,89,91,90,92,94,104,88,85,88,94,95,96,95,90
+46020,"Truckee-Grass Valley, CA (Micropolitan Statistical Area)",426,434,413,400,379,380,378,389,390,439,384,368,361,356,369,377,371,352
+46100,"Tullahoma-Manchester, TN (Micropolitan Statistical Area)",534,548,539,538,539,539,541,556,574,638,643,611,596,594,614,646,644,656
+46180,"Tupelo, MS (Micropolitan Statistical Area)",663,684,671,660,639,634,648,679,696,763,648,628,599,606,587,593,601,587
+46380,"Ukiah, CA (Micropolitan Statistical Area)",301,306,293,287,278,271,278,284,275,333,287,273,258,260,270,278,277,274
+46420,"Union, SC (Micropolitan Statistical Area)",89,91,82,76,75,78,81,79,82,86,72,68,71,69,56,56,52,54
+46460,"Union City, TN (Micropolitan Statistical Area)",130,130,128,124,122,117,117,118,120,128,113,113,110,110,111,112,114,110
+46500,"Urbana, OH (Micropolitan Statistical Area)",81,86,80,82,81,81,77,79,79,87,74,71,67,65,63,69,68,69
+46620,"Uvalde, TX (Micropolitan Statistical Area)",136,156,161,165,169,168,178,203,246,252,247,242,241,237,220,219,212,205
+46780,"Van Wert, OH (Micropolitan Statistical Area)",74,73,71,70,68,68,68,64,68,72,59,55,52,48,49,51,49,49
+46820,"Vermillion, SD (Micropolitan Statistical Area)",60,59,58,52,50,50,49,45,44,45,38,37,35,33,31,28,27,30
+46860,"Vernal, UT (Micropolitan Statistical Area)",406,432,434,444,422,414,398,405,421,428,400,380,362,356,355,388,393,386
+46900,"Vernon, TX (Micropolitan Statistical Area)",61,62,58,54,54,53,48,48,49,50,40,38,37,38,35,38,37,38
+46980,"Vicksburg, MS (Micropolitan Statistical Area)",2128,2194,2147,2089,2004,1992,1880,1902,2017,2226,2234,2255,2172,2121,2203,2279,2382,2459
+47080,"Vidalia, GA (Micropolitan Statistical Area)",97,99,96,96,93,94,88,91,94,104,87,85,79,82,81,85,82,84
+47180,"Vincennes, IN (Micropolitan Statistical Area)",175,181,182,178,187,183,180,187,186,201,205,203,195,170,163,165,164,156
+47240,"Vineyard Haven, MA (Micropolitan Statistical Area)",50,52,53,47,48,51,50,49,49,64,43,44,47,47,45,50,47,45
+47340,"Wabash, IN (Micropolitan Statistical Area)",87,89,87,85,88,85,84,85,86,88,74,73,75,74,73,73,72,69
+47420,"Wahpeton, ND-MN (Micropolitan Statistical Area)",120,121,120,114,114,112,110,106,106,110,97,93,91,89,81,83,81,86
+47540,"Wapakoneta, OH (Micropolitan Statistical Area)",101,99,96,96,109,122,124,126,128,125,86,85,83,86,92,96,95,96
+47620,"Warren, PA (Micropolitan Statistical Area)",214,237,256,244,234,218,200,194,185,214,174,167,161,164,168,172,167,159
+47660,"Warrensburg, MO (Micropolitan Statistical Area)",778,840,771,820,861,883,927,956,1075,1352,1349,1309,1226,1182,1282,1322,1297,1297
+47700,"Warsaw, IN (Micropolitan Statistical Area)",188,196,185,184,190,187,184,193,199,207,175,171,165,163,163,162,160,155
+47780,"Washington, IN (Micropolitan Statistical Area)",87,87,84,82,82,78,82,80,80,93,77,68,71,69,71,75,74,73
+47820,"Washington, NC (Micropolitan Statistical Area)",127,130,130,128,128,129,132,139,140,153,128,125,118,114,120,125,122,122
+47920,"Washington Court House, OH (Micropolitan Statistical Area)",63,64,61,62,61,59,59,56,56,61,50,50,52,51,51,50,49,50
+47980,"Watertown, SD (Micropolitan Statistical Area)",212,223,225,218,224,223,223,212,218,238,213,209,211,213,209,209,206,208
+48020,"Watertown-Fort Atkinson, WI (Micropolitan Statistical Area)",193,206,205,199,199,199,200,196,193,191,184,182,178,174,173,179,171,170
+48100,"Wauchula, FL (Micropolitan Statistical Area)",50,52,50,49,49,45,46,47,50,50,47,47,43,45,48,49,47,49
+48180,"Waycross, GA (Micropolitan Statistical Area)",200,207,198,200,198,197,195,192,191,278,175,163,151,145,148,152,151,138
+48220,"Weatherford, OK (Micropolitan Statistical Area)",166,172,169,171,173,174,168,171,185,199,201,191,172,175,187,192,205,203
+48460,"West Plains, MO (Micropolitan Statistical Area)",110,114,111,111,106,104,99,96,100,117,108,104,107,119,121,127,130,134
+48500,"West Point, MS (Micropolitan Statistical Area)",82,78,66,64,57,56,59,63,64,71,60,54,57,56,57,58,58,52
+48580,"Whitewater, WI (Micropolitan Statistical Area)",212,214,202,204,206,206,205,206,201,199,197,190,188,187,185,180,179,181
+48780,"Williston, ND (Micropolitan Statistical Area)",110,116,115,112,106,104,103,104,102,103,90,88,80,73,80,100,107,104
+48820,"Willmar, MN (Micropolitan Statistical Area)",194,194,193,193,188,183,183,179,175,180,161,151,145,150,148,139,141,132
+48940,"Wilmington, OH (Micropolitan Statistical Area)",149,160,162,160,167,179,173,177,171,154,138,130,126,124,129,134,130,133
+48980,"Wilson, NC (Micropolitan Statistical Area)",212,210,201,204,205,199,191,187,187,205,176,167,155,118,130,129,131,135
+49060,"Winfield, KS (Micropolitan Statistical Area)",112,121,116,111,105,99,99,99,97,100,92,100,98,101,99,97,99,96
+49080,"Winnemucca, NV (Micropolitan Statistical Area)",170,201,200,190,179,173,163,160,170,170,163,162,158,146,152,163,156,145
+49100,"Winona, MN (Micropolitan Statistical Area)",153,152,154,151,148,151,149,151,156,162,147,138,134,139,137,143,134,145
+49220,"Wisconsin Rapids-Marshfield, WI (Micropolitan Statistical Area)",210,209,208,209,202,196,202,203,198,220,199,198,196,194,192,189,188,187
+49260,"Woodward, OK (Micropolitan Statistical Area)",139,139,136,134,129,127,128,128,127,125,121,114,107,105,106,109,109,102
+49300,"Wooster, OH (Micropolitan Statistical Area)",268,274,277,271,223,268,250,247,264,292,263,261,253,253,257,267,262,260
+49380,"Worthington, MN (Micropolitan Statistical Area)",109,115,114,107,108,109,103,98,100,101,95,97,87,86,89,86,85,81
+49460,"Yankton, SD (Micropolitan Statistical Area)",197,204,201,202,202,207,216,215,216,228,219,210,194,200,198,201,203,195
+49780,"Zanesville, OH (Micropolitan Statistical Area)",306,308,300,291,290,288,289,287,281,286,250,233,220,219,216,218,224,223
+49820,"Zapata, TX (Micropolitan Statistical Area)",37,46,49,47,48,47,79,147,164,174,169,173,163,157,143,140,138,145
+
+Legend/Footnotes
+1. The estimates of employment for 2001-2006 are based on the 2002 North American Industry Classification System (NAICS). The estimates for 2007-2010 are based on the 2007 NAICS. The estimates for 2011-2016 are based on the 2012 NAICS. The estimates for 2017 forward are based on the 2017 NAICS.
+"* Estimates from 2008 forward separate Skagway-Hoonah-Angoon Census Area (02232) into Skagway Municipality (02230) and Hoonah-Angoon Census Area (02105). Estimates from 2009 forward separate Wrangell-Petersburg Census Area (02280) into Petersburg Census Area and Wrangell City and Borough (02275). In addition, a part of the Prince of Wales-Outer Ketchikan Census Area (02201) was annexed by Ketchikan Gateway Borough (02130) and part (Meyers Chuck Area) was included in the new Wrangell City and Borough (02275). The remainder of the Prince of Wales-Outer Ketchikan Census Area (02201) was renamed Prince of Wales-Hyder Census Area (02198). Petersburg Borough (02195) was created from part of former Petersburg Census Area and part of Hoonah-Angoon Census Area (02105) for 2013 forward. Prince of Wales-Hyder Census Area (02198) added part of the former Petersburg Census Area beginning in 2013. For years 2009-2012, Petersburg Borough (02195) reflects the geographic boundaries of the former Petersburg Census Area."
+"* Virginia combination areas consist of one or two independent cities with 1980 populations of less than 100,000 combined with an adjacent county. The county name appears first, followed by the city name(s). Separate estimates for the jurisdictions making up the combination area are not available. Bedford County, VA includes the independent city of Bedford for all years."
+"  Metropolitan Areas are defined (geographically delineated) by the Office of Management and Budget (OMB) bulletin no. 20-01 issued March 6, 2020."
+"  Last updated: November 16, 2023-- new statistics for 2022; revised statistics for 2002-2021."
