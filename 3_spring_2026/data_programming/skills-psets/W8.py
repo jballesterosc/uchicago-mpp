@@ -34,25 +34,25 @@ df_4["Cat1"] = "Micro"
 # instead of variables now (long format). Then GeoFlips and next GeoName
 
 df_1 = df_1.melt(
-    id_vars=["GeoFips", "GeoName", "Cat"],
+    id_vars=["GeoFips", "GeoName", "Cat1"],
     var_name="Year",
     value_name="Value"
 )
 
 df_2 = df_2.melt(
-    id_vars=["GeoFips", "GeoName", "Cat"],
+    id_vars=["GeoFips", "GeoName", "Cat1"],
     var_name="Year",
     value_name="Value"
 )
 
 df_3 = df_3.melt(
-    id_vars=["GeoFips", "GeoName", "Cat"],
+    id_vars=["GeoFips", "GeoName", "Cat1"],
     var_name="Year",
     value_name="Value"
 )
 
 df_4 = df_4.melt(
-    id_vars=["GeoFips", "GeoName", "Cat"],
+    id_vars=["GeoFips", "GeoName", "Cat1"],
     var_name="Year",
     value_name="Value"
 )
@@ -65,12 +65,12 @@ merged_civilian = pd.concat([df_1, df_2, df_3, df_4])
 df1 = pd.read_csv(os.path.join(PATH, "military employment 1990-2000 Metro.csv"), skiprows=4, skipfooter=8)
 df2 = pd.read_csv(os.path.join(PATH, "military employment 1990-2000 Micro.csv"), skiprows=4, skipfooter=7)
 df3 = pd.read_csv(os.path.join(PATH, "military employment 2001-current Metro.csv"), skiprows=4, skipfooter=7)
-df3 = pd.read_csv(os.path.join(PATH, "military employment 2001-current Micro.csv"), skiprows=4, skipfooter=6)
+df4 = pd.read_csv(os.path.join(PATH, "military employment 2001-current Micro.csv"), skiprows=4, skipfooter=6)
 
-df_1["Cat"] = "Metro"
-df_2["Cat"] = "Micro"
-df_3["Cat"] = "Metro"
-df_4["Cat"] = "Micro"
+df1["Cat2"] = "Metro"
+df2["Cat2"] = "Micro"
+df3["Cat2"] = "Metro"
+df4["Cat2"] = "Micro"
 
 
 
