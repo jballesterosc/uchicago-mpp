@@ -184,3 +184,9 @@ print(provider_hhrg[["episode", "therapy", "clinical", "functional", "service"]]
 # This is creating an extra  split. To only drop the 6th column should be enough -- not the rows.
 
 # EXTRA CREDIT: 15 hours
+
+
+EXPORT_PATH = "/Users/jayballesteros/_github/uchicago-mpp/3_spring_2026/data_programming/applied-psets/_data/apset_3b"
+
+provider_hhrg.to_csv(os.path.join(EXPORT_PATH, "provider_hhrg.csv"), index=False)
+case_mix_weight.to_csv(os.path.join(EXPORT_PATH, "case_mix_weight.csv"), index=False)
