@@ -10,8 +10,6 @@ provider_hhrg = pd.read_csv(os.path.join(PATH, "provider_hhrg.csv"))
 case_mix_weight = pd.read_csv(os.path.join(PATH, "case_mix_weight.csv"))
 case_mix_weight = case_mix_weight.rename(columns={"2014 Final HH PPS Case-Mix Weights": "casemix_2014"})
 
-
-
 """
 3. Merge Provider Costs with Case Mix, part 2
 """
@@ -21,10 +19,9 @@ case_mix_weight = case_mix_weight.rename(columns={"2014 Final HH PPS Case-Mix We
 # they currently exist?
 
 ### To extract the information necessary fopr the merging, I have to use both the 'Description' and 'Clinical, Functional, and Service Levels' colummns. 
+### And for the groups, we currently have 153 unique combinations. 
 
 print(case_mix_weight.groupby(["Description", "Clinical, Functional, and Service Levels"]).ngroups) # https://stackoverflow.com/questions/27787930/how-to-get-number-of-groups-in-a-groupby-object-in-pandas
-
-### And for the groups, we currently have 153 unique combinations. 
 
 # 3.6. Take the columns you selected and split them into five columns containing the same information 
 # (and having the same names) as the five columns you created in provider hhrg. Hint: The 
@@ -59,16 +56,15 @@ for columns in ["episode", "therapy", "clinical", "functional", "service"]:
     print()
     print()
 
-provider_hhrg["therapy"] = provider_hhrg["therapy"].str.strip() # Weird spaces before and after values. 
-provider_hhrg["functional"] = provider_hhrg["functional"].str.strip() # I noticed inconsistency in spaces between the categories in this column 
-case_mix_weight["therapy"] = case_mix_weight["therapy"].str.strip()
+provider_hhrg["therapy"] = provider_hhrg["therapy"].str.strip() # weird spaces before and after values
+provider_hhrg["functional"] = provider_hhrg["functional"].str.strip() # I noticed inconsistency in spaces between the categories in this column, so same method
+case_mix_weight["therapy"] = case_mix_weight["therapy"].str.strip()# same to the comments above
 
 case_mix_weight["episode"] = case_mix_weight["episode"].replace({
-    '1st and 2nd Episodes': 'Early Episode',
-    "3rd+ Episodes": 'Late Episode',
-    "All Episodes": 'Early or Late Episode'
+    "1st and 2nd Episodes": "Early Episode",
+    "3rd+ Episodes": "Late Episode",
+    "All Episodes": "Early or Late Episode"
 })
-
 
 case_mix_weight["therapy"] = case_mix_weight["therapy"].replace({
     "0 to 5 Therapy Visits": "0-13 therapies",
@@ -102,7 +98,6 @@ case_mix_weight["service"] = case_mix_weight["service"].replace({
     "S5": "Service Severity Level 5"
 })
 
-
 # 3.8 Create a new DataFrame named provider hhrg wt by merging case mix weight with provider hhrg
 # using the five columns you created. If you have set up these columns correctly, the data should
 # perfectly merge multiple rows from provider hhrg to each unique row in case mix weight. We
@@ -131,7 +126,6 @@ provider_hhrg_wt = provider_hhrg_wt.drop(columns="_merge")
 assert len(provider_hhrg_wt) == len(provider_hhrg) == (111904)
 
 assert provider_hhrg_wt["casemix_2014"].notna().all()
-
 
 """
 4. Billing Outlier Analysis
@@ -171,9 +165,6 @@ total_episodes.name = "total_episodes"
 
 provider_sum = pd.concat([avg_cost, avg_case_mix, total_episodes], axis=1).reset_index()
 
-
-
-
 # 4.2 How much variation is there in average cost per episode by provider? Show your code to create
 # a figure that answers this question. Hint: Look at the Seaborn histplot function, and make
 # sure your figure is clearly labeled. This distribution has a “fat” right tail - what does this tell us
@@ -181,11 +172,11 @@ provider_sum = pd.concat([avg_cost, avg_case_mix, total_episodes], axis=1).reset
 # government from the density of average costs? Briefly explain why or why not. Hint: Re-read the
 # introduction of this assignment!
 
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(10, 4))
 sns.histplot(data=provider_sum, x="avg_cost", ax=ax)
-ax.set_xlabel("Average Cost per Episode ($)")
-ax.set_ylabel("Number of Providers")
-ax.set_title("Distribution of Average Cost per Episode by Provider")
+ax.set_xlabel("Average cost per episode (USD)")
+ax.set_ylabel("Number of providers")
+ax.set_title("Distribution of average cost per episode")
 plt.tight_layout()
 plt.show()
 
@@ -199,22 +190,18 @@ plt.show()
 # Keeping in mind the definition of case-mix weight, what does this imply, and how is it relevant to
 # our attempts to detect fraud?
 
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(10, 8))
 sns.regplot(data=provider_sum, x="avg_case_mix", y="avg_cost", ax=ax, scatter_kws={"alpha": 0.3})
-ax.set_xlabel("Average Case-Mix Weight")
-ax.set_ylabel("Average Cost per Episode ($)")
-ax.set_title("Average Cost vs. Average Case-Mix Weight by Provider")
+ax.set_xlabel("Average case-mix weight")
+ax.set_ylabel("Average cost per episode (USD)")
+ax.set_title("Average cost vs. average case-mix weight by provider")
 plt.tight_layout()
 plt.show()
 
 
-### There is a positive relationship: providers with higher case-mix weights
-# (sicker patients) tend to have higher average costs. This means some high-cost
-# providers are expensive simply because they treat more severe cases. To detect
-# fraud, we need to normalize costs by case-mix to identify providers charging
-# more than expected given their patient severity.
-
-
+### Seems like providers with higher case-mix weights tend to have higher average costs. 
+### This might mean that some expensive providers are are like that just because they treat 
+### more severe cases or patients.
 
 # 4.4 Create a new column, cost normalized, which is the ratio of average cost to the average case-mix
 # weight for each provider.
@@ -228,22 +215,20 @@ provider_sum["cost_normalized"] = provider_sum["avg_cost"] / provider_sum["avg_c
 # distributions of both of these variables overlaid on each other. Hint: Use the Seaborn histplot
 # function twice on the same axis.
 
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(10, 4))
 sns.histplot(data=provider_sum, x="avg_cost", ax=ax, label="Average Cost", alpha=0.5)
 sns.histplot(data=provider_sum, x="cost_normalized", ax=ax, label="Cost Normalized", alpha=0.5)
-ax.set_xlabel("Cost ($)")
-ax.set_ylabel("Number of Providers")
-ax.set_title("Distribution of Average Cost vs. Normalized Cost by Provider")
+ax.set_xlabel("Cost in USD")
+ax.set_ylabel("Providers")
+ax.set_title("Distribution of average Cost vs. normalized cost by provider")
 ax.legend()
 plt.tight_layout()
 plt.show()
 
-
-### The normalized cost distribution is tighter (less spread) than the raw average cost,
-### meaning that much of the variation in avg_cost is explained by differences in patient
-### severity. Providers that still appear as outliers AFTER normalizing are the suspicious
-### ones — their high costs can't be explained by having sicker patients, suggesting
-### potential overbilling or fraud.
+### The normalized cost distribution is less spread than the original average cost. 
+### Much of the variation in avg_cost could be explained by the patients severity. 
+### After normalizing, the providers that appear as outliers could be the suspicious
+### ones of fraud or simply the ones observing very atypical situations.
 
 # 4.6 What are the top ten home health care providers with the highest average billing per episode
 # in Illinois? What are the top ten providers with the highest average costs adjusted for case-mix
@@ -251,26 +236,21 @@ plt.show()
 # for fraud? What would likely happen if investigators instead cracked down on the other group that
 # you don’t recommend?
 
-
 il_providers = provider_sum[provider_sum["State"] == "IL"]
 
-print("Top 10 by Average Cost:")
+print("Top 10 by average cost:")
 print(il_providers.nlargest(10, "avg_cost")[["Prvdr_ID", "Prvdr_Name", "avg_cost"]])
-
-print("\nTop 10 by Normalized Cost:")
+print()
+print()
+print("\nTop 10 by normalized cost:")
 print(il_providers.nlargest(10, "cost_normalized")[["Prvdr_ID", "Prvdr_Name", "cost_normalized"]])
 
-#### The top 10 by avg_cost and top 10 by cost_normalized are completely different lists.
-# The avg_cost list (e.g., Forum Health Care at $5,325) shows providers with the highest
-# raw billing, but their costs may be justified by treating sicker patients. The 
-# cost_normalized list (e.g., Care Solutions at $4,377 per unit of case-mix) shows 
-# providers billing far more than expected given their patient severity.
-#
-# Investigators should focus on the cost_normalized top 10, since these providers' high
-# costs cannot be explained by patient severity — making them the strongest fraud suspects.
-# If investigators cracked down on the avg_cost group instead, they risk punishing agencies
-# that legitimately care for the sickest patients, which could discourage providers from
-# accepting high-severity cases and ultimately harm the patients who need care the most.
+### The avg_cost top ten shows providers with the highest raw billing, that are potentially treating sicker patients. 
+### The cost_normalized top ten shows providers billing more than expected given their patient severity.
+### So I would recommend investigators to focus on the cost_normalized list, since these providers' high
+### costs cannot be directly explained by the severity of their patients, so something odd is going on.
+### If investigators cracked down on the avg_cost group, they risk creating a negative incentive that 
+### could discourage providers from accepting severe cases.
 
 
 """
