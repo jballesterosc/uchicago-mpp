@@ -1,0 +1,231 @@
+---
+title: "Guía de estudio"
+subtitle: "PPHA 34410 Corporate Finance"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 11pt
+    linestretch: 1.3
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+---
+
+# Guía de Estudio — PPHA 34410 Corporate Finance
+
+Esta guía organiza los conceptos del curso integrando las lecturas semanales (Weeks 1–9) y los casos de estudio del proyecto. Cada sección incluye la fórmula clave (cuando aplica), la intuición, y el vínculo con el caso o caso anteriormente discutido.
+
+---
+
+## Parte 1 — Herramientas matemáticas
+
+### 1.1 Valor presente y descuento de flujos (DCF)
+
+La idea fundamental del curso: $1 hoy vale más que $1 mañana. La fórmula básica es $PV = FV / (1+r)^t$, donde $r$ es la tasa de descuento. Para múltiples flujos, $PV = \sum_{t=1}^{T} \frac{C_t}{(1+r)^t}$, lo que se conoce como la fórmula de Discounted Cash Flow (DCF). La tasa $r$ puede ser la risk-free rate (Treasuries), el opportunity cost of capital de inversiones de riesgo similar, o el WACC para proyectos corporativos. El Separation Principle establece que la tasa de descuento debe reflejar el riesgo de la oportunidad, no el costo de los fondos para financiarla.
+
+### 1.2 Net Present Value (NPV)
+
+$NPV = C_0 + \sum_{t=1}^{T} \frac{C_t}{(1+r)^t}$, donde $C_0$ es la inversión inicial (entrada como número negativo). La regla: aceptar si NPV > 0. Las cinco reglas generales para usar NPV: (i) descontar flujos de caja, no utilidades contables; (ii) descontar flujos incrementales; (iii) tratar la inflación consistentemente (todo nominal o todo real); (iv) separar decisiones de inversión de decisiones de financiamiento; (v) proyectar flujos después de impuestos. Cuidado en Excel: `NPV()` asume que el primer flujo es en $t_1$, no en $t_0$.
+
+### 1.3 Internal Rate of Return (IRR)
+
+El IRR es la tasa que hace $NPV = 0$: $\sum_{t=0}^{T} \frac{C_t}{(1+IRR)^t} = 0$. Regla: invertir si $IRR \geq$ opportunity cost of capital. Las dos suposiciones implícitas del IRR son críticas: (i) los flujos intermedios se reinvierten al propio IRR, y (ii) los flujos cambian de signo una sola vez. Si cambian más de una vez, puede haber IRR múltiples o ninguno. En proyectos mutuamente excluyentes, IRR y NPV pueden discrepar — siempre prefiere NPV. **Caso Neom**: el príncipe heredero promovió el uso de IRR como métrica principal; cuando los costos de Trojena (ski resort) subieron $10B, el IRR cayó a 7% (por debajo del target de 9%), pero en lugar de matar el proyecto, los ejecutivos "inflaron supuestos de ganancia" para que la métrica siguiera saliendo bien. Esto es exactamente el fallo que NPV/IRR honestos están diseñados para evitar.
+
+### 1.4 Anualidades y perpetuidades (con y sin crecimiento)
+
+La tabla resumen del curso (Tabla 2.2):
+
+| Instrumento | PV |
+|---|---|
+| Perpetuidad ($C$ constante) | $\frac{C}{r}$ |
+| Anualidad de $t$ períodos | $C \times \left[\frac{1}{r} - \frac{1}{r(1+r)^t}\right]$ |
+| Anualidad anticipada (annuity due) | $(1+r) \times C \left[\frac{1}{r} - \frac{1}{r(1+r)^t}\right]$ |
+| Perpetuidad creciente | $\frac{C_1}{r-g}$ |
+| Anualidad creciente de $t$ períodos | $\frac{C_1}{r-g}\left[1 - \left(\frac{1+g}{1+r}\right)^t\right]$ |
+
+Notas críticas: la perpetuidad creciente sólo funciona si $r > g$; la anualidad creciente "explota" si $r = g$, en cuyo caso $PV = C \times t / (1+r)$. El primer flujo $C_1$ ocurre en $t=1$ por convención.
+
+### 1.5 Yield to Maturity (YTM)
+
+El YTM de un bono es la tasa de descuento que iguala el precio de mercado al valor presente de todos los cupones más el principal — es decir, es el IRR del bono visto como serie de flujos. Es la métrica que el mercado usa para comparar bonos. **Caso LTCM**: la apuesta central del fondo era que el spread entre bonos on-the-run (más líquidos, yield 7.24%) y off-the-run (menos líquidos, yield 7.36%) eventualmente convergería. Cuando Rusia hizo default en agosto 1998, los spreads se ampliaron en lugar de cerrarse, y LTCM perdió $1.9 billion en un mes.
+
+### 1.6 Duration y sensibilidad a tasas de interés
+
+La Macaulay Duration es el promedio ponderado de los tiempos de pago de un bono, donde los pesos son los valores presentes de cada flujo dividido por el precio: $D_{Mac} = \sum_t t \cdot \frac{PV(C_t)}{P}$. La Modified Duration es $D_{Mod} = D_{Mac} / (1+y)$, y aproxima el cambio porcentual en precio ante un cambio en la tasa: $\Delta P / P \approx -D_{Mod} \cdot \Delta y$. Cuanto mayor la duration, mayor la sensibilidad. **Caso SVB**: el banco mantenía una cartera grande de bonos del Tesoro y MBS de larga duration; cuando la Fed subió tasas agresivamente en 2022, el valor de mercado de esos activos cayó fuertemente, generando pérdidas no realizadas. Cuando los depositantes (mayormente startups de tech, muy correlacionados) intentaron retirar al mismo tiempo, SVB tuvo que vender los bonos a pérdida — un clásico mismatch de duration entre activos largos y pasivos cortos (depósitos a la vista), agravado por el riesgo de funding.
+
+### 1.7 Dividend Discount Model (DDM)
+
+Si una acción se mantiene para siempre, su precio es el PV de todos los dividendos futuros: $P_0 = \sum_{t=1}^{\infty} \frac{DIV_t}{(1+r)^t}$. Con crecimiento constante $g$, se reduce a la fórmula de Gordon: $P_0 = \frac{DIV_1}{r-g}$. Reordenando, el costo de equity implícito es $r = \frac{DIV_1}{P_0} + g$. El crecimiento viene de la fórmula $g = ROE \times b$, donde $b$ es el plowback ratio (fracción de utilidades reinvertidas). El valor sólo aumenta si $ROE >$ cost of capital (es decir, si los proyectos reinvertidos tienen NPV positivo).
+
+### 1.8 Present Value of Growth Opportunities (PVGO)
+
+Cualquier acción puede descomponerse en: (i) el valor de la firma sin crecimiento (steady state) más (ii) el valor presente de las oportunidades de crecimiento futuras: $P_0 = \frac{EPS_1}{r} + PVGO$. Empresas maduras tienen PVGO bajo (la mayor parte del valor es el ingreso actual capitalizado); empresas en crecimiento tienen PVGO alto. **Caso SpaceX**: a una valuación de $1.5–2 trillion con revenue de $15B en 2025 y pérdidas netas, prácticamente todo el valor es PVGO — una apuesta a Starlink, Starship, y data centers espaciales. The Atlantic resalta que SpaceX cotizaría a más de 100x ventas, mientras Nvidia está a 21x, Alphabet a 10x y Apple a 9x. Es PVGO casi puro.
+
+### 1.9 Volatilidad de portafolio (correlación)
+
+Para dos activos: $\sigma_p^2 = w_1^2 \sigma_1^2 + w_2^2 \sigma_2^2 + 2 w_1 w_2 \text{Cov}_{1,2}$, donde la correlación es $\rho = \text{Cov}_{1,2}/(\sigma_1 \sigma_2)$. Para tres: $\sigma_p = \sqrt{w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + w_3^2\sigma_3^2 + 2w_1w_2\text{Cov}_{1,2} + 2w_1w_3\text{Cov}_{1,3} + 2w_2w_3\text{Cov}_{2,3}}$. La intuición clave: cuanto menor (o más negativa) la correlación, mayor el beneficio de diversificación. Una correlación de $+1$ no aporta diversificación; una de $-1$ permite teóricamente eliminar el riesgo.
+
+### 1.10 Sharpe Ratio
+
+$Sharpe = \frac{r - r_f}{\sigma} = \frac{\text{Risk Premium}}{\text{Standard Deviation}}$. Mide retornos por unidad de riesgo total. Es el indicador estándar para comparar managers y portafolios. **Caso LTCM**: el fondo reportaba Sharpe ratios excepcionalmente altos en 1995–97 — 40%+ de retornos con baja volatilidad reportada. La carta a inversionistas de 1994 afirmaba que sólo deberían experimentar una pérdida >20% una vez cada cincuenta años; en realidad la pérdida ocurrió cuatro años después, lo que sugiere que el Sharpe estaba subestimando el riesgo de cola (tail risk).
+
+### 1.11 Efficient Frontier y Capital Market Line (CML)
+
+La Efficient Frontier es el conjunto de portafolios que ofrecen el mayor retorno esperado para cada nivel de volatilidad. Incorporando un activo libre de riesgo ($\sigma = 0$), la Capital Market Line (CML) es la línea recta que parte de $r_f$ y es tangente a la Efficient Frontier; el punto de tangencia es el Market Portfolio. Bajo el supuesto de poder pedir prestado o prestar a $r_f$, todo inversionista racional debería mantener una combinación del activo libre de riesgo y el portafolio de mercado (Two-Fund Separation). Pedir prestado permite posiciones >100% en el Market Portfolio (apalancamiento).
+
+### 1.12 Beta
+
+Beta ($\beta$) mide cuánto se mueve una acción relativa al mercado. El portafolio de mercado tiene $\beta = 1$. Ejemplos del curso: Tesla y NVIDIA ($\beta > 1$); Disney y JPMorgan (~1); Coca-Cola y Duke Energy (~0.5); Campbell Soup y mineras de oro (~0 o negativo). Beta captura el riesgo no diversificable (sistemático) — el riesgo específico se elimina diversificando, y por tanto no recibe premio.
+
+### 1.13 CAPM y Security Market Line (SML)
+
+$E(r_i) = r_f + \beta_i (r_m - r_f)$. El CAPM dice que el retorno esperado de cualquier activo está linealmente relacionado con su $\beta$. La Security Market Line es esta relación graficada con $\beta$ en el eje X. Si una acción está por encima de la SML, está subvaluada (ofrece exceso de retorno para su riesgo de mercado); por debajo, está sobrevaluada. En mercados eficientes, todas las acciones caerían en la línea. El exceso sobre la SML es el **alpha** — el retorno no explicado por el riesgo sistemático.
+
+### 1.14 Weighted Average Cost of Capital (WACC)
+
+Sin impuestos: $WACC = r_D \cdot \frac{D}{V} + r_E \cdot \frac{E}{V}$, donde $V = D + E$. Con impuestos (caso normal): $WACC = (1 - T_C) r_D \cdot \frac{D}{V} + r_E \cdot \frac{E}{V}$. El interés es deducible de impuestos (tax shield), lo que hace que la deuda sea "más barata" después de impuestos. El costo de equity $r_E$ se estima con CAPM. Dos perspectivas equivalentes del curso: (1) WACC es impuesto por los mercados de capitales (inversionistas exigen retornos según el riesgo percibido); (2) WACC refleja el riesgo/productividad subyacente de los activos de la firma. Si la firma tiene proyectos con retorno > WACC consistentemente (NPV positivo), crea valor.
+
+---
+
+## Parte 2 — Conceptos financieros
+
+### 2.1 Empresas públicas vs privadas
+
+Públicas: acciones cotizan en bolsa (NYSE, NASDAQ), ownership disperso entre institucionales y retail, alta liquidez, disclosure obligatorio (10-K, 10-Q, Sarbanes-Oxley), earnings calls. Privadas: ownership concentrado (fundadores, familias, PE, VC), acciones ilíquidas y transferidas por negociación privada, valuación episódica. **Caso SpaceX**: ejemplifica la transición; estuvo privada deliberadamente para evitar el escrutinio público (Musk: "no IPO hasta que los cohetes vuelen regularmente a Marte"), pero ahora busca IPO 2026 a $1.5T para financiar Starship y data centers espaciales — necesidad de capital + competencia con OpenAI/Anthropic empujan al public market. **Caso CATL**: secondary offering en Hong Kong para acceder a capital extranjero, levantó $4.6B con Oaktree como key investor.
+
+### 2.2 Stocks vs bonds (equity vs debt)
+
+| | Stocks | Bonds |
+|---|---|---|
+| Naturaleza | Propiedad (voting rights) | Contrato (préstamo) |
+| Upside/downside | Alto ambos | Upside fijo (cupón), default si no se paga |
+| Maturity | Perpetua | Fecha fija |
+| Orden de pago | Último | Primero |
+| Bancarrota | Pueden perderlo todo | Pueden tomar la firma |
+| Impuestos | Dividendos NO deducibles | Intereses SÍ deducibles a nivel firma |
+
+La matriz pública/privada cruzada con equity/debt: pública+equity = stocks; pública+debt = bonds; privada+equity = PE/VC/individual; privada+debt = bank loans/private credit.
+
+### 2.3 Active vs passive investing
+
+Active: el manager intenta superar al benchmark mediante stock-picking, market timing, etc. Cobra fees altos. Passive: replica un índice (S&P 500, total bond), fees mínimos. La evidencia empírica (slide del curso): en horizontes de 10 años, entre 75% y 97% de los fondos activos no logran superar su benchmark, dependiendo del estilo. **Caso Nevada Pension**: Steve Edmundson maneja $35B solo, sin Bloomberg terminal, en pasivos casi 100%, con fees de $18M/año vs $120M típicos del sector. Su performance superó a CalPERS (en 1, 3, 5, y 10 años) según el artículo del WSJ. "Doing nothing is harder than it looks" — la disciplina de no actuar es el "edge".
+
+### 2.4 Dividends vs share buybacks
+
+Ambos devuelven capital a los accionistas. El ejemplo numérico del curso: empresa con fábrica $80M + cash $20M, 1M acciones, precio $100. Si paga dividendo de $20M: cash baja a $0, precio cae a $80 (los accionistas reciben $20 en mano). Si hace buyback de $20M: compra 200,000 acciones a $100, ahora hay 800,000 acciones, precio queda en $100 — total $80M repartido en menos acciones. **El valor total recibido por accionista es idéntico**; la diferencia es tributaria (los buybacks difieren impuestos al momento de vender) y de señalización. Por eso vemos cada vez más buybacks en empresas grandes de EE.UU.
+
+### 2.5 The risk-free rate
+
+Aproximada por U.S. Treasuries (Treasury bills para corto plazo, Treasury bonds para largo). Es el ancla de todo: retorno de cualquier inversión = $r_f$ + risk premium. Usada en CAPM, Sharpe Ratio, y como benchmark del opportunity cost. En la práctica no es perfectamente "free" — duration risk para bonos largos, inflation risk para nominales, default risk hipotético — pero es la mejor aproximación práctica.
+
+### 2.6 Growth opportunities
+
+Una empresa crece cuando reinvierte utilidades en proyectos con $ROE > $ cost of capital — es decir, proyectos de NPV positivo. $g = ROE \times b$ donde $b$ es el plowback rate. El curso enfatiza que sostener un ROE alto requiere un pipeline continuo de proyectos +NPV; el ROE incremental tiende a declinar con el tiempo. Buenos CEOs reasignan capital así: si ROE > cost of capital → reinvertir; si no → devolver capital (dividendos/buybacks/pay down debt).
+
+### 2.7 Leveraged buyouts (LBOs)
+
+Estrategia clásica de Private Equity: adquirir una empresa con poco equity propio y mucha deuda (a menudo 100% control, llevándola a privado). Se apoya en (i) usar los flujos de caja de la firma para pagar intereses, (ii) mejoras de eficiencia, y (iii) leverage que amplifica el retorno sobre el equity. **Caso clásico RJR Nabisco** (libro Barbarians at the Gate del curso): KKR ganó la subasta a $109/acción (vs $56 meses antes), firma llevada a privado en 1988, vuelta a público en 1991, KKR sale completamente en 1995. Pregunta del curso: ¿por qué no vemos deals similares hoy? — tasas más altas, mayor competencia entre PE, empresas ya optimizadas operativamente, escrutinio regulatorio.
+
+### 2.8 Midiendo el riesgo — volatilidad
+
+El curso define riesgo como volatilidad (desviación estándar de retornos). Mayor volatilidad → mayor dispersión → más upside y más downside. El VIX ("fear index") es el indicador de volatilidad implícita del mercado. Pero ojo: la volatilidad no es constante en el tiempo, y la volatilidad histórica subestima eventos de cola.
+
+### 2.9 Beneficios de la diversificación
+
+Diversificar reduce el riesgo específico (idiosincrásico) pero no el sistemático. El gráfico del curso muestra que el desvío estándar de un portafolio cae rápidamente con los primeros 5–10 activos y se estabiliza alrededor de los 15–20, en un piso correspondiente al riesgo de mercado. Implicación clave: como los inversionistas pueden diversificar por su cuenta, **las empresas no necesitan diversificar** por sus accionistas (rebate clásico al motivo "diversificación" en M&A).
+
+### 2.10 "In a crisis, all correlations go to one"
+
+Frase recurrente del curso. La correlación entre activos no es estable: en tiempos normales, distintos activos tienen correlaciones moderadas/bajas que permiten diversificar; en crisis, casi todo cae junto. Datos de 2008: Emerging Markets equity -53%, real estate -48%, US equity -37%, high yield -26%; sólo Treasuries (+10%) y gold (+5%) se salvaron. **Caso LTCM**: el fondo creía estar diversificado entre Russia, Japanese bonds, equity pairs, yield curve arb, high yield arb y equity vol — pero en realidad todas eran apuestas a que los spreads de liquidez se cerrarían. Cuando Rusia hizo default, todas se movieron en contra simultáneamente.
+
+### 2.11 Expectativas de inversionistas
+
+Las expectativas son una parte esencial del precio de cualquier activo. Una "buena" noticia que ya estaba descontada no mueve el precio; sólo las sorpresas (positivas o negativas) lo hacen. Esto conecta con el WACC: las tasas de retorno requeridas por el mercado reflejan las expectativas colectivas sobre el riesgo y crecimiento de la firma.
+
+### 2.12 Leverage (apalancamiento)
+
+Pedir prestado para amplificar retornos. Funciona en ambos sentidos: amplifica ganancias y pérdidas. **Caso LTCM**: 28:1 leverage al pico ($3.6B equity vs $102B activos), con compromisos derivativos por sobre $1 trillion nocional. The New Yorker (Time Bomb): "If the person with a hundred dollars borrows a thousand dollars and the stock goes up by the same amount, his capital doubles. Unfortunately, when things go wrong the leverage works in reverse." La aritmética es inexorable: si tu stock cae 10% y tienes 10:1 leverage, pierdes todo el equity. **Caso SVB**: bancos siempre operan apalancados (depósitos >> equity); el problema es cuando la duration de los activos no calza con la de los pasivos.
+
+### 2.13 Arbitraje
+
+Explotar discrepancias de precio para beneficio "riskless". El verdadero arbitraje casi no existe a escala — lo que se llama arbitrage en la práctica (merger arb, yield curve arb) es realmente "convergence trading": apostar a que un spread se cerrará, pero con riesgo de que se amplíe primero. **Caso LTCM**: bonds on-the-run vs off-the-run — yields de 7.24% vs 7.36% en bonos casi idénticos del Tesoro; comprar off-the-run y shortear on-the-run debería converger. Funcionó hasta que dejó de hacerlo. El curso conecta esto con la frase de Keynes: "The market can stay irrational longer than you can stay solvent."
+
+### 2.14 Alpha — retornos en exceso
+
+Alpha = retorno realizado -- retorno esperado por CAPM. Es decir, cuánto supera (o queda por debajo) la SML una inversión. En equilibrio asumimos $\alpha = 0$ para todas las acciones; en la práctica, alpha es lo que busca todo manager activo. **Conexión con Nevada pension**: la apuesta de Edmundson es que generar alpha es muy difícil y muy caro — por eso elimina la búsqueda de alpha y se queda con el beta del mercado a bajo costo. Los datos del curso sugieren que tiene razón en promedio.
+
+### 2.15 Liquidity and funding risk
+
+Liquidity risk: dificultad para convertir un activo en efectivo sin pérdida significativa de valor (Treasuries líquidos; junk bonds, real estate, private equity ilíquidos). Funding risk: dependencia de fuentes de financiamiento que pueden desaparecer en momentos de estrés. **Caso LTCM** (André Perold, citado en Time Bomb): "Their biggest mistake was that they were selling liquidity; they were short liquid assets, and long less liquid ones... they didn't realize how correlated their positions were." Cuando todos huyeron hacia liquidez en agosto 1998, los spreads se ampliaron y LTCM no pudo cerrar posiciones sin destruir el mercado. **Caso SVB**: depósitos a la vista (pasivos altamente líquidos) financiando bonos a 10+ años (activos relativamente ilíquidos en valor — sí los puedes vender, pero a pérdida si las tasas subieron); cuando los depositantes corrieron, no había manera de monetizar los bonos sin realizar pérdidas masivas.
+
+---
+
+## Parte 3 — Casos de estudio (síntesis)
+
+### 3.1 SpaceX IPO
+Empresa privada targeting valuación $1.5–2T en IPO 2026, potencialmente el listing más grande de la historia (vs Saudi Aramco $29B en 2019). Revenue 2025 ~$15B, neto negativo (~$5B pérdida por xAI). Multiplicador implícito >100x ventas (Nvidia 21x, Apple 9x). **Aplicación al curso**: caso textbook de empresa cuyo valor es casi todo PVGO; expectativas extremas (Starlink, Starship, data centers espaciales) están en el precio. The Atlantic argumenta que la valuación se sostiene por la base de "fanboy investors" de Musk más que por fundamentales — interesante para discutir mercados eficientes vs comportamiento.
+
+### 3.2 Illinois Pension Funds
+Los fondos asumen tasas de retorno de 6.75–7.25% y las usan también como tasa de descuento de pasivos. Los retornos reales a 10 años fueron de 4.6–5.4%. La diferencia entre tasas asumidas y reales infla el valor presente de los activos y subestima el de los pasivos, ocultando el verdadero hueco fiscal. Moody's (usando una tasa baja basada en bonos corporativos de alta calidad) estimó el pasivo neto en $250B vs los $130B reportados. **Aplicación**: ilustra perfectamente por qué la tasa de descuento importa tanto, y por qué el Separation Principle (no mezclar expected return con discount rate) es crucial. También ilustra el conflicto de incentivos: políticos y reguladores prefieren tasas altas porque hacen ver el balance menos malo.
+
+### 3.3 CATL (Contemporary Amperex Technology)
+Fabricante chino de baterías para EV, 37% del mercado mundial. Secondary offering en Hong Kong 2025 levantó $4.6B; Oaktree Capital (US) fue key investor pese a que CATL está en blacklist del Pentágono. 90% del nuevo capital iba a producción en Hungría para BMW, Stellantis y VW. **Aplicación**: ejemplo de cómo public equity markets financian expansión global; también la tensión geopolítica como factor de riesgo no capturado por modelos tradicionales.
+
+### 3.4 Silicon Valley Bank (SVB)
+Banco regional con depósitos concentrados en startups de tech, que invirtió fuertemente en Treasuries y MBS de larga duration cuando las tasas estaban bajas (2020–21). Cuando la Fed subió tasas en 2022, los activos cayeron en valor de mercado generando pérdidas no realizadas masivas. Los depositantes — altamente correlacionados (todos en tech, todos hablan entre sí en Twitter) — corrieron simultáneamente; SVB tuvo que vender bonos a pérdida y colapsó en 48 horas, marzo 2023. **Aplicación**: confluencia perfecta de tres conceptos del curso — (i) duration mismatch, (ii) correlación entre depositantes ("in a crisis, all correlations go to one"), y (iii) funding risk + liquidity risk.
+
+### 3.5 Nuveen-Schroders
+El curso lo menciona como tema actual ("Why the Schroder family sold up"). Schroders, casa británica de asset management con 200+ años de historia familiar, vendida o en proceso de transacción — ejemplo del consolidation continuo en el sector de asset management bajo presión de fees a la baja y necesidad de escala. (Si tienes más detalles del speaker Douglas Baker de Nuveen, vale revisar las notas.)
+
+### 3.6 Neom
+Megaproyecto saudí de $50B+ ya gastados, presupuesto end-state hasta 2080 estimado en $8.8 trillion (25x el presupuesto anual saudí). Centerpiece: "The Line", 106-mile linear city de skyscrapers de 1,640 ft. Audit interna encontró "deliberate manipulation" de finanzas: ejecutivos inflaban supuestos de profit para que el IRR siguiera dando arriba del hurdle rate. Cuando los costos de Trojena (ski resort) subieron $10B+, el IRR cayó a 7% (target 9%) — pero los proyectos siguieron. **Aplicación**: caso paradigmático de qué pasa cuando NPV/IRR se usan como herramientas de legitimación política en vez de evaluación honesta. Conecta también con el problema de incentivos del management y el costo de no separar inversión de financiamiento.
+
+### 3.7 Nevada Pension Fund Strategy
+Steve Edmundson, CIO solo, $35B en pasivos, sin Bloomberg, sin staff, sin consultores, sin hedge funds. Resultado: ha superado a CalPERS en 1, 3, 5, y 10 años, con un séptimo del costo. Frase clave: "Doing nothing is harder than it looks." **Aplicación**: caso vivo de la tesis pasiva — la mayoría de los managers activos no superan al benchmark después de fees; lo racional es minimizar fees y aceptar el beta del mercado. Es la otra cara de la moneda del caso Illinois: en lugar de asumir retornos altos imposibles, asume retornos modestos y los logra.
+
+### 3.8 Long-Term Capital Management (LTCM)
+Hedge fund 1994–1998 fundado por John Meriwether (ex-Salomon) con dos Nobel laureates (Myron Scholes, Robert Merton) y David Mullins (ex-VP Fed). Estrategia: convergence trading apalancado (yield curve arb, on-the-run/off-the-run, merger arb, equity vol, mortgage spreads). Sharpe ratios estelares 1995–97 (40%+ retornos anuales). Apalancamiento 28:1 ($3.6B equity / $102B activos), con >$1T en derivativos nocional. Carta a inversionistas 1994 prometía: pérdida >20% una vez cada 50 años. Realidad: agosto 1998 Rusia default → todas las posiciones se movieron en contra → -$1.9B en un mes → "in a crisis, all correlations go to 1" → bailout coordinado por la Fed con los principales bancos.
+
+**Aplicación masiva al curso** — LTCM toca prácticamente todos los temas:
+- *Sharpe ratio engañoso*: subestimaba tail risk
+- *Diversificación ilusoria*: todas las apuestas eran a estrechamiento de spreads de liquidez
+- *"All correlations go to 1"*: precisamente lo que pasó
+- *Leverage*: la causa proximate del colapso
+- *Liquidity risk*: estaban "short liquidity" — vendiendo seguros de liquidez en el mercado
+- *Funding risk*: 27:1 leverage promedio en los 5 grandes investment banks contemporáneamente (Time Bomb)
+- *Alpha vs beta*: pensaron tener alpha; tenían beta a un factor de liquidez no reconocido
+- *Modelos VaR*: "These measurements of potential exposure became virtually meaningless in the third quarter of 1998"
+- *"The market can stay irrational longer than you can stay solvent"*: la frase resume todo
+
+---
+
+## Parte 4 — Conexiones cruzadas frecuentes en exámenes
+
+- **NPV <-> WACC**: el discount rate correcto para un proyecto típico es el WACC; para proyectos de riesgo distinto al promedio, ajustar.
+- **DDM <-> CAPM**: $r$ en la fórmula de Gordon es el cost of equity, obtenido de CAPM.
+- **Duration <-> caso SVB**: el mismatch de duration explica el colapso.
+- **Sharpe <-> CAPM**: el portafolio de mercado en CAPM es el de máximo Sharpe en la efficient frontier.
+- **Beta <-> diversificación**: beta captura el riesgo *que no se puede* diversificar; alpha es lo que un manager activo intenta capturar (raramente con éxito según el caso Nevada).
+- **PVGO <-> caso SpaceX**: empresas con casi todo su valor en crecimiento futuro.
+- **Leverage <-> casos LTCM y SVB**: amplifica retornos y rompe en crisis.
+- **Correlaciones <-> casos LTCM y SVB**: ambos asumieron diversificación que desapareció bajo estrés.
+- **IRR como métrica honesta vs como herramienta política <-> Neom**: cuando los incentivos premian "hacer que la métrica salga", la métrica deja de servir.
+
+---
+
+## Parte 5 — Sugerencias prácticas para el examen
+
+1. Memoriza la tabla de fórmulas de PV (perpetuidad, anualidad, growing perpetuity, growing annuity) — son la base de muchísimos cálculos.
+2. Verifica el supuesto de Excel sobre `NPV()` vs `IRR()` (timing del primer flujo) — error común.
+3. En cualquier problema de comparación entre alternativas (la lottery question del Problem Set 1, por ejemplo), descontar todo a $t=0$ y comparar.
+4. Cuando aparece "crisis" o "stress" en el enunciado, pensar inmediatamente en (i) correlaciones convergiendo a 1, (ii) liquidity drying up, (iii) leverage amplificando.
+5. Cuando aparece "growth" en valuación de equity, decidir si usar growing perpetuity (Gordon), multistage DDM, o $P_0 = EPS_1/r + PVGO$ según los datos disponibles.
+6. Para preguntas de casos, identificar **qué concepto del curso ilustra el caso** — el grader usualmente quiere ver esa conexión explícita.
+7. Cuidado con el exponente en cálculos compuestos (issue tuyo identificado en PS1): siempre verifica $(1+r)^t$, no $1+r^t$.
