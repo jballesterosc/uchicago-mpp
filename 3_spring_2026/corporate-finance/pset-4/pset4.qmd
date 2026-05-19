@@ -1,0 +1,137 @@
+---
+title: "Problem Set 4"
+subtitle: "PPHA 34410 Corporate Finance"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.15
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+---
+
+## Part 1. Multiple Choice Questions (Select all answers that apply)
+
+**1) What best describes the Nevada Public Employees' Retirement System's investment approach? (3 marks)**
+
+c. Passive indexing with minimal trading
+
+**2) Which advantages are associated with Nevada's strategy? (3 marks)**
+
+a. Lower fees 
+b. Reduced complexity
+d. Lower operational staffing needs
+
+**3) Why is "doing nothing" described as difficult? (3 marks)**
+
+b. It demands emotional restraint during volatility
+
+**4) According to the Atlantic article, SpaceX resembles a meme stock because: (3 marks)**
+
+b. Valuation is driven by narrative and belief
+d. Fundamentals are secondary to expectations
+
+**5) What is a key risk of SpaceX going public at an extremely high valuation? (3 marks)**
+
+b. It limits future upside for investors
+
+**6) What was the core investment strategy used by Long-Term Capital Management? (3 marks)**
+
+c. Arbitrage and convergence trades
+
+**7) Why did LTCM pose systemic risk? (3 marks)**
+
+a. It was too large relative to global markets
+b. Its counterparties were major financial institutions
+
+**8) Which company's stock would we expect to have a higher beta, Advanced Micro Devices or Johnson & Johnson? (3 marks)**
+
+b. Advanced Micro Devices, because semiconductor revenues are more sensitive to economic conditions
+
+**9) What does the phrase "In a crisis, all correlations go to one" most accurately mean? (3 marks)**
+
+c. Assets that normally move independently tend to decline together during severe market stress
+
+**10) If correlations increase significantly during a crisis, what are the implications for portfolio construction and risk management? (3 marks)**
+
+a. Diversification benefits may be significantly reduced when they are needed most
+b. Portfolio risk may be underestimated if correlations are assumed to be stable
+
+---
+
+## Part 2. Short Answer Questions (show your work for full credit)
+
+**11) The graphs below show monthly returns for three different stocks versus the market index. Each stock's beta and standard deviation are given as well. (18 marks total)**
+
+Use this information to answer the following questions:
+
+**a. Which stock is the least risky for an investor who puts all their savings in this stock? (3 marks)**
+
+Coca-Cola has the lowest total risk at 12%.
+
+**b. If an investor put 30% of their money in General Motors, 30% in Tesla, and 40% in Coca-Cola, what would be the beta of the investor's portfolio? (3 marks)**
+
+$\beta_p = 0.30(1.38) + 0.30(0.65) + 0.40(0.43) = 0.414 + 0.195 + 0.172 = 0.781$
+
+**c. If an investor creates a well-diversified portfolio (i.e. with no idiosyncratic risk) with the same beta as General Motors, what is that portfolio's beta and standard deviation? Assume that the market portfolio has a standard deviation of 24%. (3 marks)**
+
+In this case total risk equals its systematic risk (because no idiosyncratic risk involved). Therefore, the beta equals General Motors' beta of 1.38, and the standard
+deviation is $\sigma_p = 1.38 \times 24\% = 33.12\%$.
+
+**d. Use CAPM to estimate the expected return of each of the three stocks given a risk-free rate of 5.0% and a market equity risk premium of 7.8%. (9 marks, 3 marks for each stock)**
+
+- **Coca-Cola:** $E[r] = 5.0 + 0.43(7.8\%) = 5.0\% + 3.354\% = 8.35\%$
+- **General Motors:** $E[r] = 5.0\% + 1.38(7.8\%) = 5.0\% + 10.764\% = 15.76\%$
+- **Tesla:** $E[r] = 5.0\% + 0.65(7.8\%) = 5.0\% + 5.07\% = 10.07\%$
+
+---
+
+**12) You can invest in the shares of two different companies, Alpha and Gamma. The expected return for Alpha is 40% and 20% for Gamma. The standard deviation for Alpha is 40% and 30% for Gamma. The correlation coefficient between the two companies' stocks is 0.44 and the risk-free rate is 5%. (20 marks total)**
+
+Compute the expected return and standard deviation of two different portfolios:
+
+- **Portfolio 1:** 10% allocation to Alpha, 90% allocation to Gamma
+
+$E[r_p] = 0.10(0.40) + 0.90(0.20) = 0.04 + 0.18 = 0.22 = 22\%$.
+
+For the standard deviation, we apply the two-asset portfolio variance formula:
+
+$\sqrt{(0.10)^2(0.40)^2 + (0.90)^2(0.30)^2 + 2(0.10)(0.90)(0.40)(0.30)(0.44)}$
+
+$\sqrt{0.0016 + 0.0729 + 0.009504} = \sqrt{0.083904} = 28.97\%$
+
+Therefore the Sharpe Ratio is $S_1 = \frac{0.22 - 0.05}{0.2897} = \frac{0.17}{0.2897} = 0.587$.
+
+- **Portfolio 2:** 90% allocation to Alpha, 10% allocation to Gamma
+
+$E[r_p] = 0.90(0.40) + 0.10(0.20) = 0.36 + 0.02 = 0.38 = 38\%$.
+
+$\sigma_p = \sqrt{(0.90)^2(0.40)^2 + (0.10)^2(0.30)^2 + 2(0.90)(0.10)(0.40)(0.30)(0.44)}$
+
+$\sqrt{0.1296 + 0.0009 + 0.009504} = \sqrt{0.140004} = 37.42\%$.
+
+Considedring this results, the Sharpe Ratio is $S_2 = \frac{0.38 - 0.05}{0.3742} = \frac{0.33}{0.3742} = 0.882$.
+
+Which portfolio has a higher Sharpe Ratio?
+
+Portfolio 2. It delivers more excess return per unit of total risk.
+
+---
+
+## Part 3. Short Essay Question
+
+**13) Compare the Nevada pension fund's passive strategy with LTCM's leveraged arbitrage strategy. What are the trade-offs in terms of risk, cost, and expected returns? (18 marks)**
+
+Nevada's pension fund and LTCM are at opposite ends extremes. For instance, Nevada puts everything in low-cost index funds, employs a single person, and pays about $18 million a year in fees. LTCM, by contrast, hired Nobel laureates, leveraged its capital 25-to-1, and bet on complex arbitrage trades across global markets delivering returns as high as 59% in its early years.
+
+The trade-off of LTCM strategy was shown when Russia defaulted. In response, LTCM's lost $1.9 billion in a single month. Nevada, meanwhile, simply rode out market volatility.
+
+The irony is that despite the abscence of complexity, Nevada outperformed many other heavily staffed pension funds. The reason is that most active managers fail to beat their benchmarks over time, and high fees can compound against you. LTCM's strategy could generate extraordinary returns, but it carried a huge risks. Nevada's boring approach turns out to be the more responsible one. 
