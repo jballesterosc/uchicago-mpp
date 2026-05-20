@@ -1,0 +1,68 @@
+---
+title: "The Trade-off of Existential Risk"
+subtitle: "A short policy brief"
+author:
+  - name: "Jay Ballesteros"
+    affiliation: "AI Policy Fundamentals | Existential Risk Laboratory (XLab)"
+date: today
+bibliography: references.bib
+format:
+  pdf:
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 11pt
+    colorlinks: true
+    linkcolor: Maroon
+    urlcolor: Maroon
+  html:
+    theme: cosmo
+    toc: true
+abstract: |
+  Este policy brief fue elaborado en el marco del AI Policy Fundamentals Reading Group del Existential Risk Laboratory (XLab) de la University of Chicago. Las opiniones expresadas son del autor y no representan necesariamente la posición del laboratorio.
+---
+
+## Overview
+
+<!-- Contexto general del problema. ¿Por qué importa este tema para tomadores de decisiones? Introduce el concepto central y la motivación del brief. -->
+
+A pesar del potential de la IA en acelerar el progreso, crecimiento exponencial en términos de GPD y la innovación y, de acuerdo con algunas personas, resolver todos los problemas de la humanidad [@amodei2024], hoy la tecnología goza de poco apoyo público. Aunque las razones parten de la potencial pérdida de trabajo debido a la automatización y el riesgo y exposición de ciertas profesiones[@falk2026], expertos acentúan que los riesgos pueden ser significativamente más graves -- incluso existenciales.
+
+Dinámicas como la carrera comercial de las empresas with the latest frontier models, el interés geopolítico de China y USA en dominar los avances y capacidades computacionales, el potencial de implementación de la tecnología en warfare decisions y la posibilidad de misalignement de los modelos, son factores  ue factibilizan más latente el riesgo existential de la IA para la especie humana. [@yudkowsky2026]
+
+Dado el trade-off de existinción de la especie (algunos expertos estiman un 10% de posibilidad) es imperativo lograr un acuerdo global donde se prioricen tres factores: 1) estandarizar mecanismos de licencia, transparencia y evaluación de los modelos en términos de safety; 2) establecer mecanismos de no proliferación en chips y su tecnología subyacente; y 3) generar capacidad técnica en estados hegemónicos para asegurar la vigilancia de los mecanismos.
+
+## Findings
+
+<!-- Resumen de los hallazgos clave del análisis. ¿Qué revela la evidencia? ¿Cuáles son las tensiones o trade-offs identificados? -->
+
+## Case study
+
+<!-- Un ejemplo concreto que ilustre los hallazgos. Puede ser una política implementada, un caso histórico, o un escenario hipotético bien fundamentado. -->
+
+## Key considerations
+
+<!-- Marco analítico o principios que los tomadores de decisiones deben tener en cuenta. Organizado por dimensiones (e.g., privacidad, equidad, transparencia, etc.). -->
+
+<!-- PLACEHOLDER: Aquí va un diagrama ilustrativo (por agregar). -->
+
+La propuesta no es una apología a la intervención ni a la estatización de la tecnología, pero si al establecimiento de reglas que ayuden a reducir los riesgos existenciales inherentes a la IA. 
+
+Más de allá de mecanismos formales como mesas de dialógo, incorporación de la voz de las empresas en la discusión y reglas y establecimiento de steering commitees, para vigilar su implementación, es necesario acelerar el diseño y piloto de reglas para desacelerar las dinámicas que son riesgos sistémicos.
+
+## Policy takeaways
+
+<!-- Recomendaciones concretas y accionables derivadas del análisis. ¿Qué deberían hacer (o evitar) los tomadores de decisiones? -->
+
+## About the Author
+
+Jay Ballesteros is an MPP candidate at the Harris School of Public Policy, University of Chicago. He is a Fellow at the Existential Risk Laboratory (XLab).
+
+{{< pagebreak >}}
+
+## References
+
+<!-- Fuentes citadas en formato académico. -->
+
+::: {#refs}
+:::
