@@ -18,9 +18,10 @@ format:
   html:
     theme: cosmo
     toc: true
-abstract: |
-  Este policy brief fue elaborado en el marco del AI Policy Fundamentals Reading Group del Existential Risk Laboratory (XLab) de la University of Chicago. Las opiniones expresadas son del autor y no representan necesariamente la posición del laboratorio.
 ---
+*This policy brief was written as part of the AI Policy Fundamentals Reading Group at the Existential Risk Laboratory (XLab), University of Chicago. The views expressed are the author's own and do not necessarily represent the position of the laboratory.*
+
+{{< pagebreak >}}
 
 ## Overview
 
@@ -34,8 +35,10 @@ Dado el trade-off de existinción de la especie (algunos expertos estiman un 10%
 
 ## Findings
 
-<!-- Resumen de los hallazgos clave del análisis. ¿Qué revela la evidencia? ¿Cuáles son las tensiones o trade-offs identificados? -->
-
+Jones (2024) considers an analogous question with respect to artificial intelligence.
+Suppose on one side that AI has incredible benefits, raising economic growth to 10 percent per year and thus doubling the average standard of living every 7 years. However,
+it comes with a one-time risk of killing everyone on the planet. How much risk would
+standard economic agents be willing to take in this case? [@jones2024]
 ## Case study
 
 <!-- Un ejemplo concreto que ilustre los hallazgos. Puede ser una política implementada, un caso histórico, o un escenario hipotético bien fundamentado. -->
