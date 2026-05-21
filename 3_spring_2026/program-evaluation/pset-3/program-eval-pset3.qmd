@@ -1,0 +1,85 @@
+---
+title: "Problem Set 3"
+subtitle: "PPHA 34600 Program Evaluation"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.15
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+jupyter:
+  kernelspec:
+    name: DAP
+    display_name: DAP
+    language: python
+---
+
+
+```{python}
+import os 
+import pandas as pd
+import numpy as np
+import statsmodels.formula.api as smf
+import statsmodels.api as sm
+
+PATH = ("/Users/jayballesteros/_github/uchicago-mpp/3_spring_2026/program-evaluation/pset-3/_data")
+
+df = pd.read_csv(os.path.join(PATH, "ps3_data_Spring26.csv"))
+```
+
+# Questions
+
+Development economists have long debated whether expanding access to mobile banking can raise household incomes among the unbanked. Finanzas para la Inclusión y el Crecimiento Comunitario en América Latina (FINCA LatAm) is one such NGO, operating across rural and peri-urban communities in Colombia. They have come to the Harris School to find a team of experts to help them understand the effects of mobile banking access on household income, but all the faculty are busy — so you’ve been asked to step in.
+
+
+## Q1
+
+FINCA LatAm is interested in answering the following question: What is the impact of providing access to mobile banking (at the household level) on monthly household income? They would like you to describe an ideal experiment that you could potentially use to answer this question in a fully unconstrained world. Make sure to provide an experimental design and explain how you would estimate the average treatment effect. Word limit: 250 words.
+
+
+## Q2
+
+FINCA LatAm is not willing to randomize mobile banking access across households, but they do have access to rich administrative data. They are concerned about data sharing, however, and want to give you only the bare minimum of what you might need. Their database goes from 2002 to 2017. They tell you that they would be willing to share information (covering all of these years) on one household that gained mobile banking access in 2009 (once a household registers for mobile banking, they retain access permanently). Describe, in words and math (this should be a regression), how you would use these data to attempt to estimate the causal effect of mobile banking access on household income. Be sure to discuss the identifying assumption(s). Provide one concrete example of a concern with this approach. Word limit: 250 words.
+
+## Q3
+
+Next, explain why it would be even better to have data on multiple households, including data on all households that gained mobile banking access in 2009, as well as data on households that never registered for mobile banking. Describe, in words and math (this should be a regression), how you would use these data to attempt to estimate the causal effect of mobile banking access on household income. Be sure to discuss the identifying assumption(s). Provide one concrete example of a remaining concern with this approach. Word limit: 250 words.
+
+## Q4
+
+FINCA LatAm, given your even-handed discussion of various approaches, is willing to put their faith in you. They will give you their full database, which includes information on the universe of households from 2002 to 2017. These data include information on households that never gained mobile banking access, as well as households that registered in different years from 2009 to 2017 (no households registered after 2013). Describe, in words and math (this should be a regression), how you would use these data to attempt to estimate the causal effect of mobile banking access on household income. Be sure to discuss the identifying assumption(s). Provide one concrete example of a remaining concern with this approach. Word limit: 250 words.
+
+## Q5
+
+Use the included ps3_data_spring26.csv dataset to implement a simple comparison of average household incomes between households that NEVER gained mobile banking access and households that (eventually) did. Describe what you find. Word limit: 250 words.
+
+
+## Q6 
+
+Use regression to perform a time-series analys is of the effect of mobile banking access on household income, using only households that were treated in 2009. Describe what you find. Plot the average household incomes for households that gained mobile banking access in 2009 against time. How does this figure affect how you interpret your estimates (if at all)? Word limit: 250 words.
+
+## Q7
+
+Plot (average) household incomes against time for households that never gained mobile banking access. Assess the viability of using the never-treated households as a control group for households that registered for mobile banking in 2009. Word limit: 250 words.
+
+## Q8
+
+Using just the never-treated households and the households that gained mobile banking access in 2009, estimate the causal impact of treatment on household income. To do this, begin with a simple difference in means (rather than regression). Next, use regression (no fixed effects). Finally, use fixed effects to control for common time shocks and time-invariant household characteristics (you can do this either via dummy variables or demeaning). Be sure to adjust your standard errors appropriately in the regression-based estimates. Compare these three estimates. Are they the same or different to one another? Interpret the point estimate from the fixed effects regression: what is the causal effect of mobile banking access on household income? Word limit: 250 words.
+
+## Q9
+
+Use an event study regression to estimate how the effect of mobile banking access on household income varies over time. Note that you will have to omit one of the event study treatment dummies (otherwise everything will be perfectly multicollinear). Standard practice is to leave out the T-1 dummy by omitting the dummy for the period right before treatment year. Plot the resulting event study point estimates and 95 percent confidence intervals. Describe how the treatment effect varies over time, if at all. Word limit: 250 words.
+
+## Q10
+
+Use a distributed lag regression to estimate how the effect of mobile banking access on household income varies over time. What is the cumulative effect of treatment after 5 years? Plot the five cumulative effects. (Note: the effect of the treatment year should be considered as the cumulative effect after 1 year) Word limit: 250 words.
+
