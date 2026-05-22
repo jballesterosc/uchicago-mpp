@@ -11,7 +11,7 @@ format:
     geometry:
       - margin=1in
     fontsize: 12pt
-    linestretch: 1.15
+    linestretch: 1.2
     number-sections: false
     colorlinks: true
     linkcolor: blue
@@ -23,6 +23,7 @@ jupyter:
     language: python
 ---
 
+Development economists have long debated whether expanding access to mobile banking can raise household incomes among the unbanked. Finanzas para la Inclusión y el Crecimiento Comunitario en América Latina (FINCA LatAm) is one such NGO, operating across rural and peri-urban communities in Colombia. They have come to the Harris School to find a team of experts to help them understand the effects of mobile banking access on household income, but all the faculty are busy — so you’ve been asked to step in.
 
 ```{python}
 import os 
@@ -30,56 +31,373 @@ import pandas as pd
 import numpy as np
 import statsmodels.formula.api as smf
 import statsmodels.api as sm
+import matplotlib.pyplot as plt
 
 PATH = ("/Users/jayballesteros/_github/uchicago-mpp/3_spring_2026/program-evaluation/pset-3/_data")
 
 df = pd.read_csv(os.path.join(PATH, "ps3_data_Spring26.csv"))
 ```
 
-# Questions
 
-Development economists have long debated whether expanding access to mobile banking can raise household incomes among the unbanked. Finanzas para la Inclusión y el Crecimiento Comunitario en América Latina (FINCA LatAm) is one such NGO, operating across rural and peri-urban communities in Colombia. They have come to the Harris School to find a team of experts to help them understand the effects of mobile banking access on household income, but all the faculty are busy — so you’ve been asked to step in.
-
+{{< pagebreak >}}
 
 ## Q1
 
-FINCA LatAm is interested in answering the following question: What is the impact of providing access to mobile banking (at the household level) on monthly household income? They would like you to describe an ideal experiment that you could potentially use to answer this question in a fully unconstrained world. Make sure to provide an experimental design and explain how you would estimate the average treatment effect. Word limit: 250 words.
+**FINCA LatAm is interested in answering the following question: What is the impact of providing access to mobile banking (at the household level) on monthly household income? They would like you to describe an ideal experiment that you could potentially use to answer this question in a fully unconstrained world. Make sure to provide an experimental design and explain how you would estimate the average treatment effect. Word limit: 250 words.**
 
+In the ideal experiment, we would randomly assign households in FINCA's operating areas to treatment (access to mobile banking) or control (no access). The unit of randomization could be at the community level (cluster-randomized design) to mitigate potential spillovers.
+
+Random assignment ensures that, in expectation, treated and control households share similar baseline characteristics, eliminating selection bias. Formally, randomization gives us:
+
+$E[Y_i(0)|D_i=1] = E[Y_i(0)|D_i=0]$
+
+This means the potential untreated outcomes are the same across groups, so any observed difference in post-treatment monthly household income can be attributed to the treatment.
+
+Under successful randomization, we can estimate it the Average Treatment Effect (ATE) via a simple difference in means. Formally, ATE is expresed as:
+
+$\tau_{ATE} = E[Y_i(1)] - E[Y_i(0)]$. 
+
+where $Y_i(1)$ is average monthly household income for the people that had access to mobile banking, and $Y_i(0)$ for those who not.
+
+This ideal experiment assumes perfect compliance (all treated households use mobile banking, no control households gain access) and SUTVA (one household's treatment does not affect another's outcomes).
+
+{{< pagebreak >}}
 
 ## Q2
 
-FINCA LatAm is not willing to randomize mobile banking access across households, but they do have access to rich administrative data. They are concerned about data sharing, however, and want to give you only the bare minimum of what you might need. Their database goes from 2002 to 2017. They tell you that they would be willing to share information (covering all of these years) on one household that gained mobile banking access in 2009 (once a household registers for mobile banking, they retain access permanently). Describe, in words and math (this should be a regression), how you would use these data to attempt to estimate the causal effect of mobile banking access on household income. Be sure to discuss the identifying assumption(s). Provide one concrete example of a concern with this approach. Word limit: 250 words.
+**FINCA LatAm is not willing to randomize mobile banking access across households, but they do have access to rich administrative data. They are concerned about data sharing, however, and want to give you only the bare minimum of what you might need. Their database goes from 2002 to 2017. They tell you that they would be willing to share information (covering all of these years) on one household that gained mobile banking access in 2009 (once a household registers for mobile banking, they retain access permanently). Describe, in words and math (this should be a regression), how you would use these data to attempt to estimate the causal effect of mobile banking access on household income. Be sure to discuss the identifying assumption(s). Provide one concrete example of a concern with this approach. Word limit: 250 words.**
+
+Given this information, I will run a time-series comparison, where we can get the difference of that same unit before vs after access to mobile banking. Formally, this estimator is:
+
+$\hat{\tau}_{TS} = \bar{Y}_{t \in post} - \bar{Y}_{t \in pre}$
+
+where $\bar{Y}_{t \in post}$ is the average monthly household income after access to mobile banking, and $\bar{Y}_{t \in pre}$ is the same but before access for the same household. In regression form, this can be expressed as:
+
+$Y_{t} = \beta_{0} + \beta_{1}D_{t} + \varepsilon_{t}$
+
+where $Y_{t}$ is household income in year $t$ and $D_t$ is an indicator equal to 1 for $t \geq 2009$. $\beta_{1}$ is our estimate of the treatment effect. Since we are looking at a single treated unit, this recovers the ATT rather than the ATE.
+
+The identifying assumption is that the household's income would have been unchanged absent treatment.
+
+One inmediate concern about this approach is the global financial crisis that ocurred between 2008-2009. This happened at the same time that this specific household gained mobile banking access. If the crisis influenced household income independently of the treatment, then our estimate would confound the treatment effect with the macroeconomic shock.
+
+{{< pagebreak >}}
 
 ## Q3
 
-Next, explain why it would be even better to have data on multiple households, including data on all households that gained mobile banking access in 2009, as well as data on households that never registered for mobile banking. Describe, in words and math (this should be a regression), how you would use these data to attempt to estimate the causal effect of mobile banking access on household income. Be sure to discuss the identifying assumption(s). Provide one concrete example of a remaining concern with this approach. Word limit: 250 words.
+**Next, explain why it would be even better to have data on multiple households, including data on all households that gained mobile banking access in 2009, as well as data on households that never registered for mobile banking. Describe, in words and math (this should be a regression), how you would use these data to attempt to estimate the causal effect of mobile banking access on household income. Be sure to discuss the identifying assumption(s). Provide one concrete example of a remaining concern with this approach. Word limit: 250 words.**
+
+Given the concern of macroeconomic shocks explained in Q2, having multiple households is better if we also have non-treated households. This way, we can use the time trend of the non-treated to net out the common confounders from the treated houlseholds' time trend. The mathematical approach fot this would be:
+
+$Y_{it} = \alpha + \beta Treat_i + \delta Post_t + \tau (Treat_i \times Post_t) + \varepsilon_{it}$
+
+Where $Treat_{i}=1$ for households that gained access in 2009, $Post_t=1$ for $t \geq$ 2009, and $\tau$ is the differences in differences estime of the treatment effect. 
+
+To validate, one of the assumpations is to have a parallel counterfactual trends. For instance, treated and untreated households would have followed similar income trends absent mobile baking. 
+
+A remaining concern for this scenario, is that maybe the parallel trends assumption can be violated if the households treated in 2009 were already on different income trends or trajectories. For instance, maybe those households were more entrepreneurial compared to those in control, or were even more richer and had less exposition to the crisis.
+
+{{< pagebreak >}}
 
 ## Q4
 
-FINCA LatAm, given your even-handed discussion of various approaches, is willing to put their faith in you. They will give you their full database, which includes information on the universe of households from 2002 to 2017. These data include information on households that never gained mobile banking access, as well as households that registered in different years from 2009 to 2017 (no households registered after 2013). Describe, in words and math (this should be a regression), how you would use these data to attempt to estimate the causal effect of mobile banking access on household income. Be sure to discuss the identifying assumption(s). Provide one concrete example of a remaining concern with this approach. Word limit: 250 words.
+**FINCA LatAm, given your even-handed discussion of various approaches, is willing to put their faith in you. They will give you their full database, which includes information on the universe of households from 2002 to 2017. These data include information on households that never gained mobile banking access, as well as households that registered in different years from 2009 to 2017 (no households registered after 2013). Describe, in words and math (this should be a regression), how you would use these data to attempt to estimate the causal effect of mobile banking access on household income. Be sure to discuss the identifying assumption(s). Provide one concrete example of a remaining concern with this approach. Word limit: 250 words.**
+
+Given the information and data provided, we have a panel with staggered treatment timing, which can allow me to generalize the difference-in-differences approach using a two-way fixed effects (TWFE). 
+
+The regression for this approach is:
+
+$Y_{it} = \tau D_{it} + \alpha_i + \delta_t + \varepsilon_{it}$
+
+where $Y_{it}$ is monthly household income, $D_{it}$ is an indicator equal to 1 once household $i$ has gained mobile banking access, $\alpha_i$ are household fixed effects that absorb all time-invariant household characteristics, and $\delta_t$ are year fixed effects that absorb common time shocks affecting all households equally. The coefficient $\tau$ estimates the average treatment effect on the treated.
+
+This is approach, through household fixed effects, will help us to control for all time-invariant unobservables. Also, multiple treatment cohorts provide more variation to more accurately identify the effect, and year fixed effects flexibly absorb any common shocks (like the crisis mentioned above).
+
+The identifying assumption is $E[\varepsilon_{it}|\alpha_i, \delta_t] = 0$, where conditional on household and year fixed effects, no remaining confounders are correlated with treatment timing. A specific concern with this approach is that TWFE with staggered timing uses already-treated households as controls for later-treated households. So if treatment effects grow over time, this comparasion can bias estimates, since some of the treatment effect gets absorbed into the year fixed effects $\delta_t$.
+
+{{< pagebreak >}}
 
 ## Q5
 
-Use the included ps3_data_spring26.csv dataset to implement a simple comparison of average household incomes between households that NEVER gained mobile banking access and households that (eventually) did. Describe what you find. Word limit: 250 words.
+**Use the included ps3_data_spring26.csv dataset to implement a simple comparison of average household incomes between households that NEVER gained mobile banking access and households that (eventually) did. Describe what you find. Word limit: 250 words.**
+
+````{python}
+df['ever_treated'] = df['mobilebank_year'].notna().astype(int)
+
+means = df.groupby('ever_treated')['income'].mean()
+print(means)
+print(f"\nDifference (ever-treated - never-treated): {means[1] - means[0]:.3f}")
+````
+
+Ever-treated households have average monthly incomes 39.19 higher than never-treated households. However, this is the $\hat{\tau}^{NAIVE}$ estimator and cannot be credibly interpreted as the causal effect of mobile banking access, since it compares units bundling pre-existing differences into the estimate.
+
+Households that registered for mobile banking likely differ systematically from those that never did. The naive estimate likely overstates the causal effect of mobile banking on household income.
+
+{{< pagebreak >}}
 
 
 ## Q6 
 
-Use regression to perform a time-series analys is of the effect of mobile banking access on household income, using only households that were treated in 2009. Describe what you find. Plot the average household incomes for households that gained mobile banking access in 2009 against time. How does this figure affect how you interpret your estimates (if at all)? Word limit: 250 words.
+**Use regression to perform a time-series analys is of the effect of mobile banking access on household income, using only households that were treated in 2009. Describe what you find. Plot the average household incomes for households that gained mobile banking access in 2009 against time. How does this figure affect how you interpret your estimates (if at all)? Word limit: 250 words.**
+
+````{python}
+df_2009 = df[df['mobilebank_year'] == 2009].copy()
+df_2009['post'] = (df_2009['year'] >= 2009).astype(int)
+
+model = smf.ols('income ~ post', data=df_2009).fit(cov_type='cluster', cov_kwds={'groups': df_2009['household_id']})
+print(model.summary())
+
+avg_income = df_2009.groupby('year')['income'].mean()
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.plot(avg_income.index, avg_income.values, marker='o')
+ax.axvline(x=2009, color='red', linestyle='--', label='Treatment year (2009)')
+ax.set_xlabel('Year')
+ax.set_ylabel('Average Household Income')
+ax.set_title('Average Income for Households Treated in 2009')
+ax.legend()
+plt.tight_layout()
+plt.savefig('q6_plot.png', dpi=150)
+plt.show()
+````
+
+Filtering to only households treated in 2009 and regressing income on a post-treatment indicator ($Post_t = 1$ for $t \geq 2009$), we get:
+
+$Y_{it} = 2007.82 + 123.56 \cdot Post_t$
+
+The coefficient on $Post_t$ is 123.56 (p < 0.001), suggesting that average monthly household income was 123.56 higher in the post-treatment period compared to the pre-treatment period for this group.
+
+However, the plot of average household incomes over time reveals that the pre-treatment (2002-2008), average income is mostly flat around 2008, which is can help us to interpret the assumption that the counterfactual trend is zero. Then, in 2009, there is a sharp jump of around 100 units, followed by a continued upward trend.
+
+Despite the flat pre-treatment trend supports the assumption that income would have remained stable absent treatment, the ongoing post-2009 growth could reflect other coincident time-varying confounder, like economic growth in the country or cash transfer to aliviate the crisis effects. With only treated households and no control group, we cannot validate the parallel trends assumption.
+
+{{< pagebreak >}}
 
 ## Q7
 
-Plot (average) household incomes against time for households that never gained mobile banking access. Assess the viability of using the never-treated households as a control group for households that registered for mobile banking in 2009. Word limit: 250 words.
+**Plot (average) household incomes against time for households that never gained mobile banking access. Assess the viability of using the never-treated households as a control group for households that registered for mobile banking in 2009. Word limit: 250 words.**
+
+````{python}
+df_never = df[df['mobilebank_year'].isna()].copy()
+
+avg_never = df_never.groupby('year')['income'].mean()
+
+fig, ax = plt.subplots(figsize=(10, 4))
+ax.plot(avg_never.index, avg_never.values, marker='o', label='Never-treated')
+ax.set_xlabel('Year')
+ax.set_ylabel('Average Household Income')
+ax.set_title('Average Income for Never-Treated Households')
+ax.legend()
+plt.tight_layout()
+plt.savefig('q7_plot.png', dpi=150)
+plt.show()
+
+
+avg_2009 = df[df['mobilebank_year'] == 2009].groupby('year')['income'].mean()
+avg_never = df[df['mobilebank_year'].isna()].groupby('year')['income'].mean()
+
+fig, ax = plt.subplots(figsize=(10, 4))
+ax.plot(avg_2009.index, avg_2009.values, marker='o', label='Treated in 2009')
+ax.plot(avg_never.index, avg_never.values, marker='s', label='Never-treated')
+ax.axvline(x=2009, color='red', linestyle='--', label='Treatment year (2009)')
+ax.set_xlabel('Year')
+ax.set_ylabel('Average Household Income')
+ax.set_title('Average Income: 2009-Treated vs Never-Treated')
+ax.legend()
+plt.tight_layout()
+plt.savefig('q7_plot_both.png', dpi=150)
+plt.show()
+````
+
+The first plot shows that never-treated households had a steady but gradual upward trend in average income over the entire 2002-2017 period, rising from 2,023 to 2,036. Interestingly, there is no break around 2009.
+
+The second plot shows that, in the pre-treatment period, both groups follow relatively flat and parallel trends. That said, seem like the never-treated households are a viable control group.
+
+{{< pagebreak >}}
 
 ## Q8
 
-Using just the never-treated households and the households that gained mobile banking access in 2009, estimate the causal impact of treatment on household income. To do this, begin with a simple difference in means (rather than regression). Next, use regression (no fixed effects). Finally, use fixed effects to control for common time shocks and time-invariant household characteristics (you can do this either via dummy variables or demeaning). Be sure to adjust your standard errors appropriately in the regression-based estimates. Compare these three estimates. Are they the same or different to one another? Interpret the point estimate from the fixed effects regression: what is the causal effect of mobile banking access on household income? Word limit: 250 words.
+**Using just the never-treated households and the households that gained mobile banking access in 2009, estimate the causal impact of treatment on household income. To do this, begin with a simple difference in means (rather than regression). Next, use regression (no fixed effects). Finally, use fixed effects to control for common time shocks and time-invariant household characteristics (you can do this either via dummy variables or demeaning). Be sure to adjust your standard errors appropriately in the regression-based estimates. Compare these three estimates. Are they the same or different to one another? Interpret the point estimate from the fixed effects regression: what is the causal effect of mobile banking access on household income? Word limit: 250 words.**
+
+````{python}
+
+df_q8 = df[(df['mobilebank_year'].isna()) | (df['mobilebank_year'] == 2009)].copy()
+df_q8['treat'] = (df_q8['mobilebank_year'] == 2009).astype(int)
+df_q8['post'] = (df_q8['year'] >= 2009).astype(int)
+df_q8['treat_post'] = df_q8['treat'] * df_q8['post']
+
+# Simple difference in means
+means = df_q8.groupby(['treat', 'post'])['income'].mean()
+print("Group means:")
+print(means)
+
+dd_manual = (means[(1,1)] - means[(1,0)]) - (means[(0,1)] - means[(0,0)])
+print(f"\nDD (difference in means): {dd_manual:.3f}")
+
+# Regression without fixed effects
+model_no_fe = smf.ols('income ~ treat * post', data=df_q8).fit(
+    cov_type='cluster', cov_kwds={'groups': df_q8['household_id']})
+print("\n--- Regression without FE ---")
+print(model_no_fe.summary())
+
+# Regression with household + year FE
+df_q8['household_id_str'] = df_q8['household_id'].astype(str)
+df_q8['year_str'] = df_q8['year'].astype(str)
+
+model_fe = smf.ols('income ~ treat_post + C(household_id_str) + C(year_str)', 
+                    data=df_q8).fit(
+    cov_type='cluster', cov_kwds={'groups': df_q8['household_id']})
+print("\n--- Regression with FE ---")
+print(f"treat_post coefficient: {model_fe.params['treat_post']:.3f}")
+print(f"treat_post std err: {model_fe.bse['treat_post']:.3f}")
+print(f"treat_post p-value: {model_fe.pvalues['treat_post']:.4f}")
+
+````
+
+Using only never-treated and 2009-treated households, the DD estimate via difference in means is:
+
+$\hat{\tau}_{DD} = (2131.38 - 2007.82) - (2031.30 - 2023.77) = 116.02$
+
+The DD regression without fixed effects gives an identical interaction coefficient of 116.02 (p < 0.001). The two-way fixed effects regression also results in 116.02. Considering this, all three estimates are identical.
+
+Given the results,under the parallel trends assumption, gaining access to mobile banking increased monthly household income by approximately 116.02 units on average for treated households.
+
+{{< pagebreak >}}
 
 ## Q9
 
-Use an event study regression to estimate how the effect of mobile banking access on household income varies over time. Note that you will have to omit one of the event study treatment dummies (otherwise everything will be perfectly multicollinear). Standard practice is to leave out the T-1 dummy by omitting the dummy for the period right before treatment year. Plot the resulting event study point estimates and 95 percent confidence intervals. Describe how the treatment effect varies over time, if at all. Word limit: 250 words.
+**Use an event study regression to estimate how the effect of mobile banking access on household income varies over time. Note that you will have to omit one of the event study treatment dummies (otherwise everything will be perfectly multicollinear). Standard practice is to leave out the T-1 dummy by omitting the dummy for the period right before treatment year. Plot the resulting event study point estimates and 95 percent confidence intervals. Describe how the treatment effect varies over time, if at all. Word limit: 250 words.**
+
+````{python}
+
+df_q9 = df[(df['mobilebank_year'].isna()) | (df['mobilebank_year'] == 2009)].copy()
+df_q9['treat'] = (df_q9['mobilebank_year'] == 2009).astype(int)
+df_q9['event_time'] = df_q9['year'] - 2009
+
+df_q9['et_m7'] = ((df_q9['treat'] == 1) & (df_q9['event_time'] == -7)).astype(int)
+df_q9['et_m6'] = ((df_q9['treat'] == 1) & (df_q9['event_time'] == -6)).astype(int)
+df_q9['et_m5'] = ((df_q9['treat'] == 1) & (df_q9['event_time'] == -5)).astype(int)
+df_q9['et_m4'] = ((df_q9['treat'] == 1) & (df_q9['event_time'] == -4)).astype(int)
+df_q9['et_m3'] = ((df_q9['treat'] == 1) & (df_q9['event_time'] == -3)).astype(int)
+df_q9['et_m2'] = ((df_q9['treat'] == 1) & (df_q9['event_time'] == -2)).astype(int)
+
+df_q9['et_0']  = ((df_q9['treat'] == 1) & (df_q9['event_time'] == 0)).astype(int)
+df_q9['et_1']  = ((df_q9['treat'] == 1) & (df_q9['event_time'] == 1)).astype(int)
+df_q9['et_2']  = ((df_q9['treat'] == 1) & (df_q9['event_time'] == 2)).astype(int)
+df_q9['et_3']  = ((df_q9['treat'] == 1) & (df_q9['event_time'] == 3)).astype(int)
+df_q9['et_4']  = ((df_q9['treat'] == 1) & (df_q9['event_time'] == 4)).astype(int)
+df_q9['et_5']  = ((df_q9['treat'] == 1) & (df_q9['event_time'] == 5)).astype(int)
+df_q9['et_6']  = ((df_q9['treat'] == 1) & (df_q9['event_time'] == 6)).astype(int)
+df_q9['et_7']  = ((df_q9['treat'] == 1) & (df_q9['event_time'] == 7)).astype(int)
+df_q9['et_8']  = ((df_q9['treat'] == 1) & (df_q9['event_time'] == 8)).astype(int)
+
+
+formula = ('income ~ et_m7 + et_m6 + et_m5 + et_m4 + et_m3 + et_m2 '
+           '+ et_0 + et_1 + et_2 + et_3 + et_4 + et_5 + et_6 + et_7 + et_8 '
+           '+ C(household_id) + C(year)')
+model = smf.ols(formula, data=df_q9).fit(cov_type='cluster', cov_kwds={'groups': df_q9['household_id']})
+
+
+event_times = [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+coefs =  [model.params['et_m7'], model.params['et_m6'], model.params['et_m5'],
+          model.params['et_m4'], model.params['et_m3'], model.params['et_m2'],
+          0,  # omitted period
+          model.params['et_0'], model.params['et_1'], model.params['et_2'],
+          model.params['et_3'], model.params['et_4'], model.params['et_5'],
+          model.params['et_6'], model.params['et_7'], model.params['et_8']]
+ci = model.conf_int()
+ci_lo = [ci.loc['et_m7',0], ci.loc['et_m6',0], ci.loc['et_m5',0],
+         ci.loc['et_m4',0], ci.loc['et_m3',0], ci.loc['et_m2',0],
+         0,
+         ci.loc['et_0',0], ci.loc['et_1',0], ci.loc['et_2',0],
+         ci.loc['et_3',0], ci.loc['et_4',0], ci.loc['et_5',0],
+         ci.loc['et_6',0], ci.loc['et_7',0], ci.loc['et_8',0]]
+ci_hi = [ci.loc['et_m7',1], ci.loc['et_m6',1], ci.loc['et_m5',1],
+         ci.loc['et_m4',1], ci.loc['et_m3',1], ci.loc['et_m2',1],
+         0,
+         ci.loc['et_0',1], ci.loc['et_1',1], ci.loc['et_2',1],
+         ci.loc['et_3',1], ci.loc['et_4',1], ci.loc['et_5',1],
+         ci.loc['et_6',1], ci.loc['et_7',1], ci.loc['et_8',1]]
+
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.errorbar(event_times, coefs,
+            yerr=[[c - lo for c, lo in zip(coefs, ci_lo)],
+                  [hi - c for c, hi in zip(coefs, ci_hi)]],
+            fmt='o-', capsize=4)
+ax.axhline(y=0, color='gray', linestyle='--')
+ax.axvline(x=-0.5, color='red', linestyle='--', label='Treatment onset')
+ax.set_xlabel('Event Time (years relative to 2009)')
+ax.set_ylabel('Estimated Treatment Effect')
+ax.set_title('Event Study: Effect of Mobile Banking on Household Income')
+ax.legend()
+plt.tight_layout()
+plt.savefig('q9_event_study.png', dpi=150)
+plt.show()
+
+````
+
+All pre-treatment coefficients ($r = -7$ through $r = -2$) are close to zero, supporting the parallel trends assumption.
+
+At $r = 0$, the effect jumps to 100 units and grows steadily over time, reaching close to 130 by $r = 8$. The treatment effect increases over time, suggesting households benefit more from mobile banking the longer they have access.
+
+{{< pagebreak >}}
 
 ## Q10
 
-Use a distributed lag regression to estimate how the effect of mobile banking access on household income varies over time. What is the cumulative effect of treatment after 5 years? Plot the five cumulative effects. (Note: the effect of the treatment year should be considered as the cumulative effect after 1 year) Word limit: 250 words.
+**Use a distributed lag regression to estimate how the effect of mobile banking access on household income varies over time. What is the cumulative effect of treatment after 5 years? Plot the five cumulative effects. (Note: the effect of the treatment year should be considered as the cumulative effect after 1 year) Word limit: 250 words.**
+
+````{python}
+
+df_q10 = df[(df['mobilebank_year'].isna()) | (df['mobilebank_year'] == 2009)].copy()
+df_q10['treat'] = (df_q10['mobilebank_year'] == 2009).astype(int)
+
+df_q10['D'] = ((df_q10['treat'] == 1) & (df_q10['year'] >= 2009)).astype(int)
+
+
+df_q10['D_t_0'] = ((df_q10['treat'] == 1) & (df_q10['year'] >= 2009)).astype(int)
+df_q10['D_t_1'] = ((df_q10['treat'] == 1) & (df_q10['year'] >= 2010)).astype(int)
+df_q10['D_t_2'] = ((df_q10['treat'] == 1) & (df_q10['year'] >= 2011)).astype(int)
+df_q10['D_t_3'] = ((df_q10['treat'] == 1) & (df_q10['year'] >= 2012)).astype(int)
+df_q10['D_t_4'] = ((df_q10['treat'] == 1) & (df_q10['year'] >= 2013)).astype(int)
+
+formula = 'income ~ D_t_0 + D_t_1 + D_t_2 + D_t_3 + D_t_4 + C(household_id) + C(year)'
+model = smf.ols(formula, data=df_q10).fit(cov_type='cluster', cov_kwds={'groups': df_q10['household_id']})
+
+print(model.params[['D_t_0', 'D_t_1', 'D_t_2', 'D_t_3', 'D_t_4']])
+
+tau_0 = model.params['D_t_0']
+tau_1 = model.params['D_t_1']
+tau_2 = model.params['D_t_2']
+tau_3 = model.params['D_t_3']
+tau_4 = model.params['D_t_4']
+
+cum_1 = tau_0
+cum_2 = tau_0 + tau_1
+cum_3 = tau_0 + tau_1 + tau_2
+cum_4 = tau_0 + tau_1 + tau_2 + tau_3
+cum_5 = tau_0 + tau_1 + tau_2 + tau_3 + tau_4
+
+print(f"\nCumulative after 1 year: {cum_1:.3f}")
+print(f"Cumulative after 2 years: {cum_2:.3f}")
+print(f"Cumulative after 3 years: {cum_3:.3f}")
+print(f"Cumulative after 4 years: {cum_4:.3f}")
+print(f"Cumulative after 5 years: {cum_5:.3f}")
+
+years_after = [1, 2, 3, 4, 5]
+cum_effects = [cum_1, cum_2, cum_3, cum_4, cum_5]
+
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.plot(years_after, cum_effects, marker='o')
+ax.set_xlabel('Years After Treatment')
+ax.set_ylabel('Cumulative Treatment Effect')
+ax.set_title('Distributed Lag: Cumulative Effect of Mobile Banking on Income')
+ax.set_xticks([1, 2, 3, 4, 5])
+plt.tight_layout()
+plt.savefig('q10_cumulative.png', dpi=150)
+plt.show()
+
+````
+
+The distributed lag marginal effects are $\hat{\tau}_0 = 100.13$, $\hat{\tau}_1 = 3.89$, $\hat{\tau}_2 = 3.96$, $\hat{\tau}_3 = 3.97$, $\hat{\tau}_4 = 12.07$. The cumulative effect after 5 years is $T_5 = 124.02$. The plot shows the cumulative effect growing steadily from 100.13 after 1 year to 124.02 after 5 years, confirming that mobile banking benefits accumulate over time.
+
+{{< pagebreak >}}
 
