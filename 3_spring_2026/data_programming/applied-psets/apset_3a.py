@@ -137,7 +137,7 @@ print(provider_hhrg.columns.tolist())
 print(case_mix_weight.head())
 print(provider_hhrg[["Grpng", "Grpng_Desc"]].head(10))
 
-print(provider_hhrg["Grpng_Desc"].iloc[0])
+print(provider_hhrg["Grpng_Desc"].iloc[0]
 
 # The common information on both are:
 # 1. Whether it's an early (1st or 2nd) or late (3rd+) episode
