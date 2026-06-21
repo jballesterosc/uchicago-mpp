@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jay Ballesteros">
-<meta name="dcterms.date" content="2026-05-20">
+<meta name="dcterms.date" content="2026-06-21">
 
-<title>The Trade-off of Existential Risk</title>
+<title>Slowing the AGI Race for Reducing Catastrophic Risk</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -47,17 +47,17 @@ div.csl-indent {
 }</style>
 
 
-<script src="policy-memo_files/libs/clipboard/clipboard.min.js"></script>
-<script src="policy-memo_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="policy-memo_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="policy-memo_files/libs/quarto-html/popper.min.js"></script>
-<script src="policy-memo_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="policy-memo_files/libs/quarto-html/anchor.min.js"></script>
-<link href="policy-memo_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="policy-memo_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="policy-memo_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="policy-memo_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="policy-memo_files/libs/bootstrap/bootstrap-8ffd5f67044e5306d9846f29df41dda5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="policy-memo_ES_files/libs/clipboard/clipboard.min.js"></script>
+<script src="policy-memo_ES_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="policy-memo_ES_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="policy-memo_ES_files/libs/quarto-html/popper.min.js"></script>
+<script src="policy-memo_ES_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="policy-memo_ES_files/libs/quarto-html/anchor.min.js"></script>
+<link href="policy-memo_ES_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="policy-memo_ES_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="policy-memo_ES_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="policy-memo_ES_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="policy-memo_ES_files/libs/bootstrap/bootstrap-8ffd5f67044e5306d9846f29df41dda5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -72,19 +72,20 @@ div.csl-indent {
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#findings" id="toc-findings" class="nav-link" data-scroll-target="#findings">Findings</a></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case study</a></li>
   <li><a href="#key-considerations" id="toc-key-considerations" class="nav-link" data-scroll-target="#key-considerations">Key considerations</a></li>
   <li><a href="#policy-takeaways" id="toc-policy-takeaways" class="nav-link" data-scroll-target="#policy-takeaways">Policy takeaways</a></li>
   <li><a href="#about-the-author" id="toc-about-the-author" class="nav-link" data-scroll-target="#about-the-author">About the Author</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../../policy-memo.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../../policy-memo_ES.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Trade-off of Existential Risk</h1>
-<p class="subtitle lead">A short policy brief</p>
+<h1 class="title">Slowing the AGI Race for Reducing Catastrophic Risk</h1>
+<p class="subtitle lead">Policy brief</p>
 </div>
 
 
@@ -97,7 +98,7 @@ div.csl-indent {
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            AI Policy Fundamentals | Existential Risk Laboratory (XLab)
+            University of Chicago
           </p>
       </div>
   </div>
@@ -108,7 +109,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 20, 2026</p>
+      <p class="date">June 21, 2026</p>
     </div>
   </div>
   
@@ -120,26 +121,30 @@ div.csl-indent {
 </header>
 
 
-<p><em>This policy brief was written as part of the AI Policy Fundamentals Reading Group at the Existential Risk Laboratory (XLab), University of Chicago. The views expressed are the author’s own and do not necessarily represent the position of the laboratory.</em></p>
-<div style="page-break-after: always;"></div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <!-- Contexto general del problema. ¿Por qué importa este tema para tomadores de decisiones? Introduce el concepto central y la motivación del brief. -->
-<p>A pesar del potential de la IA en acelerar el progreso, crecimiento exponencial en términos de GPD y la innovación y, de acuerdo con algunas personas, resolver todos los problemas de la humanidad <span class="citation" data-cites="amodei2024">(<a href="#ref-amodei2024" role="doc-biblioref">Amodei 2024</a>)</span>, hoy la tecnología goza de poco apoyo público. Aunque las razones parten de la potencial pérdida de trabajo debido a la automatización y el riesgo y exposición de ciertas profesiones<span class="citation" data-cites="falk2026">(<a href="#ref-falk2026" role="doc-biblioref">Falk and Tsoukalas 2026</a>)</span>, expertos acentúan que los riesgos pueden ser significativamente más graves – incluso existenciales.</p>
-<p>Dinámicas como la carrera comercial de las empresas with the latest frontier models, el interés geopolítico de China y USA en dominar los avances y capacidades computacionales, el potencial de implementación de la tecnología en warfare decisions y la posibilidad de misalignement de los modelos, son factores ue factibilizan más latente el riesgo existential de la IA para la especie humana. <span class="citation" data-cites="yudkowsky2026">(<a href="#ref-yudkowsky2026" role="doc-biblioref">Yudkowsky 2026</a>)</span></p>
-<p>Dado el trade-off de existinción de la especie (algunos expertos estiman un 10% de posibilidad) es imperativo lograr un acuerdo global donde se prioricen tres factores: 1) estandarizar mecanismos de licencia, transparencia y evaluación de los modelos en términos de safety; 2) establecer mecanismos de no proliferación en chips y su tecnología subyacente; y 3) generar capacidad técnica en estados hegemónicos para asegurar la vigilancia de los mecanismos.</p>
+<p>A pesar del potencial de la AGI para acelerar el progreso <span class="citation" data-cites="amodei2024">(<a href="#ref-amodei2024" role="doc-biblioref">Amodei 2024</a>)</span>, hoy existe poco apoyo público a la aceleración de su desarrollo y la atención de la ciudadanía tiende más a su regulación por el potencial impacto en el mercado laboral <span class="citation" data-cites="stanford_ai_index_2026_ch9">(<a href="#ref-stanford_ai_index_2026_ch9" role="doc-biblioref">Stanford Institute for Human-Centered Artificial Intelligence 2026</a>)</span>. Sin embargo, existe una preocupación que está ganando fuerza entre académicos y tomadores de decisiones: el riesgo existencial y catastrófico <span class="citation" data-cites="amodei2026 jones2024 bueno2026 ca_sb53_2026">(<a href="#ref-amodei2026" role="doc-biblioref">Amodei 2026</a>; <a href="#ref-jones2024" role="doc-biblioref">Jones 2024</a>; <a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>; <a href="#ref-ca_sb53_2026" role="doc-biblioref">California State Legislature 2026</a>)</span>.</p>
+<p>Las dinámicas de carrera comercial y tecnológica <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> dificultan la reducción de estos riesgos, pues empresas y gobiernos (entendámolos como entes o firmas) tienen sus incentivos focalizados en la velocidad de despliegue en lugar de la seguridad de sus modelos <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span> y la desaceleración a través de la regulación es uno de los mecanismos que pueden ayudar a reducir dichos riesgos<span class="citation" data-cites="yudkowsky2026">(<a href="#ref-yudkowsky2026" role="doc-biblioref">Yudkowsky 2026</a>)</span>.</p>
+<p>Dada la dinámica de carrera que existe en torno a AGI, la seguridad de la IA adquiere la categoría de un problema de acción colectiva<span class="citation" data-cites="wiki:collective_action_problem">(<a href="#ref-wiki:collective_action_problem" role="doc-biblioref">Wikipedia contributors 2026</a>)</span>, pues a pesar de que la decisión óptima está en tener despliegues seguros (con menor riesgo catastrófico y/o existencial), la competencia motiva a que las firmas prioricen el cómputo existente para escalar las capacidades de sus modelos (y así incrementar su probabilidad de ganar la carrera) en lugar de destinar una mayor proporción a experimentos de seguridad <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>.</p>
+<p>Las propuestas para regular el sector, se central principalemten en mecanismos de compromiso, disuación y regulación de recursos. En algunos casos, con similitudes a la gobernanza nuclear. Ejemplos de esto están en el compromiso de desaceleración de las firmas, no-proliferación de chips de última generación, mayor ratio de cómputo dirigido a seguridad en lugar de desarrollo y despliegue, barreras de acceso al mercado de desarrollo de IA y cooperación global para la mitigación de riesgos.</p>
+<!--Dado el trade-off de existinción de la especie (algunos expertos estiman un 10% de posibilidad) es imperativo lograr un acuerdo global donde se prioricen tres factores: 1) estandarizar mecanismos de licencia, transparencia y evaluación de los modelos en términos de safety; 2) establecer mecanismos de no proliferación en chips y su tecnología subyacente; y 3) generar capacidad técnica en estados hegemónicos para asegurar la vigilancia de los mecanismos. -->
+<p>“Actors can improve their chance of winning only by accepting a higher probability of a catastrophic outcome <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>”</p>
 </section>
 <section id="findings" class="level2">
 <h2 class="anchored" data-anchor-id="findings">Findings</h2>
-<p>Jones (2024) considers an analogous question with respect to artificial intelligence. Suppose on one side that AI has incredible benefits, raising economic growth to 10 percent per year and thus doubling the average standard of living every 7 years. However, it comes with a one-time risk of killing everyone on the planet. How much risk would standard economic agents be willing to take in this case? <span class="citation" data-cites="jones2024">(<a href="#ref-jones2024" role="doc-biblioref">Jones 2024</a>)</span> ## Case study</p>
+<p>Los riesgos catastróficos y existenciales residen en la capacidad de los modelos de IA en mentir y convencer a los humanos, pero que culmina en dichos modelos adquiriendo tendencias de búsqueda de poder <span class="citation" data-cites="turner2023optimalpoliciestendseek">(<a href="#ref-turner2023optimalpoliciestendseek" role="doc-biblioref">Turner et al. 2023</a>)</span>. No obstante, más allá de los forecasts de iniciativas como AI 2027 <span class="citation" data-cites="kokotajlo2025ai2027">(<a href="#ref-kokotajlo2025ai2027" role="doc-biblioref">Kokotajlo et al. 2025</a>)</span> las iniciativas de policy se centran en reducir el riesgo de llegar a escenarios de naturaleza catastrófica mientras el progreso basado en los modelos sigue siendo una posibilidad.</p>
+<p>Antes de pasar a los riesgos puntuales, vale la pena considerar los <em>trade-offs</em>. Mientras que Jones (2026) señala que entre un 25% y 33% de riesgo de que una AGI extinga la raza humana, vale la pena a cambio de 10% de crecimiento anual y una reducción de la mortalidad al 50% (por avances en la medicina) <span class="citation" data-cites="jones2026ai">(<a href="#ref-jones2026ai" role="doc-biblioref">Jones 2026</a>)</span>. Por otro lado, Bueno de Mesquita (2026) formaliza en un modelo que alcanzar la AGI, en una dinámica de carrera donde las firmas priorizan despliegue y desarrollo vs seguridad, puede tener un valor esperado negativo <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>.</p>
+<p>Actualmente el mundo está subinvirtiendo por un factor de 30 o más en AI safety. Jones (2026) que si la inversión asciendera a 0.33% del PIB de USA (o $100 mil millones de USD), el riesgo podría disminuir lo suficiente para pasar un análisis de costo-beneficio.</p>
+</section>
+<section id="case-study" class="level2">
+<h2 class="anchored" data-anchor-id="case-study">Case study</h2>
 <!-- Un ejemplo concreto que ilustre los hallazgos. Puede ser una política implementada, un caso histórico, o un escenario hipotético bien fundamentado. -->
 </section>
 <section id="key-considerations" class="level2">
 <h2 class="anchored" data-anchor-id="key-considerations">Key considerations</h2>
 <!-- Marco analítico o principios que los tomadores de decisiones deben tener en cuenta. Organizado por dimensiones (e.g., privacidad, equidad, transparencia, etc.). -->
 <!-- PLACEHOLDER: Aquí va un diagrama ilustrativo (por agregar). -->
-<p>La propuesta no es una apología a la intervención ni a la estatización de la tecnología, pero si al establecimiento de reglas que ayuden a reducir los riesgos existenciales inherentes a la IA.</p>
-<p>Más de allá de mecanismos formales como mesas de dialógo, incorporación de la voz de las empresas en la discusión y reglas y establecimiento de steering commitees, para vigilar su implementación, es necesario acelerar el diseño y piloto de reglas para desacelerar las dinámicas que son riesgos sistémicos.</p>
 </section>
 <section id="policy-takeaways" class="level2">
 <h2 class="anchored" data-anchor-id="policy-takeaways">Policy takeaways</h2>
@@ -148,7 +153,7 @@ div.csl-indent {
 <section id="about-the-author" class="level2">
 <h2 class="anchored" data-anchor-id="about-the-author">About the Author</h2>
 <p>Jay Ballesteros is an MPP candidate at the Harris School of Public Policy, University of Chicago. He is a Fellow at the Existential Risk Laboratory (XLab).</p>
-<div style="page-break-after: always;"></div>
+<p><em>This policy brief was written as part of the AI Policy Fundamentals Reading Group at the Existential Risk Laboratory (XLab), University of Chicago. The views expressed are the author’s own and do not necessarily represent the position of the laboratory.</em></p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
@@ -157,11 +162,32 @@ div.csl-indent {
 <div id="ref-amodei2024" class="csl-entry" role="listitem">
 Amodei, Dario. 2024. <span>“Machines of Loving Grace: How <span>AI</span> Could Transform the World for the Better.”</span> October. <a href="https://www.darioamodei.com/essay/machines-of-loving-grace">https://www.darioamodei.com/essay/machines-of-loving-grace</a>.
 </div>
-<div id="ref-falk2026" class="csl-entry" role="listitem">
-Falk, Brett Hemenway, and Gerry Tsoukalas. 2026. <em>The AI Layoff Trap</em>. <a href="https://arxiv.org/abs/2603.20617">https://arxiv.org/abs/2603.20617</a>.
+<div id="ref-amodei2026" class="csl-entry" role="listitem">
+Amodei, Dario. 2026. <span>“The Adolescence of Technology.”</span> January. <a href="https://www.darioamodei.com/essay/the-adolescence-of-technology">https://www.darioamodei.com/essay/the-adolescence-of-technology</a>.
+</div>
+<div id="ref-bueno2026" class="csl-entry" role="listitem">
+Bueno de Mesquita, Ethan, Wioletta Dziuda, and Mattias Polborn. 2026. <em>The AGI Race and Existential Risk</em>. Working Paper No. 35276. Working Paper Series. National Bureau of Economic Research. <a href="https://doi.org/10.3386/w35276">https://doi.org/10.3386/w35276</a>.
+</div>
+<div id="ref-ca_sb53_2026" class="csl-entry" role="listitem">
+California State Legislature. 2026. <em>Senate Bill No. 53: Artificial Intelligence Models: Large Developers (Transparency in Frontier Artificial Intelligence Act)</em>. LegiScan. <a href="https://legiscan.com/CA/text/SB53/id/3270002">https://legiscan.com/CA/text/SB53/id/3270002</a>.
+</div>
+<div id="ref-jones2026ai" class="csl-entry" role="listitem">
+Jones, Charles I. 2026. <em>AI and Our Economic Future</em>. National Bureau of Economic Research.
 </div>
 <div id="ref-jones2024" class="csl-entry" role="listitem">
 Jones, Charles I. 2024. <span>“The AI Dilemma: Growth Versus Existential Risk.”</span> <em>American Economic Review: Insights</em> 6 (4): 575–90. <a href="https://doi.org/10.1257/aeri.20230570">https://doi.org/10.1257/aeri.20230570</a>.
+</div>
+<div id="ref-kokotajlo2025ai2027" class="csl-entry" role="listitem">
+Kokotajlo, Daniel, Eli Lifland, Thomas Larsen, and Romeo Dean. 2025. <em>AI 2027: A Detailed Scenario Forecast</em>. AI Futures Project. <a href="https://ai-2027.com/">https://ai-2027.com/</a>.
+</div>
+<div id="ref-stanford_ai_index_2026_ch9" class="csl-entry" role="listitem">
+Stanford Institute for Human-Centered Artificial Intelligence. 2026. <em>Artificial Intelligence Index Report 2026: Chapter 9: Public Opinion</em>. Report Chapter. Stanford University. <a href="https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_9_public_opinion.pdf">https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_9_public_opinion.pdf</a>.
+</div>
+<div id="ref-turner2023optimalpoliciestendseek" class="csl-entry" role="listitem">
+Turner, Alexander Matt, Logan Smith, Rohin Shah, Andrew Critch, and Prasad Tadepalli. 2023. <em>Optimal Policies Tend to Seek Power</em>. <a href="https://arxiv.org/abs/1912.01683">https://arxiv.org/abs/1912.01683</a>.
+</div>
+<div id="ref-wiki:collective_action_problem" class="csl-entry" role="listitem">
+Wikipedia contributors. 2026. <em>Collective Action Problem — <span>Wikipedia</span><span>,</span> the Free Encyclopedia</em>. <a href="https://en.wikipedia.org/wiki/Collective_action_problem">https://en.wikipedia.org/wiki/Collective_action_problem</a>.
 </div>
 <div id="ref-yudkowsky2026" class="csl-entry" role="listitem">
 Yudkowsky, Eliezer. 2026. <span>“Only Law Can Prevent Extinction.”</span> April 13. <a href="https://www.lesswrong.com/posts/5CfBDiQNg9upfipWk/only-law-can-prevent-extinction">https://www.lesswrong.com/posts/5CfBDiQNg9upfipWk/only-law-can-prevent-extinction</a>.
@@ -169,7 +195,13 @@ Yudkowsky, Eliezer. 2026. <span>“Only Law Can Prevent Extinction.”</span> Ap
 </div>
 </section>
 
-</main>
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Antrophic y OpenAI compitiendo por alcanzar AGI y próximos a lanzar IPO (a junio de 2026) para financiar mayor capacidad de cómputo. Asimismo, la tensión geopolítica entre USA y China por acceder a chips de última generación y modelos de frontera.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

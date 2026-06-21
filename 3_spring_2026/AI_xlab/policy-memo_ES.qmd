@@ -1,0 +1,76 @@
+---
+title: "Slowing the AGI Race for Reducing Catastrophic Risk"
+subtitle: "Policy brief"
+author:
+  - name: "Jay Ballesteros"
+    affiliation: "University of Chicago"
+date: today
+bibliography: references.bib
+format:
+  pdf:
+    documentclass: article
+    classoption: [twocolumn]
+    geometry:
+      - margin=1in
+    fontsize: 11pt
+    colorlinks: true
+    linkcolor: Maroon
+    urlcolor: Maroon
+  html:
+    theme: cosmo
+    toc: true
+---
+
+## Overview
+
+<!-- Contexto general del problema. ¿Por qué importa este tema para tomadores de decisiones? Introduce el concepto central y la motivación del brief. -->
+
+A pesar del potencial de la AGI para acelerar el progreso [@amodei2024], hoy existe poco apoyo público a la aceleración de su desarrollo y la atención de la ciudadanía tiende más a su regulación por el potencial impacto en el mercado laboral [@stanford_ai_index_2026_ch9]. Sin embargo, existe una preocupación que está ganando fuerza entre académicos y tomadores de decisiones: el riesgo existencial y catastrófico [@amodei2026; @jones2024; @bueno2026; @ca_sb53_2026].
+
+Las dinámicas de carrera comercial y tecnológica [^1] dificultan la reducción de estos riesgos, pues empresas y gobiernos (entendámolos como entes o firmas) tienen sus incentivos focalizados en la velocidad de despliegue en lugar de la seguridad de sus modelos [@bueno2026] y la desaceleración a través de la regulación es uno de los mecanismos que pueden ayudar a reducir dichos riesgos[@yudkowsky2026]. 
+
+[^1]: Antrophic y OpenAI compitiendo por alcanzar AGI y próximos a lanzar IPO (a junio de 2026) para financiar mayor capacidad de cómputo. Asimismo, la tensión geopolítica entre USA y China por acceder a chips de última generación y modelos de frontera.
+
+Dada la dinámica de carrera que existe en torno a AGI, la seguridad de la IA adquiere la categoría de un problema de acción colectiva[@wiki:collective_action_problem], pues a pesar de que la decisión óptima está en tener despliegues seguros (con menor riesgo catastrófico y/o existencial), la competencia motiva a que las firmas prioricen el cómputo existente para escalar las capacidades de sus modelos (y así incrementar su probabilidad de ganar la carrera) en lugar de destinar una mayor proporción a experimentos de seguridad [@bueno2026].
+
+Las propuestas para regular el sector, se central principalemten en mecanismos de compromiso, disuación y regulación de recursos. En algunos casos, con similitudes a la gobernanza nuclear. Ejemplos de esto están en el compromiso de desaceleración de las firmas, no-proliferación de chips de última generación, mayor ratio de cómputo dirigido a seguridad en lugar de desarrollo y despliegue, barreras de acceso al mercado de desarrollo de IA y cooperación global para la mitigación de riesgos.
+
+<!--Dado el trade-off de existinción de la especie (algunos expertos estiman un 10% de posibilidad) es imperativo lograr un acuerdo global donde se prioricen tres factores: 1) estandarizar mecanismos de licencia, transparencia y evaluación de los modelos en términos de safety; 2) establecer mecanismos de no proliferación en chips y su tecnología subyacente; y 3) generar capacidad técnica en estados hegemónicos para asegurar la vigilancia de los mecanismos. -->
+
+"Actors can improve their chance of winning only by accepting a higher probability of a catastrophic outcome [@bueno2026]"
+
+## Findings
+
+Los riesgos catastróficos y existenciales residen en la capacidad de los modelos de IA en mentir y convencer a los humanos, pero que culmina en dichos modelos adquiriendo tendencias de búsqueda de poder [@turner2023optimalpoliciestendseek]. No obstante, más allá de los forecasts de iniciativas como AI 2027 [@kokotajlo2025ai2027] las iniciativas de policy se centran en reducir el riesgo de llegar a escenarios de naturaleza catastrófica mientras el progreso basado en los modelos sigue siendo una posibilidad.
+
+Antes de pasar a los riesgos puntuales, vale la pena considerar los _trade-offs_. Mientras que Jones (2026) señala que entre un 25% y 33% de riesgo de que una AGI extinga la raza humana, vale la pena a cambio de 10% de crecimiento anual y una reducción de la mortalidad al 50% (por avances en la medicina) [@jones2026ai]. Por otro lado, Bueno de Mesquita (2026) formaliza en un modelo que alcanzar la AGI, en una dinámica de carrera donde las firmas priorizan despliegue y desarrollo vs seguridad, puede tener un valor esperado negativo [@bueno2026].
+
+Actualmente el mundo está subinvirtiendo por un factor de 30 o más en AI safety. Jones (2026) que si la inversión asciendera a 0.33% del PIB de USA (o $100 mil millones de USD), el riesgo podría disminuir lo suficiente para pasar un análisis de costo-beneficio. 
+
+
+## Case study
+
+<!-- Un ejemplo concreto que ilustre los hallazgos. Puede ser una política implementada, un caso histórico, o un escenario hipotético bien fundamentado. -->
+
+## Key considerations
+
+<!-- Marco analítico o principios que los tomadores de decisiones deben tener en cuenta. Organizado por dimensiones (e.g., privacidad, equidad, transparencia, etc.). -->
+
+<!-- PLACEHOLDER: Aquí va un diagrama ilustrativo (por agregar). -->
+
+## Policy takeaways
+
+<!-- Recomendaciones concretas y accionables derivadas del análisis. ¿Qué deberían hacer (o evitar) los tomadores de decisiones? -->
+
+## About the Author
+
+Jay Ballesteros is an MPP candidate at the Harris School of Public Policy, University of Chicago. He is a Fellow at the Existential Risk Laboratory (XLab).
+
+*This policy brief was written as part of the AI Policy Fundamentals Reading Group at the Existential Risk Laboratory (XLab), University of Chicago. The views expressed are the author's own and do not necessarily represent the position of the laboratory.*
+
+## References
+
+<!-- Fuentes citadas en formato académico. -->
+
+::: {#refs}
+:::
