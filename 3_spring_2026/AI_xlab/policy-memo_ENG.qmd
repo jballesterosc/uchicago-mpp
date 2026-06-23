@@ -1,7 +1,9 @@
 ---
-title: "Desacelerar la carrera hacia la AGI"
-subtitle: "Coordinación internacional y medidas domésticas frente al riesgo catastrófico"
-author: "Jay Ballesteros^[Jay Ballesteros es candidato al Master of Public Policy de la University of Chicago. Es Fellow del Existential Risk Laboratory (XLab).]"
+title: "Slowing the AGI Race for Reducing Catastrophic Risk"
+subtitle: "Policy brief"
+author:
+  - name: "Jay Ballesteros"
+    affiliation: "University of Chicago"
 date: today
 bibliography: references.bib
 format:
@@ -19,7 +21,7 @@ format:
     toc: true
 ---
 
-## Resumen
+## Overview
 
 <!-- Contexto general del problema. ¿Por qué importa este tema para tomadores de decisiones? -->
 
@@ -33,17 +35,17 @@ Dada esta dinámica, la seguridad de la IA adquiere la categoría de ser un prob
 
 Frente a este problema han surgido diversas propuestas que van desde la transparencia y la no-proliferación de cómputo hasta la coordinación internacional vinculante.
 
-## Hallazgos
+## Findings
 
-La preocupación por el riesgo catastrófico tiene dos vertientes. Por un lado, lo que ya se observa en los modelos actuales y por otro, lo que la teoría estima como posibles escenarios a medida que ganan capacidad. En lo empírico, en evaluaciones controladas transparentadas por Anthropic y METR, los modelos de frontera de varios laboratorios han recurrido a conductas peligrosas como chantaje y espionaje con objetivo de cumplir sus metas o evitar ser reemplazados[@anthropic2025agenticmisalignment] y también se han documentado agentes que violan restricciones y ocultan sus acciones de la supervisión humana.[^2] En lo teórico, Turner et al. han descrito que, bajo condiciones generales, las decisiones óptimas de agentes de IA son controlar y buscar el poder [@turner2023optimalpoliciestendseek]. Además de los pronósticos de iniciativas como AI 2027 [@kokotajlo2025ai2027] (que considera ambas vertientes), la agenda política debería concentrarse en reducir la probabilidad de llegar a escenarios catastróficos, que pueden ir desde el mal uso humano hasta la desalineación de los modelos.
+La preocupación por el riesgo catastrófico tiene dos vertientes. Por un lado, lo que ya se observa en los modelos actuales y por otro, lo que la teoría estima como posibles escenarios a medida que ganan capacidad. En lo empírico, en evaluaciones controladas transparentadas por Anthropic y METR, los modelos de frontera de varios laboratorios han recurrido a conductas peligrosas como chantaje y espionaje con objetivo de cumplir sus metas o evitar ser reemplazados[@anthropic2025agenticmisalignment] y también se han documentado agentes que violan restricciones y ocultan sus acciones de la supervisión humana.[^2] En lo teórico, Turner et al. han descrito que, bajo condiciones generales, las decisiones óptimas de agentes de IA son controlar y buscar el poder [@turner2023optimalpoliciestendseek]. Más allá de los pronósticos de iniciativas como AI 2027 [@kokotajlo2025ai2027] (que considera ambas vertientes), la agenda política debería concentrarse en reducir la probabilidad de llegar a escenarios catastróficos, que pueden ir desde el mal uso humano hasta la desalineación de los modelos.
 
 [^2]: En su *Frontier Risk Report* (febrero–marzo 2026), METR documentó agentes que fabricaban resultados y tomaban acciones deliberadas para ocultar evidencia de sus acciones [@metr2026].
 
-Más allá de los riesgos, hay quienes han intentado modelar cuánto estaríamos dispuestos a pagar a cambio de los beneficios de la AGI. Jones (2024) propone un modelo donde describe que, una AGI lograra duplicar la esperanza de vida de los humanos y asegurara un crecimiento económico superior al actual (el mismo autor habla de un 10% anual), su despliegue sería óptimo mientras se mantenga el riesgo catastrófico por debajo del 25% [@jones2024]. Por otro lado, Bueno de Mesquita et al. (2026) formalizan que en una dinámica de carrera donde las firmas priorizan el despliegue sobre la seguridad, alcanzar la AGI puede tener un valor esperado negativo [@bueno2026].
+Más de allá de los riesgos, hay quienes han intentado modelar cuánto estaríamos dispuestos a pagar a cambio de los beneficios de la AGI. Jones (2024) propone un modelo donde describe que, una AGI lograra duplicar la esperanza de vida de los humanos y asegurara un crecimiento económico superior al actual (el mismo autor habla de un 10% anual), su despliegue sería óptimo mientras se mantenga el riesgo catastrófico por debajo del 25% [@jones2024]. Por otro lado, Bueno de Mesquita et al. (2026) formalizan que en una dinámica de carrera donde las firmas priorizan el despliegue sobre la seguridad, alcanzar la AGI puede tener un valor esperado negativo [@bueno2026].
 
-Ahora bien, independientemente del umbral de tolerancia al riesgo catastrófico que podamos tener como especie, perseguir su mitigación puede mejorar las expectativas de los beneficios de la AGI. Jones, por un lado, estima que el mundo está subinvirtiendo en seguridad de IA por un factor de 30 o más, y que un gasto de 0.33% del PIB estadounidense (unos 100 mil millones de dólares anuales) podría resultar óptimo [@jones2026ai]. Bueno de Mesquita et al. sugiere que incrementar los niveles de inversión en seguridad de IA (con respecto a despliegue) a través de mecanismos que cambien los incentivos de las firmas y condicionen el acceso a este mercado, puede influir en la reducción del riesgo catastrófico [@bueno2026].
+Ahora bien, más allá del umbral de tolerancia al riesgo catastrófico que podamos tener como especie, perseguir su mitigación puede mejorar las expectativas de los beneficios de la AGI. Jones, por un lado, estima que el mundo está subinvirtiendo en seguridad de IA por un factor de 30 o más, y que un gasto de 0.33% del PIB estadounidense (unos 100 mil millones de dólares anuales) podría resultar óptimo [@jones2026ai]. Bueno de Mesquita et al. sugiere que incrementar los niveles de inversión en seguridad de IA (con respecto a despliegue) a través de mecanismos que cambien los incentivos de las firmas y condicionen el acceso a este mercado, puede influir en la reducción del riesgo catastrófico [@bueno2026].
 
-## Recomendaciones
+## Policy recommendations
 
 Debido al costo de los riesgos catastróficos y sus implicaciones globales, la respuesta exige mecanismos de coordinación internacional. Pero como dicha coordinación aún se siente distante, vale la pena pensar en dos niveles complementarios: un acuerdo internacional como objetivo de fondo y medidas domésticas para desacelerar el riesgo y alimentar la visión del posible acuerdo internacional.
 
@@ -67,11 +69,13 @@ Mientras se construye voluntad política para un acuerdo internacional, los paí
 
 **2.3. Compromisos de desaceleración y regulación de recursos.** Por último, es valioso incorporar regulación que dirija los incentivos de las firmas a incrementar el uso de una parte del cómputo disponible a investigación de seguridad, en lugar de a escalar capacidades [@bueno2026]. En la práctica, esto apunta a volver vinculantes los compromisos que hoy las firmas adoptan de forma voluntaria. El reto de implementación es definir y verificar qué ratio de cómputo cuenta como "seguridad" frente a "capacidad" pero que es coherente con el componente de cooperación internacional, pues los mismos umbrales de cómputo que sirven para verificar un acuerdo internacional podrían condicionar el acceso al cómputo a prácticas de seguridad verificables.
 
-## Nota
+## Sobre el autor
+
+Jay Ballesteros es candidato al Master of Public Policy de la University of Chicago. Es Fellow del Existential Risk Laboratory (XLab).
 
 *Este policy brief fue escrito como parte del grupo de estudio de AI Policy Fundamentals del XLab de la University of Chicago. Las opiniones son mías y no representan la visión del laboratorio.*
 
-## Referencias
+## References
 
 ::: {#refs}
 :::

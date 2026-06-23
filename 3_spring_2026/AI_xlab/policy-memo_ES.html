@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jay Ballesteros">
-<meta name="dcterms.date" content="2026-06-21">
+<meta name="dcterms.date" content="2026-06-22">
 
-<title>Slowing the AGI Race for Reducing Catastrophic Risk</title>
+<title>Desacelerar la carrera hacia la AGI</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -59,6 +59,35 @@ div.csl-indent {
 <link href="policy-memo_ES_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="policy-memo_ES_files/libs/bootstrap/bootstrap-8ffd5f67044e5306d9846f29df41dda5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -70,13 +99,11 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#findings" id="toc-findings" class="nav-link" data-scroll-target="#findings">Findings</a></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case study</a></li>
-  <li><a href="#key-considerations" id="toc-key-considerations" class="nav-link" data-scroll-target="#key-considerations">Key considerations</a></li>
-  <li><a href="#policy-takeaways" id="toc-policy-takeaways" class="nav-link" data-scroll-target="#policy-takeaways">Policy takeaways</a></li>
-  <li><a href="#about-the-author" id="toc-about-the-author" class="nav-link" data-scroll-target="#about-the-author">About the Author</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#hallazgos" id="toc-hallazgos" class="nav-link" data-scroll-target="#hallazgos">Hallazgos</a></li>
+  <li><a href="#recomendaciones" id="toc-recomendaciones" class="nav-link" data-scroll-target="#recomendaciones">Recomendaciones</a></li>
+  <li><a href="#nota" id="toc-nota" class="nav-link" data-scroll-target="#nota">Nota</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias">Referencias</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../../policy-memo_ES.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -84,32 +111,25 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Slowing the AGI Race for Reducing Catastrophic Risk</h1>
-<p class="subtitle lead">Policy brief</p>
+<h1 class="title">Desacelerar la carrera hacia la AGI</h1>
+<p class="subtitle lead">Coordinación internacional y medidas domésticas frente al riesgo catastrófico</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Jay Ballesteros </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            University of Chicago
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jay Ballesteros<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> </p>
+          </div>
+  </div>
+    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 21, 2026</p>
+      <p class="date">June 22, 2026</p>
     </div>
   </div>
   
@@ -121,43 +141,37 @@ div.csl-indent {
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<!-- Contexto general del problema. ¿Por qué importa este tema para tomadores de decisiones? Introduce el concepto central y la motivación del brief. -->
-<p>A pesar del potencial de la AGI para acelerar el progreso <span class="citation" data-cites="amodei2024">(<a href="#ref-amodei2024" role="doc-biblioref">Amodei 2024</a>)</span>, hoy existe poco apoyo público a la aceleración de su desarrollo y la atención de la ciudadanía tiende más a su regulación por el potencial impacto en el mercado laboral <span class="citation" data-cites="stanford_ai_index_2026_ch9">(<a href="#ref-stanford_ai_index_2026_ch9" role="doc-biblioref">Stanford Institute for Human-Centered Artificial Intelligence 2026</a>)</span>. Sin embargo, existe una preocupación que está ganando fuerza entre académicos y tomadores de decisiones: el riesgo existencial y catastrófico <span class="citation" data-cites="amodei2026 jones2024 bueno2026 ca_sb53_2026">(<a href="#ref-amodei2026" role="doc-biblioref">Amodei 2026</a>; <a href="#ref-jones2024" role="doc-biblioref">Jones 2024</a>; <a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>; <a href="#ref-ca_sb53_2026" role="doc-biblioref">California State Legislature 2026</a>)</span>.</p>
-<p>Las dinámicas de carrera comercial y tecnológica <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> dificultan la reducción de estos riesgos, pues empresas y gobiernos (entendámolos como entes o firmas) tienen sus incentivos focalizados en la velocidad de despliegue en lugar de la seguridad de sus modelos <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span> y la desaceleración a través de la regulación es uno de los mecanismos que pueden ayudar a reducir dichos riesgos<span class="citation" data-cites="yudkowsky2026">(<a href="#ref-yudkowsky2026" role="doc-biblioref">Yudkowsky 2026</a>)</span>.</p>
-<p>Dada la dinámica de carrera que existe en torno a AGI, la seguridad de la IA adquiere la categoría de un problema de acción colectiva<span class="citation" data-cites="wiki:collective_action_problem">(<a href="#ref-wiki:collective_action_problem" role="doc-biblioref">Wikipedia contributors 2026</a>)</span>, pues a pesar de que la decisión óptima está en tener despliegues seguros (con menor riesgo catastrófico y/o existencial), la competencia motiva a que las firmas prioricen el cómputo existente para escalar las capacidades de sus modelos (y así incrementar su probabilidad de ganar la carrera) en lugar de destinar una mayor proporción a experimentos de seguridad <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>.</p>
-<p>Las propuestas para regular el sector, se central principalemten en mecanismos de compromiso, disuación y regulación de recursos. En algunos casos, con similitudes a la gobernanza nuclear. Ejemplos de esto están en el compromiso de desaceleración de las firmas, no-proliferación de chips de última generación, mayor ratio de cómputo dirigido a seguridad en lugar de desarrollo y despliegue, barreras de acceso al mercado de desarrollo de IA y cooperación global para la mitigación de riesgos.</p>
-<!--Dado el trade-off de existinción de la especie (algunos expertos estiman un 10% de posibilidad) es imperativo lograr un acuerdo global donde se prioricen tres factores: 1) estandarizar mecanismos de licencia, transparencia y evaluación de los modelos en términos de safety; 2) establecer mecanismos de no proliferación en chips y su tecnología subyacente; y 3) generar capacidad técnica en estados hegemónicos para asegurar la vigilancia de los mecanismos. -->
-<p>“Actors can improve their chance of winning only by accepting a higher probability of a catastrophic outcome <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>”</p>
+<section id="resumen" class="level2">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+<!-- Contexto general del problema. ¿Por qué importa este tema para tomadores de decisiones? -->
+<p>A pesar del potencial de la Inteligencia Artificial General (AGI, por sus siglas en inglés) para acelerar el progreso <span class="citation" data-cites="amodei2024">(<a href="#ref-amodei2024" role="doc-biblioref">Amodei 2024</a>)</span>, hoy existe poco apoyo público a la aceleración de su desarrollo, pues la atención de la ciudadanía está más orientada hacia su regulación por su posible impacto en el mercado laboral<span class="citation" data-cites="stanford_ai_index_2026_ch9">(<a href="#ref-stanford_ai_index_2026_ch9" role="doc-biblioref">Stanford Institute for Human-Centered Artificial Intelligence 2026</a>)</span>. Sin embargo, una preocupación distinta gana fuerza entre académicos y tomadores de decisiones: el riesgo existencial y catastrófico <span class="citation" data-cites="amodei2026 jones2024 bueno2026 ca_sb53_2026">(<a href="#ref-amodei2026" role="doc-biblioref">Amodei 2026</a>; <a href="#ref-jones2024" role="doc-biblioref">Jones 2024</a>; <a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>; <a href="#ref-ca_sb53_2026" role="doc-biblioref">California State Legislature 2026</a>)</span>.</p>
+<p>Las dinámicas actuales de carrera comercial y geopolítica<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> son las principales barreras en la reducción de estos riesgos, pues las empresas y gobiernos (<em>firmas</em>) concentran sus incentivos en la velocidad de despliegue en lugar de la seguridad de sus modelos. Es por ello que la desaceleración mediante regulación es uno de los mecanismos que puede mover los incetivos de la firmas para reducir dichos riesgos <span class="citation" data-cites="yudkowsky2026 bueno2026">(<a href="#ref-yudkowsky2026" role="doc-biblioref">Yudkowsky 2026</a>; <a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>.</p>
+<p>Dada esta dinámica, la seguridad de la IA adquiere la categoría de ser un problema de acción colectiva <span class="citation" data-cites="wiki:collective_action_problem">(<a href="#ref-wiki:collective_action_problem" role="doc-biblioref">Wikipedia contributors 2026</a>)</span>: a pesar de que la decisión óptima es desplegar modelos seguros (con menor riesgo catastrófico o existencial), la competencia empuja a cada firma a destinar su cómputo a escalar capacidades en lugar de invertir una mayor proporción en experimentos de seguridad <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>.</p>
+<p>Frente a este problema han surgido diversas propuestas que van desde la transparencia y la no-proliferación de cómputo hasta la coordinación internacional vinculante.</p>
 </section>
-<section id="findings" class="level2">
-<h2 class="anchored" data-anchor-id="findings">Findings</h2>
-<p>Los riesgos catastróficos y existenciales residen en la capacidad de los modelos de IA en mentir y convencer a los humanos, pero que culmina en dichos modelos adquiriendo tendencias de búsqueda de poder <span class="citation" data-cites="turner2023optimalpoliciestendseek">(<a href="#ref-turner2023optimalpoliciestendseek" role="doc-biblioref">Turner et al. 2023</a>)</span>. No obstante, más allá de los forecasts de iniciativas como AI 2027 <span class="citation" data-cites="kokotajlo2025ai2027">(<a href="#ref-kokotajlo2025ai2027" role="doc-biblioref">Kokotajlo et al. 2025</a>)</span> las iniciativas de policy se centran en reducir el riesgo de llegar a escenarios de naturaleza catastrófica mientras el progreso basado en los modelos sigue siendo una posibilidad.</p>
-<p>Antes de pasar a los riesgos puntuales, vale la pena considerar los <em>trade-offs</em>. Mientras que Jones (2026) señala que entre un 25% y 33% de riesgo de que una AGI extinga la raza humana, vale la pena a cambio de 10% de crecimiento anual y una reducción de la mortalidad al 50% (por avances en la medicina) <span class="citation" data-cites="jones2026ai">(<a href="#ref-jones2026ai" role="doc-biblioref">Jones 2026</a>)</span>. Por otro lado, Bueno de Mesquita (2026) formaliza en un modelo que alcanzar la AGI, en una dinámica de carrera donde las firmas priorizan despliegue y desarrollo vs seguridad, puede tener un valor esperado negativo <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>.</p>
-<p>Actualmente el mundo está subinvirtiendo por un factor de 30 o más en AI safety. Jones (2026) que si la inversión asciendera a 0.33% del PIB de USA (o $100 mil millones de USD), el riesgo podría disminuir lo suficiente para pasar un análisis de costo-beneficio.</p>
+<section id="hallazgos" class="level2">
+<h2 class="anchored" data-anchor-id="hallazgos">Hallazgos</h2>
+<p>La preocupación por el riesgo catastrófico tiene dos vertientes. Por un lado, lo que ya se observa en los modelos actuales y por otro, lo que la teoría estima como posibles escenarios a medida que ganan capacidad. En lo empírico, en evaluaciones controladas transparentadas por Anthropic y METR, los modelos de frontera de varios laboratorios han recurrido a conductas peligrosas como chantaje y espionaje con objetivo de cumplir sus metas o evitar ser reemplazados<span class="citation" data-cites="anthropic2025agenticmisalignment">(<a href="#ref-anthropic2025agenticmisalignment" role="doc-biblioref">Anthropic 2025</a>)</span> y también se han documentado agentes que violan restricciones y ocultan sus acciones de la supervisión humana.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> En lo teórico, Turner et al.&nbsp;han descrito que, bajo condiciones generales, las decisiones óptimas de agentes de IA son controlar y buscar el poder <span class="citation" data-cites="turner2023optimalpoliciestendseek">(<a href="#ref-turner2023optimalpoliciestendseek" role="doc-biblioref">Turner et al. 2023</a>)</span>. Además de los pronósticos de iniciativas como AI 2027 <span class="citation" data-cites="kokotajlo2025ai2027">(<a href="#ref-kokotajlo2025ai2027" role="doc-biblioref">Kokotajlo et al. 2025</a>)</span> (que considera ambas vertientes), la agenda política debería concentrarse en reducir la probabilidad de llegar a escenarios catastróficos, que pueden ir desde el mal uso humano hasta la desalineación de los modelos.</p>
+<p>Más allá de los riesgos, hay quienes han intentado modelar cuánto estaríamos dispuestos a pagar a cambio de los beneficios de la AGI. Jones (2024) propone un modelo donde describe que, una AGI lograra duplicar la esperanza de vida de los humanos y asegurara un crecimiento económico superior al actual (el mismo autor habla de un 10% anual), su despliegue sería óptimo mientras se mantenga el riesgo catastrófico por debajo del 25% <span class="citation" data-cites="jones2024">(<a href="#ref-jones2024" role="doc-biblioref">Jones 2024</a>)</span>. Por otro lado, Bueno de Mesquita et al.&nbsp;(2026) formalizan que en una dinámica de carrera donde las firmas priorizan el despliegue sobre la seguridad, alcanzar la AGI puede tener un valor esperado negativo <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>.</p>
+<p>Ahora bien, independientemente del umbral de tolerancia al riesgo catastrófico que podamos tener como especie, perseguir su mitigación puede mejorar las expectativas de los beneficios de la AGI. Jones, por un lado, estima que el mundo está subinvirtiendo en seguridad de IA por un factor de 30 o más, y que un gasto de 0.33% del PIB estadounidense (unos 100 mil millones de dólares anuales) podría resultar óptimo <span class="citation" data-cites="jones2026ai">(<a href="#ref-jones2026ai" role="doc-biblioref">Jones 2026</a>)</span>. Bueno de Mesquita et al.&nbsp;sugiere que incrementar los niveles de inversión en seguridad de IA (con respecto a despliegue) a través de mecanismos que cambien los incentivos de las firmas y condicionen el acceso a este mercado, puede influir en la reducción del riesgo catastrófico <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>.</p>
 </section>
-<section id="case-study" class="level2">
-<h2 class="anchored" data-anchor-id="case-study">Case study</h2>
-<!-- Un ejemplo concreto que ilustre los hallazgos. Puede ser una política implementada, un caso histórico, o un escenario hipotético bien fundamentado. -->
+<section id="recomendaciones" class="level2">
+<h2 class="anchored" data-anchor-id="recomendaciones">Recomendaciones</h2>
+<p>Debido al costo de los riesgos catastróficos y sus implicaciones globales, la respuesta exige mecanismos de coordinación internacional. Pero como dicha coordinación aún se siente distante, vale la pena pensar en dos niveles complementarios: un acuerdo internacional como objetivo de fondo y medidas domésticas para desacelerar el riesgo y alimentar la visión del posible acuerdo internacional.</p>
+<p><strong>1. Coordinación internacional vinculante</strong></p>
+<p>El problema de acción colectiva descrito arriba solo se resuelve si las firmas de la carrera se obligan y condicionan mutuamente. Scher et al., del MIRI, proponen un acuerdo internacional liderado por EE.UU. y China que restrinja la escala del entrenamiento de IA mediante umbrales de FLOP verificables, operacionalizados a través del rastreo de chips y la verificación de su uso <span class="citation" data-cites="scher2026">(<a href="#ref-scher2026" role="doc-biblioref">Scher et al. 2026</a>)</span>. Dada la desconfianza entre las partes, la verificación es el mecanismo central del acuerdo. No obstante, los autores describen dos retos en el contexto actual: el acuerdo sería técnicamente suficiente si se implementara con las capacidades conocidas a 2026, la evolución de los métodos de entrenamiento y evaluación podría erosionar su trazabilidad a futuro; y, además, aún no se observa voluntad política de ambos países para negociarlo. En un sentido similar, Yudkowsky sostiene que un marco legal vinculante y aplicado internacionalmente es el único recurso que puede prevenir un resultado catastrófico, ya que los mecanismos voluntarios y de mercado pueden no resistir la dinámica de carrera <span class="citation" data-cites="yudkowsky2026">(<a href="#ref-yudkowsky2026" role="doc-biblioref">Yudkowsky 2026</a>)</span>.</p>
+<p><strong>2. Medidas domésticas</strong></p>
+<p>Mientras se construye voluntad política para un acuerdo internacional, los países pueden iniciar la reducción de riesgos con medidas aplicadas a escala regional o nacional. Estas medidas son relevantes como punto partida, pues determinan posibles componentes técnicos de un acuerdo internacional.</p>
+<p><strong>2.1. Transparencia y evaluación de modelos.</strong> La SB 53 de California (<em>Transparency in Frontier Artificial Intelligence Act</em>), promulgada en septiembre de 2025, obliga a los grandes desarrolladores (con umbrales de cómputo superiores a <span class="math inline">\(10^{26}\)</span> FLOP<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>) a publicar un marco de gestión de riesgos catastróficos, reportar incidentes críticos de seguridad a la autoridad estatal y proteger a <em>whistleblowers</em> <span class="citation" data-cites="ca_sb53_2026">(<a href="#ref-ca_sb53_2026" role="doc-biblioref">California State Legislature 2026</a>)</span>. Un acuerdo internacional podría retomar sus componentes y reforzarlos donde la SB 53 quedó corta frente a su antecesora vetada, la SB 1047. En particular, la SB 1047 contemplaba las auditorías independientes de terceros para validar el cumplimiento de estándares de seguridad <span class="citation" data-cites="ca_sb1047_2024">(<a href="#ref-ca_sb1047_2024" role="doc-biblioref">California State Legislature 2024</a>)</span>. A la fecha en la que escribo esto, dichas auditorias son un gran vacío en la regulación. Si bien METR es un referente en evaluaciones estandarizadas independientes, la participación de los laboratorios es voluntaria y estos pueden optar por reservar resultados desfavorables <span class="citation" data-cites="metr2026">(<a href="#ref-metr2026" role="doc-biblioref">METR 2026</a>)</span>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p><strong>2.2. No-proliferación de cómputo.</strong> Bajo la analogía de la no-proliferación nuclear, Hendrycks et al.&nbsp;proponen rastrear los chips de última generación para prevenir su contrabando hacia actores no autorizados, y proteger los <em>pesos</em> de los modelos<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> como inteligencia clasificada <span class="citation" data-cites="hendrycks2025">(<a href="#ref-hendrycks2025" role="doc-biblioref">Hendrycks et al. 2025</a>)</span>. Así, el cómputo opera como cuello de botella físico en dos sentidos: permite verificar el cumplimiento de los actores y, al mismo tiempo, desacelerar la carrera y restringir el acceso de actores maliciosos. Este componente es el que puede habilitar la parte verificable de un acuerdo internacional.</p>
+<p><strong>2.3. Compromisos de desaceleración y regulación de recursos.</strong> Por último, es valioso incorporar regulación que dirija los incentivos de las firmas a incrementar el uso de una parte del cómputo disponible a investigación de seguridad, en lugar de a escalar capacidades <span class="citation" data-cites="bueno2026">(<a href="#ref-bueno2026" role="doc-biblioref">Bueno de Mesquita et al. 2026</a>)</span>. En la práctica, esto apunta a volver vinculantes los compromisos que hoy las firmas adoptan de forma voluntaria. El reto de implementación es definir y verificar qué ratio de cómputo cuenta como “seguridad” frente a “capacidad” pero que es coherente con el componente de cooperación internacional, pues los mismos umbrales de cómputo que sirven para verificar un acuerdo internacional podrían condicionar el acceso al cómputo a prácticas de seguridad verificables.</p>
 </section>
-<section id="key-considerations" class="level2">
-<h2 class="anchored" data-anchor-id="key-considerations">Key considerations</h2>
-<!-- Marco analítico o principios que los tomadores de decisiones deben tener en cuenta. Organizado por dimensiones (e.g., privacidad, equidad, transparencia, etc.). -->
-<!-- PLACEHOLDER: Aquí va un diagrama ilustrativo (por agregar). -->
+<section id="nota" class="level2">
+<h2 class="anchored" data-anchor-id="nota">Nota</h2>
+<p><em>Este policy brief fue escrito como parte del grupo de estudio de AI Policy Fundamentals del XLab de la University of Chicago. Las opiniones son mías y no representan la visión del laboratorio.</em></p>
 </section>
-<section id="policy-takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="policy-takeaways">Policy takeaways</h2>
-<!-- Recomendaciones concretas y accionables derivadas del análisis. ¿Qué deberían hacer (o evitar) los tomadores de decisiones? -->
-</section>
-<section id="about-the-author" class="level2">
-<h2 class="anchored" data-anchor-id="about-the-author">About the Author</h2>
-<p>Jay Ballesteros is an MPP candidate at the Harris School of Public Policy, University of Chicago. He is a Fellow at the Existential Risk Laboratory (XLab).</p>
-<p><em>This policy brief was written as part of the AI Policy Fundamentals Reading Group at the Existential Risk Laboratory (XLab), University of Chicago. The views expressed are the author’s own and do not necessarily represent the position of the laboratory.</em></p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<!-- Fuentes citadas en formato académico. -->
+<section id="referencias" class="level2">
+<h2 class="anchored" data-anchor-id="referencias">Referencias</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-amodei2024" class="csl-entry" role="listitem">
 Amodei, Dario. 2024. <span>“Machines of Loving Grace: How <span>AI</span> Could Transform the World for the Better.”</span> October. <a href="https://www.darioamodei.com/essay/machines-of-loving-grace">https://www.darioamodei.com/essay/machines-of-loving-grace</a>.
@@ -165,11 +179,20 @@ Amodei, Dario. 2024. <span>“Machines of Loving Grace: How <span>AI</span> Coul
 <div id="ref-amodei2026" class="csl-entry" role="listitem">
 Amodei, Dario. 2026. <span>“The Adolescence of Technology.”</span> January. <a href="https://www.darioamodei.com/essay/the-adolescence-of-technology">https://www.darioamodei.com/essay/the-adolescence-of-technology</a>.
 </div>
+<div id="ref-anthropic2025agenticmisalignment" class="csl-entry" role="listitem">
+Anthropic. 2025. <em>Agentic Misalignment: How LLMs Could Be Insider Threats</em>. <a href="https://www.anthropic.com/research/agentic-misalignment" class="uri">Https://www.anthropic.com/research/agentic-misalignment</a>.
+</div>
 <div id="ref-bueno2026" class="csl-entry" role="listitem">
 Bueno de Mesquita, Ethan, Wioletta Dziuda, and Mattias Polborn. 2026. <em>The AGI Race and Existential Risk</em>. Working Paper No. 35276. Working Paper Series. National Bureau of Economic Research. <a href="https://doi.org/10.3386/w35276">https://doi.org/10.3386/w35276</a>.
 </div>
+<div id="ref-ca_sb1047_2024" class="csl-entry" role="listitem">
+California State Legislature. 2024. <em>Senate Bill No. 1047: Safe and Secure Innovation for Frontier Artificial Intelligence Models Act</em>. <a href="https://leginfo.legislature.ca.gov/faces/billtextclient.xhtml?bill_id=202320240sb1047" class="uri">Https://leginfo.legislature.ca.gov/faces/billtextclient.xhtml?bill_id=202320240sb1047</a>.
+</div>
 <div id="ref-ca_sb53_2026" class="csl-entry" role="listitem">
 California State Legislature. 2026. <em>Senate Bill No. 53: Artificial Intelligence Models: Large Developers (Transparency in Frontier Artificial Intelligence Act)</em>. LegiScan. <a href="https://legiscan.com/CA/text/SB53/id/3270002">https://legiscan.com/CA/text/SB53/id/3270002</a>.
+</div>
+<div id="ref-hendrycks2025" class="csl-entry" role="listitem">
+Hendrycks, Dan, Eric Schmidt, and Alexandr Wang. 2025. <span>“Superintelligence Strategy: Expert Version.”</span> <em>arXiv Preprint arXiv:2503.05628</em>.
 </div>
 <div id="ref-jones2026ai" class="csl-entry" role="listitem">
 Jones, Charles I. 2026. <em>AI and Our Economic Future</em>. National Bureau of Economic Research.
@@ -179,6 +202,12 @@ Jones, Charles I. 2024. <span>“The AI Dilemma: Growth Versus Existential Risk.
 </div>
 <div id="ref-kokotajlo2025ai2027" class="csl-entry" role="listitem">
 Kokotajlo, Daniel, Eli Lifland, Thomas Larsen, and Romeo Dean. 2025. <em>AI 2027: A Detailed Scenario Forecast</em>. AI Futures Project. <a href="https://ai-2027.com/">https://ai-2027.com/</a>.
+</div>
+<div id="ref-metr2026" class="csl-entry" role="listitem">
+METR. 2026. <em>Frontier Risk Report (February to March 2026): A Pilot Assessment of Rogue Deployment Risk at Frontier <span>AI</span> Companies</em>. METR. <a href="https://metr.org/risk-report-feb-mar-2026.pdf">https://metr.org/risk-report-feb-mar-2026.pdf</a>.
+</div>
+<div id="ref-scher2026" class="csl-entry" role="listitem">
+Scher, Aaron, David Abecassis, Peter Barnett, and Brian Abeyta. 2026. <em>An International Agreement to Prevent the Premature Creation of Artificial Superintelligence</em>. <a href="https://arxiv.org/abs/2511.10783">https://arxiv.org/abs/2511.10783</a>.
 </div>
 <div id="ref-stanford_ai_index_2026_ch9" class="csl-entry" role="listitem">
 Stanford Institute for Human-Centered Artificial Intelligence. 2026. <em>Artificial Intelligence Index Report 2026: Chapter 9: Public Opinion</em>. Report Chapter. Stanford University. <a href="https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_9_public_opinion.pdf">https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_9_public_opinion.pdf</a>.
@@ -199,7 +228,14 @@ Yudkowsky, Eliezer. 2026. <span>“Only Law Can Prevent Extinction.”</span> Ap
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Antrophic y OpenAI compitiendo por alcanzar AGI y próximos a lanzar IPO (a junio de 2026) para financiar mayor capacidad de cómputo. Asimismo, la tensión geopolítica entre USA y China por acceder a chips de última generación y modelos de frontera.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Jay Ballesteros es candidato al Master of Public Policy de la University of Chicago. Es Fellow del Existential Risk Laboratory (XLab).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Jay Ballesteros es candidato al Master of Public Policy de la University of Chicago. Es Fellow del Existential Risk Laboratory (XLab).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Jay Ballesteros es candidato al Master of Public Policy de la University of Chicago. Es Fellow del Existential Risk Laboratory (XLab).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>A junio de 2026, Anthropic y OpenAI son los competidores que lideran la carrera por alcanzar la AGI. Ambos, están en vías de obtener financiamiento adicional (incluida la salida a bolsa) para incrementar su capacidad de cómputo. Adicionalmente, se suma la tensión geopolítica entre Estados Unidos y China por el acceso a chips de última generación y modelos de frontera. Como referencia, en junio de 2026, EE.UU. emitió una directiva de control de exportaciones que obligó a Anthropic a suspender el acceso a sus modelos Fable 5 y Mythos 5 para todo <em>foreign national</em>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>En su <em>Frontier Risk Report</em> (febrero–marzo 2026), METR documentó agentes que fabricaban resultados y tomaban acciones deliberadas para ocultar evidencia de sus acciones <span class="citation" data-cites="metr2026">(<a href="#ref-metr2026" role="doc-biblioref">METR 2026</a>)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Número total de operaciones aritméticas empleadas para entrenar un modelo. Sirve como medida aproximada de su escala y/o fuerza de entrenamiento.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>METR lo señala en su metodología como una “salida silenciosa”.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Los <em>pesos</em> son los parámetros que un modelo aprende durante su entrenamiento y que, en conjunto, constituyen el modelo funcional. Quien los obtiene puede replicar el modelo en su totalidad.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->
