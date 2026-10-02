@@ -1,0 +1,15 @@
+pandas
+matplotlib
+jupyter
+seaborn
+statsmodels
+scikit-learn
+geopandas
+altair
+bs4
+shiny
+spacy
+gdal
+fiona
+shapely
+pyogrio
