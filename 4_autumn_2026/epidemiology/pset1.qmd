@@ -1,0 +1,205 @@
+---
+title: "Problem Set 1"
+subtitle: "Epidemiology and Population Health"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.2
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+jupyter:
+  kernelspec:
+    name: DAP
+    display_name: DAP
+    language: python
+---
+
+Section time: 2:30-3:20 PM
+
+## Q1
+
+The hepatitis C virus (HCV) is a bloodborne virus, and most infections occur through exposure to blood from unsafe injection practices, unsafe health care, unscreened blood transfusions, injection drug use and sexual practices that lead to exposure to blood. (WHO) Chronic HCV often leads to liver cirrhosis (severe scarring of the liver that impairs function) and liver cancer, and therefore may be fatal, but takes many years usually to progress. Treatment options for chronic HCV were very limited until new drugs were introduced in 2016. Cure rates for the new treatments are close to 100% for those who do not yet have cirrhosis. Assuming many of those with HCV had access to the new medicines when they were released, for each of the measures below state whether they were likely to became higher, lower, or stay the same after the introduction of new HCV treatments.
+
+**a. The incidence of HCV:**
+
+It will stay the same! This because those are old cases. Incidence only considers new ones.
+
+**b. Prevalence of HCV:**
+
+Prevalence will decrease, because less people will have the condition during the time-period, but the total population (denominator will stay the same).
+
+**c. Cause-specific mortality rate from HCV:**
+
+Will for sure decrease. The numerator (*\# of deaths caused by the disease*) will drop but denominator will stay the same.
+
+**d. Case-fatality of HCV:**
+
+Same as the above. Numerator will decrease whereas the denominator stills the same.
+
+## Q2
+
+A study was conducted to determine whether or not hip fractures in young adults aged 20-40 resulted in higher subsequent death rates compared to the national death rates in Taiwan for people the same age. The authors used Taiwan’s National Health Insurance (NHI) Research Database for the period from 1/1/2001 through 1/1/2008 to identify hip fractures by a diagnosis code. Hip fractures always require surgery and hospitalization. Each person’s observation time began when they were admitted to a hospital because of a hip fracture. All subjects were followed up until death, exit from the NHI program, or the end of 2010. A total of 4,523 people were admitted for a first primary diagnosis of hip fracture and treated with an operation during this time period. There were a total of 29,841 person-years of observation and 475 deaths.
+
+**a. What are the average number of person-years for each person in the study?**
+
+$$ 
+\frac{\text{total person-years of observation}}{\text{number of people admitted and treated}} = \frac{29{,}841}{4{,}523} \approx 6.6$$
+
+**b. What are the smallest and largest possible numbers of persons-years of observation for persons in the study?**
+
+The smallest is 0 person-years, that either died or exited immediately after admission. And the largest is 10, for people that got admitted in 1/1/2001 and was followed to the end of 2010.
+
+**c. For all-cause mortality, the authors calculated a SMR, which was 5.82 (95% CI 4.52-7.12). Write a sentence explaining what the SMR of 5.82 means.**
+
+It means that mortality in young adults aged 20-40 after a hip fracture was 5.82 times that of the general Taiwanese population of the same age.
+
+$$\text{SMR} = \frac{\text{observed deaths}}{\text{expected deaths}} = 5.82$$
+
+**d. Write a sentence interpreting the 95% CI that shows you know what a confidence interval is and also interprets the actual numbers in the confidence interval, explaining what they tell you about the data.**
+
+We are 95% confident that the true SMR is between 4.52 and 7.12, and because this full interval is above 1, mortality in young adults after a hip fracture is significantly higher (at least 4.5 times) than in the general Taiwanese population of the same age.
+
+## Q3
+
+According to the CDC, 14,863 deaths were reported in 2020, with hepatitis C listed as an underlying or contributing cause of death. The numbers of deaths categorized by age groups are listed below, drawn from a CDC report. This is the link in case you are interested: <https://www.cdc.gov/hepatitis/statistics/2020surveillance/hepatitis-c/table-3.8.htm>
+
+CDC has identified the “baby boomer” generation (i.e., people born 1945-1964) for priority HCV screening. They are considered the highest risk birth cohort group.
+
+- How old were the baby boomers in 2020? When calculating a death rate, the denominator is the estimated mid-year population for the same year. CDC packages the Census population estimates for public information and research use through their web site “CDC Wonder,” which also includes other public health data.
+
+Fill in the population for each of the age groups listed in the table. To get overall population data:
+
+1.  Go to <https://wonder.cdc.gov/>
+2.  Click on on “Bridged-Race Population (from Census).”
+3.  Choose “Data Request” for 2020-2024.
+4.  Group results by 10-year age groups
+5.  Scrolling down to section 3, choose “10-Year Age Groups” All Ages. Leave the other categories as they are.
+6.  Request a population count for 2020 only. Press “send”. You have the right table if the total population is 331,577,720. Print or save these data. You will need to aggregate the numbers to match the age categories in the Table. You now have the data you need to answer these questions:
+
+**a) Calculate the age-specific death rate and overall death rate per 100,000 population. (You may use a spreadsheet program like excel or just a calculator).**
+
+*2020 Number and Age-specific Death rates of drug overdose deaths*
+
+*Hepatitis C Deaths in 2020*
+
+| Age Group |    Deaths |      Population | Rate/100,000 |
+|-----------|----------:|----------------:|-------------:|
+| 0-34      |       229 |     150,050,183 |         0.15 |
+| 35-44     |       544 |      42,909,680 |         1.27 |
+| 45-54     |      1555 |      41,101,632 |         3.78 |
+| 55-64     |      6053 |      43,056,654 |        14.06 |
+| 65-74     |      5195 |      32,570,528 |        15.95 |
+| 75+       |      1286 |      21,889,043 |         5.88 |
+| **Total** | **14862** | **331,577,720** |     **4.48** |
+
+**b) Which age group has the highest rate? What can you say about hepatitis C deaths in the US from this information?**
+
+The group with the highest rate is 65-74 with 15.96 per 100,000. Hepatitis C deaths in the US are concentrated in persons aged 55-74, accounting for more than 70% of all deaths. Below 45, the rate decreases significantly.
+
+**c) Using the 2000 standard population below, which is the current recommendation for standardizing rates in the US, calculate the age-adjusted overall mortality rate for hepatitis C and fill in the table below.**
+
+| Age | Standard population (in thousands) | Age-specific death rate (calculated above) | Expected \# of deaths |
+|------------------|-----------------:|------------------:|-----------------:|
+| 0-34 | 490,000 | 0.15 | 0.75 |
+| 35-44 | 163,000 | 1.27 | 2.07 |
+| 45-54 | 134,000 | 3.78 | 5.07 |
+| 55-64 | 87,000 | 14.06 | 12.23 |
+| 65-74 | 66,000 | 15.95 | 10.53 |
+| 75+ | 60,000 | 5.88 | 3.53 |
+| **Total** | 1,000,000 | 4.48 | 34.17 |
+
+**d) Give the main rationale for calculating age-adjusted death rates. *(4 points)***
+
+Age is the most important predictor of mortality, and populations can have different age distributions. Age adjustment applies the age-specific rates to one standard population, which removes the effect of age differences and permits a fair comparison between populations.
+
+**e) What is the age-adjusted death rate per 100,000? (note: correct units are part of the answer):**
+
+The age-adjusted hepatitis C death rate is **3.42 deaths per 100,000 population per year** (2020, adjusted to the US 2000 standard population).
+
+$$ 
+\frac{34.157 \text{ expected deaths}}{1{,}000{,}000 \text{ standard population}} \times 100{,}000 = 3.42 \text{ deaths per 100,000 population per year}$$
+
+**f) How do the crude (unadjusted) and age-adjusted death rates compare? Why is this?**
+
+"The crude rate (4.48 per 100,000) is higher than the age-adjusted rate (3.42 per 100,000). This is because the 2020 US population is older than the 2000 standard population. Hepatitis C death rates are highest at ages 55-74, and these age groups are a larger proportion of the 2020 population (22.8%) than of the standard population (15.3%). Thus the crude rate gives more weight to the age groups with the highest rates."
+
+## Q4
+
+There was a study in the UK of heart disease and stroke risk in meat eaters, fish eaters, and vegetarians who were enrolled and followed over 18 years. There were 48,188 people enrolled in the study, and their diet was ascertained. Below is a table of cases of coronary heart disease and person-years of observation for the three dietary groups.
+
+|             | Heart Disease Cases | Person-Years | Incidence |
+|-------------|--------------------:|-------------:|----------:|
+| Meat eaters |                2026 |      429,125 |     472.1 |
+| Fish eaters |                 298 |      130,816 |     227.8 |
+| Vegetarians |                 496 |      276,938 |     179.1 |
+
+**a) Calculate and fill in the “Incidence” column. (3 answers)**
+
+Answer in the table above.
+
+**b) Are these cumulative incidences or incidence rates? Why?**
+
+These are incidence rates, because the denominator is person-time (person-years of observation). A cumulative incidence uses the number of persons at risk at the start of the period as the denominator.
+
+**c) What is the relative risk of heart disease for Vegetarians compared to Meat eaters?**
+
+RR = 1.79 ÷ 4.72 = **0.38**
+
+**d)** What is the relative risk of heart disease for Fish eaters compared to Meat eaters?
+
+RR = 2.28 ÷ 4.72 = **0.48**
+
+**e) What can you conclude from the relative risks?**
+
+The two relative risks are below 1, so vegetarians and fish eaters had a lower incidence of heart disease than meat eaters. The rate in vegetarians was 0.38 times the rate in meat eaters (62% lower), and the rate in fish eaters was 0.48 times the rate in meat eaters (52% lower). These are crude estimates. They show an association, but they do not prove that diet is the cause.
+
+**f) Think of one additional piece of information you would like to have about this study to know whether these relative risk estimates represent causal associations between diet and risk of heart disease or not. (many possible answers)**
+
+I would like to know the age distribution of the three groups. Age is a strong predictor of heart disease, so if the meat eaters were older than the vegetarians, age could explain part or all of the difference. I would want to see age-adjusted rates.
+
+## Q5
+
+**a)** You decide to conduct a study testing whether or not there is a difference in newborn birthweights by maternal smoking status. You observe that newborns of mothers who did not smoke (Population A) in your sample weighed more than newborns of mothers that did smoke (Population B) in your sample. You obtain a p-value comparing the mean weights of the newborns of p = 0.03. Assuming all assumptions concerning the statistical model are satisfied, what can you conclude from your study?
+
+- **a.** There is a 97% chance that newborn weight will be greater for those newborns whose mothers did not smoke compared to those newborns whose mothers did smoke.
+
+- **b.** With a significant p-value of 0.03, the alternative hypothesis that there is a difference in newborn weight as a result of maternal smoking status can be accepted as true.
+
+- [**c. Assuming the null hypothesis of no difference in newborn weight as a result of maternal smoking status is true, then there is a 3% chance of observing data as extreme or more extreme than what was observed in the study sample.**]{.underline}
+
+- **d.** If you repeat the study many times, 97% of samples drawn will have the same mean difference in newborn weight between the two groups as what you observed in this study.
+
+**b)** A researcher draws a random sample from Population C in order to estimate the average fasting glucose level (in Population C). Using this sample, the 95% Confidence Interval for the average fasting glucose level is (112, 128) mg/dL. Which of the following is true?
+
+- **a.** 95% of Population C has a fasting glucose level between 112-128 mg/dL.
+
+- **b.** There is a 95% chance that the true average fasting glucose level in Population C is between 112-128 mg/dL.
+
+- **c.** If we repeatedly draw samples from Population C, then 95% of all samples that we draw C will have an average fasting glucose level for the sample that is within the range 112-128 mg/dL.
+
+- [**d. If I repeat this process and draw 100 samples from the population, then I expect 95 of the 95% Confidence Intervals calculated from each of these samples to contain the true average fasting glucose level of Population C.**]{.underline}
+
+c\) After taking a random sample from a population, the following linear regression model is fit:
+
+$$SBP = \beta_0 + \beta_1 \cdot weight + \beta_2 \cdot age + \varepsilon$$
+
+Here, SBP stands for systolic blood pressure (measured in mmHg), weight is measured in kg, and age is measured in years. Which of the following answers provides a proper interpretation based on the regression table? (Assume a significance level of $$\alpha$$ = 0.05)
+
+| Variable       | Beta Coefficient |  P-value | 95% Confidence Interval |
+|----------------|-----------------:|---------:|:-----------------------:|
+| Weight (in kg) |            0.687 |    0.063 |     (-0.016, 1.391)     |
+| Age (in years) |            2.334 | \< 0.001 |     (1.775, 2.893)      |
+
+- **a.** For each 1-kilogram increase in weight, the systolic blood pressure is estimated to increase on average by 68.7%.
+- **b.** For each 1-mmHg increase in SBP, we would expect a person to be 2.334 years older in the population on average after adjusting for weight.
+- **c.** Younger people have higher blood pressure on average than older people.
+- **d.** For each 1-year increase in age, the systolic blood pressure is an estimated 2.334 mmHg higher on average after adjusting for weight. Additionally, there is strong evidence to reject the null hypothesis that $$\beta_2$$ = 0.
