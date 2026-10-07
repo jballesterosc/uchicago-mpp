@@ -130,7 +130,7 @@ $$
 
 **f) How do the crude (unadjusted) and age-adjusted death rates compare? Why is this?**
 
-"The crude rate (4.48 per 100,000) is higher than the age-adjusted rate (3.42 per 100,000). This is because the 2020 US population is older than the 2000 standard population. Hepatitis C death rates are highest at ages 55-74, and these age groups are a larger proportion of the 2020 population (22.8%) than of the standard population (15.3%). Thus the crude rate gives more weight to the age groups with the highest rates."
+The crude rate (4.48 per 100,000) is higher than the age-adjusted rate (3.42 per 100,000). This is because the 2020 US population is older than the 2000 standard population. Hepatitis C death rates are highest at ages 55-74, and these age groups are a larger proportion of the 2020 population (22.8%) than of the standard population (15.3%). Thus the crude rate gives more weight to the age groups with the highest rates.
 
 ## Q4
 
@@ -152,11 +152,11 @@ These are incidence rates, because the denominator is person-time (person-years 
 
 **c) What is the relative risk of heart disease for Vegetarians compared to Meat eaters?**
 
-RR = 1.79 ÷ 4.72 = **0.38**
+RR = 1.79 ÷ 4.72 = 0.38
 
-**d)** What is the relative risk of heart disease for Fish eaters compared to Meat eaters?
+**d) What is the relative risk of heart disease for Fish eaters compared to Meat eaters?**
 
-RR = 2.28 ÷ 4.72 = **0.48**
+RR = 2.28 ÷ 4.72 = 0.48
 
 **e) What can you conclude from the relative risks?**
 
@@ -164,42 +164,27 @@ The two relative risks are below 1, so vegetarians and fish eaters had a lower i
 
 **f) Think of one additional piece of information you would like to have about this study to know whether these relative risk estimates represent causal associations between diet and risk of heart disease or not. (many possible answers)**
 
-I would like to know the age distribution of the three groups. Age is a strong predictor of heart disease, so if the meat eaters were older than the vegetarians, age could explain part or all of the difference. I would want to see age-adjusted rates.
+I would like to know the age distribution of the three groups. Age seems like a strong predictor of heart disease, so if the meat eaters were older than the vegetarians, age could potentially explain part of the difference.
 
 ## Q5
 
-**a)** You decide to conduct a study testing whether or not there is a difference in newborn birthweights by maternal smoking status. You observe that newborns of mothers who did not smoke (Population A) in your sample weighed more than newborns of mothers that did smoke (Population B) in your sample. You obtain a p-value comparing the mean weights of the newborns of p = 0.03. Assuming all assumptions concerning the statistical model are satisfied, what can you conclude from your study?
+**a) You decide to conduct a study testing whether or not there is a difference in newborn birthweights by maternal smoking status. You observe that newborns of mothers who did not smoke (Population A) in your sample weighed more than newborns of mothers that did smoke (Population B) in your sample. You obtain a p-value comparing the mean weights of the newborns of p = 0.03. Assuming all assumptions concerning the statistical model are satisfied, what can you conclude from your study?**
 
-- **a.** There is a 97% chance that newborn weight will be greater for those newborns whose mothers did not smoke compared to those newborns whose mothers did smoke.
+- c\. Assuming the null hypothesis of no difference in newborn weight as a result of maternal smoking status is true, then there is a 3% chance of observing data as extreme or more extreme than what was observed in the study sample.
 
-- **b.** With a significant p-value of 0.03, the alternative hypothesis that there is a difference in newborn weight as a result of maternal smoking status can be accepted as true.
+**b) A researcher draws a random sample from Population C in order to estimate the average fasting glucose level (in Population C). Using this sample, the 95% Confidence Interval for the average fasting glucose level is (112, 128) mg/dL. Which of the following is true?**
 
-- [**c. Assuming the null hypothesis of no difference in newborn weight as a result of maternal smoking status is true, then there is a 3% chance of observing data as extreme or more extreme than what was observed in the study sample.**]{.underline}
-
-- **d.** If you repeat the study many times, 97% of samples drawn will have the same mean difference in newborn weight between the two groups as what you observed in this study.
-
-**b)** A researcher draws a random sample from Population C in order to estimate the average fasting glucose level (in Population C). Using this sample, the 95% Confidence Interval for the average fasting glucose level is (112, 128) mg/dL. Which of the following is true?
-
-- **a.** 95% of Population C has a fasting glucose level between 112-128 mg/dL.
-
-- **b.** There is a 95% chance that the true average fasting glucose level in Population C is between 112-128 mg/dL.
-
-- **c.** If we repeatedly draw samples from Population C, then 95% of all samples that we draw C will have an average fasting glucose level for the sample that is within the range 112-128 mg/dL.
-
-- [**d. If I repeat this process and draw 100 samples from the population, then I expect 95 of the 95% Confidence Intervals calculated from each of these samples to contain the true average fasting glucose level of Population C.**]{.underline}
+- d\. If I repeat this process and draw 100 samples from the population, then I expect 95 of the 95% Confidence Intervals calculated from each of these samples to contain the true average fasting glucose level of Population C.
 
 c\) After taking a random sample from a population, the following linear regression model is fit:
 
 $$SBP = \beta_0 + \beta_1 \cdot weight + \beta_2 \cdot age + \varepsilon$$
 
-Here, SBP stands for systolic blood pressure (measured in mmHg), weight is measured in kg, and age is measured in years. Which of the following answers provides a proper interpretation based on the regression table? (Assume a significance level of $$\alpha$$ = 0.05)
+Here, SBP stands for systolic blood pressure (measured in mmHg), weight is measured in kg, and age is measured in years. Which of the following answers provides a proper interpretation based on the regression table? (Assume a significance level of $\alpha$ = 0.05)
 
 | Variable       | Beta Coefficient |  P-value | 95% Confidence Interval |
 |----------------|-----------------:|---------:|:-----------------------:|
 | Weight (in kg) |            0.687 |    0.063 |     (-0.016, 1.391)     |
 | Age (in years) |            2.334 | \< 0.001 |     (1.775, 2.893)      |
 
-- **a.** For each 1-kilogram increase in weight, the systolic blood pressure is estimated to increase on average by 68.7%.
-- **b.** For each 1-mmHg increase in SBP, we would expect a person to be 2.334 years older in the population on average after adjusting for weight.
-- **c.** Younger people have higher blood pressure on average than older people.
-- **d.** For each 1-year increase in age, the systolic blood pressure is an estimated 2.334 mmHg higher on average after adjusting for weight. Additionally, there is strong evidence to reject the null hypothesis that $$\beta_2$$ = 0.
+- d\. For each 1-year increase in age, the systolic blood pressure is an estimated 2.334 mmHg higher on average after adjusting for weight. Additionally, there is strong evidence to reject the null hypothesis that $\beta_2$= 0.

@@ -1,0 +1,152 @@
+---
+title: "Problem Set 1: Risk and Return"
+subtitle: "Investments"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.2
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+jupyter:
+  kernelspec:
+    name: DAP
+    display_name: DAP
+    language: python
+---
+
+## Q1
+
+You just bought 100 shares of ABC Inc. at \$100 per share. ABC paid out a dividend just before you bought the share and will pay a dividend of \$2 per share with certainty. The price of ABC a year from now, after ABC has paid out the dividend, is, however, uncertain and depends on the state of the economy. A year from now the economy will either be in a recession, a state of "normal" growth, or a boom with probabilities of 30%, 40%, and 30% respectively. After analyzing ABC you determine that the price of ABC a year from now in these various states of the economy will be:
+
+| State of the Economy | Price of ABC |
+|----------------------|--------------|
+| Recession            | \$80         |
+| Normal Growth        | \$110        |
+| Boom                 | \$130        |
+
+**What is the expected return over the next year on your investment in ABC? What is the standard deviation of the return?**
+
+The return in each state, with $r = \frac{P_{t+1} + D_{t+1} - P_t}{P_t}$:
+
+$$r_{Recession}=\frac{80+2-100}{100} = -0.18$$
+
+$$r_{Normal}=\frac{110+2-100}{100} = 0.12$$
+
+$$r_{Boom}=\frac{130+2-100}{100} = 0.32$$
+
+Given the return in each state, the expected return is:
+
+$$E[r] = (-0.18)(0.30)+(0.12)(0.40)+(0.32)(0.30)=0.09$$
+
+To calculate the standard deviation, first calculate the variance:
+
+$$\sigma^2[r] = 0.30(-0.18 - 0.09)^2 + 0.40(0.12 - 0.09)^2 + 0.30(0.32 - 0.09)^2 = 0.0381$$
+
+Then the standard deviation is:
+
+$$\sigma[r] = \sqrt{0.0381} \approx 0.195$$
+
+## Q2
+
+Consider two stocks A and B. These stocks have returns that are driven by the state of the economy. Suppose that there are three states: "Recession," "Normal," "Boom." These states occur with probabilities 20%, 50% and 30% respectively. The returns to the two stocks in the three states of the economy are given by:
+
+| State     | Return to Stock A | Return to Stock B |
+|-----------|-------------------|-------------------|
+| Recession | -5%               | 2%                |
+| Normal    | 6%                | 5%                |
+| Boom      | 10%               | 12%               |
+
+**(a) What is the expected return of each stock?**
+
+The expected return is the probability-weighted sum of the returns in each state:
+
+$$E[r_A] = (-0.05)(0.20)+(0.06)(0.50)+(0.10)(0.30)=0.05$$
+
+$$E[r_B] = (0.02)(0.20)+(0.05)(0.50)+(0.12)(0.30)=0.065$$
+
+**(b) What is the standard deviation of each stock return?**
+
+To calculate the standard deviation, first calculate the variance of each stock:
+
+$$\sigma^2[r_A] = 0.20(-0.05 - 0.05)^2 + 0.50(0.06 - 0.05)^2 + 0.30(0.10 - 0.05)^2 = 0.0028$$
+
+$$\sigma^2[r_B] = 0.20(0.02 - 0.065)^2 + 0.50(0.05 - 0.065)^2 + 0.30(0.12 - 0.065)^2 = 0.001425$$
+
+Then the standard deviation of each stock is:
+
+$$\sigma[r_A] = \sqrt{0.0028} \approx 0.0529$$
+
+$$\sigma[r_B] = \sqrt{0.001425} \approx 0.0377$$
+
+## Q3
+
+Consider the stock ABC. ABC is currently paying a dividend of \$58. Given the riskiness of ABC, you believe a fair discount rate is 8%.
+
+**(a) What is the fair price of ABC if you expect dividends to grow at a constant rate of 5% in perpetuity?**
+
+With constant growth in perpetuity, using the Gordon growth model:
+
+$$P_t = \frac{D_{t+1}}{r - g} = \frac{D_t \times (1+g)}{r - g} = \frac{\$58 \times (1 + 0.05)}{0.08 - 0.05} = \$2{,}030$$
+
+**(b) What is the fair price of ABC if the growth rate is 5% for the next 5 years and then 3% afterwards?**
+
+The price is the present value of the first 5 dividends plus the present value of the price at the end of year 5:
+
+$$P_t = \frac{D_{t+1}}{(1+r)^1} + \frac{D_{t+2}}{(1+r)^2} + \frac{D_{t+3}}{(1+r)^3} + \frac{D_{t+4}}{(1+r)^4} + \frac{D_{t+5}}{(1+r)^5} + \frac{P_{t+5}}{(1+r)^5}$$
+
+First, calculating the dividends for the 5 years of 5% growth:
+
+$$D_{t+1} = \$58 \times (1.05)^1 = \$60.90$$
+
+$$D_{t+2} = \$58 \times (1.05)^2 = \$63.95$$
+
+$$D_{t+3} = \$58 \times (1.05)^3 = \$67.14$$
+
+$$D_{t+4} = \$58 \times (1.05)^4 = \$70.50$$
+
+$$D_{t+5} = \$58 \times (1.05)^5 = \$74.02$$
+
+After year 5, dividends grow at 3% in perpetuity. Thus the price at the end of year 5 comes from the Gordon growth model with $g = 3\%$:
+
+$$P_{t+5} = \frac{D_{t+6}}{r - g} = \frac{D_{t+5} \times (1+g)}{r - g} = \frac{\$74.0243 \times (1 + 0.03)}{0.08 - 0.03} = \$1{,}524.90$$
+
+Then discounting each cash flow to today: $$P_t = \frac{60.90}{1.08} + \frac{63.95}{1.08^2} + \frac{67.14}{1.08^3} + \frac{70.50}{1.08^4} + \frac{74.02}{1.08^5} + \frac{1{,}524.90}{1.08^5}$$
+
+$$P_t = 56.39 + 54.82 + 53.30 + 51.82 + 50.38 + 1{,}037.82 \approx \$1{,}304.5$$
+
+## Q4
+
+The stock market is trading at \$3,000 and paying a dividend of \$60. You expect the growth rates of dividends to be 4% in perpetuity.
+
+**(a) What is the expected return on the stock market?**
+
+Considering the constant expected returns and constant growth, the Gordon growth model applies:
+
+$$P_t = \frac{D_{t+1}}{r - g} = \frac{D_t \times (1+g)}{r - g}$$
+
+Solving for the expected return $r$:
+
+$$r = \frac{D_t \times (1+g)}{P_t} + g$$
+
+Then the expected return on the market is:
+
+$$r = \frac{\$60 \times (1 + 0.04)}{\$3{,}000} + 0.04 = 0.0208 + 0.04 = 0.0608$$
+
+**The stock market suddenly drops to \$2,000. After careful analysis, you conclude that the expected growth rates of dividends is unchanged.**
+
+**(b) What is the expected return on the market now?**
+
+$$r = \frac{\$60 \times (1 + 0.04)}{\$2{,}000} + 0.04 = 0.0312 + 0.04 = 0.0712$$
+
+**(c) What could potentially explain such a change in expected returns?**
+
+The expected dividends are the same before and after the drop. Thus the price decrease cannot come from lower expected cash flows. It must come from a higher discount rate: investors now demand a higher return (7.12%) to hold the market, and the same dividends discounted at a higher rate give a lower price.
