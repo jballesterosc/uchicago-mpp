@@ -46,6 +46,8 @@ Below are the data derived from the interviews about which foods or drinks the a
 | **Pineapple Juice** | 8 | 20 | 28 | 29% | 51 | 39 | 90 | 57% | 0.50 |
 | **Cabbage** | 4 | 11 | 15 | 27% | 55 | 48 | 103 | 53% | 0.50 |
 
+\*Risk ratio is the ratio of the attack rates in those who ATE the food over those who DID NOT EAT the food.
+
 **a. Determine the attack rates and risk ratios among those who ate the specified items and complete the table. (18 points, 0.5 for each attack rate and risk ratio)**
 
 Answers above!
@@ -66,8 +68,18 @@ $$
 
 **e. What is one possible reason why there were cases among those who did not eat this food? (3 points)**
 
-Maybe cross-contamination. Assuming
+Maybe cross-contamination having spill-over effects. It's possible that, while handling food, utensils came into contact with several dishes. For example, serving spoons.
+
+Additionally, recall bias by some people during interviews. For instance, maybe someone had a bite of Gaajar halwa and forgot, or simply decided not to report it.
 
 **f. If some of the foods investigated turned out to be protective against becoming ill, what would be the range of their risk ratios? What would be one reason why a food would be found to be protective? (6 points)**
 
+A protective food would have a risk ratio between $0$ and $1$ ($0 \leq \text{risk ratio} < 1$). A risk ratio of $1$ means no association, and one less than $1$ means a lower risk among those who ate the food. Finally, a risk ratio of $0$ means that no person who ate the food became ill.
+
+One reason why a food can look protective is confounding. For instance, people who ate more of the foods with a risk ratio \< $1$ possibly ate less Gaajar halwa (or none). Therefore, the "protective" effect possibly comes from less exposure to the contaminated food.
+
 **g. The data were also stratified by gender, and the risk ratio was much higher for the women who ate the implicated food than for the men who ate it. In most of the community gatherings in rural India, women usually eat after men. Given this information, why might the risk be higher for women than men? (3 points)**
+
+Staphylococcal food poisoning gets worse when contaminated food stays at room temperature, because the bacteria multiply and produce more toxin[^1]. In rural India, women usually eat after men, so the Gaajar halwa that women ate had stayed at room temperature for a longer time. Thus, women likely ingested a larger dose of toxin than men, which increased their risk of becoming ill.
+
+[^1]: <https://www.msdmanuals.com/professional/gastrointestinal-disorders/gastroenteritis/staphylococcal-food-poisoning>
