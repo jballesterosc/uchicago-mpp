@@ -11,7 +11,7 @@ format:
     geometry:
       - margin=1in
     fontsize: 12pt
-    linestretch: 1.2
+    linestretch: 1.2  
     number-sections: false
     colorlinks: true
     linkcolor: blue
@@ -26,43 +26,48 @@ jupyter:
 Section time: 2:30-3:20 PM
 
 ## Q1.
- 
+
 This is drawn from an investigation of an outbreak of Staphylococcal food poisoning following a wedding ceremony in rural India in February 2018. The outbreak was investigated by the Epidemic Intelligence Service Office under the National Centre for Disease Control in India. They interviewed 59 attendees who experienced vomiting or diarrhea within 24 hours after the wedding and another 59 attendees or neighbors from the same village who were not ill.
- 
+
 Below are the data derived from the interviews about which foods or drinks the attendees ate at the wedding.
- 
+
 | Food | ATE: Ill | ATE: Not ill | ATE: Total | ATE: Attack rate | DID NOT EAT: Ill | DID NOT EAT: Not ill | DID NOT EAT: Total | DID NOT EAT: Attack rate | Risk ratio\* |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| **Gaajar halwa** | 56 | 35 | | | 3 | 24 | | | |
-| **Paneer** | 45 | 40 | | | 14 | 19 | | | |
-| **Dal rice** | 58 | 53 | | | 1 | 6 | | | |
-| **Water** | 43 | 50 | | | 16 | 9 | | | |
-| **Papad** | 34 | 40 | | | 25 | 19 | | | |
-| **Pickle** | 17 | 20 | | | 42 | 39 | | | |
-| **Okra fry** | 30 | 38 | | | 29 | 21 | | | |
-| **Green salad** | 28 | 41 | | | 31 | 18 | | | |
-| **Kothimbir Vadi** | 24 | 39 | | | 35 | 20 | | | |
-| **Poori aloo** | 19 | 36 | | | 40 | 23 | | | |
-| **Pineapple Juice** | 8 | 20 | | | 51 | 39 | | | |
-| **Cabbage** | 4 | 11 | | | 55 | 48 | | | |
- 
-\*Risk ratio is the ratio of the attack rates in those who ATE the food over those who DID NOT EAT the food.
- 
-*[You do not need to know how any unfamiliar foods are prepared to answer this question, but they can be googled if you would like that information.]*
- 
-Source: Vardhan V, Dikid T, Yadav R, Patil R, Awate P, Epidemic Intelligence Service Programme Working Group\*. Foodborne Disease outbreak … at a Wedding – Palghar District, Maharashtra, India, 2018. *Indian J Public Health* 2021;65, Suppl S1:10-3.
- 
-**a.** Determine the attack rates and risk ratios among those who ate the specified items and complete the table. (18 points, 0.5 for each attack rate and risk ratio)
- 
-**b.** Which item shows the highest attack rate? Is the attack rate low among persons not exposed to that item? (6 points)
- 
-**c.** Write a sentence that interprets the risk ratio for the item most likely to be responsible for the outbreak. (3 points)
- 
-**d.** What is the odds of illness for people exposed to that food item? (3 points)
- 
-**e.** What is one possible reason why there were cases among those who did not eat this food? (3 points)
- 
-**f.** If some of the foods investigated turned out to be protective against becoming ill, what would be the range of their risk ratios? What would be one reason why a food would be found to be protective? (6 points)
- 
-**g.** The data were also stratified by gender, and the risk ratio was much higher for the women who ate the implicated food than for the men who ate it. In most of the community gatherings in rural India, women usually eat after men. Given this information, why might the risk be higher for women than men? (3 points)
- 
+|--------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| **Gaajar halwa** | 56 | 35 | 91 | 62% | 3 | 24 | 27 | 11% | 5.54 |
+| **Paneer** | 45 | 40 | 85 | 53% | 14 | 19 | 33 | 42% | 1.25 |
+| **Dal rice** | 58 | 53 | 111 | 52% | 1 | 6 | 7 | 14% | 3.66 |
+| **Water** | 43 | 50 | 93 | 46% | 16 | 9 | 25 | 64% | 0.72 |
+| **Papad** | 34 | 40 | 74 | 46% | 25 | 19 | 44 | 57% | 0.81 |
+| **Pickle** | 17 | 20 | 37 | 46% | 42 | 39 | 81 | 52% | 0.89 |
+| **Okra fry** | 30 | 38 | 68 | 44% | 29 | 21 | 50 | 58% | 0.76 |
+| **Green salad** | 28 | 41 | 69 | 41% | 31 | 18 | 49 | 63% | 0.64 |
+| **Kothimbir Vadi** | 24 | 39 | 63 | 38% | 35 | 20 | 55 | 64% | 0.59 |
+| **Poori aloo** | 19 | 36 | 55 | 35% | 40 | 23 | 63 | 63% | 0.54 |
+| **Pineapple Juice** | 8 | 20 | 28 | 29% | 51 | 39 | 90 | 57% | 0.50 |
+| **Cabbage** | 4 | 11 | 15 | 27% | 55 | 48 | 103 | 53% | 0.50 |
+
+**a. Determine the attack rates and risk ratios among those who ate the specified items and complete the table. (18 points, 0.5 for each attack rate and risk ratio)**
+
+Answers above!
+
+**b. Which item shows the highest attack rate? Is the attack rate low among persons not exposed to that item? (6 points)**
+
+The highest rate is for people that ate *Gaajar halwa* (62%)*.* And yes! Way more lower (11%). The risk ratio is 5.54.
+
+**c. Write a sentence that interprets the risk ratio for the item most likely to be responsible for the outbreak. (3 points)**
+
+The risk ratio of 5.54 for *Gaajar halwa* indicates that individuals who consumed this food (exposure) had 5.5 times the risk of illness compared to those who did not consume it. This suggests a strong association between eating *Gaajar halwa* and the outbreak of illness.
+
+**d. What is the odds of illness for people exposed to that food item? (3 points)**
+
+$$ 
+\frac{\text{ATE: ill}}{\text{ATE: not ill}} = \frac{56}{35} = 1.6
+$$
+
+**e. What is one possible reason why there were cases among those who did not eat this food? (3 points)**
+
+Maybe cross-contamination. Assuming
+
+**f. If some of the foods investigated turned out to be protective against becoming ill, what would be the range of their risk ratios? What would be one reason why a food would be found to be protective? (6 points)**
+
+**g. The data were also stratified by gender, and the risk ratio was much higher for the women who ate the implicated food than for the men who ate it. In most of the community gatherings in rural India, women usually eat after men. Given this information, why might the risk be higher for women than men? (3 points)**
