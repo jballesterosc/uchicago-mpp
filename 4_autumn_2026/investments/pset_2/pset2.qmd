@@ -221,7 +221,9 @@ $$\sigma_p = 1.333 \times 0.20 = 26.67\%, \qquad SR_p = \frac{0.10 - 0.02}{0.266
 
 Fund A alone returns only 8%, so you must borrow at the T-Bill rate to reach 10%. The Sharpe ratio of the portfolio (0.30) is equal to the Sharpe ratio of fund A. Any mix of one risky asset and the risk-free asset is on the same capital allocation line, so it has the same Sharpe ratio.
 
-**2. Instead, how could you achieve the target by investing in the T-Bill and mutual fund B? What percentage and dollar investment would be in the T-Bill and in the mutual fund? What is the standard deviation of your portfolio return? What is the Sharpe ratio of your investment? How does this compare to the Sharpe ratio of mutual fund B?** $$0.02 + w_B\,(0.12 - 0.02) = 0.10 \;\Rightarrow\; w_B = \frac{0.08}{0.10} = 0.80$$
+**2. Instead, how could you achieve the target by investing in the T-Bill and mutual fund B? What percentage and dollar investment would be in the T-Bill and in the mutual fund? What is the standard deviation of your portfolio return? What is the Sharpe ratio of your investment? How does this compare to the Sharpe ratio of mutual fund B?** 
+
+$$0.02 + w_B\,(0.12 - 0.02) = 0.10 \;\Rightarrow\; w_B = \frac{0.08}{0.10} = 0.80$$
 
 |            | Weight | Investment  |
 |------------|--------|-------------|
