@@ -1,0 +1,160 @@
+---
+title: "Problem Set 3"
+subtitle: "Epidemiology and Population Health"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.2  
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+jupyter:
+  kernelspec:
+    name: DAP
+    display_name: DAP
+    language: python
+---
+
+## Question 1. Clinical Trial Design and Interpretation
+
+The following abstract appeared recently in *JAMA Network Open*. It has been edited.
+
+### Sudarshan Kriya Yoga Breathing and a Meditation Program for Burnout Among Physicians: A Randomized Clinical Trial
+
+**Importance:** Physicians are exposed to high stress and strain that results in burnout, which affects them, their families, their patients, and the entire health care system; thus, there is an urgent need to develop methods to increase the resiliency of physicians. Sudarshan Kriya Yoga (SKY) is a comprehensive yoga breathing and meditation-based program that is a potential approach to mitigate physician burnout.
+
+**Objective:** To determine whether SKY can reduce psychological distress and improve wellness in physicians.
+
+**Design, setting, and participants:** This randomized clinical trial assessed the potential efficacy of SKY compared with a stress management education (SME) training as control. This study was conducted online from November 11, 2021, to March 14, 2022, and included physicians from Turkey, Germany, and Dubai. Both the SKY and the SME control groups received 1.5 hours of training for 3 consecutive days via a group video conference call. Participants were physicians willing to do some form of relaxation exercise every day for 2 months. Exclusion criteria included presence of major illness and maintaining a regular mind-body program practice.
+
+**Interventions:** Participants were randomly assigned 1:1 into 2 groups: the SKY group or the SME (control) group, using a computer algorithm. After the 3-day instruction period, the participants in the SKY group practiced for approximately 30 minutes per day on their own and participated in a weekly 1-hour, group-based online follow-up practice. After the 3-day instruction period, participants in the SME group reviewed and applied the notes from stress management education training at their initiative and had a weekly 1-hour group-based online follow-up session.
+
+**Main outcomes and measures:** The primary outcomes were stress and depression (measured by the 42-item Depression, Anxiety, and Stress Scale \[DASS-42\]) and insomnia measured by the Regensburg Insomnia Scale (RIS) with primary end point at 8 weeks.
+
+**Results:** This study included 129 participants (SME, 63 participants \[48.9%\]; SKY, 66 participants \[51.1%\]; 115 females \[89.2%\]; 14 males \[10.8%\]; mean \[SD\] age, 46.2 \[9.0\] years). Compared with the SME control group, participants in the SKY group had significantly decreased stress on the DASS-42 at post-training (difference, -6.8 points; 95% CI, -9.6 to -4.1 points; P = .006) and at postintervention (difference, -6.0 points; 95% CI, -8.8 to -3.3 points; P = .03), significantly decreased depression at post-training (difference, -5.7 points; 95% CI, -8.6 to -2.8 points; P \< .001) and postintervention (difference, -5.4 points; 95% CI, -8.3 to -2.5 points; P \< .001), and significantly decreased anxiety at postintervention. In addition, there was a significant decrease in insomnia from baseline to postintervention in the SKY group (difference, -0.3 points; 95% CI, -2.3 to 1.7 points; P = .01).
+
+For each of the following, respond in a word or phrase. Long answers are not needed.
+
+- **a. Is this study blinded? Why or why not?** No. Because both the participants and the instructors are aware of the intervention (for instance, they know if they do/teach yoga).
+
+- **b. Is the control group given a placebo, sham treatment, usual care, or alternate therapy?** An alternate therapy. Because the SME group gets a different behavioral program, not a placebo or a sham.
+
+- **c. Who is the target population and the study population?** The target population are physicians in general (at risk of burnout) and the study population are the 129 physicians who gave consent (from Turkey, Germany and Dubai) and that had no major illness and no regular mind-body practice.
+
+- **d. What is the advantage of random assignment?** It makes the two groups comparable for both the know and unknown factors (preventing selection bias). Therefore, a dfference in outcomes is probably due by the intervention and not by confounding.
+
+- **e. Are you more concerned with internal validity or external validity? Why?** The external validity, because the participants self-selected themselves to participate (prior randomization). Thus, they are probably more motivated that a typical physician who has burnout. Additionally, the proportion of participants is highly inclined to females (89.2%) so not necessarily representative of males.
+
+## Question 2. Survival Analysis
+
+A new chemotherapy is tested for pancreatic cancer treatment. After patients were initially treated and reached a state of remission, they received a new chemotherapy.
+
+The outcome of interest was relapse after treatment. The plus signs (+) indicate censoring.
+
+13 patients (n = 13)
+
+Relapse times (+ indicates a censored observation time):
+
+`12, 14, 15, 17, 18, 18+, 19, 20, 22, 25, 30+, 31, 33`
+
+**1. Construct a Kaplan-Meier survival table for the group. (Note: in a K-M estimate, if an event time and a censoring time are the same, list the event time first in the table, because the censored person is still an "at risk" person when the event happens.)**
+
+| Time | At risk just before | Relapses | P(relapse) | P(no relapse) | Cumulative survival |
+|------------|------------|------------|------------|------------|------------|
+| 12 | 13 | 1 | 1/13 = .077 | .923 | .923 |
+| 14 | 12 | 1 | 1/12 = .083 | .917 | .917 × .923 = .846 |
+| 15 | 11 | 1 | 1/11 = .091 | .909 | .909 × .846 = .769 |
+| 17 | 10 | 1 | 1/10 = .100 | .900 | .900 × .769 = .692 |
+| 18 | 9 | 1 | 1/9 = .111 | .889 | .889 × .692 = .615 |
+| 18+ | – | – | – | – | – |
+| 19 | 7 | 1 | 1/7 = .143 | .857 | .857 × .615 = .527 |
+| 20 | 6 | 1 | 1/6 = .167 | .833 | .833 × .527 = .440 |
+| 22 | 5 | 1 | 1/5 = .200 | .800 | .800 × .440 = .352 |
+| 25 | 4 | 1 | 1/4 = .250 | .750 | .750 × .352 = .264 |
+| 30+ | – | – | – | – | – |
+| 31 | 2 | 1 | 1/2 = .500 | .500 | .500 × .264 = .132 |
+| 33 | 1 | 1 | 1/1 = 1.000 | .000 | .000 |
+
+**2. Graph or sketch by hand the K-M curve for each group. Remember to label the axes and make it clear what the line represents.**
+
+![](images/Documento%20escaneado%202.png)
+
+**3. Estimate the median time to relapse.**
+
+The median time to relapse is 20! 20 is the first time at which 50% or more of the patients have relapsed.
+
+## Question 3. Life Expectancy
+
+**1. The most recent US life table produced by the National Center for Health Statistics is available at <https://www.cdc.gov/nchs/data/nvsr/nvsr75/nvsr75-05.pdf>. Look at Table A (page 3).**
+
+**What is the life expectancy at birth for an infant male born in 2024? (Table A)** 76.5 years.
+
+**What is the life expectancy at age 65 for a male? (Table A)** 18.4 more years.
+
+**Write a sentence that explains what each one means (two sentences).** If a group of baby boys has the 2024 death rate for each age during all of their lives, they will live 76.5 years on average.
+
+If a group of men age 65 has the 2024 death rate for each age after 65, they will live 18.4 more years on average, to an age of approximately 83.4
+
+**Why do the two life expectancies seem inconsistent (i.e., why isn't the life expectancy for a 65-year-old equal to life expectancy for a newborn minus 65)?**
+
+76.5 - 65 = 11.5 years, but the table gives 18.4 years. The thing is that life expectancy at 65 applies only to men who survived to 65. The life expectancy at birth includes all newborns, and some of them die before 65. These early deaths decrease the average at birth. Thus a man who is already 65 has survived those risks, so his expected age at death is higher (83.4 compared to 76.5).
+
+**1. Below is life expectancy data over time taken from the World Health Organization for the United States and Uruguay (they are next to each other alphabetically!):** **Life expectancy at birth (years)**
+
+| Location                 | Year | Both sexes | Male  | Female |
+|--------------------------|------|------------|-------|--------|
+| United States of America | 2019 | 78.5       | 76.28 | 80.73  |
+| United States of America | 2015 | 78.56      | 76.31 | 80.8   |
+| United States of America | 2010 | 78.56      | 76.27 | 80.8   |
+| United States of America | 2000 | 76.69      | 74.12 | 79.17  |
+| Uruguay                  | 2019 | 77.1       | 73.48 | 80.56  |
+| Uruguay                  | 2015 | 77.03      | 73.31 | 80.56  |
+| Uruguay                  | 2010 | 76.36      | 72.54 | 80.05  |
+| Uruguay                  | 2000 | 74.82      | 70.82 | 78.8   |
+
+**In the US and Uruguay, how does the life expectancy of females compare to that of males** In both countries and in all years, females have a higher life expectancy than males. The difference is much larger in Uruguay.
+
+\*\*How does the trend of life expectancy of males in the US compare to the trend for males in Uruguay (2000–2019)? How does the trend in life expectancy of females in the US compare to the trend in females in Uruguay across time (2000–2019)? \*(6 points)\*\*
+
+In the US, for males,the value increased from 74.12 to 76.27 from 2000 to 2010 (+2.15). From 2010 to 2019, the value stayed approximately the same. In the case of Uruguay, the value increased at each time point, from 70.82 to 73.48 (+2.66). The increase was smaller after 2010.
+
+In terms of comparison, US males have a higher life expectancy, but the US value stopped increasing after 2010. Meanwhile Uruguay continued to increase, so the difference between the two countries decreased from 3.30 to 2.80 years.
+
+In the case of females, for the US, the value increased from 79.17 to 80.8 from 2000 to 2010. It stayed at 80.8 in 2015 and decreased a small amount to 80.73 in 2019 (+1.56 in total). In Uruguay, the value increased from 78.8 to 80.56 by 2015 and stayed at 80.56 in 2019 (+1.76 in total). The difference between the two countries decreased from 0.37 to 0.17 years. In 2019, US females and Uruguayan females had almost the same life expectancy.
+
+## Question 3 (sic). Screening
+
+Prostate cancer is the most common cancer among men (other than skin cancer). Approximately 13 out of every 100 men in the United States will get prostate cancer during their lifetime, and between 2 and 3 men out of 100 will die from the disease. The 5-year survival rate for prostate cancer is 98%. For late-stage prostate cancer, the average 5-year survival rate is much lower, between 20 and 30%. Prostate specific antigen (PSA) is expressed by both normal and cancerous prostate tissue, and its serum level is used as a screening method to detect prostate cancer. However, the use of PSA as a screen is controversial. Consider the following quotation:
+
+> "PSA screening helps doctors identify patients with prostate cancer, but the test is not perfect. Across all ages, roughly 0.55% of men in the United States have prostate cancer. Accounting for age, roughly 101 in 100,000 men are diagnosed with prostate cancer in 2016. If a man has any form of prostate cancer, there is a 32% chance that the PSA screen will detect it. However, if he has high grade cancer, there is a 68% chance that the screen will detect it. If the man does not have prostate cancer, there is still a 15% chance that the PSA screen will be positive."
+
+Public health experts and clinicians often need to communicate information directly to the public, so it is important to be able to translate public health information into everyday language. The above scenario uses everyday language instead of epidemiologic terminology. What is the exact name of the disease metric or test metric being described in each of these sentences?
+
+- **a.Roughly 0.55% of men in the United States have prostate cancer.** This is the proportion of men who have the disease at one point in time.
+- **b. If a man has any form of prostate cancer, there is a 32% chance that the PSA screen will detect it.** This is P(test positive \| disease) = a/(a+c).
+- **c. If the man does not have prostate cancer, there is still a 15% chance that the PSA screen will be positive.** False positive rate = b/(b+d) = 1 - specificity. Thus, the specificity is 85%.
+- **d. Set up a 2×2 table with marginal totals to show what would happen if 100,000 men were screened for prostate cancer (all prostate cancer, not just high grade), given the information above.**
+
+|       | Cancer  | No cancer  | Total   |
+|-------|---------|------------|---------|
+| PSA + | a = 176 | b = 14,918 | 15,094  |
+| PSA - | c = 374 | d = 84,532 | 84,906  |
+| Total | 550     | 99,450     | 100,000 |
+
+- **e. A man undergoes a PSA screen and the result is positive. What is the chance that he actually has cancer?** This is the positive predictive value (PPV). PPV = 176 / 15,094 = 1.2%. Thus, approximately 99 of 100 positive screens are false positives.
+
+- **f. If a man screens negative, what is the chance he has prostate cancer?** 1 - negative predictive value (NPV). P(cancer \| negative screen) = 374 / 84,906 = 0.44%. The NPV is 99.56%.
+
+- **g. Prevalence of prostate cancer increases exponentially with age. What is an important advantage and an important disadvantage of only screening men over age 75?** Since the the prevalence is much higher in older men, the advatange of screening in this segment is that the PPV increases and you get fewer false positives for each true case that you find. The disadvantage tho is that many prostate cancers grow slowly, and men aged 75 have a short remaining life.
+
+- **h. If a universal screening program is put into place using PSA to detect prostate cancer among men aged 50 and older, and treatment of early stage cancer reduces mortality for at least some men, would each of these metrics increase, decrease, or stay the same?**
+
+- **1. Prostate cancer diagnoses (incidence)** Increases because screening finds cases earlier. It also finds latent cancers that doctors would never diagnose without screening. **2. Prevalence of diagnosed prostate cancer** Increase. More men get a diagnosis, and they live longer with the diagnosis. **3. Survival time after diagnosis** Increase, but with the consideration that some of that inrease omes from lead-time bias, lenght bias and overdiagnosis. **4. Prostate cancer-specific mortality** Decrease.
