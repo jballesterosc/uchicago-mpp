@@ -1,0 +1,89 @@
+---
+title: "Problem Set 3"
+subtitle: "Investments"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.2  
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+jupyter:
+  kernelspec:
+    name: DAP
+    display_name: DAP
+    language: python
+---
+
+## Q1
+
+You are given the following information: the variance of the rate of return on stock 1, stock 2, and the market portfolio are $\sigma_1^2 = 0.16$, $\sigma_2^2 = 0.09$, and $\sigma_M^2 = 0.04$. The covariances between these assets are $\sigma_{1,2} = 0.02$, $\sigma_{1,M} = 0.064$, and $\sigma_{2,M} = 0.032$. Consider forming a portfolio that has 75% invested in asset 1 and 25% invested in asset 2. Call this portfolio $p$.
+
+**(a) What is the variance of portfolio** $p$?
+
+$\sigma_{\text{p}}^2 = 0.75^2(0.16) + 0.25^2(0.09) + 2(0.75)(0.25)(0.02)$
+
+$\sigma_{\text{p}}^2 = 0.090 + 0.0056 + 0.00750$
+
+$\sigma_{\text{p}}^2 = 0.10310$
+
+The variance of portfolio $p$ is 0.10310.
+
+**(b) What are the betas of 1, 2, and** $p$ relative to the market (i.e., what are $\beta_{1,M}$, $\beta_{2,M}$, and $\beta_{p,M}$)?
+
+Considering that $\beta_{i} = \frac{cov(r_i,r_m)}{\sigma_{\text{m}}^2}$,
+
+For $B_{1,m} = \frac{0.064}{0.04} =1.60$.
+
+$B_{2,m} = \frac{0.032}{0.04} = 0.800$
+
+And for $B_{p,m}$ we use the calculated betas and weights as a proxy
+
+$B_{p,m} = 0.75(1.60) + 0.25(0.800) = 1.20 + 0.20 = 1.40$
+
+**(c) What are the** $R^2$ values in regressions of the return on 1, 2, and $p$ on the market portfolio?
+
+Following the equation $R_i^2 = \frac{\beta_i^2\,\sigma_M^2}{\sigma_i^2}$, for
+
+$R_{{1}}^2 = \frac{(1.6^2)(0.04)}{0.16}=\frac{0.1024}{0.16}=0.6400$
+
+$R_{{2}}^2 = \frac{(0.800^2)(0.04)}{0.09}=\frac{0.02560}{0.09}=0.28444$
+
+$R_{{p}}^2 = \frac{(1.4^2)(0.04)}{0.1031}=\frac{0.07840}{0.1031}=0.76043$
+
+## Q2
+
+Obtain the data file `ps3_problem2.xlsx` from Canvas. This file contains historical monthly rates of return on U.S. and global stock indices, treasury bills, and individual stocks. The following calculations can be performed in Excel.
+
+**(a) Set up four different portfolios, finding monthly rates of return on each. The first portfolio is evenly invested in GM and IBM. The second portfolio is evenly invested in three stocks (GM, IBM, and Anheuser Busch) while the third portfolio is evenly invested in four stocks (GM, Toyota, IBM, and Anheuser Busch). The last portfolio is equally invested in all 13 common stocks. The rate of return on any portfolio is just the weighted-average of the rates of return on the underlying stocks.**
+
+Calculate the average monthly return and the return variance on these four portfolios (you do not need to use any complicated formulas here, just apply Excel functions `AVERAGE` and `VAR` to the portfolio returns).
+
+For each of these four portfolios, estimate the beta ($\beta$) and $R^2$ of the portfolio versus the "World Market" portfolio. (If you are working in Excel, the functions `SLOPE` and `LINEST` will both estimate the beta. `LINEST` provides other regression statistics as well.)
+
+| Portfolio | Stocks | Avg. monthly return (%) | Variance (%²) | $\beta$ vs. World | $R^2$ | Systematic risk $\beta_p^2\sigma_M^2$ (%²) | Idiosyncratic risk $\sigma_\epsilon^2$ (%²) |
+|:--------|:--------|--------:|--------:|--------:|--------:|--------:|--------:|
+| P1 | GM, IBM | 0.9535 | 40.7239 | 0.7575 | 0.2405 | 9.7923 | 30.9316 |
+| P2 | GM, IBM, Busch | 1.1876 | 27.4482 | 0.7194 | 0.3218 | 8.8326 | 18.6156 |
+| P3 | GM, Toyota, IBM, Busch | 1.3178 | 20.9507 | 0.7768 | 0.4915 | 10.2966 | 10.6541 |
+| P4 | All 13 stocks | 1.6845 | 25.0232 | 0.9285 | 0.5880 | 14.7135 | 10.3097 |
+
+**(b) How does the variance of the portfolio change as we add assets to the portfolio? How does the beta change as we add assets to the portfolio?**
+
+The variance decreases from P1 to P3, then it increases to in P4 (still below than P1 and P2). Idiosyncratic risk decreases at each step, because shocks cancel when we add stocks. But P4 has a higher beta, so its systematic risk increases from 10.30 to 14.71. This increase is larger than the small decrease in idiosyncratic risk, so the total variance of P4 is higher than that of P3.
+
+A portfolio beta is the weighted average of the stock betas. Thus, when we add a stock, beta moves toward the beta of that stock, not toward zero. As the portfolio becomes broader, its beta moves toward the beta of the market, which is 1.
+
+**(c) What do the results in part (2a) tell us about the behavior of the components of risk and return as we add assets to the portfolio?**
+
+When we add stocks, idiosyncratic risk decreases a lot (from 30.93 to 10.31), because firm-specific shocks cancel. Systematic risk does not decrease, because it depends only on beta. Thus, diversification removes only idiosyncratic risk, and the portfolio moves more with the market (\$R\^2\$ increases from 0.24 to 0.59).
+
+The average return increases from 0.95% to 1.68% per month, but diversification does not cause this. The increase comes from the stocks that we added. The CAPM says that investors get compensation only for systematic risk, so diversification lets us remove idiosyncratic risk with no loss of expected return.
