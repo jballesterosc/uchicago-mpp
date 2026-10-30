@@ -1,0 +1,95 @@
+---
+title: "Problem Set 4"
+subtitle: "Epidemiology and Population Health"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.2  
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+jupyter:
+  kernelspec:
+    name: DAP
+    display_name: DAP
+    language: python
+---
+
+## Cohort studies: RR, AR, AR%, PAR, and confounding
+ 
+A recent study examined the association between iron deficiency anemia (IDA) during pregnancy and severe maternal morbidity (SMM) during delivery.
+ 
+Here is a little background on IDA: <https://www.mayoclinic.org/healthy-lifestyle/pregnancy-week-by-week/in-depth/anemia-during-pregnancy/art-20114455>
+ 
+Here is a table with the range of conditions that are included in SMM: <https://www.cdc.gov/maternal-infant-health/php/severe-maternal-morbidity/icd.html>
+ 
+SMM is a range of serious pregnancy complications that result in significant short-term or long-term consequences to a woman’s health. It is a major risk factor for maternal death during delivery hospitalization. In the United States, the incidence of SMM has been rising.
+ 
+The authors constructed a multi-state historical population-based cohort study linking birth and fetal death certificates to maternal hospital discharge data from Michigan, Oregon, and South Carolina for years 2008–2020.
+ 
+The primary exposure was IDA and there were two primary outcomes: blood transfusion and non-transfusion SMM.
+ 
+There were 252, 240 pregnancies with IDA and 2,206,866 pregnancies with no IDA. For the IDA group, there were 329 cases of blood transfusions and 122 other SMM cases. For the NO IDA group, there were 33 cases of blood transfusions and 46 other SMM cases.
+ 
+
+ 
+# a)
+**Construct a 2x2 table for each outcome and determine the cumulative incidence for each of the two outcomes in each exposure category and the RR of each outcome for IDA versus No IDA pregnancies.**
+
+**Outcome 1: Blood transfusion**
+
+| Exposure | Transfusion | No transfusion | Total |
+|---|---|---|---|
+| IDA | 329 | 251,911 | 252,240 |
+| No IDA | 33 | 2,206,833 | 2,206,866 |
+| Total | 362 | 2,458,744 | 2,459,106 |
+
+**Outcome 2: Non-transfusion SMM**
+
+| Exposure | SMM | No SMM | Total |
+|---|---|---|---|
+| IDA | 122 | 252,118 | 252,240 |
+| No IDA | 46 | 2,206,820 | 2,206,866 |
+| Total | 168 | 2,458,938 | 2,459,106 |
+
+# b)
+**Assume that IDA is a true causal factor. What is the attributable risk, attributable risk percent and population attributable risk percent due to IDA for each outcome?**
+
+| Measure | Formula | Blood transfusion | Non-transfusion SMM |
+|---|---|---|---|
+| AR | I(exposed) - I(unexposed) | 128.9 per 100,000 | 46.3 per 100,000 |
+| AR% | AR / I(exposed) × 100 | 98.9% | 95.7% |
+| PAR | I(total) - I(unexposed) | 13.2 per 100,000 | 4.75 per 100,000 |
+| PAR% | PAR / I(total) × 100 | 89.8% | 69.5% |
+
+# c)
+**In one sentence each, explain the interpretation of the RR, attributable risk, attributable risk percent, and population attributable risk percent.**
+
+- RR: Women with IDA were 87 times more likely to need a blood transfusion than women without IDA.
+
+- AR: Among women with IDA, about 129 transfusions per 100,000 pregnancies were caused by IDA.
+
+- AR%: Among women with IDA, about 99% of transfusions were caused by IDA.
+
+- PAR%: Across all pregnancies, about 90% of transfusions were caused by IDA.
+
+# d)
+**The RR estimates were adjusted for a number of other factors. For blood transfusion, the adjusted RR was 8.2 (95% CI 7.9, 8.5) and for SMM it was 1.9 (95% CI 1.8, 2.0). Do these RR estimates suggest there was confounding by this set variables? Why or why not?**
+
+Yes, these results suggest strong confounding. Why? The adjusted RRs are much smaller than the crude RRs, which means part of the crude association was due to confounding. IDA still increases risk, but by much less than the crude numbers suggest.
+
+# e)
+**Consider the definition of a confounder. Does each of the possible confounders below seem likely to fulfill each of the criteria to be a confounder? Explain briefly for each.**
+
+   - Maternal age: Likely a confounder. It is associated with both the exposure and outcome.
+   - State of residence: Possibly a confounder, because it's possibly associated with IDA. States differ in population, diet, income, and how often women are screened for anemia.
+   - Number of previous pregnancies: Likely a confounder. Associated with IDA. Each pregnancy uses up iron, especially when pregnancies are close together. Additionally, causes the outcome. Having many previous births raises the risk of heavy bleeding after delivery, and previous C-sections raise the risk of placenta problems.
+   - Number of prenatal visits: Possibly not a confounder. Even though that is possibly associated with IDA and causal of outcomes, a woman diagnosed with IDA may be asked to come in for more visits. In that case, the number of visits is partly a result of IDA, which breaks criterion 3, and adjusting for it could bias the results.
