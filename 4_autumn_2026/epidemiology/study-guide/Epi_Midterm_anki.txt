@@ -1,0 +1,210 @@
+#separator:tab
+#html:true
+#tags column:3
+#deck:Epidemiology Midterm
+Define epidemiology (Gordis).	The study of how disease/health characteristics are <b>distributed in populations</b> and the <b>factors that determine</b> that distribution. Unit = population; quantitative; goal = prevention/control.	L1_designs
+Descriptive vs analytic epidemiology?	<b>Descriptive:</b> how many, who, where, when (burden, surveillance, natural history).<br><b>Analytic:</b> why — causes (etiology) and whether interventions work.	L1_designs
+Experimental vs observational study?	<b>Experimental:</b> investigator assigns the exposure.<br><b>Observational:</b> people are exposed as they live their lives; investigator only observes.	L1_designs
+What is a natural (quasi-) experiment? Give 3 course examples.	Observational, but exposure is assigned by circumstances outside people's own choice.<br>Snow's water companies; Semmelweis's alternating-day clinic admission; Danish vaccine-schedule changes (aluminum study).	L1_designs
+Cohort vs case-control: direction of inquiry?	<b>Cohort:</b> start with exposure status (disease-free), follow forward for incident disease.<br><b>Case-control:</b> start with disease status, look backward at prior exposures.	L1_designs
+Cross-sectional study: what does it measure and main weakness?	Exposure and disease measured at the same time → <b>prevalence</b>. Weakness: can't establish temporality.	L1_designs
+Ecologic study: unit and main pitfall?	Unit = group/region (group-level exposure and outcome). Pitfall: ecologic fallacy — group associations may not hold for individuals.	L1_designs
+Goldberger/pellagra: which study designs did the series include?	Case series (inmates ill, staff not), before/after diet experiment in orphanages, cohort of 7 cotton-mill villages, ecologic village comparison, qualitative study of food availability.	L1_designs
+Main limitation of Goldberger's orphanage diet experiment?	No concurrent control group (before/after) — anything else that changed between 1914 and 1915 could explain the drop.	L1_designs
+Pellagra cotton-mill cohort: main finding and what was adjusted?	Strong inverse association between household income and pellagra incidence, persisting after <b>age adjustment</b>; food availability (fresh food markets) mattered too.	L1_designs
+Count vs proportion vs rate vs ratio?	<b>Count:</b> raw number.<br><b>Proportion:</b> numerator included in denominator, 0–1.<br><b>Rate:</b> time in denominator, has units.<br><b>Ratio:</b> one quantity divided by a different kind of quantity.	L2_measures
+Prevalence: formula and units?	Existing cases ÷ total population at a point in time. Proportion; no time units.	L2_measures
+Cumulative incidence: formula and requirements?	New cases during a period ÷ people at risk at the start. Estimates risk. Must state the time period; exclude prevalent cases.	L2_measures
+Incidence rate: formula and when used?	New cases ÷ person-time at risk. Used when people are followed for different lengths of time.	L2_measures
+Reasons someone stops contributing person-time?	Develops the disease; lost to follow-up (censored); dies of another cause; study ends (administrative censoring).	L2_measures
+Key assumption behind person-time and censoring?	Those censored have the same ongoing risk as those still observed.	L2_measures
+Relationship between prevalence, incidence, and duration?	<b>P ≈ I × D</b>	L2_measures
+A new CURE is introduced. Incidence? Prevalence? Cause-specific mortality? Case-fatality?	Incidence: same. Prevalence: ↓ (shorter duration). Cause-specific mortality: ↓. Case-fatality: ↓.	L2_measures
+A treatment prolongs life but does not cure. Effect on prevalence?	Prevalence ↑ (people live longer with disease).	L2_measures
+Case-fatality: formula and what it measures?	Deaths from the disease ÷ people with the disease. Measures severity. A proportion despite being called a 'rate.'	L2_measures
+Cause-specific mortality rate vs proportionate mortality?	<b>CSMR:</b> deaths from cause ÷ midyear population.<br><b>Proportionate mortality:</b> deaths from cause ÷ all deaths (no population denominator).	L2_measures
+Infant mortality rate formula?	Deaths under 1 year ÷ live births (same year).	L2_measures
+Odds vs probability (30 of 100 get disease)?	Probability = 30/100 = 0.30. Odds = 30/70 = 0.43. Similar when the event is rare, very different when common.	L2_measures
+Why do changing case definitions matter? Give examples.	They create artificial trends. 2017 hypertension threshold (140/90 → 130/80); pregnancy checkbox on death certificates; DSM autism changes; AIDS definitions.	L2_measures
+Main rationale for age adjustment?	Age strongly predicts disease/death and populations differ in age structure. Applying age-specific rates to one standard removes the effect of age differences → fair comparison.	L2_ageadj
+Steps of DIRECT age adjustment?	1) Age-specific rates in each study pop. 2) Multiply by standard pop in each age group → expected cases. 3) Sum expected. 4) ÷ total standard pop.	L2_ageadj
+Can you compare adjusted rates that used different standards?	No. Same standard required. The adjusted rate is fictional — only for comparison.	L2_ageadj
+Disease rises with age; crude rate > adjusted rate. What does that tell you?	The study population is <b>older</b> than the standard population.	L2_ageadj
+Current US standard population for age adjustment?	The 2000 US standard population.	L2_ageadj
+Direct vs indirect adjustment: when to use each?	<b>Direct:</b> large populations with stable age-specific rates.<br><b>Indirect (SMR):</b> small study populations/few events (occupational, environmental).	L2_ageadj
+SMR formula and how 'expected' is computed?	SMR = <b>observed ÷ expected</b>. Expected = Σ (standard pop's age-specific rates × study pop's count in each age group).	L2_ageadj
+Interpret SMR = 5.82 (young adults after hip fracture, Taiwan).	Mortality after hip fracture was 5.82 times what would be expected if they had the age-specific death rates of the general Taiwanese population.	L2_ageadj
+Why shouldn't you directly compare SMRs from two different study populations?	Each SMR is based on its own study population's age structure.	L2_ageadj
+Endemic vs sporadic vs epidemic vs pandemic vs outbreak?	<b>Endemic:</b> always present at habitual level. <b>Sporadic:</b> infrequent, no habitual level. <b>Epidemic:</b> excess over expectation. <b>Pandemic:</b> worldwide epidemic. <b>Outbreak:</b> sudden rise, usually single exposure/common vehicle.	L3_infectious
+Seasonal vs secular trend?	Seasonal = annual pattern (flu winter, Lyme summer). Secular = trend over several years (varicella decline after vaccine).	L3_infectious
+Epidemiologic triad?	Host, agent, environment (± vector).	L3_infectious
+Direct vs indirect transmission?	<b>Direct:</b> person-to-person (respiratory, enteric, sexual, skin, blood, fomites).<br><b>Indirect:</b> common vehicle (water, food, air) or vector.	L3_infectious
+The 'iceberg' concept?	Visible clinical cases are a small fraction; inapparent infections (subclinical, preclinical, chronic, carriers) drive transmission. Polio: ~70–75% asymptomatic, <1% paralytic.	L3_infectious
+What is a carrier? Example?	Harbors the agent long-term without symptoms and can transmit it. Typhoid Mary (Mary Mallon).	L3_infectious
+SIR model and its two public-health levers?	Susceptible → Infectious → Recovered/Resistant. Levers: reduce susceptibles (vaccination); reduce mixing of infectious and susceptible.	L3_infectious
+Define R0. What do R>1, R=1, R<1 mean?	Average number of secondary cases from one infected person in a fully susceptible population. >1 grows, =1 constant, <1 declines. Not fixed — depends on mixing, pathogen, setting.	L3_infectious
+Herd immunity threshold formula and assumptions?	1 − 1/R0. Assumes random mixing and complete immunity.	L3_infectious
+Super-spreaders?	Overdispersion: many cases infect nobody, a few infect many (right tail of the secondary-case distribution).	L3_infectious
+6 steps of an outbreak investigation?	1) Define a case. 2) Describe cases by time & place. 3) Gather exposure info. 4) Calculate attack rates. 5) Compare attack rates to test hypotheses. 6) Recommend control/prevention.	L3_infectious
+Attack rate formula?	Ill among exposed ÷ all exposed (cumulative incidence during an outbreak).	L3_infectious
+How to identify the culprit food from an attack-rate table?	High AR among eaters, <b>low</b> AR among non-eaters, highest RR, and most ill people ate it.	L3_infectious
+Why might people who didn't eat the culprit food get sick?	Cross-contamination (shared utensils), misreported/forgotten exposure (recall), another source.	L3_infectious
+Why might a food appear protective (RR < 1)?	Confounding — people who ate it may have eaten less of the culprit — or chance.	L3_infectious
+PSET 2: why was risk higher in women at the wedding?	Women ate after men → food sat at room temperature longer → more staph toxin → bigger dose.	L3_infectious
+John Snow: Broad Street investigation?	Interviewed families; mapped deaths clustered around the Broad Street pump; handle removed Sept 8, 1854 (outbreak already waning).	L3_infectious
+John Snow's natural experiment?	Southwark & Vauxhall (downstream intake with sewage) vs Lambeth (moved upstream 1852). ~300,000 people assigned to water source without choice, same streets. Much higher cholera death rate with S&V.	L3_infectious
+Why did Farr's analysis support miasma?	Low-elevation areas had higher cholera death rates — but elevation was confounded with water source.	L3_infectious
+Options for what the control group receives?	Standard/usual care; nothing; placebo; sham; alternate therapy/activity (behavioral).	L4_RCT
+What is equipoise?	Genuine uncertainty about which arm is better — required to randomize ethically.	L4_RCT
+Purpose of randomization?	Arms have the same average risk; known AND unknown risk factors similarly distributed → differences due to intervention. Prevents selection bias.	L4_RCT
+Pitfalls of non-random assignment?	Historical controls (other things changing); alternation/day-of-week (predictable, gameable); physician choice (selection — BCG example).	L4_RCT
+Stratified randomization: what and why?	Randomize within subgroups (e.g., sex) to ensure balance or to test whether effects differ by subgroup.	L4_RCT
+When is cluster/community randomization needed?	When the intervention is group-level or spillover is unavoidable (fluoridated water, villages, schools, physician practices).	L4_RCT
+Target vs defined vs study population?	<b>Target:</b> whom results should apply to. <b>Defined:</b> eligible for inclusion. <b>Study:</b> those who consented.	L4_RCT
+Internal validity: definition and main threats?	Is the conclusion valid for the study itself? Threats: noncompliance/crossovers, loss to follow-up, inadequate sample size.	L4_RCT
+External validity: definition and main threats?	Generalizability to the target population. Threats: eligibility criteria, refusal to participate.	L4_RCT
+Exclusions BEFORE randomization vs losses AFTER: which validity?	Before → <b>external</b>. After (loss to follow-up, noncompliance) → <b>internal</b>.	L4_RCT
+Single vs double vs triple blind?	Single: participant. Double: + those giving intervention/assessing. Triple: + data analyst.	L4_RCT
+Why blind?	Prevent information bias: placebo effect, different behavior, biased reporting and outcome assessment.	L4_RCT
+Advantages of placebo/alternate treatment over no treatment?	Enables blinding, more accurate side-effect estimates, accounts for placebo effect; alternate treatment may increase participation.	L4_RCT
+Intention-to-treat analysis?	Analyze everyone as randomized regardless of adherence ('once randomized, always analyze'). Preserves randomization; answers effect of being assigned; conservative.	L4_RCT
+Per-protocol analysis and its problem?	Only those who adhered. Larger effect if treatment works, but adherence is self-selected → selection bias.	L4_RCT
+Phases I–IV of trials?	I: safe dose (10–50). II: any sign of effect, interim markers (100–300). III: large RCT, efficacy + safety. IV: post-marketing observational surveillance, effectiveness.	L4_RCT
+Purpose of Table 1 in an RCT?	Baseline characteristics by arm — shows whether randomization produced comparable groups and describes who's in the study.	L4_RCT
+What is the Salk vaccine?	Injected, inactivated (formaldehyde-killed) poliovirus vaccine → bloodstream antibodies → prevents paralysis but not intestinal infection.	articles
+Two parts of the 1954 Salk field trial?	<b>Observed-control:</b> consenting 2nd graders vaccinated; all 1st & 3rd graders observed.<br><b>Placebo-control:</b> consenting 1st–3rd graders randomized, double-blind, to vaccine vs placebo.	articles
+Why were there two Salk studies?	NFIP (Basil O'Connor) chose observed-control as more acceptable to parents/states; scientists objected; Thomas Francis ran an independent placebo-controlled evaluation.	articles
+Why is the Salk observed-control design biased?	Vaccinated = volunteers vs controls = everyone (incl. refusers); different grades/ages; no blinding → diagnostic bias.	articles
+Salk: why did 'not inoculated' children have LOWER polio rates than placebo children?	Refusers were lower SES; paralytic polio was more common in higher-SES children (later infection with better hygiene) → consenters had higher baseline risk.	articles
+Salk trial: big-picture result?	Effective against paralytic polio (~60–90%); no significant effect on nonparalytic; placebo areas gave higher, more valid efficacy than observed areas; all deaths in controls.	articles
+Why did the Salk trial need ~1.8 million children?	Paralytic polio is rare (~50 per 100,000) — power depends on the number of events.	articles
+Sabin vs Salk vaccine?	Sabin: oral, live attenuated, gut immunity, rare vaccine-associated paralysis (~1/2.4M doses). US switched to IPV (Salk-type) only in 2000.	articles
+Why use survival analysis?	Accounts for <b>when</b> events occur and for censoring; useful when risk changes over time.	L5_survival
+What does 'censored' mean?	Observation ended before the event; we only know the person was event-free until last contact.	L5_survival
+KM step at each event time?	S(t) = S(previous) × (1 − events ÷ number at risk just before t).	L5_survival
+KM: event and censoring at the same time — order?	List the event first; the censored person was still at risk when the event happened.	L5_survival
+Median survival from a KM curve?	First time S(t) ≤ 0.50. If the curve never reaches 0.50 → median not reached.	L5_survival
+Two assumptions for KM validity?	1) Censored people have the same survival prospects as those remaining. 2) No secular trend in risk across the enrollment period.	L5_survival
+Null hypothesis of the log-rank test?	The survival curves are the same in all groups over the whole follow-up.	L5_survival
+Cumulative incidence from KM survival?	1 − S(t).	L5_survival
+Define life expectancy at birth.	Mean age at death of a hypothetical cohort living its entire life at this year's age-specific death rates.	L5_survival
+Why is LE at 65 + 65 greater than LE at birth?	LE at 65 applies only to those who survived to 65; deaths before 65 pull down LE at birth.	L5_survival
+Cox proportional hazards model?	Regression survival method; adjusts for confounders; gives hazard ratios (interpreted like RRs).	L5_survival
+Life table vs KM?	Life table groups events into intervals (classic demographic method); KM uses exact event times.	L5_survival
+Screening vs diagnosis?	Screening: detect disease in asymptomatic people (low pre-test probability). Diagnosis: confirm disease in people with symptoms (high pre-test probability).	L6_screening
+Sensitivity formula and meaning?	a/(a+c): proportion of people WITH disease who test positive.	L6_screening
+Specificity formula and meaning?	d/(b+d): proportion of people WITHOUT disease who test negative.	L6_screening
+PPV and NPV formulas?	PPV = a/(a+b): P(disease given test +).<br>NPV = d/(c+d): P(no disease given test −).	L6_screening
+Which screening metrics depend on prevalence?	PPV and NPV. Se and Sp are test properties.	L6_screening
+Prevalence ↑: what happens to PPV and NPV?	PPV ↑ (rapidly). NPV ↓ (slowly).	L6_screening
+Specificity ↑: effect on PPV?	PPV ↑ (fewer false positives).	L6_screening
+Lowering the positivity threshold: Se and Sp?	Se ↑, Sp ↓.	L6_screening
+When to prioritize high sensitivity?	Missing a case is costly: serious disease, early treatment works, positives can be confirmed.	L6_screening
+When to prioritize high specificity?	False positives are costly: invasive/risky/expensive follow-up, anxiety, labeling.	L6_screening
+Retesting only those who screened positive: effect on PPV?	PPV rises — the pre-test prevalence among initial positives is higher.	L6_screening
+Reliability vs validity?	Reliability = consistency (inter-rater, intra-rater, test-retest). Validity = accuracy (Se, Sp). A test can be reliably wrong.	L6_screening
+Kappa: what and formula?	Agreement beyond chance. κ = (observed − chance agreement)/(1 − chance). >0.75 good; <0.40 poor.	L6_screening
+Primary, secondary, tertiary prevention?	Primary: prevent onset. Secondary: detect pre-symptomatic disease (screening). Tertiary: prevent worse outcomes after diagnosis.	L6_screening
+When is screening most useful?	Long preclinical phase; cheap, low-risk test; positives confirmable; early treatment improves outcomes and is available.	L6_screening
+Harms of screening?	Direct harm; false positives (cost, risky follow-up, anxiety, labeling); false negatives (false reassurance); overdiagnosis.	L6_screening
+Lead-time bias?	Earlier diagnosis lengthens measured survival after diagnosis even if the time of death doesn't change.	L6_screening
+Length bias?	Screening preferentially detects slow-growing disease (long preclinical phase) with better prognosis.	L6_screening
+Overdiagnosis?	Detecting disease that would never have caused symptoms or death.	L6_screening
+Best outcome measure to evaluate a screening program?	Cause-specific mortality in screened vs unscreened populations (not incidence, not survival after diagnosis).	L6_screening
+Universal PSA screening (early treatment helps some): effect on incidence, prevalence, survival after dx, mortality?	Incidence ↑, prevalence ↑, survival after dx ↑ (partly lead/length bias, overdiagnosis), cancer-specific mortality ↓.	L6_screening
+Efficacy formula?	(Rate placebo − Rate treated) ÷ Rate placebo = 1 − RR. 'Expected − observed over expected.'	L7_trials2
+NNT formula and meaning?	1 ÷ (Rate control − Rate treated). Number who must be treated to prevent one bad outcome. Round up.	L7_trials2
+Salk paralytic polio (placebo areas 57 vs 16 per 100,000): efficacy and NNT?	Efficacy = 41/57 = 72%. NNT = 1/(41/100,000) ≈ 2,439.	L7_trials2
+Efficacy vs effectiveness?	Efficacy = under ideal trial conditions. Effectiveness = in the real world.	L7_trials2
+Why can NNT be large even with high efficacy?	NNT depends on absolute risk difference — a rare disease means few cases to prevent.	L7_trials2
+Crossover trial: what and when appropriate?	Each patient gets both treatments in random order, with washout. Best for symptom control; not for curative or surgical treatments.	L7_trials2
+Factorial design: what and example?	Tests two independent interventions at once. Physicians' Health Study: aspirin (MI ↓ 44%, arm stopped early) and beta carotene (no effect).	L7_trials2
+What does a DSMB do?	Independent experts monitor safety and data quality; apply stopping rules at interim analyses.	L7_trials2
+Inputs for a sample size calculation?	α (usually 5%), β (10–20% → power 80–90%), allocation ratio, expected/meaningful difference between arms.	L7_trials2
+Define power. Minimum acceptable?	Probability of rejecting a false H0. Usually ≥ 80%.	L7_trials2
+What drives power for a binary outcome?	The expected number of <b>events</b>, not the number enrolled.	L7_trials2
+Type I vs Type II error?	Type I: rejecting a true H0 (α). Type II: failing to reject a false H0 (β).	L7_trials2
+Why was MRFIT null?	CHD deaths declined in the usual-care group too (secular trend) → too few events → underpowered.	L7_trials2
+Elements of informed consent?	Adequate decision-making capacity, adequate information, truly voluntary, explicit decision.	L7_trials2
+Fixed vs dynamic cohort?	Fixed: everyone observed same calendar time → cumulative incidence. Dynamic: varying follow-up → incidence rate/survival.	L8_cohort
+Prospective vs historical cohort?	Prospective: enroll now, follow in real time. Historical: past records establish exposure; outcomes have already occurred.	L8_cohort
+Exposure-based vs general-population cohort? Examples.	Exposure-based: radium dial painters, Dutch Hunger Winter. General population: Framingham (geographic), British Doctors (roster).	L8_cohort
+What do you call the comparison group in a cohort study?	The unexposed — not 'controls.'	L8_cohort
+RR interpretation template?	'[Exposed] had [X] times the risk/rate of [outcome] compared with [unexposed] over [time].'	L8_cohort
+Attributable risk (AR): formula and meaning?	I_exp − I_unexp. Excess incidence among the exposed due to the exposure (assumes causal).	L8_cohort
+AR%: two formulas?	(I_exp − I_unexp)/I_exp × 100 = (RR − 1)/RR × 100. % of cases among the exposed due to exposure.	L8_cohort
+PAR and PAR%?	PAR = I_total − I_unexp = AR × prevalence of exposure. PAR% = PAR/I_total × 100: % of all cases in the population due to exposure.	L8_cohort
+Why is PAR% smaller than AR%?	Not everyone is exposed — cases among the unexposed dilute the population's attributable share.	L8_cohort
+Cohort study advantages?	Temporality (stronger causal evidence); multiple outcomes (and exposures if general pop); power grows with follow-up.	L8_cohort
+Cohort study disadvantages?	Time and money; loss to follow-up (internal validity); huge N for rare outcomes; selection bias/confounding.	L8_cohort
+Framingham Heart Study design?	1948 geographic general-population prospective cohort; random sample of 2/3 of adults 30–62 (69% response) + volunteers; free of CVD; exams every 2 years.	L8_cohort
+Framingham key lesson about associations?	An association between a factor and disease does not prove that changing the factor lowers risk by that amount (MRFIT later was null).	L8_cohort
+British Doctors Study?	Doll & Hill, 1951; 2/3 of UK doctors responded; smoking and lung cancer with dose-response.	L8_cohort
+Dutch Hunger Winter: why special and one finding?	Sharply bounded famine in an otherwise well-nourished population. First-trimester exposure → ~2.5× schizophrenia in women.	L8_cohort
+95% CI of an RR includes 1. Interpretation?	Not statistically significant at α = 0.05; can't reject H0 (RR = 1).	L8_cohort
+What determines the precision of an RR?	Number of events in each exposure group (a and c cells), not total N.	L8_cohort
+Three criteria for a confounder?	1) Associated with the exposure. 2) A cause of the outcome. 3) NOT on the causal pathway.	L9_confounding
+Mediator vs confounder? Example.	A mediator is on the causal pathway (HBV → cirrhosis → liver cancer). Don't adjust for it — that removes part of the real effect.	L9_confounding
+Positive vs negative vs qualitative confounding?	Positive: crude farther from 1 than adjusted. Negative: crude closer to 1. Qualitative: direction flips.	L9_confounding
+Confounding vs interaction (effect modification)?	Confounding: stratum estimates similar to each other but differ from crude. Interaction: stratum estimates differ from each other.	L9_confounding
+Is there a statistical test for confounding?	No — judgment comparing crude vs adjusted. (There IS a test for interaction.)	L9_confounding
+Control confounding in study design?	Randomization, restriction, matching.	L9_confounding
+Control confounding in analysis?	Stratification (Mantel-Haenszel), regression.	L9_confounding
+Mantel-Haenszel estimate?	Weighted average of stratum-specific RRs/ORs, giving more weight to more precise strata.	L9_confounding
+Residual confounding?	Confounding remaining after adjustment: categories too broad, or poor proxy measures (e.g., insurance type for SES).	L9_confounding
+Hypertension → stroke (Framingham): crude vs age-adjusted RR?	Crude 3.2; M-H age-adjusted 2.4 → age was a confounder.	L9_confounding
+IDA → transfusion: crude RR 87, adjusted 8.2. What does this show?	Strong positive confounding by the adjusted variables (crude much farther from 1).	L9_confounding
+Number of prenatal visits — confounder of IDA → SMM?	Probably not: visits are partly caused by the IDA diagnosis (consequence of exposure / on pathway) → adjusting could bias results.	L9_confounding
+Why is confounding common in observational studies?	People with different exposures differ in other ways (age, SES, education, behaviors) that also predict disease.	L9_confounding
+Example of control by restriction?	Cannabis and CVD study restricted to non-tobacco users.	L9_confounding
+Why can't you compute incidence or RR in a case-control study?	The investigator fixes the number of cases and controls, which determines A/(A+B) and C/(C+D).	L10_casecontrol
+Odds ratio formula?	OR = ad/bc (odds of exposure in cases ÷ odds of exposure in controls — equals odds of disease in exposed ÷ unexposed).	L10_casecontrol
+When does OR ≈ RR?	Disease is rare (< ~10%) and cases/controls are representative regarding exposure.	L10_casecontrol
+OR vs RR: which is farther from 1?	OR is always farther from 1 — much farther when the outcome is common.	L10_casecontrol
+Correct wording for OR = 2.26?	'The odds of [exposure/disease] were 2.26 times higher among [cases/exposed]…' — say odds, not risk.	L10_casecontrol
+Principle for selecting controls?	Controls should be people who would have become cases in the study if they had developed the disease.	L10_casecontrol
+Incident vs prevalent cases?	Incident preferred. Prevalent cases reflect incidence + survival → may be a biased subset.	L10_casecontrol
+Hospital controls: pros and cons?	Pros: easy, comparable recall, willing. Cons: may share unrecognized risk factors (smoking, coffee). Use acute, varied conditions.	L10_casecontrol
+Risk of friend/neighbor/sibling controls?	Overmatching (too similar to cases in exposure).	L10_casecontrol
+Downsides of matching?	Can't study the matched variable's effect; must use matched analysis; 1:1 concordant pairs give no information.	L10_casecontrol
+OR in 1:1 matched pairs?	Ratio of discordant pairs: b/c.	L10_casecontrol
+Recall bias and ways to minimize it?	Cases recall/report exposures differently. Fixes: diseased controls, interview soon after diagnosis, validate exposures, dummy risk factors.	L10_casecontrol
+Selection bias in case-control studies?	Case or control ascertainment related to exposure (e.g., low control response rates; referral cases vs primary-care controls).	L10_casecontrol
+Observation/interviewer bias and fixes?	Interviewer knows case status and probes differently. Fixes: standardized questionnaires, blind interviewers, hide hypothesis.	L10_casecontrol
+Non-differential vs differential misclassification?	Non-differential (unrelated to outcome) of a binary exposure → usually toward the null. Differential → either direction.	L10_casecontrol
+SIDS and sleep position: design and why no RCT?	19 case-control studies, ORs 1.2–14 for prone sleeping. Association strong, consistent, independent of confounders → RCT unethical. Campaigns → SIDS fell sharply.	L10_casecontrol
+Semmelweis: core question?	Why was childbed fever mortality much higher in the First Clinic (physicians/students) than the Second Clinic (midwives) in Vienna?	articles
+Semmelweis: why is the two-clinic comparison a natural experiment?	Admission alternated by day, not by the woman's choice or a doctor's decision.	articles
+Semmelweis: hypotheses he rejected?	Epidemic atmospheric-cosmic-telluric influences (street births spared), overcrowding (Clinic 2 more crowded), fear/priest's bell, rough exams, diet, ventilation, delivery position.	articles
+Semmelweis: two case redefinitions?	1) Newborns died of the same disease → not unique to postpartum women. 2) Kolletschka (a man, autopsy scalpel wound) died of the same disease → cadaveric particles; later decaying organic matter from living patients.	articles
+Semmelweis: intervention and its design?	Chlorinated lime handwashing from May 1847 — before/after (historical control); Clinic 1 mortality fell to Clinic 2's level.	articles
+Semmelweis: RR of death Clinic 1 vs Clinic 2?	(1989/20,042)/(691/17,791) ≈ 2.56. Reverse ≈ 0.39 (reciprocal).	articles
+BNT162b2 trial: design?	Multinational, randomized 1:1, placebo-controlled, observer-blinded Phase 2/3; ~43,500 people ≥16; 2 doses 21 days apart; purposes: efficacy + safety.	articles
+BNT162b2: case definition?	Symptoms + positive NAAT ≥ 7 days after dose 2 (symptom-based AND etiology-confirmed).	articles
+BNT162b2: why two primary endpoints?	VE in those without prior infection, and in those with or without — prior infection could change apparent efficacy; real populations include both.	articles
+BNT162b2: why a one-sided stopping rule?	Concern was only in one direction — vaccine-enhanced disease (more severe cases in the vaccine arm).	articles
+BNT162b2: VE by person-time vs cumulative incidence — why nearly identical?	Follow-up (surveillance) time was very similar in both arms.	articles
+BNT162b2: why no long-term placebo comparison?	Placebo recipients were offered the vaccine after emergency authorization.	articles
+BNT162b2: big result?	~95% efficacy; protection begins ~12 days after dose 1; reactions more common with vaccine, more after dose 2, mostly mild and brief. Funded by Pfizer/BioNTech.	articles
+LEAP peanut trial: descriptive observation behind it?	Peanut allergy ~10× higher in Jewish children in the UK than in Israel, where infants eat peanut early.	articles
+LEAP: design?	Randomized, open-label, 640 high-risk infants (eczema/egg allergy), 2 cohorts stratified by skin-prick test; consume vs avoid peanut until 60 months; outcome = oral food challenge.	articles
+LEAP: why keep baseline reactors in the ITT analysis?	To preserve randomization ('once randomized, always analyze').	articles
+LEAP: worst-case imputation logic?	Assume all missing outcomes went against the hypothesis; if still significant, missing data can't explain the result.	articles
+LEAP: big result?	Early consumption cut peanut allergy ~86% (SPT-negative) and ~70% (SPT-positive) — relative reduction computed like VE.	articles
+Aluminum vaccine study: design?	Historical, register-based nationwide Danish cohort (~1.2M children born 1997–2018); exposure = cumulative aluminum by age 2; 50 chronic outcomes from age 2–5; Cox regression.	articles
+Aluminum study: what makes it a natural experiment?	Exposure varied with national vaccine schedule/product changes over time, not parents' choices.	articles
+Aluminum study: why exclude children with the outcome before age 2?	They're prevalent cases — not at risk at start of follow-up; also avoids reverse causation.	articles
+Aluminum study: why is Figure 3 on a log scale and why do CI widths differ?	Ratios are symmetric on log scale (2 and 0.5 equidistant from 1). Rarer outcomes have fewer cases → wider CIs.	articles
+Aluminum study: big result?	No significant increase in risk for any of the 50 outcomes; a few estimates slightly below 1.	articles
+Correct definition of a p-value?	Assuming H0 is true, the probability of observing data as extreme or more extreme than what was observed.	stats
+Correct interpretation of a 95% CI?	If sampling were repeated many times, 95% of the intervals would contain the true value.	stats
+Interpret a regression β (age, 2.334 mmHg, p<0.001) adjusted for weight.	Each 1-year increase in age is associated with 2.334 mmHg higher SBP on average, adjusting for weight; strong evidence β ≠ 0.	stats
+'Significant' vs 'not significant' — Gelman's point?	The difference between significant and not significant is not itself statistically significant.	stats
+Se 90%, Sp 95%, prevalence 5%, N = 2,000. Fill the 2×2 and give PPV.	D+ 100: TP 90, FN 10. D− 1,900: TN 1,805, FP 95. PPV = 90/185 = 48.6%.	calc
+Exposed 40/1,000; unexposed 40/4,000. RR, AR, AR%?	RR = 4; AR = 3 per 100; AR% = 75%.	calc
+Placebo 200/10,000 vs vaccine 40/10,000. VE and NNT?	VE = 80%; NNT = 1/0.016 = 62.5 → 63.	calc
+Cases: 60 exposed, 40 unexposed. Controls: 50 exposed, 150 unexposed. OR?	(60×150)/(50×40) = 4.5	calc
+R0 = 4. Herd immunity threshold?	1 − 1/4 = 75%	calc
+KM: at risk 6, 2 events, previous S = 0.875. New S?	0.875 × (4/6) = 0.583	calc
+Age-specific rate 140 per 100,000; standard pop in that group 150,000. Expected cases?	140 × 150,000/100,000 = 210	calc
+Observed 18 deaths; expected 10. SMR?	1.8 (80% more deaths than expected)	calc

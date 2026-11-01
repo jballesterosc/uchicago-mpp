@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jay Ballesteros">
+<meta name="dcterms.date" content="2026-10-31">
+
+<title>Epidemiology &amp; Population Health — Midterm Study Guide</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Epi_Midterm_Study_Guide_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Epi_Midterm_Study_Guide_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Epi_Midterm_Study_Guide_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Epi_Midterm_Study_Guide_files/libs/quarto-html/popper.min.js"></script>
+<script src="Epi_Midterm_Study_Guide_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Epi_Midterm_Study_Guide_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Epi_Midterm_Study_Guide_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Epi_Midterm_Study_Guide_files/libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Epi_Midterm_Study_Guide_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Epi_Midterm_Study_Guide_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Epi_Midterm_Study_Guide_files/libs/bootstrap/bootstrap-c2e55264ed47ce3b2e0326a2269f9400.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#sec-plan" id="toc-sec-plan" class="nav-link active" data-scroll-target="#sec-plan"><span class="header-section-number">1</span> Game plan: Saturday → Monday</a></li>
+  <li><a href="#sec-habits" id="toc-sec-habits" class="nav-link" data-scroll-target="#sec-habits"><span class="header-section-number">2</span> Exam rules &amp; answer-writing habits</a></li>
+  <li><a href="#sec-formulas" id="toc-sec-formulas" class="nav-link" data-scroll-target="#sec-formulas"><span class="header-section-number">3</span> Formula sheet</a>
+  <ul class="collapse">
+  <li><a href="#the-22-table-memorize-this-layout" id="toc-the-22-table-memorize-this-layout" class="nav-link" data-scroll-target="#the-22-table-memorize-this-layout">The 2×2 table (memorize this layout)</a></li>
+  <li><a href="#measures-of-occurrence" id="toc-measures-of-occurrence" class="nav-link" data-scroll-target="#measures-of-occurrence">Measures of occurrence</a></li>
+  <li><a href="#comparing-groups" id="toc-comparing-groups" class="nav-link" data-scroll-target="#comparing-groups">Comparing groups</a></li>
+  <li><a href="#screening" id="toc-screening" class="nav-link" data-scroll-target="#screening">Screening</a></li>
+  <li><a href="#other" id="toc-other" class="nav-link" data-scroll-target="#other">Other</a></li>
+  </ul></li>
+  <li><a href="#sec-playbooks" id="toc-sec-playbooks" class="nav-link" data-scroll-target="#sec-playbooks"><span class="header-section-number">4</span> Calculation playbooks (one per HW skill)</a>
+  <ul class="collapse">
+  <li><a href="#incidence-prevalence-mortality-goes-up-down-or-same-pset-1-q1-pset-3-screening-h" id="toc-incidence-prevalence-mortality-goes-up-down-or-same-pset-1-q1-pset-3-screening-h" class="nav-link" data-scroll-target="#incidence-prevalence-mortality-goes-up-down-or-same-pset-1-q1-pset-3-screening-h">Incidence / prevalence / mortality “goes up, down, or same?” (PSET 1 Q1, PSET 3 screening h)</a></li>
+  <li><a href="#person-time-and-incidence-rates-pset-1-q2-q4" id="toc-person-time-and-incidence-rates-pset-1-q2-q4" class="nav-link" data-scroll-target="#person-time-and-incidence-rates-pset-1-q2-q4">Person-time and incidence rates (PSET 1 Q2, Q4)</a></li>
+  <li><a href="#direct-age-adjustment-pset-1-q3-sample-midterm-melanoma" id="toc-direct-age-adjustment-pset-1-q3-sample-midterm-melanoma" class="nav-link" data-scroll-target="#direct-age-adjustment-pset-1-q3-sample-midterm-melanoma">Direct age adjustment (PSET 1 Q3; sample midterm melanoma)</a></li>
+  <li><a href="#indirect-adjustment-smr-pset-1-q2c-framingham-article-mustard-gas-example" id="toc-indirect-adjustment-smr-pset-1-q2c-framingham-article-mustard-gas-example" class="nav-link" data-scroll-target="#indirect-adjustment-smr-pset-1-q2c-framingham-article-mustard-gas-example">Indirect adjustment / SMR (PSET 1 Q2c; Framingham article; mustard-gas example)</a></li>
+  <li><a href="#outbreak-attack-rate-table-pset-2" id="toc-outbreak-attack-rate-table-pset-2" class="nav-link" data-scroll-target="#outbreak-attack-rate-table-pset-2">Outbreak attack-rate table (PSET 2)</a></li>
+  <li><a href="#kaplan-meier-pset-3-q2-sample-midterm-figure" id="toc-kaplan-meier-pset-3-q2-sample-midterm-figure" class="nav-link" data-scroll-target="#kaplan-meier-pset-3-q2-sample-midterm-figure">Kaplan-Meier (PSET 3 Q2; sample midterm figure)</a></li>
+  <li><a href="#screening-22-pset-3-sample-midterm-pap-vs-hpv" id="toc-screening-22-pset-3-sample-midterm-pap-vs-hpv" class="nav-link" data-scroll-target="#screening-22-pset-3-sample-midterm-pap-vs-hpv">Screening 2×2 (PSET 3; sample midterm Pap vs HPV)</a></li>
+  <li><a href="#cohort-measures-rr-ar-ar-par-par-pset-4" id="toc-cohort-measures-rr-ar-ar-par-par-pset-4" class="nav-link" data-scroll-target="#cohort-measures-rr-ar-ar-par-par-pset-4">Cohort measures: RR, AR, AR%, PAR, PAR% (PSET 4)</a></li>
+  <li><a href="#efficacy-and-nnt-salk-lecture-bnt162b2-article-leap-relative-reduction" id="toc-efficacy-and-nnt-salk-lecture-bnt162b2-article-leap-relative-reduction" class="nav-link" data-scroll-target="#efficacy-and-nnt-salk-lecture-bnt162b2-article-leap-relative-reduction">Efficacy and NNT (Salk lecture; BNT162b2 article; LEAP “relative reduction”)</a></li>
+  <li><a href="#odds-ratio-lecture-10-pset-2-odds-semmelweis-discussion" id="toc-odds-ratio-lecture-10-pset-2-odds-semmelweis-discussion" class="nav-link" data-scroll-target="#odds-ratio-lecture-10-pset-2-odds-semmelweis-discussion">Odds ratio (Lecture 10; PSET 2 odds; Semmelweis discussion)</a></li>
+  <li><a href="#quick-ones-herd-immunity-kappa" id="toc-quick-ones-herd-immunity-kappa" class="nav-link" data-scroll-target="#quick-ones-herd-immunity-kappa">Quick ones: herd immunity, kappa</a></li>
+  <li><a href="#stats-interpretation-week-1-section-pset-1-q5" id="toc-stats-interpretation-week-1-section-pset-1-q5" class="nav-link" data-scroll-target="#stats-interpretation-week-1-section-pset-1-q5">Stats interpretation (Week 1 section; PSET 1 Q5)</a></li>
+  </ul></li>
+  <li><a href="#sec-concepts" id="toc-sec-concepts" class="nav-link" data-scroll-target="#sec-concepts"><span class="header-section-number">5</span> Concept review by lecture (high-yield contrasts)</a>
+  <ul class="collapse">
+  <li><a href="#l1-what-epidemiology-is-study-designs" id="toc-l1-what-epidemiology-is-study-designs" class="nav-link" data-scroll-target="#l1-what-epidemiology-is-study-designs">L1 — What epidemiology is; study designs</a></li>
+  <li><a href="#l2-measures-case-definitions-age-adjustment" id="toc-l2-measures-case-definitions-age-adjustment" class="nav-link" data-scroll-target="#l2-measures-case-definitions-age-adjustment">L2 — Measures, case definitions, age adjustment</a></li>
+  <li><a href="#l3-infectious-disease-outbreaks" id="toc-l3-infectious-disease-outbreaks" class="nav-link" data-scroll-target="#l3-infectious-disease-outbreaks">L3 — Infectious disease &amp; outbreaks</a></li>
+  <li><a href="#l4-l7-randomized-trials" id="toc-l4-l7-randomized-trials" class="nav-link" data-scroll-target="#l4-l7-randomized-trials">L4 &amp; L7 — Randomized trials</a></li>
+  <li><a href="#l5-survival-analysis-life-expectancy" id="toc-l5-survival-analysis-life-expectancy" class="nav-link" data-scroll-target="#l5-survival-analysis-life-expectancy">L5 — Survival analysis &amp; life expectancy</a></li>
+  <li><a href="#l6-screening" id="toc-l6-screening" class="nav-link" data-scroll-target="#l6-screening">L6 — Screening</a></li>
+  <li><a href="#l8-cohort-studies" id="toc-l8-cohort-studies" class="nav-link" data-scroll-target="#l8-cohort-studies">L8 — Cohort studies</a></li>
+  <li><a href="#l9-confounding" id="toc-l9-confounding" class="nav-link" data-scroll-target="#l9-confounding">L9 — Confounding</a></li>
+  <li><a href="#l10-case-control-studies" id="toc-l10-case-control-studies" class="nav-link" data-scroll-target="#l10-case-control-studies">L10 — Case-control studies</a></li>
+  </ul></li>
+  <li><a href="#sec-articles" id="toc-sec-articles" class="nav-link" data-scroll-target="#sec-articles"><span class="header-section-number">6</span> Required articles — design, design issues, big-picture result</a>
+  <ul class="collapse">
+  <li><a href="#semmelweis-etiology-concept-and-prophylaxis-of-childbed-fever-1840s-vienna" id="toc-semmelweis-etiology-concept-and-prophylaxis-of-childbed-fever-1840s-vienna" class="nav-link" data-scroll-target="#semmelweis-etiology-concept-and-prophylaxis-of-childbed-fever-1840s-vienna">Semmelweis — “Etiology, Concept, and Prophylaxis of Childbed Fever” (1840s Vienna)</a></li>
+  <li><a href="#salk-1954-polio-field-trial" id="toc-salk-1954-polio-field-trial" class="nav-link" data-scroll-target="#salk-1954-polio-field-trial">Salk 1954 polio field trial</a></li>
+  <li><a href="#bnt162b2-pfizerbiontech-covid-19-vaccine-trial-nejm-2020" id="toc-bnt162b2-pfizerbiontech-covid-19-vaccine-trial-nejm-2020" class="nav-link" data-scroll-target="#bnt162b2-pfizerbiontech-covid-19-vaccine-trial-nejm-2020">BNT162b2 (Pfizer/BioNTech) Covid-19 vaccine trial, NEJM 2020</a></li>
+  <li><a href="#leap-randomized-trial-of-peanut-consumption-in-infants-at-risk-nejm-2015" id="toc-leap-randomized-trial-of-peanut-consumption-in-infants-at-risk-nejm-2015" class="nav-link" data-scroll-target="#leap-randomized-trial-of-peanut-consumption-in-infants-at-risk-nejm-2015">LEAP — Randomized Trial of Peanut Consumption in Infants at Risk (NEJM 2015)</a></li>
+  <li><a href="#framingham-enquiry-dawber-kannel" id="toc-framingham-enquiry-dawber-kannel" class="nav-link" data-scroll-target="#framingham-enquiry-dawber-kannel">Framingham Enquiry (Dawber &amp; Kannel)</a></li>
+  <li><a href="#aluminum-adsorbed-vaccines-and-chronic-diseases-in-childhood-danish-nationwide-cohort-annals-2025" id="toc-aluminum-adsorbed-vaccines-and-chronic-diseases-in-childhood-danish-nationwide-cohort-annals-2025" class="nav-link" data-scroll-target="#aluminum-adsorbed-vaccines-and-chronic-diseases-in-childhood-danish-nationwide-cohort-annals-2025">Aluminum-Adsorbed Vaccines and Chronic Diseases in Childhood (Danish nationwide cohort, Annals 2025)</a></li>
+  <li><a href="#lecture-examples-worth-knowing-not-required-articles-but-fair-game" id="toc-lecture-examples-worth-knowing-not-required-articles-but-fair-game" class="nav-link" data-scroll-target="#lecture-examples-worth-knowing-not-required-articles-but-fair-game">Lecture examples worth knowing (not required articles but fair game)</a></li>
+  </ul></li>
+  <li><a href="#sec-psets" id="toc-sec-psets" class="nav-link" data-scroll-target="#sec-psets"><span class="header-section-number">7</span> PSET redo guide</a></li>
+  <li><a href="#sec-practice" id="toc-sec-practice" class="nav-link" data-scroll-target="#sec-practice"><span class="header-section-number">8</span> Fresh practice problems</a></li>
+  <li><a href="#sec-anki" id="toc-sec-anki" class="nav-link" data-scroll-target="#sec-anki"><span class="header-section-number">9</span> Using the Anki deck in a 2-day sprint</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Epidemiology &amp; Population Health — Midterm Study Guide</h1>
+<p class="subtitle lead">Lectures 1–10 · PSETs 1–4 · Required articles</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jay Ballesteros </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 31, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Built from Lectures 1–10, PSETs 1–4, the section articles, reading notes, and the 2025 sample midterm.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="What's on the exam (from the instructor)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>What’s on the exam (from the instructor)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lecture + section concepts through Week 5; calculations from HW 1–4 (RR, efficacy, KM, screening tests, attack rates/outbreaks, age adjustment); for required articles, only overall design, design issues, and general results (no numbers to memorize). Required articles: Semmelweis, Salk 1954 trial, BNT162b2 (Covid vaccine), LEAP peanut trial, Framingham, Aluminum vaccine cohort.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Companion files">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Companion files
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>Answer_Keys.md</code> (worked sample midterm + answers to the fresh practice problems in <a href="#sec-practice" class="quarto-xref">Section&nbsp;8</a>) and <code>Epi_Midterm.apkg</code> (Anki deck, 206 cards).</p>
+</div>
+</div>
+<section id="sec-plan" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Game plan: Saturday → Monday</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>Do this</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Sat (today)</strong></td>
+<td>Take the sample midterm closed-book with only a basic calculator. Time yourself (~50 min). Then grade it with <code>Answer_Keys.md</code>.</td>
+<td>Diagnose first. Your misses tell you where to spend Sunday.</td>
+</tr>
+<tr class="even">
+<td>Sat evening</td>
+<td>Import the Anki deck and do one full pass (~60–90 min). Mark anything you missed twice.</td>
+<td>First exposure to every concept.</td>
+</tr>
+<tr class="odd">
+<td><strong>Sun morning</strong></td>
+<td>Redo PSETs 4 → 3 → 1 → 2 on blank paper with your old answers hidden. Check against the posted keys. Use <a href="#sec-psets" class="quarto-xref">Section&nbsp;7</a> for the traps in each.</td>
+<td>PSET-style questions are the core of the exam. PSET 4 is newest and least practiced.</td>
+</tr>
+<tr class="even">
+<td>Sun afternoon</td>
+<td>Do the fresh practice problems (<a href="#sec-practice" class="quarto-xref">Section&nbsp;8</a>) — new numbers, same skills. Then say each article summary (<a href="#sec-articles" class="quarto-xref">Section&nbsp;6</a>) out loud in ~60 seconds.</td>
+<td>Redoing PSETs you’ve already seen tests memory; new numbers test whether you can actually do it.</td>
+</tr>
+<tr class="odd">
+<td>Sun evening</td>
+<td>Anki review (Custom Study, see <a href="#sec-anki" class="quarto-xref">Section&nbsp;9</a>). Then write the formula sheet (<a href="#sec-formulas" class="quarto-xref">Section&nbsp;3</a>) <strong>from memory</strong> on a blank page and check it.</td>
+<td>Blank-page recall is the best predictor of exam recall.</td>
+</tr>
+<tr class="even">
+<td><strong>Mon morning</strong></td>
+<td>One quick Anki pass + one blank-page formula sheet. Stop there.</td>
+<td>Sleep beats a last cram.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-habits" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Exam rules &amp; answer-writing habits</h1>
+<p>The exam instructions say short answers can be “just a few words,” write legibly, show work for partial credit, basic calculator only (<strong>no phone</strong>). In the sample midterm, answers written only inside a table got no partial credit — always copy the final number into the answer space.</p>
+<p>Habits that earn points:</p>
+<ol type="1">
+<li><strong>Formula → numbers → answer → units.</strong> Write <code>CI = a/(a+b) = 329/252,240 = 130.4 per 100,000</code> rather than just the final number. Units are part of the answer (e.g., “3.42 deaths per 100,000 per year”).</li>
+<li><strong>Ratio interpretation template:</strong> “<em>[Exposed group]</em> had <em>[X]</em> times the <em>[risk/rate/odds]</em> of <em>[outcome]</em> compared with <em>[unexposed group]</em> over <em>[time period]</em>.” Always say who is compared to whom.</li>
+<li><strong>OR → say “odds,” never “risk.”</strong></li>
+<li><strong>CI for a ratio:</strong> if it includes 1 → not statistically significant. For a difference: if it includes 0 → not significant.</li>
+<li><strong>“Internal or external validity?”</strong> Problems <em>before</em> randomization (exclusions, refusals) → external. Problems <em>after</em> randomization (loss to follow-up, noncompliance, crossovers) → internal.</li>
+<li><strong>Keep conceptual answers to a phrase or two.</strong> Graders are hunting for keywords — make them easy to find.</li>
+</ol>
+</section>
+<section id="sec-formulas" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Formula sheet</h1>
+<section id="the-22-table-memorize-this-layout" class="level2">
+<h2 class="anchored" data-anchor-id="the-22-table-memorize-this-layout">The 2×2 table (memorize this layout)</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Disease +</th>
+<th>Disease −</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Exposed / Test +</strong></td>
+<td>a</td>
+<td>b</td>
+<td>a+b</td>
+</tr>
+<tr class="even">
+<td><strong>Unexposed / Test −</strong></td>
+<td>c</td>
+<td>d</td>
+<td>c+d</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>a+c</td>
+<td>b+d</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<p>In screening: a = true positives, b = false positives, c = false negatives, d = true negatives.</p>
+</section>
+<section id="measures-of-occurrence" class="level2">
+<h2 class="anchored" data-anchor-id="measures-of-occurrence">Measures of occurrence</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Formula</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prevalence</td>
+<td><span class="math inline">\(\dfrac{\text{existing cases}}{\text{total population}}\)</span></td>
+<td>At a point in time; proportion, no time units</td>
+</tr>
+<tr class="even">
+<td>Cumulative incidence (risk)</td>
+<td><span class="math inline">\(\dfrac{\text{new cases during period}}{\text{people at risk at start}}\)</span></td>
+<td>Must state the time period; exclude prevalent cases</td>
+</tr>
+<tr class="odd">
+<td>Incidence rate</td>
+<td><span class="math inline">\(\dfrac{\text{new cases}}{\text{person-time at risk}}\)</span></td>
+<td>Use when follow-up varies; e.g., per 1,000 person-years</td>
+</tr>
+<tr class="even">
+<td>Attack rate</td>
+<td><span class="math inline">\(\dfrac{\text{ill among exposed}}{\text{all exposed}}\)</span></td>
+<td>Cumulative incidence during an outbreak</td>
+</tr>
+<tr class="odd">
+<td>Mortality rate</td>
+<td><span class="math inline">\(\dfrac{\text{deaths in year}}{\text{midyear population}}\)</span></td>
+<td>Usually per 100,000 per year</td>
+</tr>
+<tr class="even">
+<td>Cause-specific mortality</td>
+<td><span class="math inline">\(\dfrac{\text{deaths from cause}}{\text{midyear population}}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Case-fatality</td>
+<td><span class="math inline">\(\dfrac{\text{deaths from the disease}}{\text{people with the disease}}\)</span></td>
+<td>Severity; a proportion despite the name</td>
+</tr>
+<tr class="even">
+<td>Proportionate mortality</td>
+<td><span class="math inline">\(\dfrac{\text{deaths from cause}}{\text{all deaths}}\)</span></td>
+<td>No population denominator</td>
+</tr>
+<tr class="odd">
+<td>Infant mortality rate</td>
+<td><span class="math inline">\(\dfrac{\text{deaths under 1 year}}{\text{live births}}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Odds</td>
+<td><span class="math inline">\(\dfrac{\text{events}}{\text{non-events}} = \dfrac{p}{1-p}\)</span></td>
+<td>≈ probability when rare</td>
+</tr>
+<tr class="odd">
+<td>Prevalence, incidence, duration</td>
+<td><span class="math inline">\(P \approx I \times D\)</span></td>
+<td>Use for “will prevalence go up or down?” questions</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comparing-groups" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-groups">Comparing groups</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Formula</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>RR</strong> (risk/rate ratio)</td>
+<td><span class="math inline">\(\dfrac{I_{\text{exp}}}{I_{\text{unexp}}}\)</span></td>
+<td>Null = 1. No units.</td>
+</tr>
+<tr class="even">
+<td><strong>AR</strong> (risk difference)</td>
+<td><span class="math inline">\(I_{\text{exp}} - I_{\text{unexp}}\)</span></td>
+<td>Excess cases among the exposed due to exposure (assumes causal). Has incidence units.</td>
+</tr>
+<tr class="odd">
+<td><strong>AR%</strong></td>
+<td><span class="math inline">\(\dfrac{I_{\text{exp}} - I_{\text{unexp}}}{I_{\text{exp}}} \times 100 = \dfrac{\text{RR} - 1}{\text{RR}} \times 100\)</span></td>
+<td>% of cases <em>among the exposed</em> due to exposure</td>
+</tr>
+<tr class="even">
+<td><strong>PAR</strong></td>
+<td><span class="math inline">\(I_{\text{total}} - I_{\text{unexp}} = \text{AR} \times P_{\text{exposure}}\)</span></td>
+<td>Excess cases in the <em>whole population</em> due to exposure</td>
+</tr>
+<tr class="odd">
+<td><strong>PAR%</strong></td>
+<td><span class="math inline">\(\dfrac{I_{\text{total}} - I_{\text{unexp}}}{I_{\text{total}}} \times 100\)</span></td>
+<td>% of <em>all</em> cases in the population due to exposure</td>
+</tr>
+<tr class="even">
+<td><strong>Efficacy / VE</strong></td>
+<td><span class="math inline">\(\dfrac{R_{\text{placebo}} - R_{\text{vaccine}}}{R_{\text{placebo}}} = 1 - \text{RR}\)</span></td>
+<td>Proportion of expected cases prevented</td>
+</tr>
+<tr class="odd">
+<td><strong>NNT</strong></td>
+<td><span class="math inline">\(\dfrac{1}{R_{\text{control}} - R_{\text{treated}}}\)</span></td>
+<td>Round <strong>up</strong> to a whole person</td>
+</tr>
+<tr class="even">
+<td><strong>OR</strong></td>
+<td><span class="math inline">\(\dfrac{a \times d}{b \times c}\)</span></td>
+<td>Case-control measure; ≈ RR when disease rare (&lt; ~10%)</td>
+</tr>
+<tr class="odd">
+<td>OR, 1:1 matched pairs</td>
+<td><span class="math inline">\(\dfrac{b}{c}\)</span> (discordant pairs)</td>
+<td>Concordant pairs add no information</td>
+</tr>
+<tr class="even">
+<td>95% CI of RR (apply, don’t memorize)</td>
+<td><span class="math inline">\(\exp\!\left[\ln(\text{RR}) \pm 1.96\sqrt{\dfrac{1-p_1}{x_1} + \dfrac{1-p_2}{x_2}}\right]\)</span></td>
+<td><span class="math inline">\(x\)</span> = cases, <span class="math inline">\(p = x/n\)</span> in each group</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="screening" class="level2">
+<h2 class="anchored" data-anchor-id="screening">Screening</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Formula</th>
+<th>Depends on prevalence?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sensitivity</td>
+<td><span class="math inline">\(\dfrac{a}{a+c}\)</span></td>
+<td>No (test property)</td>
+</tr>
+<tr class="even">
+<td>Specificity</td>
+<td><span class="math inline">\(\dfrac{d}{b+d}\)</span></td>
+<td>No (test property)</td>
+</tr>
+<tr class="odd">
+<td>False negative rate</td>
+<td><span class="math inline">\(\dfrac{c}{a+c} = 1 - \text{Se}\)</span></td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>False positive rate</td>
+<td><span class="math inline">\(\dfrac{b}{b+d} = 1 - \text{Sp}\)</span></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>PPV</td>
+<td><span class="math inline">\(\dfrac{a}{a+b}\)</span></td>
+<td><strong>Yes</strong> — rises with prevalence</td>
+</tr>
+<tr class="even">
+<td>NPV</td>
+<td><span class="math inline">\(\dfrac{d}{c+d}\)</span></td>
+<td><strong>Yes</strong> — falls (slowly) with prevalence</td>
+</tr>
+<tr class="odd">
+<td>Prevalence</td>
+<td><span class="math inline">\(\dfrac{a+c}{N}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Kappa</td>
+<td><span class="math inline">\(\kappa = \dfrac{P_o - P_e}{1 - P_e}\)</span></td>
+<td><span class="math inline">\(P_o\)</span> = observed agreement, <span class="math inline">\(P_e\)</span> = chance agreement; &gt; 0.75 good, &lt; 0.40 poor</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="other" class="level2">
+<h2 class="anchored" data-anchor-id="other">Other</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Direct age-adjusted rate</td>
+<td><span class="math inline">\(\dfrac{\sum_i \left(\text{rate}_i \times \text{std pop}_i\right)}{\sum_i \text{std pop}_i}\)</span></td>
+</tr>
+<tr class="even">
+<td>SMR (indirect adjustment)</td>
+<td><span class="math inline">\(\text{SMR} = \dfrac{O}{E}, \quad E = \sum_i \left(\text{standard rate}_i \times \text{study pop}_i\right)\)</span></td>
+</tr>
+<tr class="odd">
+<td>Kaplan-Meier</td>
+<td><span class="math inline">\(S(t_j) = S(t_{j-1}) \times \left(1 - \dfrac{d_j}{n_j}\right)\)</span>, with <span class="math inline">\(d_j\)</span> = events at <span class="math inline">\(t_j\)</span>, <span class="math inline">\(n_j\)</span> = at risk just before <span class="math inline">\(t_j\)</span></td>
+</tr>
+<tr class="even">
+<td>Herd immunity threshold</td>
+<td><span class="math inline">\(1 - \dfrac{1}{R_0}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Average person-time</td>
+<td><span class="math inline">\(\dfrac{\text{total person-years}}{\text{number of people}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled" title="SMR direction">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>SMR direction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One slide in Lecture 2 writes the SMR upside down. It’s <strong>observed ÷ expected</strong> (mustard gas example: 45 observed ÷ 14.7 expected = 3.06).</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-playbooks" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Calculation playbooks (one per HW skill)</h1>
+<section id="incidence-prevalence-mortality-goes-up-down-or-same-pset-1-q1-pset-3-screening-h" class="level2">
+<h2 class="anchored" data-anchor-id="incidence-prevalence-mortality-goes-up-down-or-same-pset-1-q1-pset-3-screening-h">Incidence / prevalence / mortality “goes up, down, or same?” (PSET 1 Q1, PSET 3 screening h)</h2>
+<p>Reason from <strong>P ≈ I × D</strong> and from what each measure’s numerator and denominator count.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Intervention</th>
+<th>Incidence</th>
+<th>Prevalence</th>
+<th>Cause-specific mortality</th>
+<th>Case-fatality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Cure</strong> (e.g., new HCV drugs)</td>
+<td>Same (doesn’t stop new infections)</td>
+<td>↓ (duration shortens)</td>
+<td>↓</td>
+<td>↓</td>
+</tr>
+<tr class="even">
+<td><strong>Treatment that prolongs life without cure</strong></td>
+<td>Same</td>
+<td>↑ (duration lengthens)</td>
+<td>↓</td>
+<td>↓</td>
+</tr>
+<tr class="odd">
+<td><strong>Prevention</strong> (vaccine, risk-factor change)</td>
+<td>↓</td>
+<td>↓ (eventually)</td>
+<td>↓</td>
+<td>Usually same</td>
+</tr>
+<tr class="even">
+<td><strong>New screening program</strong></td>
+<td>↑ diagnosed incidence (earlier detection + overdiagnosis)</td>
+<td>↑</td>
+<td>↓ only if early treatment works</td>
+<td>↓ (milder cases added to denominator)</td>
+</tr>
+<tr class="odd">
+<td><strong>Broader case definition</strong> (e.g., 2017 hypertension 130/80)</td>
+<td>↑</td>
+<td>↑</td>
+<td>Depends on how deaths are coded</td>
+<td>↓</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="person-time-and-incidence-rates-pset-1-q2-q4" class="level2">
+<h2 class="anchored" data-anchor-id="person-time-and-incidence-rates-pset-1-q2-q4">Person-time and incidence rates (PSET 1 Q2, Q4)</h2>
+<p>Each person contributes time from entry until the <strong>first</strong> of: the event, loss to follow-up, death from another cause, or the end of the study. Rate = events ÷ total person-time. <strong>Trap:</strong> these are <em>rates</em> (denominator = person-time), not cumulative incidences (denominator = people). Always write the units: “472.1 per 100,000 person-years.”</p>
+<p>Smallest/largest possible person-time questions: smallest is ~0 (event or exit right after entry); largest is from the earliest possible entry date to the end of follow-up.</p>
+</section>
+<section id="direct-age-adjustment-pset-1-q3-sample-midterm-melanoma" class="level2">
+<h2 class="anchored" data-anchor-id="direct-age-adjustment-pset-1-q3-sample-midterm-melanoma">Direct age adjustment (PSET 1 Q3; sample midterm melanoma)</h2>
+<ol type="1">
+<li>Age-specific rate in each group = cases ÷ population × 100,000.</li>
+<li>Expected cases = age-specific rate × standard population in that age group ÷ 100,000.</li>
+<li>Add up expected cases across age groups.</li>
+<li>Adjusted rate = total expected ÷ total standard population × 100,000.</li>
+<li>Compare adjusted rates only if they used the <strong>same</strong> standard.</li>
+</ol>
+<p><strong>Interpreting crude vs.&nbsp;adjusted</strong> (for a disease that rises with age): if crude &gt; adjusted, the study population is <em>older</em> than the standard; if crude &lt; adjusted, it’s <em>younger</em>. If the crude and adjusted comparisons tell the same story, the populations’ age structures don’t differ much; if they flip, age was distorting the crude comparison. The adjusted rate itself is a fictional number — it only exists for comparison.</p>
+<p><strong>Why adjust (4-point answer from PSET 1):</strong> age is a strong predictor of disease/death and populations differ in age structure; applying each population’s age-specific rates to one standard removes the effect of age differences so the comparison is fair.</p>
+</section>
+<section id="indirect-adjustment-smr-pset-1-q2c-framingham-article-mustard-gas-example" class="level2">
+<h2 class="anchored" data-anchor-id="indirect-adjustment-smr-pset-1-q2c-framingham-article-mustard-gas-example">Indirect adjustment / SMR (PSET 1 Q2c; Framingham article; mustard-gas example)</h2>
+<p>Use when the study population is <strong>small</strong> (age-specific rates unstable): occupational, environmental, or small cohorts.</p>
+<ol type="1">
+<li>Take age-specific rates from a standard population (e.g., national rates).</li>
+<li>Multiply by the study population’s count in each age group → expected deaths.</li>
+<li>SMR = observed ÷ expected.</li>
+</ol>
+<p>Interpretation: “Mortality among [study group] was 5.82 times what would be expected if they had the [standard population]’s age-specific death rates.” SMRs from two different study populations shouldn’t be compared directly (different age structures).</p>
+</section>
+<section id="outbreak-attack-rate-table-pset-2" class="level2">
+<h2 class="anchored" data-anchor-id="outbreak-attack-rate-table-pset-2">Outbreak attack-rate table (PSET 2)</h2>
+<ol type="1">
+<li>For each food: AR_ate = ill who ate ÷ all who ate; AR_didn’t = ill who didn’t eat ÷ all who didn’t eat.</li>
+<li>RR = AR_ate ÷ AR_didn’t.</li>
+<li>Culprit = high AR among eaters, <strong>low</strong> AR among non-eaters, highest RR, and most ill people ate it.</li>
+<li>Odds of illness among eaters = ill ÷ not ill (among eaters).</li>
+</ol>
+<p>Classic follow-ups: <em>Cases among non-eaters?</em> Cross-contamination (shared utensils), misreported/forgotten exposure (recall), another source. (For staph, illness comes from preformed toxin in food, so person-to-person spread is not the explanation.) <em>Why might a food look protective (RR &lt; 1)?</em> Confounding — people who filled up on that food may have eaten less of the culprit — or chance. <em>Protective RR range:</em> 0 ≤ RR &lt; 1.</p>
+</section>
+<section id="kaplan-meier-pset-3-q2-sample-midterm-figure" class="level2">
+<h2 class="anchored" data-anchor-id="kaplan-meier-pset-3-q2-sample-midterm-figure">Kaplan-Meier (PSET 3 Q2; sample midterm figure)</h2>
+<ol type="1">
+<li>Sort all times; mark censored with +. <strong>At ties, list the event before the censored time</strong> (the censored person was still at risk).</li>
+<li>Only compute a row at event times. At risk = everyone still being observed just before that time (subtract earlier events <em>and</em> earlier censorings).</li>
+<li>Conditional survival = 1 − (events ÷ at risk).</li>
+<li>Cumulative S(t) = previous S × conditional survival.</li>
+<li><strong>Median survival</strong> = first time S(t) ≤ 0.50. If the curve never drops to 0.50, the median is <strong>not reached</strong> (this was the answer for the vitamin D figure — less than 7% got cancer).</li>
+<li>Graph: step function, y-axis “cumulative probability of remaining event-free,” x-axis time; cumulative incidence = 1 − S(t).</li>
+</ol>
+<p><strong>Trap:</strong> never divide by the original N after someone has been censored — that’s the whole point of KM.</p>
+<p>Assumptions: censored people have the same prognosis as those still followed (non-informative censoring); no secular trend in risk across the enrollment period. Log-rank test H0: the survival curves are the same in all groups over the entire follow-up.</p>
+</section>
+<section id="screening-22-pset-3-sample-midterm-pap-vs-hpv" class="level2">
+<h2 class="anchored" data-anchor-id="screening-22-pset-3-sample-midterm-pap-vs-hpv">Screening 2×2 (PSET 3; sample midterm Pap vs HPV)</h2>
+<p>Building the table from Se, Sp, and prevalence (the PSA problem):</p>
+<ol type="1">
+<li>Diseased = N × prevalence; non-diseased = N − diseased.</li>
+<li>a = Se × diseased; c = diseased − a.</li>
+<li>d = Sp × non-diseased; b = non-diseased − d.</li>
+<li>Fill in row totals, then PPV = a/(a+b), NPV = d/(c+d).</li>
+</ol>
+<p>Decision rules: choose <strong>higher sensitivity</strong> when missing a case is costly — the disease is serious, early treatment saves lives, and positives can be confirmed (this is why HPV beats Pap in the sample midterm). Choose <strong>higher specificity</strong> when false positives are costly — invasive or risky follow-up, anxiety, labeling. Raising prevalence (screening a higher-risk group, or retesting only the positives) raises PPV. Lowering the positivity threshold raises Se and lowers Sp.</p>
+<p><strong>Names matter:</strong> if asked “what is the exact name of the metric,” write the name (“prevalence,” “sensitivity”) — not a description or formula.</p>
+</section>
+<section id="cohort-measures-rr-ar-ar-par-par-pset-4" class="level2">
+<h2 class="anchored" data-anchor-id="cohort-measures-rr-ar-ar-par-par-pset-4">Cohort measures: RR, AR, AR%, PAR, PAR% (PSET 4)</h2>
+<p>Work in incidence units consistently (convert to per 100,000 at the end). Interpretation sentences (IDA → transfusion example):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>One-sentence interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RR = 87</td>
+<td>Pregnancies with IDA had 87 times the risk of transfusion during delivery hospitalization compared with pregnancies without IDA.</td>
+</tr>
+<tr class="even">
+<td>AR = 128.9 per 100,000</td>
+<td>Among IDA pregnancies, about 129 transfusions per 100,000 are attributable to IDA (if causal).</td>
+</tr>
+<tr class="odd">
+<td>AR% = 98.9%</td>
+<td>Among IDA pregnancies, about 99% of transfusions are attributable to IDA.</td>
+</tr>
+<tr class="even">
+<td>PAR% = 89.8%</td>
+<td>Among all pregnancies, about 90% of transfusions are attributable to IDA.</td>
+</tr>
+</tbody>
+</table>
+<p>PAR% &lt; AR% because exposure isn’t universal — unexposed cases dilute the population’s attributable share. PAR also = AR × prevalence of exposure.</p>
+</section>
+<section id="efficacy-and-nnt-salk-lecture-bnt162b2-article-leap-relative-reduction" class="level2">
+<h2 class="anchored" data-anchor-id="efficacy-and-nnt-salk-lecture-bnt162b2-article-leap-relative-reduction">Efficacy and NNT (Salk lecture; BNT162b2 article; LEAP “relative reduction”)</h2>
+<p>Efficacy = (R_control − R_treated) ÷ R_control. Salk paralytic polio, placebo areas: (57 − 16)/57 = 72%; observed-control areas: (46 − 17)/46 = 63%. NNT = 1 ÷ (difference in rates as proportions): 1 ÷ (41/100,000) ≈ 2,439 children vaccinated to prevent one case of paralytic polio. NNT is large when the disease is rare even if efficacy is high — it depends on baseline risk; efficacy doesn’t.</p>
+</section>
+<section id="odds-ratio-lecture-10-pset-2-odds-semmelweis-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="odds-ratio-lecture-10-pset-2-odds-semmelweis-discussion">Odds ratio (Lecture 10; PSET 2 odds; Semmelweis discussion)</h2>
+<p>OR = ad/bc. You <strong>can’t</strong> compute incidence or RR in a case-control study because the investigator chose how many cases and controls to enroll. The OR approximates the RR when the disease is rare (&lt; ~10%) and is always farther from 1 than the RR. Zika example: (24 × 22)/(39 × 6) = 2.26 → “the odds of maternal Zika infection were 2.26 times higher among microcephaly cases than controls.”</p>
+</section>
+<section id="quick-ones-herd-immunity-kappa" class="level2">
+<h2 class="anchored" data-anchor-id="quick-ones-herd-immunity-kappa">Quick ones: herd immunity, kappa</h2>
+<p>Herd immunity threshold = 1 − 1/R0 (R0 = 5 → 80% immune). Assumes random mixing and complete immunity. Kappa: compute observed agreement, then chance agreement from each rater’s marginal positive rate (chance both + = P(A+) × P(B+); chance both − = P(A−) × P(B−)), then κ = (obs − chance)/(1 − chance).</p>
+</section>
+<section id="stats-interpretation-week-1-section-pset-1-q5" class="level2">
+<h2 class="anchored" data-anchor-id="stats-interpretation-week-1-section-pset-1-q5">Stats interpretation (Week 1 section; PSET 1 Q5)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Correct wording</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>p-value</td>
+<td>If H0 were true, the probability of observing data as extreme or more extreme than what was observed. (Not the probability H0 is true.)</td>
+</tr>
+<tr class="even">
+<td>95% CI</td>
+<td>If we repeated the sampling many times, 95% of the intervals constructed would contain the true value. Practical reading: plausible range for the true value; if a ratio’s CI excludes 1, significant at α = 0.05.</td>
+</tr>
+<tr class="odd">
+<td>Regression β</td>
+<td>“For each 1-unit increase in X, Y is on average β units higher, adjusting for the other variables in the model.”</td>
+</tr>
+<tr class="even">
+<td>Significant vs.&nbsp;not</td>
+<td>The difference between “significant” and “not significant” is not itself statistically significant — compare estimates directly.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="sec-concepts" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Concept review by lecture (high-yield contrasts)</h1>
+<section id="l1-what-epidemiology-is-study-designs" class="level2">
+<h2 class="anchored" data-anchor-id="l1-what-epidemiology-is-study-designs">L1 — What epidemiology is; study designs</h2>
+<p>Epidemiology studies how health and disease are <strong>distributed in populations</strong> and the <strong>factors that determine</strong> that distribution; the unit is the population, it’s quantitative, and the goal is prevention. <strong>Descriptive</strong> epi asks how many, who, where, when (burden, surveillance, natural history). <strong>Analytic</strong> epi asks why (etiology) and whether interventions work.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Design</th>
+<th>Who decides exposure?</th>
+<th>Direction / measure</th>
+<th>Strength</th>
+<th>Weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RCT</td>
+<td>Investigator, by chance</td>
+<td>Forward; RR, efficacy</td>
+<td>Controls known &amp; unknown confounders</td>
+<td>Expensive; ethics; external validity</td>
+</tr>
+<tr class="even">
+<td>Before/after (historical control)</td>
+<td>Investigator</td>
+<td>Compare periods</td>
+<td>Simple</td>
+<td>Anything else that changed over time</td>
+</tr>
+<tr class="odd">
+<td>Cohort</td>
+<td>People themselves</td>
+<td>Forward from exposure; RR, AR</td>
+<td>Temporality; multiple outcomes</td>
+<td>Cost, loss to follow-up, confounding; rare outcomes need huge N</td>
+</tr>
+<tr class="even">
+<td>Case-control</td>
+<td>People themselves</td>
+<td>Backward from disease; OR</td>
+<td>Rare diseases, fast, cheap</td>
+<td>Control selection, recall bias</td>
+</tr>
+<tr class="odd">
+<td>Cross-sectional</td>
+<td>People themselves</td>
+<td>Same time; prevalence</td>
+<td>Quick snapshot</td>
+<td>Can’t establish temporality</td>
+</tr>
+<tr class="even">
+<td>Ecologic</td>
+<td>Groups</td>
+<td>Group-level rates</td>
+<td>Cheap, hypothesis-generating</td>
+<td>Ecologic fallacy</td>
+</tr>
+<tr class="odd">
+<td>Natural (quasi-) experiment</td>
+<td>Circumstances outside people’s choice</td>
+<td>Usually cohort-like</td>
+<td>Approximates randomization</td>
+<td>Assignment rarely truly random</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Goldberger &amp; pellagra</strong> (lecture example of every design): case series (institution inmates got pellagra, staff never did → not contagious; diet differed); before/after diet experiment in two orphanages (cases nearly vanished, but no concurrent control); cohort in 7 cotton-mill villages (income inversely related to incidence, still true after age adjustment); ecologic village comparison; qualitative study (village “In” had no fresh-food market — what we’d now call a food desert). Lesson: individual and contextual factors both matter.</p>
+<p><strong>Descriptive data sources:</strong> vital records (births, deaths), notifiable disease surveillance (complete for rabies/plague, less for gonorrhea), registries (SEER), surveys (NHANES), administrative/claims data, health-system clinical data. Always ask how the data were generated and who is missing.</p>
+</section>
+<section id="l2-measures-case-definitions-age-adjustment" class="level2">
+<h2 class="anchored" data-anchor-id="l2-measures-case-definitions-age-adjustment">L2 — Measures, case definitions, age adjustment</h2>
+<p>Count vs.&nbsp;proportion (0–1, numerator in denominator) vs.&nbsp;rate (time in denominator) vs.&nbsp;ratio. <strong>Case definitions change</strong> with discovery, technology, and politics — and create artificial trends: the 2017 hypertension threshold (140/90 → 130/80), staggered pregnancy checkboxes on death certificates (apparent rise in maternal mortality), successive DSM autism definitions, evolving AIDS case definitions (manifestation → manifestation + etiology).</p>
+</section>
+<section id="l3-infectious-disease-outbreaks" class="level2">
+<h2 class="anchored" data-anchor-id="l3-infectious-disease-outbreaks">L3 — Infectious disease &amp; outbreaks</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Endemic</td>
+<td>Always present at a habitual level (TB in US)</td>
+</tr>
+<tr class="even">
+<td>Sporadic</td>
+<td>Appears infrequently, no habitual level (rabies after control)</td>
+</tr>
+<tr class="odd">
+<td>Epidemic</td>
+<td>Occurrence in excess of expectation</td>
+</tr>
+<tr class="even">
+<td>Pandemic</td>
+<td>Worldwide epidemic</td>
+</tr>
+<tr class="odd">
+<td>Outbreak</td>
+<td>Sudden increase, usually single exposure/common vehicle</td>
+</tr>
+<tr class="even">
+<td>Seasonal vs.&nbsp;secular trend</td>
+<td>Annual pattern vs.&nbsp;multi-year trend</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Epidemiologic triad:</strong> host, agent, environment (± vector). <strong>Transmission:</strong> direct (respiratory, enteric, sexual, skin, blood, fomites) vs.&nbsp;indirect (common vehicle: water, food, air; vector). <strong>Iceberg:</strong> visible cases are the tip; subclinical, preclinical, chronic, and carrier infections (Typhoid Mary) drive transmission. Polio: ~70–75% asymptomatic, &lt;1% paralytic.</p>
+<p><strong>SIR model:</strong> susceptible → infectious → recovered/resistant; public health either reduces susceptibles (vaccination) or reduces mixing. <strong>R0</strong> = average secondary cases from one case in a fully susceptible population; not a fixed constant (measles estimates 5–18). Rt = under current conditions. &gt;1 grows, =1 stable, &lt;1 declines. Overdispersion → super-spreaders.</p>
+<p><strong>Outbreak investigation steps:</strong> (1) define a case; (2) describe cases by time and place (epidemic curve); (3) gather exposure information; (4) calculate attack rates; (5) test hypotheses by comparing attack rates; (6) recommend control and prevention measures. Raw-milk Salmonella example: lab + WGS case definition, 171 cases, 70% drank brand A vs 1.9% expected → recall.</p>
+<p><strong>John Snow:</strong> Broad Street outbreak (interviews, spot map, pump handle removed Sept 8, 1854 — after the outbreak was already waning) and the <strong>natural experiment</strong> of Southwark &amp; Vauxhall (downstream intake with sewage) vs.&nbsp;Lambeth (moved upstream in 1852), ~300,000 people assigned to water source without choice, on the same streets. Farr’s elevation analysis supported miasma theory — elevation was confounded with water source.</p>
+</section>
+<section id="l4-l7-randomized-trials" class="level2">
+<h2 class="anchored" data-anchor-id="l4-l7-randomized-trials">L4 &amp; L7 — Randomized trials</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Key point</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Control options</td>
+<td>Placebo, sham, standard/usual care, alternate therapy/activity, nothing</td>
+</tr>
+<tr class="even">
+<td>Equipoise</td>
+<td>Genuine uncertainty about which arm is better — needed to randomize ethically</td>
+</tr>
+<tr class="odd">
+<td>Randomization purpose</td>
+<td>Arms comparable on known <strong>and unknown</strong> risk factors → differences due to intervention; prevents selection bias</td>
+</tr>
+<tr class="even">
+<td>Non-random pitfalls</td>
+<td>Historical controls (other changes), alternation/day-of-week (predictable, gameable), physician choice (BCG example)</td>
+</tr>
+<tr class="odd">
+<td>Stratified randomization</td>
+<td>Randomize within subgroups to ensure balance or study subgroup effects</td>
+</tr>
+<tr class="even">
+<td>Cluster/community trial</td>
+<td>When the intervention is group-level or would spill over (fluoride; schools; villages)</td>
+</tr>
+<tr class="odd">
+<td>Target / defined / study population</td>
+<td>Who results apply to / who’s eligible / who consented</td>
+</tr>
+<tr class="even">
+<td>Internal validity threats</td>
+<td>Noncompliance/crossovers, loss to follow-up, too-small sample</td>
+</tr>
+<tr class="odd">
+<td>External validity threats</td>
+<td>Eligibility criteria, refusals</td>
+</tr>
+<tr class="even">
+<td>Blinding</td>
+<td>Single = participant; double = + those giving the intervention/assessing; triple = + analyst. Prevents placebo effects and biased reporting/assessment</td>
+</tr>
+<tr class="odd">
+<td>ITT</td>
+<td>Analyze everyone as randomized (“once randomized, always analyze”); preserves randomization; conservative</td>
+</tr>
+<tr class="even">
+<td>Per protocol</td>
+<td>Only adherers; bigger effect if treatment works, but self-selected → selection bias</td>
+</tr>
+<tr class="odd">
+<td>Table 1</td>
+<td>Baseline characteristics by arm — did randomization work? who is in the study?</td>
+</tr>
+<tr class="even">
+<td>Phase I</td>
+<td>Safety/dose in ~10–50 people</td>
+</tr>
+<tr class="odd">
+<td>Phase II</td>
+<td>Any sign it works; interim markers (antibodies, tumor size); 100–300</td>
+</tr>
+<tr class="even">
+<td>Phase III</td>
+<td>Large RCT vs placebo/standard; <strong>efficacy</strong> + safety</td>
+</tr>
+<tr class="odd">
+<td>Phase IV</td>
+<td>Post-marketing observational surveillance; <strong>effectiveness</strong>, rare adverse events</td>
+</tr>
+<tr class="even">
+<td>Crossover</td>
+<td>Each person gets both treatments in random order + washout; symptom control, not curative/surgical</td>
+</tr>
+<tr class="odd">
+<td>Factorial</td>
+<td>Two independent interventions tested at once (Physicians’ Health Study: aspirin &amp; beta carotene)</td>
+</tr>
+<tr class="even">
+<td>DSMB</td>
+<td>Independent experts monitor safety and data quality; apply stopping rules at interim looks</td>
+</tr>
+<tr class="odd">
+<td>Sample size inputs</td>
+<td>α (usually 5%), β (10–20% → power 80–90%), allocation ratio, expected difference</td>
+</tr>
+<tr class="even">
+<td>What drives power</td>
+<td>The <strong>number of events</strong>, not the number enrolled — rare outcomes need huge trials</td>
+</tr>
+<tr class="odd">
+<td>MRFIT lesson</td>
+<td>CHD deaths fell in the usual-care group (secular decline) → underpowered, null trial</td>
+</tr>
+<tr class="even">
+<td>Informed consent</td>
+<td>Capacity, adequate information, voluntary, explicit decision</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="l5-survival-analysis-life-expectancy" class="level2">
+<h2 class="anchored" data-anchor-id="l5-survival-analysis-life-expectancy">L5 — Survival analysis &amp; life expectancy</h2>
+<p>Survival methods handle <strong>when</strong> events happen and <strong>censoring</strong> (lost to follow-up, death from other causes, study end). KM uses exact event times; life tables group into intervals; Cox models adjust for confounders and give hazard ratios (read like RRs). <strong>Life expectancy</strong> = mean age at death of a hypothetical cohort that lives its whole life at this year’s age-specific death rates. LE at 65 plus 65 exceeds LE at birth because it’s conditional on having survived to 65.</p>
+</section>
+<section id="l6-screening" class="level2">
+<h2 class="anchored" data-anchor-id="l6-screening">L6 — Screening</h2>
+<p>Screening finds disease in <strong>asymptomatic</strong> people (low pre-test probability); diagnosis confirms disease in people with symptoms (high pre-test probability). Same test, different PPV.</p>
+<p><strong>Prevention levels:</strong> primary (prevent onset), secondary (detect pre-symptomatic disease — screening), tertiary (prevent worse outcomes after diagnosis).</p>
+<p><strong>Screening is worthwhile when:</strong> long preclinical phase; cheap, low-risk test; positives can be confirmed; early treatment improves outcomes and is available.</p>
+<p><strong>Harms:</strong> direct (colonoscopy perforation), false positives (cost, risky follow-up, anxiety, labeling), false negatives (false reassurance), overdiagnosis.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bias</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lead-time bias</td>
+<td>Diagnosis moved earlier → survival <em>after diagnosis</em> looks longer even if the death date doesn’t change</td>
+</tr>
+<tr class="even">
+<td>Length bias</td>
+<td>Screening preferentially catches slow-growing disease (long preclinical phase) with better prognosis</td>
+</tr>
+<tr class="odd">
+<td>Overdiagnosis</td>
+<td>Detects disease that would never have caused symptoms or death</td>
+</tr>
+</tbody>
+</table>
+<p>So the right outcome for evaluating a screening program is <strong>cause-specific mortality</strong> in screened vs unscreened populations — not incidence, and not survival after diagnosis.</p>
+<p><strong>Reliability vs validity:</strong> reliability = consistency (inter-rater, intra-rater, test-retest); validity = accuracy (Se, Sp). A test can be reliably wrong. Kappa measures agreement beyond chance.</p>
+</section>
+<section id="l8-cohort-studies" class="level2">
+<h2 class="anchored" data-anchor-id="l8-cohort-studies">L8 — Cohort studies</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Timing</td>
+<td>Prospective (enroll now, follow forward) / Historical (records link past exposure to outcomes that already occurred) / Mixed</td>
+</tr>
+<tr class="even">
+<td>Follow-up</td>
+<td>Fixed (same calendar time → cumulative incidence) / Dynamic (varying time → incidence rate, survival)</td>
+</tr>
+<tr class="odd">
+<td>Enrollment</td>
+<td>Exposure-based (radium dial painters, Dutch Hunger Winter) / General population (Framingham = geographic; British Doctors = “opportunistic” roster)</td>
+</tr>
+</tbody>
+</table>
+<p>Call the comparison group “unexposed,” not “controls.” <strong>Advantages:</strong> temporality, multiple outcomes, power grows with follow-up. <strong>Disadvantages:</strong> time and money, loss to follow-up (internal validity), huge N for rare outcomes, selection bias/confounding.</p>
+<p>Classics: <strong>Radium dial painters</strong> (historical exposure-based; radium ingestion → bone cancers). <strong>Dutch Hunger Winter</strong> (sharply bounded famine in a well-nourished population; first-trimester exposure → ~2.5× schizophrenia in women). <strong>Framingham</strong> (1948; random sample of 2/3 of adults 30–62, 69% response; exams every 2 years; smoking, cholesterol, BP, inactivity, obesity → CHD; Framingham Risk Score). <strong>British Doctors</strong> (Doll &amp; Hill 1951, 2/3 of UK doctors responded; dose-response between smoking and lung cancer).</p>
+</section>
+<section id="l9-confounding" class="level2">
+<h2 class="anchored" data-anchor-id="l9-confounding">L9 — Confounding</h2>
+<p>A confounder is a third variable that is <strong>(1) associated with the exposure, (2) a cause of the outcome, and (3) not on the causal pathway.</strong> A variable on the pathway is a <strong>mediator</strong> (HBV → cirrhosis → liver cancer; late bedtime → snacking → weight gain; light drinking → HDL → less heart disease). Adjusting for a mediator removes part of the real effect.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Stratum RRs similar to each other but different from crude</td>
+<td><strong>Confounding</strong> (adjust; report M-H RR)</td>
+</tr>
+<tr class="even">
+<td>Stratum RRs differ from each other</td>
+<td><strong>Interaction / effect modification</strong> (report stratum-specific RRs; there <em>is</em> a test for this)</td>
+</tr>
+<tr class="odd">
+<td>Crude farther from 1 than adjusted</td>
+<td>Positive confounding (IDA example: crude 87 → adjusted 8.2)</td>
+</tr>
+<tr class="even">
+<td>Crude closer to 1 than adjusted</td>
+<td>Negative confounding</td>
+</tr>
+<tr class="odd">
+<td>Direction flips</td>
+<td>Qualitative confounding</td>
+</tr>
+</tbody>
+</table>
+<p>There’s <strong>no statistical test</strong> for confounding — it’s a judgment comparing crude and adjusted estimates. <strong>Control in design:</strong> randomization, restriction (cannabis study restricted to non-tobacco users), matching. <strong>Control in analysis:</strong> stratification with Mantel-Haenszel weighted averages (hypertension → stroke: crude 3.2, age-adjusted 2.4), regression. <strong>Residual confounding:</strong> categories too broad or poor proxy measures (insurance type for SES).</p>
+<p><strong>Confounder checklist (PSET 4 e):</strong> for each candidate, explicitly answer all three criteria. Example: number of prenatal visits — associated with IDA, but partly <em>caused by</em> the IDA diagnosis (more visits after diagnosis) → on the pathway/consequence of exposure → don’t adjust.</p>
+</section>
+<section id="l10-case-control-studies" class="level2">
+<h2 class="anchored" data-anchor-id="l10-case-control-studies">L10 — Case-control studies</h2>
+<p>Start with <strong>cases</strong> (incident cases preferred — prevalent cases mix incidence with survival) and <strong>controls</strong> who would have become cases in your study had they developed the disease (population cases → population controls; clinic cases → clinic controls). Hospital controls: easy and comparable recall, but may share unrecognized risk factors (smoking, coffee) — use acute and varied conditions. Friend/neighbor controls risk <strong>overmatching</strong>.</p>
+<p><strong>Matching</strong> controls confounding in design but: you can’t study the matched variable’s effect, you must use matched analyses, and 1:1 concordant pairs waste information (use &gt;1 control per case). <strong>Biases:</strong> selection bias (control ascertainment related to exposure; low control response), recall bias (cases search memory harder — fix with diseased controls, prompt interviews, validation, dummy risk factors), observation/interviewer bias (blind interviewers, standardized questionnaires). Non-differential misclassification of a binary exposure usually biases <strong>toward the null</strong>; differential misclassification can bias in either direction.</p>
+<p>Examples: <strong>Zika/microcephaly</strong> (OR 2.26) and <strong>SIDS</strong> (19 case-control studies, ORs 1.2–14 for prone sleeping; RCT considered inappropriate; national campaigns → UK cot deaths halved 1991–92).</p>
+</section>
+</section>
+<section id="sec-articles" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Required articles — design, design issues, big-picture result</h1>
+<p>No numbers to memorize. For each, be able to say in ~60 seconds: the question, the design, two or three design issues, and the general result.</p>
+<section id="semmelweis-etiology-concept-and-prophylaxis-of-childbed-fever-1840s-vienna" class="level2">
+<h2 class="anchored" data-anchor-id="semmelweis-etiology-concept-and-prophylaxis-of-childbed-fever-1840s-vienna">Semmelweis — “Etiology, Concept, and Prophylaxis of Childbed Fever” (1840s Vienna)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Question</strong></td>
+<td>Why was maternal mortality from childbed fever far higher in the First Clinic (physicians &amp; medical students) than the Second Clinic (midwives)?</td>
+</tr>
+<tr class="even">
+<td><strong>Studies inside it</strong></td>
+<td>(1) Observational comparison of the two clinics — a <strong>natural experiment</strong>, because admission <strong>alternated by day</strong>, not by the woman’s choice. (2) Observational comparisons that ruled out hypotheses: street births (unattended deliveries had <em>low</em> mortality), newborn deaths, seasonal/citywide patterns. (3) Small “experiments” changing one factor (lateral delivery position, priest’s route). (4) <strong>Intervention:</strong> chlorinated lime handwashing from mid-May 1847 — a <strong>before/after</strong> study; Clinic 1 mortality dropped to Clinic 2’s level.</td>
+</tr>
+<tr class="odd">
+<td><strong>Hypotheses rejected</strong></td>
+<td>Epidemic “atmospheric-cosmic-telluric” influences (would hit both clinics and the city equally; street births were spared); overcrowding (Clinic 2 was more crowded); fear/shame/the priest’s bell; rough exams by foreign students; diet, ventilation, delivery position.</td>
+</tr>
+<tr class="even">
+<td><strong>Two case redefinitions</strong></td>
+<td>(1) <strong>Newborns</strong> who died had the same disease → childbed fever isn’t unique to postpartum women. (2) <strong>Kolletschka</strong>, a male colleague cut by a student’s scalpel during an autopsy, died of the same disease → the cause is cadaveric particles carried on hands. He later widened it to <strong>decaying organic matter from living patients</strong> (a discharging uterine cancer, a carious knee).</td>
+</tr>
+<tr class="odd">
+<td><strong>Why no jump in Table 6 around 1841</strong></td>
+<td>Table 6 is the whole hospital (both clinics combined); the 1840 reassignment only moved <em>where</em> the male students worked, so total exposure didn’t change — the gap shows up <em>between</em> clinics (Table 1). The big rise came earlier (~1823) when Vienna adopted autopsy-based anatomical teaching.</td>
+</tr>
+<tr class="even">
+<td><strong>Paradigm shift</strong></td>
+<td>From speculative/humoral/miasma explanations to anatomical-pathological medicine with a specific transmissible cause and numerical comparison — a step toward germ theory.</td>
+</tr>
+<tr class="odd">
+<td><strong>Context</strong></td>
+<td>Women begged not to be sent to Clinic 1 and some delivered “on the street” to avoid it — so they knew. Poor and unmarried women came because care was free in exchange for serving as teaching subjects, and their infants could enter the foundling home.</td>
+</tr>
+<tr class="even">
+<td><strong>If they could choose clinics</strong></td>
+<td>Selection: SES, health, prior births, knowledge of reputation. <strong>If an obstetrician assigned them</strong>: provider selection (sicker/complicated cases to one clinic).</td>
+</tr>
+<tr class="odd">
+<td><strong>Practice calc</strong></td>
+<td>RR Clinic 1 vs 2 = (1989/20,042) ÷ (691/17,791) = <strong>2.56</strong>; Clinic 2 vs 1 = <strong>0.39</strong> (reciprocals). Odds of death in Clinic 1 = 1989/18,053 = <strong>0.11</strong>.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="salk-1954-polio-field-trial" class="level2">
+<h2 class="anchored" data-anchor-id="salk-1954-polio-field-trial">Salk 1954 polio field trial</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Vaccine</strong></td>
+<td>Inactivated (formaldehyde-killed) poliovirus, injected → bloodstream antibodies → prevents <strong>paralysis</strong>, not intestinal infection. Contrast Sabin’s oral live-attenuated vaccine (gut immunity, rare vaccine-associated paralysis; US went IPV-only in 2000).</td>
+</tr>
+<tr class="even">
+<td><strong>Design</strong></td>
+<td>Two studies at once, ~1.8 million children. <strong>Observed-control areas:</strong> 2nd graders with consent vaccinated; all 1st &amp; 3rd graders observed as controls. <strong>Placebo-control areas:</strong> consenting 1st–3rd graders <strong>randomized, double-blind</strong> to vaccine or placebo.</td>
+</tr>
+<tr class="odd">
+<td><strong>Why two</strong></td>
+<td>The NFIP (Basil O’Connor) chose the observed-control plan as most acceptable to parents and states; scientists objected; Thomas Francis ran an independent placebo-controlled evaluation.</td>
+</tr>
+<tr class="even">
+<td><strong>Design issues</strong></td>
+<td>Observed-control is biased: vaccinated = <strong>volunteers</strong> vs controls = everyone (consenters + refusers); different grades/ages; no blinding → diagnostic bias. Consent was associated with higher SES, and paralytic polio was <em>more</em> common in higher-SES children (later age of infection) — so <strong>“not inoculated” children had lower rates than the placebo group</strong>. Polio is rare → enormous sample needed.</td>
+</tr>
+<tr class="odd">
+<td><strong>Big result</strong></td>
+<td>Vaccine effective against <strong>paralytic</strong> polio (~60–90% depending on case definition); no significant effect on nonparalytic polio; the randomized placebo areas gave a <strong>higher, more valid</strong> efficacy estimate than the observed areas; all fatal cases were in controls. Lesson: randomization + blinding matter.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bnt162b2-pfizerbiontech-covid-19-vaccine-trial-nejm-2020" class="level2">
+<h2 class="anchored" data-anchor-id="bnt162b2-pfizerbiontech-covid-19-vaccine-trial-nejm-2020">BNT162b2 (Pfizer/BioNTech) Covid-19 vaccine trial, NEJM 2020</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Purposes</strong></td>
+<td>Efficacy against confirmed Covid-19 <strong>and</strong> safety (reactogenicity, adverse events).</td>
+</tr>
+<tr class="even">
+<td><strong>Design</strong></td>
+<td>Multinational, <strong>randomized 1:1, placebo-controlled, observer-blinded</strong> Phase 2/3 trial; ~43,500 people ≥16; two doses 21 days apart. Phase 2/3 = seamless design — Phase 2 safety/immunogenicity in an initial subset rolling into the Phase 3 efficacy trial. Enrollment began late July 2020; data cutoff mid-November 2020.</td>
+</tr>
+<tr class="odd">
+<td><strong>vs.&nbsp;Salk placebo arm</strong></td>
+<td>Similar: randomized, placebo, blinded, healthy volunteers, prevention trial, huge N because cases are rare. Different: individual randomization across countries, adults, symptom-triggered testing, event-driven timing, industry-funded, no parallel observational study.</td>
+</tr>
+<tr class="even">
+<td><strong>Case definition</strong></td>
+<td>Symptoms <strong>plus</strong> a positive lab (NAAT) test ≥7 days after dose 2 — symptom-based <em>and</em> etiology-confirmed. Alternatives: any infection incl.&nbsp;asymptomatic (needs routine testing of everyone; captures transmission) or severe disease only (too rare → bigger trial needed).</td>
+</tr>
+<tr class="odd">
+<td><strong>Two primary endpoints</strong></td>
+<td>VE in those <strong>without</strong> prior infection, and in those <strong>with or without</strong> prior infection (prior infection could change apparent efficacy; real populations include both).</td>
+</tr>
+<tr class="even">
+<td><strong>Stopping rule</strong></td>
+<td>For vaccine-enhanced disease; <strong>one-sided</strong> because the concern runs in one direction only (more severe cases in the vaccine arm).</td>
+</tr>
+<tr class="odd">
+<td><strong>ITT / per protocol</strong></td>
+<td>ITT = everyone randomized. Injections were given by staff, so nearly everyone received the intervention as assigned — little room for noncompliance to differ ITT from per-protocol.</td>
+</tr>
+<tr class="even">
+<td><strong>Analysis</strong></td>
+<td>VE from <strong>incidence rates</strong> (cases per 1,000 person-years of surveillance time); Figure 3 is a cumulative-incidence curve after dose 1.</td>
+</tr>
+<tr class="odd">
+<td><strong>Results</strong></td>
+<td>~95% efficacy; curves separate ~12 days after dose 1; reactions (injection-site pain, fatigue, headache) more common with vaccine, more after dose 2, mostly mild/moderate and brief.</td>
+</tr>
+<tr class="even">
+<td><strong>Calc</strong></td>
+<td>VE by person-time = 1 − (8/2.214)/(162/2.222) = 95.0%; by cumulative incidence = 1 − (8/17,411)/(162/17,511) = 95.0%. Nearly identical because follow-up time was similar in both arms.</td>
+</tr>
+<tr class="odd">
+<td><strong>Validity</strong></td>
+<td>Internal: strong (randomized, blinded, large). External: short follow-up, rare adverse events undetectable, excluded pregnant/immunocompromised people. Long-term placebo comparison impossible because placebo recipients were offered vaccine after authorization.</td>
+</tr>
+<tr class="even">
+<td><strong>Funding</strong></td>
+<td>BioNTech and Pfizer — a potential conflict of interest worth noting when weighing the evidence.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="leap-randomized-trial-of-peanut-consumption-in-infants-at-risk-nejm-2015" class="level2">
+<h2 class="anchored" data-anchor-id="leap-randomized-trial-of-peanut-consumption-in-infants-at-risk-nejm-2015">LEAP — Randomized Trial of Peanut Consumption in Infants at Risk (NEJM 2015)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Descriptive motivation</strong></td>
+<td>Peanut allergy ~10× more common in Jewish children in the UK than in Israel, where infants eat peanut snacks early; allergy rising despite avoidance advice.</td>
+</tr>
+<tr class="even">
+<td><strong>Design</strong></td>
+<td>Randomized, <strong>open-label</strong> (not blinded) behavioral/dietary prevention trial; 640 high-risk infants (4–11 months, severe eczema and/or egg allergy); <strong>two cohorts stratified by skin-prick test</strong> (negative vs.&nbsp;small wheal), each separately powered; consume vs avoid peanut until 60 months. Long trial → more loss to follow-up and nonadherence than a vaccine trial.</td>
+</tr>
+<tr class="odd">
+<td><strong>Outcome</strong></td>
+<td>Peanut allergy by <strong>oral food challenge</strong> at 60 months (objective → partly offsets lack of blinding).</td>
+</tr>
+<tr class="even">
+<td><strong>Design issues</strong></td>
+<td>Infants with large wheals were excluded (likely already allergic). Consumption-arm infants who reacted at the baseline challenge stayed in the <strong>ITT</strong> analysis to preserve randomization. <strong>Worst-case imputation</strong>: assume all missing outcomes went against the hypothesis — if still significant, missing data can’t explain the result. Adherence was parent-reported.</td>
+</tr>
+<tr class="odd">
+<td><strong>Result</strong></td>
+<td>Early consumption sharply reduced peanut allergy in both cohorts: relative reduction ≈ <strong>86%</strong> (SPT-negative) and <strong>70%</strong> (SPT-positive), computed exactly like vaccine efficacy. Changed infant-feeding guidelines.</td>
+</tr>
+<tr class="even">
+<td><strong>Generalizability</strong></td>
+<td>High-risk infants in the UK; not directly to low-risk infants or infants already allergic. Funded mainly by NIAID (NIH).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="framingham-enquiry-dawber-kannel" class="level2">
+<h2 class="anchored" data-anchor-id="framingham-enquiry-dawber-kannel">Framingham Enquiry (Dawber &amp; Kannel)</h2>
+<p>Geographic, general-population <strong>prospective cohort</strong> started 1948 to study the natural history of cardiovascular disease. Why Framingham: town roster, near medical centers, cooperative before, “reasonably typical.” Random sample of 2/3 of adults 30–62 (69% response) plus volunteers, free of CVD at baseline, examined every 2 years. Analysis was simple — <strong>SMRs</strong> (standardized <em>morbidity</em> ratios) and 8-year cumulative incidence. Findings: hypertension, high cholesterol, ECG abnormalities, smoking, and obesity raise CHD risk, and combinations multiply it (the origin of “risk factors”). Key lesson in the discussion: an <strong>association does not prove that intervening on the factor will lower risk by the same amount</strong> (MRFIT later tested this and was null). External validity limited: one New England town, essentially no racial variation.</p>
+</section>
+<section id="aluminum-adsorbed-vaccines-and-chronic-diseases-in-childhood-danish-nationwide-cohort-annals-2025" class="level2">
+<h2 class="anchored" data-anchor-id="aluminum-adsorbed-vaccines-and-chronic-diseases-in-childhood-danish-nationwide-cohort-annals-2025">Aluminum-Adsorbed Vaccines and Chronic Diseases in Childhood (Danish nationwide cohort, Annals 2025)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Why aluminum</strong></td>
+<td>Adjuvant that strengthens the immune response to non-live vaccines.</td>
+</tr>
+<tr class="even">
+<td><strong>Design</strong></td>
+<td><strong>Historical</strong> (register-based) nationwide cohort; ~1.2 million children born in Denmark 1997–2018 who were alive and resident at age 2; registries linked by personal ID number.</td>
+</tr>
+<tr class="odd">
+<td><strong>Exposure</strong></td>
+<td>Cumulative aluminum (mg) received from vaccines in the first 2 years of life.</td>
+</tr>
+<tr class="even">
+<td><strong>Outcomes</strong></td>
+<td>50 chronic conditions (autoimmune, atopic/allergic, neurodevelopmental incl.&nbsp;autism and ADHD) diagnosed from <strong>age 2 to age 5</strong> (extended follow-up in sensitivity analyses).</td>
+</tr>
+<tr class="odd">
+<td><strong>Natural experiment</strong></td>
+<td>Exposure varied mainly because the <strong>national vaccine schedule/products changed over calendar time</strong>, not because of parents’ choices → less confounding by family health behaviors.</td>
+</tr>
+<tr class="even">
+<td><strong>Exclusion logic</strong></td>
+<td>Emigration/death in first 2 years (exposure window and follow-up incomplete); congenital/preexisting conditions (could change both vaccination and outcome risk); implausibly many aluminum vaccinations (data errors); mothers not in Denmark before birth (missing maternal covariates); missing covariates (complete-case analysis); outcome already present by age 2 (<strong>prevalent cases</strong> — must be at risk at start of follow-up, and prevents reverse causation).</td>
+</tr>
+<tr class="odd">
+<td><strong>Why survival analysis</strong></td>
+<td>Follow-up varies and is censored (emigration, death, end of data); Cox regression handles time-to-diagnosis and confounder adjustment → hazard ratios.</td>
+</tr>
+<tr class="even">
+<td><strong>Confounders adjusted</strong></td>
+<td>Sex, calendar year &amp; season of birth, preterm birth, birthweight, GP visits before 2, maternal age, birthplace, smoking, health conditions, prescriptions, household income. Calendar year is a strong one: tied to exposure (schedule changes) <em>and</em> outcome (diagnostic trends like rising autism diagnoses).</td>
+</tr>
+<tr class="odd">
+<td><strong>Figure 3</strong></td>
+<td>Adjusted HR per 1-mg increase with 95% CIs for each outcome. <strong>Log scale</strong> because ratios are symmetric on a log scale (2 and 0.5 equidistant from 1). <strong>CI widths differ</strong> because rarer outcomes have fewer cases → less precision. No outcome showed a significant increase; a few estimates were slightly below 1.</td>
+</tr>
+<tr class="even">
+<td><strong>Misclassification</strong></td>
+<td>Non-differential exposure misclassification usually biases toward the null for a binary exposure — not guaranteed in every situation, and a concern for a null study because it could mask a real effect. Registry vaccination data are fairly accurate.</td>
+</tr>
+<tr class="odd">
+<td><strong>Critiques (section discussion)</strong></td>
+<td>Judge critiques by whether they identify a mechanism that could hide a true effect (very few children had zero aluminum; follow-up to age 5 is short for some diagnoses; residual confounding) versus claims about motives, which aren’t evidence about validity either way.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lecture-examples-worth-knowing-not-required-articles-but-fair-game" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-examples-worth-knowing-not-required-articles-but-fair-game">Lecture examples worth knowing (not required articles but fair game)</h2>
+<p>Goldberger/pellagra (L1), raw-milk Salmonella outbreak (L3), John Snow (L3), MIND diet CONSORT diagram (L4), hepatitis B vaccine trial (L5), ovarian cancer BRCA survival (L5), TB skin test screening (L6), Physicians’ Health Study (L7), Fourth R cluster trial (L7), HCV mother-to-child transmission RR CI (L8), British Doctors confounding by alcohol (L9), Zika and SIDS case-control studies (L10).</p>
+</section>
+</section>
+<section id="sec-psets" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> PSET redo guide</h1>
+<p>Redo each PSET on blank paper with your submitted answers hidden, then compare to the posted key. The table lists what each question is really testing; the notes below are places where your submitted answers were on track but could be sharper on an exam.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>PSET</th>
+<th>Question</th>
+<th>Skill tested</th>
+<th>Trap to watch</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Q1 HCV cure</td>
+<td>Incidence vs prevalence vs mortality vs case-fatality</td>
+<td>Justify prevalence with P ≈ I × D</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Q2 Taiwan hip fracture</td>
+<td>Person-time; SMR; CI interpretation</td>
+<td>Interpret CI with both meaning <em>and</em> numbers (entire CI &gt; 1 → significant)</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>Q3 HCV deaths</td>
+<td>Age-specific rates; direct adjustment; crude vs adjusted</td>
+<td>Units: “per 100,000 per year, adjusted to 2000 US standard”</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Q4 Diet &amp; heart disease</td>
+<td>Incidence rate vs cumulative incidence; RR; confounding idea</td>
+<td>Label rate units (per 100,000 person-years)</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>Q5 Stats</td>
+<td>p-value, CI, regression interpretation</td>
+<td>p-value assumes H0 is true</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Wedding outbreak</td>
+<td>Attack rates, RR, odds, explaining odd cases, protective foods, stratification</td>
+<td>Highest AR among eaters <em>and</em> low among non-eaters</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Q1 Yoga trial</td>
+<td>Blinding, control type, target vs study population, randomization, validity</td>
+<td>Alternate therapy ≠ placebo</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Q2 Chemo relapse</td>
+<td>KM table, graph, median</td>
+<td>Event before censor at tie (18 and 18+)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Q3 Life expectancy</td>
+<td>Interpreting LE at birth vs at 65</td>
+<td>Conditional on surviving to 65</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Screening PSA</td>
+<td>Naming metrics; building 2×2 from Se/Sp/prevalence; PPV/NPV; program effects</td>
+<td>Give the <strong>name</strong> of the metric</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>IDA &amp; SMM</td>
+<td>2×2, CI, RR, AR, AR%, PAR, PAR%, interpretations, crude vs adjusted, confounder criteria</td>
+<td>Test all 3 confounder criteria for each variable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sharpening notes from your submissions:</strong></p>
+<p>PSET 1 Q1b — your answer (prevalence decreases) is right; on the exam, add the mechanism in a few words: “cure shortens duration; P ≈ I × D.” PSET 1 Q4 — the incidence column should carry units (e.g., 472.1 per 100,000 person-years). PSET 3 screening (a) and (b) asked for the <strong>exact name</strong> — write “prevalence” and “sensitivity” first, then the formula if you like. PSET 4 (d) — you correctly called it confounding; name the direction too: crude RR farther from 1 than adjusted = <strong>positive confounding</strong>. PSET 4 (e) — for state of residence you argued association with IDA; to call it a confounder you also need it to affect the outcome (e.g., transfusion practices and SMM rates differ by state) and to not be on the causal pathway. Run the three-criteria check out loud for every candidate. Your prenatal-visits reasoning (consequence of the IDA diagnosis → don’t adjust) is exactly the kind of answer graders want.</p>
+</section>
+<section id="sec-practice" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Fresh practice problems</h1>
+<p>New numbers, same skills. Do them closed-book with a calculator. Answers are in <code>Answer_Keys.md</code>.</p>
+<p><strong>P1. Occurrence.</strong> A town has 10,000 people on Jan 1; 200 already have disease X. During the year, 150 new cases occur and 30 people with X die of it. (a) Prevalence on Jan 1? (b) One-year cumulative incidence? (c) Cause-specific mortality per 100,000 (use 10,000 as the population)? (d) Case-fatality among everyone who had X during the year?</p>
+<p><strong>P2. Person-time.</strong> Five people are followed: A for 2 years (no event), B for 3 years (event), C for 1.5 years (lost to follow-up), D for 4 years (no event), E for 0.5 years (event). Incidence rate per 100 person-years?</p>
+<p><strong>P3. Direct age adjustment.</strong> Population A: ages 0–39 = 8,000 people/16 deaths; 40–64 = 6,000/30; 65+ = 2,000/40. Population B: 0–39 = 3,000/3; 40–64 = 4,000/16; 65+ = 5,000/75. Standard population: 10,000 / 10,000 / 5,000. (a) Crude death rates per 1,000. (b) Age-adjusted rates per 1,000. (c) Which population has higher mortality, and why do crude and adjusted disagree?</p>
+<p><strong>P4. SMR.</strong> A factory has 4,000 workers aged 25–44 and 1,000 aged 45–64. National death rates are 1 per 1,000 and 6 per 1,000 in those age groups. The factory had 18 deaths. Expected deaths? SMR? Interpret.</p>
+<p><strong>P5. Outbreak.</strong> At a picnic: potato salad — 60 ate (45 ill), 40 didn’t (6 ill). Chicken — 80 ate (40 ill), 20 didn’t (11 ill). Attack rates, RRs, likely vehicle, odds of illness among potato-salad eaters.</p>
+<p><strong>P6. Kaplan-Meier.</strong> Months to relapse in 8 patients: 3, 5+, 6, 6, 9, 11+, 12, 15+. Build the KM table. What is the median time to relapse? What is the estimated probability of being relapse-free at 13 months?</p>
+<p><strong>P7. Screening and prevalence.</strong> A test has Se 90% and Sp 95%. (a) Build the 2×2 for 2,000 people with 5% prevalence; give PPV and NPV. (b) Repeat with 20% prevalence. (c) What happened and why?</p>
+<p><strong>P8. Cohort measures.</strong> 1,000 smokers: 40 develop disease in 5 years. 4,000 non-smokers: 40 develop disease. Find RR, AR, AR%, PAR, PAR%. Interpret AR% and PAR% in one sentence each.</p>
+<p><strong>P9. Efficacy &amp; NNT.</strong> Vaccine trial: placebo arm 10,000 (200 cases), vaccine arm 10,000 (40 cases). VE? NNT?</p>
+<p><strong>P10. Case-control.</strong> 100 cases and 200 controls; 60 cases and 50 controls were exposed. OR? Interpret. Can you compute the RR?</p>
+<p><strong>P11. Confounding or interaction?</strong> (a) Crude RR = 3.0; age &lt; 50 stratum RR = 1.4; age ≥ 50 RR = 1.5. (b) Crude RR = 2.5; men RR = 1.0; women RR = 5.0.</p>
+<p><strong>P12. Herd immunity.</strong> R0 = 4? R0 = 12?</p>
+<p><strong>P13. Kappa.</strong> Two radiologists read 200 films. A calls 60 positive; B calls 80 positive. Both positive on 50; both negative on 110. Observed agreement, chance agreement, κ?</p>
+<p><strong>P14. RR confidence interval.</strong> Exposed: 20 cases among 100. Unexposed: 10 among 100. RR and 95% CI (use the formula sheet). Significant?</p>
+<p><strong>P15. Design ID.</strong> Name the design: (a) Records from 1980s employment files identify asbestos-exposed and unexposed workers; death certificates through 2020 are linked. (b) Children with leukemia and children without are asked about past pesticide exposure. (c) 24 schools are randomized to a curriculum or usual teaching. (d) Countries’ average salt intake is correlated with stroke mortality. (e) Migraine patients get drug then placebo (or reverse), with a washout between.</p>
+</section>
+<section id="sec-anki" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Using the Anki deck in a 2-day sprint</h1>
+<p>Import <code>Epi_Midterm.apkg</code> (File → Import, or double-click). It contains 206 cards tagged by lecture (<code>L1_designs</code> … <code>L10_casecontrol</code>, <code>articles</code>, <code>stats</code>, <code>calc</code>).</p>
+<p>Normal Anki scheduling spreads reviews over weeks, which doesn’t fit an exam on Monday. Instead: in the deck’s Options, raise <strong>New cards/day</strong> to 200 so everything unlocks today. Do a full pass tonight. Sunday evening and Monday morning, use <strong>Custom Study → “Review forgotten cards”</strong> or <strong>“Study by card state or tag”</strong> (all cards, random order) to cycle through again regardless of schedule. Say the back of the card out loud before flipping — passive “yeah I knew that” doesn’t count. Suspend (@) cards you answer instantly three times so your time goes to the weak ones. After the midterm, reset the deck options and keep it for the final.</p>
+<p>If the <code>.apkg</code> won’t import, use <code>Epi_Midterm_anki.txt</code>: File → Import, choose the text file; it’s tab-separated with columns Front, Back, Tags.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="Epi_Midterm_Study_Guide_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

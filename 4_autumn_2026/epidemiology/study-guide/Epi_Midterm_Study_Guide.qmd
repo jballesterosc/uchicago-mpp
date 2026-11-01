@@ -1,0 +1,515 @@
+---
+title: "Epidemiology & Population Health — Midterm Study Guide"
+subtitle: "Lectures 1–10 · PSETs 1–4 · Required articles"
+author: "Jay Ballesteros"
+date: 2026-10-31
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    toc-title: "Contents"
+    number-sections: true
+    number-depth: 2
+    shift-heading-level-by: -1
+    theme: cosmo
+    html-math-method: mathjax
+    smooth-scroll: true
+---
+
+Built from Lectures 1–10, PSETs 1–4, the section articles, reading notes, and the 2025 sample midterm.
+
+::: {.callout-important title="What's on the exam (from the instructor)"}
+Lecture + section concepts through Week 5; calculations from HW 1–4 (RR, efficacy, KM, screening tests, attack rates/outbreaks, age adjustment); for required articles, only overall design, design issues, and general results (no numbers to memorize). Required articles: Semmelweis, Salk 1954 trial, BNT162b2 (Covid vaccine), LEAP peanut trial, Framingham, Aluminum vaccine cohort.
+:::
+
+::: {.callout-note title="Companion files"}
+`Answer_Keys.md` (worked sample midterm + answers to the fresh practice problems in @sec-practice) and `Epi_Midterm.apkg` (Anki deck, 206 cards).
+:::
+
+## Game plan: Saturday → Monday {#sec-plan}
+
+| When | Do this | Why |
+|---|---|---|
+| **Sat (today)** | Take the sample midterm closed-book with only a basic calculator. Time yourself (~50 min). Then grade it with `Answer_Keys.md`. | Diagnose first. Your misses tell you where to spend Sunday. |
+| Sat evening | Import the Anki deck and do one full pass (~60–90 min). Mark anything you missed twice. | First exposure to every concept. |
+| **Sun morning** | Redo PSETs 4 → 3 → 1 → 2 on blank paper with your old answers hidden. Check against the posted keys. Use @sec-psets for the traps in each. | PSET-style questions are the core of the exam. PSET 4 is newest and least practiced. |
+| Sun afternoon | Do the fresh practice problems (@sec-practice) — new numbers, same skills. Then say each article summary (@sec-articles) out loud in ~60 seconds. | Redoing PSETs you've already seen tests memory; new numbers test whether you can actually do it. |
+| Sun evening | Anki review (Custom Study, see @sec-anki). Then write the formula sheet (@sec-formulas) **from memory** on a blank page and check it. | Blank-page recall is the best predictor of exam recall. |
+| **Mon morning** | One quick Anki pass + one blank-page formula sheet. Stop there. | Sleep beats a last cram. |
+
+
+## Exam rules & answer-writing habits {#sec-habits}
+
+The exam instructions say short answers can be "just a few words," write legibly, show work for partial credit, basic calculator only (**no phone**). In the sample midterm, answers written only inside a table got no partial credit — always copy the final number into the answer space.
+
+Habits that earn points:
+
+1. **Formula → numbers → answer → units.** Write `CI = a/(a+b) = 329/252,240 = 130.4 per 100,000` rather than just the final number. Units are part of the answer (e.g., "3.42 deaths per 100,000 per year").
+2. **Ratio interpretation template:** "*[Exposed group]* had *[X]* times the *[risk/rate/odds]* of *[outcome]* compared with *[unexposed group]* over *[time period]*." Always say who is compared to whom.
+3. **OR → say "odds," never "risk."**
+4. **CI for a ratio:** if it includes 1 → not statistically significant. For a difference: if it includes 0 → not significant.
+5. **"Internal or external validity?"** Problems *before* randomization (exclusions, refusals) → external. Problems *after* randomization (loss to follow-up, noncompliance, crossovers) → internal.
+6. **Keep conceptual answers to a phrase or two.** Graders are hunting for keywords — make them easy to find.
+
+
+## Formula sheet {#sec-formulas}
+
+### The 2×2 table (memorize this layout)
+
+|  | Disease + | Disease − | Total |
+|---|---|---|---|
+| **Exposed / Test +** | a | b | a+b |
+| **Unexposed / Test −** | c | d | c+d |
+| **Total** | a+c | b+d | N |
+
+In screening: a = true positives, b = false positives, c = false negatives, d = true negatives.
+
+### Measures of occurrence
+
+| Measure | Formula | Notes |
+|---|---|---|
+| Prevalence | $\dfrac{\text{existing cases}}{\text{total population}}$ | At a point in time; proportion, no time units |
+| Cumulative incidence (risk) | $\dfrac{\text{new cases during period}}{\text{people at risk at start}}$ | Must state the time period; exclude prevalent cases |
+| Incidence rate | $\dfrac{\text{new cases}}{\text{person-time at risk}}$ | Use when follow-up varies; e.g., per 1,000 person-years |
+| Attack rate | $\dfrac{\text{ill among exposed}}{\text{all exposed}}$ | Cumulative incidence during an outbreak |
+| Mortality rate | $\dfrac{\text{deaths in year}}{\text{midyear population}}$ | Usually per 100,000 per year |
+| Cause-specific mortality | $\dfrac{\text{deaths from cause}}{\text{midyear population}}$ | |
+| Case-fatality | $\dfrac{\text{deaths from the disease}}{\text{people with the disease}}$ | Severity; a proportion despite the name |
+| Proportionate mortality | $\dfrac{\text{deaths from cause}}{\text{all deaths}}$ | No population denominator |
+| Infant mortality rate | $\dfrac{\text{deaths under 1 year}}{\text{live births}}$ | |
+| Odds | $\dfrac{\text{events}}{\text{non-events}} = \dfrac{p}{1-p}$ | ≈ probability when rare |
+| Prevalence, incidence, duration | $P \approx I \times D$ | Use for "will prevalence go up or down?" questions |
+
+### Comparing groups
+
+| Measure | Formula | Interpretation |
+|---|---|---|
+| **RR** (risk/rate ratio) | $\dfrac{I_{\text{exp}}}{I_{\text{unexp}}}$ | Null = 1. No units. |
+| **AR** (risk difference) | $I_{\text{exp}} - I_{\text{unexp}}$ | Excess cases among the exposed due to exposure (assumes causal). Has incidence units. |
+| **AR%** | $\dfrac{I_{\text{exp}} - I_{\text{unexp}}}{I_{\text{exp}}} \times 100 = \dfrac{\text{RR} - 1}{\text{RR}} \times 100$ | % of cases *among the exposed* due to exposure |
+| **PAR** | $I_{\text{total}} - I_{\text{unexp}} = \text{AR} \times P_{\text{exposure}}$ | Excess cases in the *whole population* due to exposure |
+| **PAR%** | $\dfrac{I_{\text{total}} - I_{\text{unexp}}}{I_{\text{total}}} \times 100$ | % of *all* cases in the population due to exposure |
+| **Efficacy / VE** | $\dfrac{R_{\text{placebo}} - R_{\text{vaccine}}}{R_{\text{placebo}}} = 1 - \text{RR}$ | Proportion of expected cases prevented |
+| **NNT** | $\dfrac{1}{R_{\text{control}} - R_{\text{treated}}}$ | Round **up** to a whole person |
+| **OR** | $\dfrac{a \times d}{b \times c}$ | Case-control measure; ≈ RR when disease rare (< ~10%) |
+| OR, 1:1 matched pairs | $\dfrac{b}{c}$ (discordant pairs) | Concordant pairs add no information |
+| 95% CI of RR (apply, don't memorize) | $\exp\!\left[\ln(\text{RR}) \pm 1.96\sqrt{\dfrac{1-p_1}{x_1} + \dfrac{1-p_2}{x_2}}\right]$ | $x$ = cases, $p = x/n$ in each group |
+
+### Screening
+
+| Measure | Formula | Depends on prevalence? |
+|---|---|---|
+| Sensitivity | $\dfrac{a}{a+c}$ | No (test property) |
+| Specificity | $\dfrac{d}{b+d}$ | No (test property) |
+| False negative rate | $\dfrac{c}{a+c} = 1 - \text{Se}$ | No |
+| False positive rate | $\dfrac{b}{b+d} = 1 - \text{Sp}$ | No |
+| PPV | $\dfrac{a}{a+b}$ | **Yes** — rises with prevalence |
+| NPV | $\dfrac{d}{c+d}$ | **Yes** — falls (slowly) with prevalence |
+| Prevalence | $\dfrac{a+c}{N}$ | |
+| Kappa | $\kappa = \dfrac{P_o - P_e}{1 - P_e}$ | $P_o$ = observed agreement, $P_e$ = chance agreement; > 0.75 good, < 0.40 poor |
+
+### Other
+
+| Measure | Formula |
+|---|---|
+| Direct age-adjusted rate | $\dfrac{\sum_i \left(\text{rate}_i \times \text{std pop}_i\right)}{\sum_i \text{std pop}_i}$ |
+| SMR (indirect adjustment) | $\text{SMR} = \dfrac{O}{E}, \quad E = \sum_i \left(\text{standard rate}_i \times \text{study pop}_i\right)$ |
+| Kaplan-Meier | $S(t_j) = S(t_{j-1}) \times \left(1 - \dfrac{d_j}{n_j}\right)$, with $d_j$ = events at $t_j$, $n_j$ = at risk just before $t_j$ |
+| Herd immunity threshold | $1 - \dfrac{1}{R_0}$ |
+| Average person-time | $\dfrac{\text{total person-years}}{\text{number of people}}$ |
+
+::: {.callout-warning title="SMR direction"}
+One slide in Lecture 2 writes the SMR upside down. It's **observed ÷ expected** (mustard gas example: 45 observed ÷ 14.7 expected = 3.06).
+:::
+## Calculation playbooks (one per HW skill) {#sec-playbooks}
+
+### Incidence / prevalence / mortality "goes up, down, or same?" (PSET 1 Q1, PSET 3 screening h)
+
+Reason from **P ≈ I × D** and from what each measure's numerator and denominator count.
+
+| Intervention | Incidence | Prevalence | Cause-specific mortality | Case-fatality |
+|---|---|---|---|---|
+| **Cure** (e.g., new HCV drugs) | Same (doesn't stop new infections) | ↓ (duration shortens) | ↓ | ↓ |
+| **Treatment that prolongs life without cure** | Same | ↑ (duration lengthens) | ↓ | ↓ |
+| **Prevention** (vaccine, risk-factor change) | ↓ | ↓ (eventually) | ↓ | Usually same |
+| **New screening program** | ↑ diagnosed incidence (earlier detection + overdiagnosis) | ↑ | ↓ only if early treatment works | ↓ (milder cases added to denominator) |
+| **Broader case definition** (e.g., 2017 hypertension 130/80) | ↑ | ↑ | Depends on how deaths are coded | ↓ |
+
+### Person-time and incidence rates (PSET 1 Q2, Q4)
+
+Each person contributes time from entry until the **first** of: the event, loss to follow-up, death from another cause, or the end of the study. Rate = events ÷ total person-time. **Trap:** these are *rates* (denominator = person-time), not cumulative incidences (denominator = people). Always write the units: "472.1 per 100,000 person-years."
+
+Smallest/largest possible person-time questions: smallest is ~0 (event or exit right after entry); largest is from the earliest possible entry date to the end of follow-up.
+
+### Direct age adjustment (PSET 1 Q3; sample midterm melanoma)
+
+1. Age-specific rate in each group = cases ÷ population × 100,000.
+2. Expected cases = age-specific rate × standard population in that age group ÷ 100,000.
+3. Add up expected cases across age groups.
+4. Adjusted rate = total expected ÷ total standard population × 100,000.
+5. Compare adjusted rates only if they used the **same** standard.
+
+**Interpreting crude vs. adjusted** (for a disease that rises with age): if crude > adjusted, the study population is *older* than the standard; if crude < adjusted, it's *younger*. If the crude and adjusted comparisons tell the same story, the populations' age structures don't differ much; if they flip, age was distorting the crude comparison. The adjusted rate itself is a fictional number — it only exists for comparison.
+
+**Why adjust (4-point answer from PSET 1):** age is a strong predictor of disease/death and populations differ in age structure; applying each population's age-specific rates to one standard removes the effect of age differences so the comparison is fair.
+
+### Indirect adjustment / SMR (PSET 1 Q2c; Framingham article; mustard-gas example)
+
+Use when the study population is **small** (age-specific rates unstable): occupational, environmental, or small cohorts.
+
+1. Take age-specific rates from a standard population (e.g., national rates).
+2. Multiply by the study population's count in each age group → expected deaths.
+3. SMR = observed ÷ expected.
+
+Interpretation: "Mortality among [study group] was 5.82 times what would be expected if they had the [standard population]'s age-specific death rates." SMRs from two different study populations shouldn't be compared directly (different age structures).
+
+### Outbreak attack-rate table (PSET 2)
+
+1. For each food: AR_ate = ill who ate ÷ all who ate; AR_didn't = ill who didn't eat ÷ all who didn't eat.
+2. RR = AR_ate ÷ AR_didn't.
+3. Culprit = high AR among eaters, **low** AR among non-eaters, highest RR, and most ill people ate it.
+4. Odds of illness among eaters = ill ÷ not ill (among eaters).
+
+Classic follow-ups: *Cases among non-eaters?* Cross-contamination (shared utensils), misreported/forgotten exposure (recall), another source. (For staph, illness comes from preformed toxin in food, so person-to-person spread is not the explanation.) *Why might a food look protective (RR < 1)?* Confounding — people who filled up on that food may have eaten less of the culprit — or chance. *Protective RR range:* 0 ≤ RR < 1.
+
+### Kaplan-Meier (PSET 3 Q2; sample midterm figure)
+
+1. Sort all times; mark censored with +. **At ties, list the event before the censored time** (the censored person was still at risk).
+2. Only compute a row at event times. At risk = everyone still being observed just before that time (subtract earlier events *and* earlier censorings).
+3. Conditional survival = 1 − (events ÷ at risk).
+4. Cumulative S(t) = previous S × conditional survival.
+5. **Median survival** = first time S(t) ≤ 0.50. If the curve never drops to 0.50, the median is **not reached** (this was the answer for the vitamin D figure — less than 7% got cancer).
+6. Graph: step function, y-axis "cumulative probability of remaining event-free," x-axis time; cumulative incidence = 1 − S(t).
+
+**Trap:** never divide by the original N after someone has been censored — that's the whole point of KM.
+
+Assumptions: censored people have the same prognosis as those still followed (non-informative censoring); no secular trend in risk across the enrollment period. Log-rank test H0: the survival curves are the same in all groups over the entire follow-up.
+
+### Screening 2×2 (PSET 3; sample midterm Pap vs HPV)
+
+Building the table from Se, Sp, and prevalence (the PSA problem):
+
+1. Diseased = N × prevalence; non-diseased = N − diseased.
+2. a = Se × diseased; c = diseased − a.
+3. d = Sp × non-diseased; b = non-diseased − d.
+4. Fill in row totals, then PPV = a/(a+b), NPV = d/(c+d).
+
+Decision rules: choose **higher sensitivity** when missing a case is costly — the disease is serious, early treatment saves lives, and positives can be confirmed (this is why HPV beats Pap in the sample midterm). Choose **higher specificity** when false positives are costly — invasive or risky follow-up, anxiety, labeling. Raising prevalence (screening a higher-risk group, or retesting only the positives) raises PPV. Lowering the positivity threshold raises Se and lowers Sp.
+
+**Names matter:** if asked "what is the exact name of the metric," write the name ("prevalence," "sensitivity") — not a description or formula.
+
+### Cohort measures: RR, AR, AR%, PAR, PAR% (PSET 4)
+
+Work in incidence units consistently (convert to per 100,000 at the end). Interpretation sentences (IDA → transfusion example):
+
+| Measure | One-sentence interpretation |
+|---|---|
+| RR = 87 | Pregnancies with IDA had 87 times the risk of transfusion during delivery hospitalization compared with pregnancies without IDA. |
+| AR = 128.9 per 100,000 | Among IDA pregnancies, about 129 transfusions per 100,000 are attributable to IDA (if causal). |
+| AR% = 98.9% | Among IDA pregnancies, about 99% of transfusions are attributable to IDA. |
+| PAR% = 89.8% | Among all pregnancies, about 90% of transfusions are attributable to IDA. |
+
+PAR% < AR% because exposure isn't universal — unexposed cases dilute the population's attributable share. PAR also = AR × prevalence of exposure.
+
+### Efficacy and NNT (Salk lecture; BNT162b2 article; LEAP "relative reduction")
+
+Efficacy = (R_control − R_treated) ÷ R_control. Salk paralytic polio, placebo areas: (57 − 16)/57 = 72%; observed-control areas: (46 − 17)/46 = 63%. NNT = 1 ÷ (difference in rates as proportions): 1 ÷ (41/100,000) ≈ 2,439 children vaccinated to prevent one case of paralytic polio. NNT is large when the disease is rare even if efficacy is high — it depends on baseline risk; efficacy doesn't.
+
+### Odds ratio (Lecture 10; PSET 2 odds; Semmelweis discussion)
+
+OR = ad/bc. You **can't** compute incidence or RR in a case-control study because the investigator chose how many cases and controls to enroll. The OR approximates the RR when the disease is rare (< ~10%) and is always farther from 1 than the RR. Zika example: (24 × 22)/(39 × 6) = 2.26 → "the odds of maternal Zika infection were 2.26 times higher among microcephaly cases than controls."
+
+### Quick ones: herd immunity, kappa
+
+Herd immunity threshold = 1 − 1/R0 (R0 = 5 → 80% immune). Assumes random mixing and complete immunity. Kappa: compute observed agreement, then chance agreement from each rater's marginal positive rate (chance both + = P(A+) × P(B+); chance both − = P(A−) × P(B−)), then κ = (obs − chance)/(1 − chance).
+
+### Stats interpretation (Week 1 section; PSET 1 Q5)
+
+| Concept | Correct wording |
+|---|---|
+| p-value | If H0 were true, the probability of observing data as extreme or more extreme than what was observed. (Not the probability H0 is true.) |
+| 95% CI | If we repeated the sampling many times, 95% of the intervals constructed would contain the true value. Practical reading: plausible range for the true value; if a ratio's CI excludes 1, significant at α = 0.05. |
+| Regression β | "For each 1-unit increase in X, Y is on average β units higher, adjusting for the other variables in the model." |
+| Significant vs. not | The difference between "significant" and "not significant" is not itself statistically significant — compare estimates directly. |
+
+
+## Concept review by lecture (high-yield contrasts) {#sec-concepts}
+
+### L1 — What epidemiology is; study designs
+
+Epidemiology studies how health and disease are **distributed in populations** and the **factors that determine** that distribution; the unit is the population, it's quantitative, and the goal is prevention. **Descriptive** epi asks how many, who, where, when (burden, surveillance, natural history). **Analytic** epi asks why (etiology) and whether interventions work.
+
+| Design | Who decides exposure? | Direction / measure | Strength | Weakness |
+|---|---|---|---|---|
+| RCT | Investigator, by chance | Forward; RR, efficacy | Controls known & unknown confounders | Expensive; ethics; external validity |
+| Before/after (historical control) | Investigator | Compare periods | Simple | Anything else that changed over time |
+| Cohort | People themselves | Forward from exposure; RR, AR | Temporality; multiple outcomes | Cost, loss to follow-up, confounding; rare outcomes need huge N |
+| Case-control | People themselves | Backward from disease; OR | Rare diseases, fast, cheap | Control selection, recall bias |
+| Cross-sectional | People themselves | Same time; prevalence | Quick snapshot | Can't establish temporality |
+| Ecologic | Groups | Group-level rates | Cheap, hypothesis-generating | Ecologic fallacy |
+| Natural (quasi-) experiment | Circumstances outside people's choice | Usually cohort-like | Approximates randomization | Assignment rarely truly random |
+
+**Goldberger & pellagra** (lecture example of every design): case series (institution inmates got pellagra, staff never did → not contagious; diet differed); before/after diet experiment in two orphanages (cases nearly vanished, but no concurrent control); cohort in 7 cotton-mill villages (income inversely related to incidence, still true after age adjustment); ecologic village comparison; qualitative study (village "In" had no fresh-food market — what we'd now call a food desert). Lesson: individual and contextual factors both matter.
+
+**Descriptive data sources:** vital records (births, deaths), notifiable disease surveillance (complete for rabies/plague, less for gonorrhea), registries (SEER), surveys (NHANES), administrative/claims data, health-system clinical data. Always ask how the data were generated and who is missing.
+
+### L2 — Measures, case definitions, age adjustment
+
+Count vs. proportion (0–1, numerator in denominator) vs. rate (time in denominator) vs. ratio. **Case definitions change** with discovery, technology, and politics — and create artificial trends: the 2017 hypertension threshold (140/90 → 130/80), staggered pregnancy checkboxes on death certificates (apparent rise in maternal mortality), successive DSM autism definitions, evolving AIDS case definitions (manifestation → manifestation + etiology).
+
+### L3 — Infectious disease & outbreaks
+
+| Term | Meaning |
+|---|---|
+| Endemic | Always present at a habitual level (TB in US) |
+| Sporadic | Appears infrequently, no habitual level (rabies after control) |
+| Epidemic | Occurrence in excess of expectation |
+| Pandemic | Worldwide epidemic |
+| Outbreak | Sudden increase, usually single exposure/common vehicle |
+| Seasonal vs. secular trend | Annual pattern vs. multi-year trend |
+
+**Epidemiologic triad:** host, agent, environment (± vector). **Transmission:** direct (respiratory, enteric, sexual, skin, blood, fomites) vs. indirect (common vehicle: water, food, air; vector). **Iceberg:** visible cases are the tip; subclinical, preclinical, chronic, and carrier infections (Typhoid Mary) drive transmission. Polio: ~70–75% asymptomatic, <1% paralytic.
+
+**SIR model:** susceptible → infectious → recovered/resistant; public health either reduces susceptibles (vaccination) or reduces mixing. **R0** = average secondary cases from one case in a fully susceptible population; not a fixed constant (measles estimates 5–18). Rt = under current conditions. >1 grows, =1 stable, <1 declines. Overdispersion → super-spreaders.
+
+**Outbreak investigation steps:** (1) define a case; (2) describe cases by time and place (epidemic curve); (3) gather exposure information; (4) calculate attack rates; (5) test hypotheses by comparing attack rates; (6) recommend control and prevention measures. Raw-milk Salmonella example: lab + WGS case definition, 171 cases, 70% drank brand A vs 1.9% expected → recall.
+
+**John Snow:** Broad Street outbreak (interviews, spot map, pump handle removed Sept 8, 1854 — after the outbreak was already waning) and the **natural experiment** of Southwark & Vauxhall (downstream intake with sewage) vs. Lambeth (moved upstream in 1852), ~300,000 people assigned to water source without choice, on the same streets. Farr's elevation analysis supported miasma theory — elevation was confounded with water source.
+
+### L4 & L7 — Randomized trials
+
+| Concept | Key point |
+|---|---|
+| Control options | Placebo, sham, standard/usual care, alternate therapy/activity, nothing |
+| Equipoise | Genuine uncertainty about which arm is better — needed to randomize ethically |
+| Randomization purpose | Arms comparable on known **and unknown** risk factors → differences due to intervention; prevents selection bias |
+| Non-random pitfalls | Historical controls (other changes), alternation/day-of-week (predictable, gameable), physician choice (BCG example) |
+| Stratified randomization | Randomize within subgroups to ensure balance or study subgroup effects |
+| Cluster/community trial | When the intervention is group-level or would spill over (fluoride; schools; villages) |
+| Target / defined / study population | Who results apply to / who's eligible / who consented |
+| Internal validity threats | Noncompliance/crossovers, loss to follow-up, too-small sample |
+| External validity threats | Eligibility criteria, refusals |
+| Blinding | Single = participant; double = + those giving the intervention/assessing; triple = + analyst. Prevents placebo effects and biased reporting/assessment |
+| ITT | Analyze everyone as randomized ("once randomized, always analyze"); preserves randomization; conservative |
+| Per protocol | Only adherers; bigger effect if treatment works, but self-selected → selection bias |
+| Table 1 | Baseline characteristics by arm — did randomization work? who is in the study? |
+| Phase I | Safety/dose in ~10–50 people |
+| Phase II | Any sign it works; interim markers (antibodies, tumor size); 100–300 |
+| Phase III | Large RCT vs placebo/standard; **efficacy** + safety |
+| Phase IV | Post-marketing observational surveillance; **effectiveness**, rare adverse events |
+| Crossover | Each person gets both treatments in random order + washout; symptom control, not curative/surgical |
+| Factorial | Two independent interventions tested at once (Physicians' Health Study: aspirin & beta carotene) |
+| DSMB | Independent experts monitor safety and data quality; apply stopping rules at interim looks |
+| Sample size inputs | α (usually 5%), β (10–20% → power 80–90%), allocation ratio, expected difference |
+| What drives power | The **number of events**, not the number enrolled — rare outcomes need huge trials |
+| MRFIT lesson | CHD deaths fell in the usual-care group (secular decline) → underpowered, null trial |
+| Informed consent | Capacity, adequate information, voluntary, explicit decision |
+
+### L5 — Survival analysis & life expectancy
+
+Survival methods handle **when** events happen and **censoring** (lost to follow-up, death from other causes, study end). KM uses exact event times; life tables group into intervals; Cox models adjust for confounders and give hazard ratios (read like RRs). **Life expectancy** = mean age at death of a hypothetical cohort that lives its whole life at this year's age-specific death rates. LE at 65 plus 65 exceeds LE at birth because it's conditional on having survived to 65.
+
+### L6 — Screening
+
+Screening finds disease in **asymptomatic** people (low pre-test probability); diagnosis confirms disease in people with symptoms (high pre-test probability). Same test, different PPV.
+
+**Prevention levels:** primary (prevent onset), secondary (detect pre-symptomatic disease — screening), tertiary (prevent worse outcomes after diagnosis).
+
+**Screening is worthwhile when:** long preclinical phase; cheap, low-risk test; positives can be confirmed; early treatment improves outcomes and is available.
+
+**Harms:** direct (colonoscopy perforation), false positives (cost, risky follow-up, anxiety, labeling), false negatives (false reassurance), overdiagnosis.
+
+| Bias | What it does |
+|---|---|
+| Lead-time bias | Diagnosis moved earlier → survival *after diagnosis* looks longer even if the death date doesn't change |
+| Length bias | Screening preferentially catches slow-growing disease (long preclinical phase) with better prognosis |
+| Overdiagnosis | Detects disease that would never have caused symptoms or death |
+
+So the right outcome for evaluating a screening program is **cause-specific mortality** in screened vs unscreened populations — not incidence, and not survival after diagnosis.
+
+**Reliability vs validity:** reliability = consistency (inter-rater, intra-rater, test-retest); validity = accuracy (Se, Sp). A test can be reliably wrong. Kappa measures agreement beyond chance.
+
+### L8 — Cohort studies
+
+| Feature | Options |
+|---|---|
+| Timing | Prospective (enroll now, follow forward) / Historical (records link past exposure to outcomes that already occurred) / Mixed |
+| Follow-up | Fixed (same calendar time → cumulative incidence) / Dynamic (varying time → incidence rate, survival) |
+| Enrollment | Exposure-based (radium dial painters, Dutch Hunger Winter) / General population (Framingham = geographic; British Doctors = "opportunistic" roster) |
+
+Call the comparison group "unexposed," not "controls." **Advantages:** temporality, multiple outcomes, power grows with follow-up. **Disadvantages:** time and money, loss to follow-up (internal validity), huge N for rare outcomes, selection bias/confounding.
+
+Classics: **Radium dial painters** (historical exposure-based; radium ingestion → bone cancers). **Dutch Hunger Winter** (sharply bounded famine in a well-nourished population; first-trimester exposure → ~2.5× schizophrenia in women). **Framingham** (1948; random sample of 2/3 of adults 30–62, 69% response; exams every 2 years; smoking, cholesterol, BP, inactivity, obesity → CHD; Framingham Risk Score). **British Doctors** (Doll & Hill 1951, 2/3 of UK doctors responded; dose-response between smoking and lung cancer).
+
+### L9 — Confounding
+
+A confounder is a third variable that is **(1) associated with the exposure, (2) a cause of the outcome, and (3) not on the causal pathway.** A variable on the pathway is a **mediator** (HBV → cirrhosis → liver cancer; late bedtime → snacking → weight gain; light drinking → HDL → less heart disease). Adjusting for a mediator removes part of the real effect.
+
+| Pattern | Meaning |
+|---|---|
+| Stratum RRs similar to each other but different from crude | **Confounding** (adjust; report M-H RR) |
+| Stratum RRs differ from each other | **Interaction / effect modification** (report stratum-specific RRs; there *is* a test for this) |
+| Crude farther from 1 than adjusted | Positive confounding (IDA example: crude 87 → adjusted 8.2) |
+| Crude closer to 1 than adjusted | Negative confounding |
+| Direction flips | Qualitative confounding |
+
+There's **no statistical test** for confounding — it's a judgment comparing crude and adjusted estimates. **Control in design:** randomization, restriction (cannabis study restricted to non-tobacco users), matching. **Control in analysis:** stratification with Mantel-Haenszel weighted averages (hypertension → stroke: crude 3.2, age-adjusted 2.4), regression. **Residual confounding:** categories too broad or poor proxy measures (insurance type for SES).
+
+**Confounder checklist (PSET 4 e):** for each candidate, explicitly answer all three criteria. Example: number of prenatal visits — associated with IDA, but partly *caused by* the IDA diagnosis (more visits after diagnosis) → on the pathway/consequence of exposure → don't adjust.
+
+### L10 — Case-control studies
+
+Start with **cases** (incident cases preferred — prevalent cases mix incidence with survival) and **controls** who would have become cases in your study had they developed the disease (population cases → population controls; clinic cases → clinic controls). Hospital controls: easy and comparable recall, but may share unrecognized risk factors (smoking, coffee) — use acute and varied conditions. Friend/neighbor controls risk **overmatching**.
+
+**Matching** controls confounding in design but: you can't study the matched variable's effect, you must use matched analyses, and 1:1 concordant pairs waste information (use >1 control per case). **Biases:** selection bias (control ascertainment related to exposure; low control response), recall bias (cases search memory harder — fix with diseased controls, prompt interviews, validation, dummy risk factors), observation/interviewer bias (blind interviewers, standardized questionnaires). Non-differential misclassification of a binary exposure usually biases **toward the null**; differential misclassification can bias in either direction.
+
+Examples: **Zika/microcephaly** (OR 2.26) and **SIDS** (19 case-control studies, ORs 1.2–14 for prone sleeping; RCT considered inappropriate; national campaigns → UK cot deaths halved 1991–92).
+
+
+## Required articles — design, design issues, big-picture result {#sec-articles}
+
+No numbers to memorize. For each, be able to say in ~60 seconds: the question, the design, two or three design issues, and the general result.
+
+### Semmelweis — "Etiology, Concept, and Prophylaxis of Childbed Fever" (1840s Vienna)
+
+| | |
+|---|---|
+| **Question** | Why was maternal mortality from childbed fever far higher in the First Clinic (physicians & medical students) than the Second Clinic (midwives)? |
+| **Studies inside it** | (1) Observational comparison of the two clinics — a **natural experiment**, because admission **alternated by day**, not by the woman's choice. (2) Observational comparisons that ruled out hypotheses: street births (unattended deliveries had *low* mortality), newborn deaths, seasonal/citywide patterns. (3) Small "experiments" changing one factor (lateral delivery position, priest's route). (4) **Intervention:** chlorinated lime handwashing from mid-May 1847 — a **before/after** study; Clinic 1 mortality dropped to Clinic 2's level. |
+| **Hypotheses rejected** | Epidemic "atmospheric-cosmic-telluric" influences (would hit both clinics and the city equally; street births were spared); overcrowding (Clinic 2 was more crowded); fear/shame/the priest's bell; rough exams by foreign students; diet, ventilation, delivery position. |
+| **Two case redefinitions** | (1) **Newborns** who died had the same disease → childbed fever isn't unique to postpartum women. (2) **Kolletschka**, a male colleague cut by a student's scalpel during an autopsy, died of the same disease → the cause is cadaveric particles carried on hands. He later widened it to **decaying organic matter from living patients** (a discharging uterine cancer, a carious knee). |
+| **Why no jump in Table 6 around 1841** | Table 6 is the whole hospital (both clinics combined); the 1840 reassignment only moved *where* the male students worked, so total exposure didn't change — the gap shows up *between* clinics (Table 1). The big rise came earlier (~1823) when Vienna adopted autopsy-based anatomical teaching. |
+| **Paradigm shift** | From speculative/humoral/miasma explanations to anatomical-pathological medicine with a specific transmissible cause and numerical comparison — a step toward germ theory. |
+| **Context** | Women begged not to be sent to Clinic 1 and some delivered "on the street" to avoid it — so they knew. Poor and unmarried women came because care was free in exchange for serving as teaching subjects, and their infants could enter the foundling home. |
+| **If they could choose clinics** | Selection: SES, health, prior births, knowledge of reputation. **If an obstetrician assigned them**: provider selection (sicker/complicated cases to one clinic). |
+| **Practice calc** | RR Clinic 1 vs 2 = (1989/20,042) ÷ (691/17,791) = **2.56**; Clinic 2 vs 1 = **0.39** (reciprocals). Odds of death in Clinic 1 = 1989/18,053 = **0.11**. |
+
+### Salk 1954 polio field trial
+
+| | |
+|---|---|
+| **Vaccine** | Inactivated (formaldehyde-killed) poliovirus, injected → bloodstream antibodies → prevents **paralysis**, not intestinal infection. Contrast Sabin's oral live-attenuated vaccine (gut immunity, rare vaccine-associated paralysis; US went IPV-only in 2000). |
+| **Design** | Two studies at once, ~1.8 million children. **Observed-control areas:** 2nd graders with consent vaccinated; all 1st & 3rd graders observed as controls. **Placebo-control areas:** consenting 1st–3rd graders **randomized, double-blind** to vaccine or placebo. |
+| **Why two** | The NFIP (Basil O'Connor) chose the observed-control plan as most acceptable to parents and states; scientists objected; Thomas Francis ran an independent placebo-controlled evaluation. |
+| **Design issues** | Observed-control is biased: vaccinated = **volunteers** vs controls = everyone (consenters + refusers); different grades/ages; no blinding → diagnostic bias. Consent was associated with higher SES, and paralytic polio was *more* common in higher-SES children (later age of infection) — so **"not inoculated" children had lower rates than the placebo group**. Polio is rare → enormous sample needed. |
+| **Big result** | Vaccine effective against **paralytic** polio (~60–90% depending on case definition); no significant effect on nonparalytic polio; the randomized placebo areas gave a **higher, more valid** efficacy estimate than the observed areas; all fatal cases were in controls. Lesson: randomization + blinding matter. |
+
+### BNT162b2 (Pfizer/BioNTech) Covid-19 vaccine trial, NEJM 2020
+
+| | |
+|---|---|
+| **Purposes** | Efficacy against confirmed Covid-19 **and** safety (reactogenicity, adverse events). |
+| **Design** | Multinational, **randomized 1:1, placebo-controlled, observer-blinded** Phase 2/3 trial; ~43,500 people ≥16; two doses 21 days apart. Phase 2/3 = seamless design — Phase 2 safety/immunogenicity in an initial subset rolling into the Phase 3 efficacy trial. Enrollment began late July 2020; data cutoff mid-November 2020. |
+| **vs. Salk placebo arm** | Similar: randomized, placebo, blinded, healthy volunteers, prevention trial, huge N because cases are rare. Different: individual randomization across countries, adults, symptom-triggered testing, event-driven timing, industry-funded, no parallel observational study. |
+| **Case definition** | Symptoms **plus** a positive lab (NAAT) test ≥7 days after dose 2 — symptom-based *and* etiology-confirmed. Alternatives: any infection incl. asymptomatic (needs routine testing of everyone; captures transmission) or severe disease only (too rare → bigger trial needed). |
+| **Two primary endpoints** | VE in those **without** prior infection, and in those **with or without** prior infection (prior infection could change apparent efficacy; real populations include both). |
+| **Stopping rule** | For vaccine-enhanced disease; **one-sided** because the concern runs in one direction only (more severe cases in the vaccine arm). |
+| **ITT / per protocol** | ITT = everyone randomized. Injections were given by staff, so nearly everyone received the intervention as assigned — little room for noncompliance to differ ITT from per-protocol. |
+| **Analysis** | VE from **incidence rates** (cases per 1,000 person-years of surveillance time); Figure 3 is a cumulative-incidence curve after dose 1. |
+| **Results** | ~95% efficacy; curves separate ~12 days after dose 1; reactions (injection-site pain, fatigue, headache) more common with vaccine, more after dose 2, mostly mild/moderate and brief. |
+| **Calc** | VE by person-time = 1 − (8/2.214)/(162/2.222) = 95.0%; by cumulative incidence = 1 − (8/17,411)/(162/17,511) = 95.0%. Nearly identical because follow-up time was similar in both arms. |
+| **Validity** | Internal: strong (randomized, blinded, large). External: short follow-up, rare adverse events undetectable, excluded pregnant/immunocompromised people. Long-term placebo comparison impossible because placebo recipients were offered vaccine after authorization. |
+| **Funding** | BioNTech and Pfizer — a potential conflict of interest worth noting when weighing the evidence. |
+
+### LEAP — Randomized Trial of Peanut Consumption in Infants at Risk (NEJM 2015)
+
+| | |
+|---|---|
+| **Descriptive motivation** | Peanut allergy ~10× more common in Jewish children in the UK than in Israel, where infants eat peanut snacks early; allergy rising despite avoidance advice. |
+| **Design** | Randomized, **open-label** (not blinded) behavioral/dietary prevention trial; 640 high-risk infants (4–11 months, severe eczema and/or egg allergy); **two cohorts stratified by skin-prick test** (negative vs. small wheal), each separately powered; consume vs avoid peanut until 60 months. Long trial → more loss to follow-up and nonadherence than a vaccine trial. |
+| **Outcome** | Peanut allergy by **oral food challenge** at 60 months (objective → partly offsets lack of blinding). |
+| **Design issues** | Infants with large wheals were excluded (likely already allergic). Consumption-arm infants who reacted at the baseline challenge stayed in the **ITT** analysis to preserve randomization. **Worst-case imputation**: assume all missing outcomes went against the hypothesis — if still significant, missing data can't explain the result. Adherence was parent-reported. |
+| **Result** | Early consumption sharply reduced peanut allergy in both cohorts: relative reduction ≈ **86%** (SPT-negative) and **70%** (SPT-positive), computed exactly like vaccine efficacy. Changed infant-feeding guidelines. |
+| **Generalizability** | High-risk infants in the UK; not directly to low-risk infants or infants already allergic. Funded mainly by NIAID (NIH). |
+
+### Framingham Enquiry (Dawber & Kannel)
+
+Geographic, general-population **prospective cohort** started 1948 to study the natural history of cardiovascular disease. Why Framingham: town roster, near medical centers, cooperative before, "reasonably typical." Random sample of 2/3 of adults 30–62 (69% response) plus volunteers, free of CVD at baseline, examined every 2 years. Analysis was simple — **SMRs** (standardized *morbidity* ratios) and 8-year cumulative incidence. Findings: hypertension, high cholesterol, ECG abnormalities, smoking, and obesity raise CHD risk, and combinations multiply it (the origin of "risk factors"). Key lesson in the discussion: an **association does not prove that intervening on the factor will lower risk by the same amount** (MRFIT later tested this and was null). External validity limited: one New England town, essentially no racial variation.
+
+### Aluminum-Adsorbed Vaccines and Chronic Diseases in Childhood (Danish nationwide cohort, Annals 2025)
+
+| | |
+|---|---|
+| **Why aluminum** | Adjuvant that strengthens the immune response to non-live vaccines. |
+| **Design** | **Historical** (register-based) nationwide cohort; ~1.2 million children born in Denmark 1997–2018 who were alive and resident at age 2; registries linked by personal ID number. |
+| **Exposure** | Cumulative aluminum (mg) received from vaccines in the first 2 years of life. |
+| **Outcomes** | 50 chronic conditions (autoimmune, atopic/allergic, neurodevelopmental incl. autism and ADHD) diagnosed from **age 2 to age 5** (extended follow-up in sensitivity analyses). |
+| **Natural experiment** | Exposure varied mainly because the **national vaccine schedule/products changed over calendar time**, not because of parents' choices → less confounding by family health behaviors. |
+| **Exclusion logic** | Emigration/death in first 2 years (exposure window and follow-up incomplete); congenital/preexisting conditions (could change both vaccination and outcome risk); implausibly many aluminum vaccinations (data errors); mothers not in Denmark before birth (missing maternal covariates); missing covariates (complete-case analysis); outcome already present by age 2 (**prevalent cases** — must be at risk at start of follow-up, and prevents reverse causation). |
+| **Why survival analysis** | Follow-up varies and is censored (emigration, death, end of data); Cox regression handles time-to-diagnosis and confounder adjustment → hazard ratios. |
+| **Confounders adjusted** | Sex, calendar year & season of birth, preterm birth, birthweight, GP visits before 2, maternal age, birthplace, smoking, health conditions, prescriptions, household income. Calendar year is a strong one: tied to exposure (schedule changes) *and* outcome (diagnostic trends like rising autism diagnoses). |
+| **Figure 3** | Adjusted HR per 1-mg increase with 95% CIs for each outcome. **Log scale** because ratios are symmetric on a log scale (2 and 0.5 equidistant from 1). **CI widths differ** because rarer outcomes have fewer cases → less precision. No outcome showed a significant increase; a few estimates were slightly below 1. |
+| **Misclassification** | Non-differential exposure misclassification usually biases toward the null for a binary exposure — not guaranteed in every situation, and a concern for a null study because it could mask a real effect. Registry vaccination data are fairly accurate. |
+| **Critiques (section discussion)** | Judge critiques by whether they identify a mechanism that could hide a true effect (very few children had zero aluminum; follow-up to age 5 is short for some diagnoses; residual confounding) versus claims about motives, which aren't evidence about validity either way. |
+
+### Lecture examples worth knowing (not required articles but fair game)
+
+Goldberger/pellagra (L1), raw-milk Salmonella outbreak (L3), John Snow (L3), MIND diet CONSORT diagram (L4), hepatitis B vaccine trial (L5), ovarian cancer BRCA survival (L5), TB skin test screening (L6), Physicians' Health Study (L7), Fourth R cluster trial (L7), HCV mother-to-child transmission RR CI (L8), British Doctors confounding by alcohol (L9), Zika and SIDS case-control studies (L10).
+
+
+## PSET redo guide {#sec-psets}
+
+Redo each PSET on blank paper with your submitted answers hidden, then compare to the posted key. The table lists what each question is really testing; the notes below are places where your submitted answers were on track but could be sharper on an exam.
+
+| PSET | Question | Skill tested | Trap to watch |
+|---|---|---|---|
+| 1 | Q1 HCV cure | Incidence vs prevalence vs mortality vs case-fatality | Justify prevalence with P ≈ I × D |
+| 1 | Q2 Taiwan hip fracture | Person-time; SMR; CI interpretation | Interpret CI with both meaning *and* numbers (entire CI > 1 → significant) |
+| 1 | Q3 HCV deaths | Age-specific rates; direct adjustment; crude vs adjusted | Units: "per 100,000 per year, adjusted to 2000 US standard" |
+| 1 | Q4 Diet & heart disease | Incidence rate vs cumulative incidence; RR; confounding idea | Label rate units (per 100,000 person-years) |
+| 1 | Q5 Stats | p-value, CI, regression interpretation | p-value assumes H0 is true |
+| 2 | Wedding outbreak | Attack rates, RR, odds, explaining odd cases, protective foods, stratification | Highest AR among eaters *and* low among non-eaters |
+| 3 | Q1 Yoga trial | Blinding, control type, target vs study population, randomization, validity | Alternate therapy ≠ placebo |
+| 3 | Q2 Chemo relapse | KM table, graph, median | Event before censor at tie (18 and 18+) |
+| 3 | Q3 Life expectancy | Interpreting LE at birth vs at 65 | Conditional on surviving to 65 |
+| 3 | Screening PSA | Naming metrics; building 2×2 from Se/Sp/prevalence; PPV/NPV; program effects | Give the **name** of the metric |
+| 4 | IDA & SMM | 2×2, CI, RR, AR, AR%, PAR, PAR%, interpretations, crude vs adjusted, confounder criteria | Test all 3 confounder criteria for each variable |
+
+**Sharpening notes from your submissions:**
+
+PSET 1 Q1b — your answer (prevalence decreases) is right; on the exam, add the mechanism in a few words: "cure shortens duration; P ≈ I × D." PSET 1 Q4 — the incidence column should carry units (e.g., 472.1 per 100,000 person-years). PSET 3 screening (a) and (b) asked for the **exact name** — write "prevalence" and "sensitivity" first, then the formula if you like. PSET 4 (d) — you correctly called it confounding; name the direction too: crude RR farther from 1 than adjusted = **positive confounding**. PSET 4 (e) — for state of residence you argued association with IDA; to call it a confounder you also need it to affect the outcome (e.g., transfusion practices and SMM rates differ by state) and to not be on the causal pathway. Run the three-criteria check out loud for every candidate. Your prenatal-visits reasoning (consequence of the IDA diagnosis → don't adjust) is exactly the kind of answer graders want.
+
+
+## Fresh practice problems {#sec-practice}
+
+New numbers, same skills. Do them closed-book with a calculator. Answers are in `Answer_Keys.md`.
+
+**P1. Occurrence.** A town has 10,000 people on Jan 1; 200 already have disease X. During the year, 150 new cases occur and 30 people with X die of it. (a) Prevalence on Jan 1? (b) One-year cumulative incidence? (c) Cause-specific mortality per 100,000 (use 10,000 as the population)? (d) Case-fatality among everyone who had X during the year?
+
+**P2. Person-time.** Five people are followed: A for 2 years (no event), B for 3 years (event), C for 1.5 years (lost to follow-up), D for 4 years (no event), E for 0.5 years (event). Incidence rate per 100 person-years?
+
+**P3. Direct age adjustment.** Population A: ages 0–39 = 8,000 people/16 deaths; 40–64 = 6,000/30; 65+ = 2,000/40. Population B: 0–39 = 3,000/3; 40–64 = 4,000/16; 65+ = 5,000/75. Standard population: 10,000 / 10,000 / 5,000. (a) Crude death rates per 1,000. (b) Age-adjusted rates per 1,000. (c) Which population has higher mortality, and why do crude and adjusted disagree?
+
+**P4. SMR.** A factory has 4,000 workers aged 25–44 and 1,000 aged 45–64. National death rates are 1 per 1,000 and 6 per 1,000 in those age groups. The factory had 18 deaths. Expected deaths? SMR? Interpret.
+
+**P5. Outbreak.** At a picnic: potato salad — 60 ate (45 ill), 40 didn't (6 ill). Chicken — 80 ate (40 ill), 20 didn't (11 ill). Attack rates, RRs, likely vehicle, odds of illness among potato-salad eaters.
+
+**P6. Kaplan-Meier.** Months to relapse in 8 patients: 3, 5+, 6, 6, 9, 11+, 12, 15+. Build the KM table. What is the median time to relapse? What is the estimated probability of being relapse-free at 13 months?
+
+**P7. Screening and prevalence.** A test has Se 90% and Sp 95%. (a) Build the 2×2 for 2,000 people with 5% prevalence; give PPV and NPV. (b) Repeat with 20% prevalence. (c) What happened and why?
+
+**P8. Cohort measures.** 1,000 smokers: 40 develop disease in 5 years. 4,000 non-smokers: 40 develop disease. Find RR, AR, AR%, PAR, PAR%. Interpret AR% and PAR% in one sentence each.
+
+**P9. Efficacy & NNT.** Vaccine trial: placebo arm 10,000 (200 cases), vaccine arm 10,000 (40 cases). VE? NNT?
+
+**P10. Case-control.** 100 cases and 200 controls; 60 cases and 50 controls were exposed. OR? Interpret. Can you compute the RR?
+
+**P11. Confounding or interaction?** (a) Crude RR = 3.0; age < 50 stratum RR = 1.4; age ≥ 50 RR = 1.5. (b) Crude RR = 2.5; men RR = 1.0; women RR = 5.0.
+
+**P12. Herd immunity.** R0 = 4? R0 = 12?
+
+**P13. Kappa.** Two radiologists read 200 films. A calls 60 positive; B calls 80 positive. Both positive on 50; both negative on 110. Observed agreement, chance agreement, κ?
+
+**P14. RR confidence interval.** Exposed: 20 cases among 100. Unexposed: 10 among 100. RR and 95% CI (use the formula sheet). Significant?
+
+**P15. Design ID.** Name the design: (a) Records from 1980s employment files identify asbestos-exposed and unexposed workers; death certificates through 2020 are linked. (b) Children with leukemia and children without are asked about past pesticide exposure. (c) 24 schools are randomized to a curriculum or usual teaching. (d) Countries' average salt intake is correlated with stroke mortality. (e) Migraine patients get drug then placebo (or reverse), with a washout between.
+
+
+## Using the Anki deck in a 2-day sprint {#sec-anki}
+
+Import `Epi_Midterm.apkg` (File → Import, or double-click). It contains 206 cards tagged by lecture (`L1_designs` … `L10_casecontrol`, `articles`, `stats`, `calc`).
+
+Normal Anki scheduling spreads reviews over weeks, which doesn't fit an exam on Monday. Instead: in the deck's Options, raise **New cards/day** to 200 so everything unlocks today. Do a full pass tonight. Sunday evening and Monday morning, use **Custom Study → "Review forgotten cards"** or **"Study by card state or tag"** (all cards, random order) to cycle through again regardless of schedule. Say the back of the card out loud before flipping — passive "yeah I knew that" doesn't count. Suspend (@) cards you answer instantly three times so your time goes to the weak ones. After the midterm, reset the deck options and keep it for the final.
+
+If the `.apkg` won't import, use `Epi_Midterm_anki.txt`: File → Import, choose the text file; it's tab-separated with columns Front, Back, Tags.
