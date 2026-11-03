@@ -1,0 +1,1343 @@
+---
+title: "BUS 35000 Investments — Midterm Study Guide"
+subtitle: "Weeks 1–5: Risk & Return, Mean-Variance Analysis, CAPM, Multifactor Models, Market Efficiency"
+author: "Built from the lectures, TA sessions, problem sets, and solutions in the course project"
+date: "November 2026"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    toc-title: "Contents"
+    number-sections: true
+    number-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    smooth-scroll: true
+    theme: cosmo
+    fontsize: 1rem
+    callout-appearance: default
+    code-copy: false
+crossref:
+  fig-title: "Figure"
+---
+
+# How to use this guide {.unnumbered}
+
+This guide condenses everything in the project folder: nine lecture decks (Weeks 1–5), four TA sessions, the TA midterm review, the TA practice problems, Problem Sets 1–4 with hints and solutions, and the official formula sheet. Every number in the worked examples was recomputed independently, and a handful of small errors in the source materials are flagged where they appear (and collected in @sec-errata).
+
+The midterm is pen, paper, and calculator only, so the guide emphasizes things you can do by hand. Each section follows the same rhythm:
+
+1. **Core ideas** in prose, with the intuition the professor stresses.
+2. **Formulas**, each tagged **[on sheet]** if it appears on the official "Useful Formulas for 35000" sheet, or **[know it]** if it does not.
+3. **Worked examples** drawn from the problem sets, lectures, and TA sessions.
+4. **Self-test** questions with collapsed answers. Try each one before you click.
+
+Source tags look like this: **L2 s.59** means Lecture Week 2, slide 59 (the number printed on the slide). The abbreviations are:
+
+| Tag | Source | Tag | Source |
+|:--|:--|:--|:--|
+| L1 | Lecture 1: Risk and Return | TA1–TA4 | TA Sessions 1–4 |
+| L2 | Lecture 2: Asset Allocation & Mean-Variance | TAR | TA Midterm Review |
+| L3a | Lecture 3: Mean-Variance Continued (HMC case) | PP | Practice Problems from TA Sessions |
+| L3b | Lecture 3: The CAPM | PS1–PS4 | Problem Sets 1–4 (and solutions) |
+| L4a | Lecture 4: CAPM Continued | FS | Official formula sheet |
+| L4b | Lecture 4: Anomalies, Multifactor Models, APT | | |
+| L5a | Lecture 5: Multifactor Review & Performance Evaluation | | |
+| L5b | Lecture 5: Market Efficiency | | |
+
+## Exam logistics {.unnumbered}
+
+The midterm is in class during Week 6 (November 3/4), in the first 1.5 hours, written in a blue book. You may bring a calculator, and a formula sheet ("cheat sheet") is posted on Canvas (L5a s.2). The syllabus says exam questions "will be similar to the assigned homework problems," and the TA asks you to show your calculations so you can earn partial credit (TA2 s.4). The midterm is optional under grading Method B, so it can only help you.
+
+::: {.callout-note title="About the cheat sheet"}
+The posted sheet is the "Useful Formulas for 35000" file in this project. The TA occasionally says things like "write this down on your cheat sheet" (TA2 s.13), which suggests you may be allowed to annotate it. Confirm the exact rule with the TA. Either way, the formulas tagged **[know it]** in this guide are *not* on the official sheet, and @sec-offsheet collects them on one page.
+:::
+
+## The course in one picture {.unnumbered}
+
+Every topic in the first half of the course is an answer to one question: **what discount rate (expected return) should an asset have, and why?**
+
+```{mermaid}
+flowchart LR
+  A["PV formula<br/>P = Σ E[D] / (1+r)^t<br/>(Week 1)"] --> B["r = r_f + risk premium<br/>What is risk?"]
+  B --> C["Mean-variance analysis<br/>risk = σ of your portfolio<br/>(Week 2–3)"]
+  C --> D["CAPM<br/>risk = β with the market<br/>(Week 3–4)"]
+  D --> E["Multifactor models<br/>risk = βs on several factors<br/>(Week 4–5)"]
+  E --> F["Market efficiency<br/>Is α real? Joint hypothesis<br/>(Week 5)"]
+  D -.-> F
+```
+
+## What is on the formula sheet (and what is not) {.unnumbered}
+
+The official sheet covers the "machinery" but leaves out several things that show up constantly in the problem sets and TA questions. The table below is the most useful thing to internalize before the exam.
+
+| Topic | On the sheet **[on sheet]** | Not on the sheet **[know it]** |
+|:--|:--|:--|
+| Returns | — | HPR with dividends, gross returns, compounding, arithmetic vs. geometric averages, real returns |
+| Scenario statistics | — | $E[r]$, variance, SD, covariance, correlation from a probability table |
+| Valuation | PV with horizon $n$, Gordon growth (exact and approximate) | Implied return $r = D_1/P + g$; perpetuity $C/r$; annuity; APR vs. EAR |
+| One risky + risk-free | $E[r_p]$, $\sigma_p$, Sharpe ratio, $w^*$ | The utility function $U = E - \gamma\sigma^2$ itself; CAL equation; targeting a given $\sigma$ or $E$ |
+| Two risky assets | $E[r_p]$, $\sigma_p^2$, MVE weight | **MVP weight**; zero-risk weight when $\rho=-1$; 3-asset variance; covariance of two portfolios |
+| Complete portfolio | — | Total-wealth weights $= y \times w^{MVE}$ |
+| CAPM | $\beta$, portfolio $\beta$, SML, realized-return regression, $\alpha$ | $\beta = \rho\,\sigma_i/\sigma_m$; $R^2 = \beta^2\sigma_m^2/\sigma_i^2 = \rho^2$; variance decomposition; market $\beta = 1$ |
+| Multifactor | Realized and expected return equations, $\alpha$ | Interpreting SMB/HML loadings; annualizing monthly $\alpha$ ($\times 12$) |
+| Performance | — | Treynor ratio, information ratio |
+
+
+
+# Week 1 — Risk, return, and the asset pricing formula {#sec-week1}
+
+The first week sets up the language of the whole course. Prices are discounted expected cash flows, the discount rate is the risk-free rate plus a risk premium, and the rest of the quarter is about pinning down that risk premium (L1 s.20, s.39).
+
+## Measuring returns
+
+The holding period return is the payoff tomorrow minus the price paid, divided by the price paid (L1 s.22). **[know it]**
+
+$$
+r_{t+1} = \frac{P_{t+1} + D_{t+1} - P_t}{P_t}, \qquad R_{t+1} = 1 + r_{t+1} \text{ (gross return)}
+$$
+
+$D_{t+1}$ is any cash payout: dividends, coupons, rent. The **expected** (ex ante) return uses $E[\tilde P_{t+1}]$ and $E[\tilde D_{t+1}]$; the **realized** (ex post) return uses what actually happened. They can be very different (L1 s.25).
+
+*Example (L1 s.23).* NVIDIA closed 2024 at \$134.29, closed 2025 at \$186.50, and paid \$0.04 in dividends: $r = (186.50 + 0.04 - 134.29)/134.29 \approx 38.9\%$.
+
+### Compounding and averaging
+
+Multi-period returns compound: $r_{t,t+2} = (1 + r_{t+1})(1 + r_{t+2}) - 1$. Earning 10% then 20% gives 32% over two years, not 30% (L1 s.27). **[know it]**
+
+| | Arithmetic average | Geometric average |
+|:--|:--|:--|
+| Formula | $\bar r_a = \frac{1}{n}\sum r_i$ | $\bar r_g = \left[\prod (1 + r_i)\right]^{1/n} - 1$ |
+| Answers | "What is the typical one-period return?" | "At what constant rate did wealth compound?" |
+| Use for | Expected return over one period | Describing historical performance over many periods |
+| Size | Always $\geq$ geometric | Always $\leq$ arithmetic; the gap grows with volatility |
+
+The cleanest illustration (L1 s.29): a stock goes \$100 → \$200 → \$100. Returns are +100% and −50%, so the arithmetic average is 25%, but the geometric average is the sensible 0%. Dell's five returns (−20%, 35%, −25%, 40%, 10%) average 8% arithmetically but only 4.5% geometrically.
+
+*TA1 Q1.* Returns 9%, 7%, −3%, −2%, 5% give an arithmetic mean of 3.2%, a geometric mean of 3.1%, and a 5-year cumulative return of 16.4%.
+
+### Nominal versus real
+
+Real returns measure purchasing power (L1 s.32). **[know it]**
+
+$$
+1 + r_{real} = \frac{1 + r_{nominal}}{1 + \pi}, \qquad r_{real} \approx r_{nominal} - \pi
+$$
+
+## Measuring risk from scenarios
+
+When you are given states of the world with probabilities, weight by the probabilities. **[know it]**
+
+$$
+E[r] = \sum_s p_s r_s, \qquad \sigma^2 = \sum_s p_s \left(r_s - E[r]\right)^2, \qquad \sigma = \sqrt{\sigma^2}
+$$
+
+With *historical* data you would instead divide by $N-1$ (or $N$; L3a s.40 says it does not matter much). Do not mix the two: a probability table never uses $N-1$.
+
+*Example (L1 s.35–36).* Intel trades at \$100. Next year it is worth \$135 (p = 0.4), \$105 (p = 0.3), or \$75 (p = 0.3). Returns are 35%, 5%, −25%. Then $E[r] = 0.4(35\%) + 0.3(5\%) + 0.3(-25\%) = 8\%$, $\sigma^2 = 0.0621$, and $\sigma = 24.9\%$.
+
+::: {.callout-warning title="Exam trap: the dividend belongs in every state"}
+In PS1 Q1 the \$2 dividend is paid with certainty, so it is added to the price in *every* state before computing the return. In the Ford question (TAR Q4, PP Q2) the dividend differs by state. Either way, compute the state return first, then take expectations.
+:::
+
+### Why risk earns a premium
+
+People are risk averse: offered a coin flip between +\$50,000 and −\$20,000 or a sure \$15,000 (same expected value), most take the sure thing (L1 s.38). To hold risky assets they must expect a higher return. Historically, from 1926 to 2025, average real returns and standard deviations were 0.3% and 3.8% for T-bills, 1.5% and 8.9% for T-bonds, and 6.8% and 19.3% for stocks (L1 s.37). The two fundamental questions of finance follow (L1 s.39): **what is risk, and how much extra expected return compensates for it?**
+
+## The asset pricing (present value) formula
+
+Rearranging the definition of a return and taking expectations gives the one-period pricing equation, and substituting forward gives the full formula (L1 s.41–45). **[on sheet]**
+
+$$
+P_t = E\left[\frac{\tilde D_{t+1} + \tilde P_{t+1}}{1 + r}\right] = E\left[\frac{\tilde D_{t+1}}{1+r} + \frac{\tilde D_{t+2}}{(1+r)^2} + \cdots + \frac{\tilde D_{t+n}}{(1+r)^n} + \frac{\tilde P_{t+n}}{(1+r)^n}\right]
+$$
+
+The discount rate $r$ goes by three names: discount rate, expected return, and required return. It decomposes as $r = r_f + \text{risk premium}$ (L1 s.42).
+
+::: {.callout-important title="The three channels (L1 s.46)"}
+If a price moves, it must be because of (1) a change in expected cash flows, (2) a change in the risk-free rate, or (3) a change in the risk premium. The risk premium itself can change because the *amount* of risk changed or because the *price* of risk (risk aversion) changed. Almost every "why did prices move?" question is answered by naming the channel.
+:::
+
+### Gordon growth model
+
+With constant growth $g$ and constant discount rate $r > g$ (L1 s.47): **[on sheet]**
+
+$$
+P_t = \frac{E_t[D_{t+1}]}{r - g} = \frac{D_t(1+g)}{r-g} \approx \frac{D_t}{r-g}
+$$
+
+Rearranged to back out the market's expected return: **[know it]**
+
+$$
+r = \frac{D_t(1+g)}{P_t} + g = \frac{D_{t+1}}{P_t} + g
+$$
+
+The TA computes both the exact version (using $D_{t+1}$) and the approximate version (using $D_t$). Use the exact version unless told otherwise, and say which you used.
+
+A high price-dividend ratio means either high expected growth or a low discount rate. In the late-1990s bubble the P/D ratio was about 90, so $D/P \approx 1.1\%$ (L1 s.49). With $r_f \approx 3\%$, a historical risk premium of 6%, and historical growth of 6.5%, the numbers cannot all hold at once: either growth expectations rose to $g = 3\% + 6\% - 1.1\% = 7.9\%$, or the risk premium fell to $r^e = 1.1\% + 6.5\% - 3\% = 4.6\%$.
+
+### Case study: the COVID crash
+
+The S&P 500 fell from 3,370 to 2,229 (−34%) between February 20 and March 23, 2020 (L1 s.52). Interest rates fell, so channel 2 cannot explain the drop. If dividends were cut 50% for five years and then recovered, the lost value of those first five dividends is only about \$137, far less than the \$1,100 drop (L1 s.55–58). Dividend futures show that the value of *distant* dividends fell most (L1 s.60–61). The lesson is that the stock market is about the long run: long-run growth and discount rates dominate the price (L1 s.64).
+
+## Two-stage growth: the classic exam calculation
+
+This appears in PS1 Q3(b), TA1 Q4, PP Q11, and TAR Q13. The recipe:
+
+1. Write out the dividends during the high-growth years: $D_{t+k} = D_t(1+g_1)^k$.
+2. At the switch date $T$, value the rest with Gordon using the *new* growth rate: $P_T = D_T(1+g_2)/(r - g_2)$.
+3. Discount everything back. The terminal price $P_T$ is discounted $T$ periods, the same as $D_T$, not $T+1$.
+
+$$
+P_t = \sum_{k=1}^{T}\frac{D_{t+k}}{(1+r)^k} + \frac{P_{t+T}}{(1+r)^T}
+$$
+
+```{mermaid}
+flowchart LR
+  A["Years 1..T<br/>D grows at g₁"] --> B["Terminal price at T<br/>P_T = D_T(1+g₂)/(r−g₂)"]
+  B --> C["Discount D₁..D_T and P_T<br/>(P_T by (1+r)^T)"]
+  C --> D["Sum = P₀"]
+```
+
+### Worked: PS1 Q3 and Q4 (answers from TA2 s.7–10, recomputed)
+
+*Q3(a).* $D_0 = \$58$, $r = 8\%$, $g = 5\%$: exact $P = 58(1.05)/0.03 = \$2{,}030$; approximate $58/0.03 = \$1{,}933.33$.
+
+*Q3(b).* 5% growth for 5 years, then 3%. Dividends: \$60.90, \$63.95, \$67.14, \$70.50, \$74.02. Terminal price $P_5 = 74.02(1.03)/0.05 = \$1{,}524.90$. Their present value: $\$266.71 + \$1{,}524.90/1.08^5 = \$266.71 + \$1{,}037.82 = \$1{,}304.53$. (The TA's \$1,304.20 comes from rounding the dividends. With the approximate formula, $P_5 = \$1{,}480.49$ and $P_0 = \$1{,}274.30$.)
+
+*Q4(a).* Market at \$3,000 paying \$60, $g = 4\%$: $r = 60(1.04)/3000 + 0.04 = 6.08\%$ (approximate: 6%).
+
+*Q4(b).* Market drops to \$2,000 with $g$ unchanged: $r = 60(1.04)/2000 + 0.04 = 7.12\%$ (approximate: 7%).
+
+*Q4(c).* With cash-flow expectations unchanged, the discount rate must have risen. That is channel 2 or 3: a higher risk-free rate, more perceived risk, or higher risk aversion. Expected returns *going forward* are now higher.
+
+*TA1 Q4 / PP Q11.* $D_0 = \$70$, $r = 10\%$. Constant 8% growth: $70(1.08)/0.02 = \$3{,}780$. With 8% for 3 years then 3%: dividends \$75.60, \$81.65, \$88.18; $P_3 = 88.18(1.03)/0.07 = \$1{,}297.50$; $P_0 = \$1{,}177.29$.
+
+### Worked: PS1 Q1 and Q2 (no posted solution, computed here)
+
+*Q1.* Bought at \$100, certain \$2 dividend, prices \$80/\$110/\$130 with probabilities 30/40/30%. Returns: −18%, 12%, 32%. $E[r] = 9.0\%$, $\sigma^2 = 0.0381$, $\sigma = 19.52\%$.
+
+*Q2.* Probabilities 20/50/30%. Stock A (−5%, 6%, 10%): $E = 5.0\%$, $\sigma = 5.29\%$. Stock B (2%, 5%, 12%): $E = 6.5\%$, $\sigma = 3.77\%$. B has a higher mean *and* lower risk, so B mean-variance dominates A. (Bonus: their covariance is 0.00165 and correlation 0.83.)
+
+*More scenario practice.* Ford (TAR Q4, PP Q2): returns 66.7% and −13.3%, $E = 34.7\%$, $\sigma^2 = 0.1536$, $\sigma = 39.2\%$. Tesla (TA1 Q2): $E = 0.81\%$, $\sigma = 8.37\%$.
+
+## Compounding frequency, annuities, perpetuities
+
+All three are **[know it]**.
+
+A rate "12% per year compounded monthly" means 1% per month. The effective annual rate is $(1 + APR/m)^m - 1$. A 20% APR credit card compounded monthly costs $(1 + 0.20/12)^{12} - 1 = 21.9\%$ per year (L1 s.70). Present values adjust the same way: $PV = CF_T/(1 + r/m)^{mT}$.
+
+$$
+\text{Annuity: } P = \frac{C}{r}\left[1 - \frac{1}{(1+r)^T}\right], \qquad \text{Perpetuity: } P = \frac{C}{r}
+$$
+
+\$1,000 a year for 20 years at 5% is worth \$12,462.21; paid monthly (\$83.33) at 5%/12 it is worth about \$12,627 (L1 s.73). A \$3,000 perpetuity discounted at 8.4% is worth \$35,714.29 (TAR Q8).
+
+## Leverage arithmetic (TA1 Q3)
+
+Weights are always fractions of *your own* money. Investor X has \$2,000, lends \$500, and puts \$1,500 in the market: weights 75%/25%, return $0.75(11\%) + 0.25(4\%) = 9.25\%$. Investor Y has \$500, borrows \$500, and invests \$1,000: weights 200%/−100%, return $2(11\%) - 1(4\%) = 18\%$.
+
+## Self-test: Week 1
+
+**1.** You buy at \$50, receive a \$1.50 dividend, and sell at \$54. What is your HPR?
+
+::: {.callout-tip collapse="true" title="Answer"}
+$(54 + 1.50 - 50)/50 = 11\%$.
+:::
+
+**2.** Returns are +50%, −30%, +20%. Compute the arithmetic and geometric averages. Which describes how your wealth grew?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Arithmetic: 13.33%. Geometric: $(1.5 \times 0.7 \times 1.2)^{1/3} - 1 = 1.26^{1/3} - 1 = 8.01\%$. The geometric average describes wealth growth.
+:::
+
+**3.** A stock trades at \$40, just paid \$2, and dividends grow 4% forever. What expected return is the market pricing in?
+
+::: {.callout-tip collapse="true" title="Answer"}
+$r = 2(1.04)/40 + 0.04 = 9.2\%$ (approximate: 9%).
+:::
+
+**4.** A stock falls 20% on a day with no news about its cash flows. What must have changed, and what does it imply for future returns?
+
+::: {.callout-tip collapse="true" title="Answer"}
+The discount rate rose (higher risk-free rate, more risk, or more risk aversion). Higher discount rates mean higher expected returns from here on.
+:::
+
+**5.** An 18% APR compounded monthly: what is the effective annual rate?
+
+::: {.callout-tip collapse="true" title="Answer"}
+$(1.015)^{12} - 1 = 19.56\%$.
+:::
+
+**6.** Nominal return 8%, inflation 3%. Real return, exact and approximate?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Exact: $1.08/1.03 - 1 = 4.85\%$. Approximate: 5%.
+:::
+
+
+# Week 2 — Asset allocation and mean-variance analysis {#sec-week2}
+
+Markowitz's question: how much of your wealth should go into each security? Two ingredients answer it: how much risk to take, and how to combine risky assets optimally (L2 s.8).
+
+## Utility and the one-risky-asset problem
+
+The course uses a quadratic utility "score" (L2 s.13): **[know it]**
+
+$$
+U(E, \sigma) = E - \gamma \sigma^2
+$$
+
+Higher $\gamma$ means more risk averse; $\gamma = 0$ means risk neutral.
+
+::: {.callout-warning title="Convention alert"}
+The textbook (BKM) writes $U = E - \tfrac{1}{2}A\sigma^2$. This course has **no ½**, which is why the optimal weight on the formula sheet has $2\gamma$ in the denominator. Always use the course's version.
+:::
+
+*Example (L2 s.14, s.18).* With $\gamma = 2$: T-bills (5.5%, 0%) score 0.055; the S&P 500 (7.91%, 12.1%) scores $0.0791 - 2(0.121)^2 = 0.0498$; a 60/40 mix (7.0%, 7.26%) scores 0.0595, better than either extreme.
+
+### The capital allocation line (CAL)
+
+Put $w$ in a risky asset and $1-w$ in the risk-free asset: **[on sheet]**
+
+$$
+E[r_p] = w E[r_A] + (1-w) r_f = r_f + w\left(E[r_A] - r_f\right), \qquad \sigma_p = w \sigma_A
+$$
+
+Eliminating $w$ gives the CAL, a straight line in $(\sigma, E)$ space whose slope is the Sharpe ratio (L2 s.26, s.73): **[CAL equation: know it; Sharpe ratio: on sheet]**
+
+$$
+E[r_p] = r_f + \underbrace{\frac{E[r_A] - r_f}{\sigma_A}}_{\text{Sharpe ratio}}\,\sigma_p
+$$
+
+Every point on a CAL has the **same Sharpe ratio** as the risky asset that defines it (PS2 Q3; PP Q3).
+
+### The optimal weight
+
+Maximize $r_f + w(E[r_A] - r_f) - \gamma w^2 \sigma_A^2$. The first-order condition $E[r_A] - r_f - 2\gamma w \sigma_A^2 = 0$ gives (L2 s.21): **[on sheet]**
+
+$$
+w^* = \frac{E[r_A] - r_f}{2\gamma\sigma_A^2}
+$$
+
+You hold more of the risky asset when its risk premium is higher, less when it is riskier, and less when you are more risk averse (L2 s.22). In the example, $w^* = (0.0791 - 0.055)/(2 \cdot 2 \cdot 0.121^2) = 41\%$; with $\gamma = 4$ it halves to 21%. $w^* > 1$ means borrowing at $r_f$; $w^* < 0$ means shorting the risky asset.
+
+### Targeting a return or a risk level
+
+Exam questions often fix a target instead of $\gamma$. **[know it]**
+
+$$
+\text{Target } \sigma^*: \; w = \frac{\sigma^*}{\sigma_A}, \qquad \text{Target } E^*: \; w = \frac{E^* - r_f}{E[r_A] - r_f}
+$$
+
+*PS2 Q3(a).* Target 10% with fund A (8%, 20%) and $r_f = 2\%$: $w = (10 - 2)/(8 - 2) = 133.3\%$, so you borrow \$333,333 on \$1 million. $\sigma = 26.67\%$ and Sharpe $= 0.30$, identical to fund A's. With fund B (12%, 30%): $w = 80\%$, $\sigma = 24\%$, Sharpe $= 0.333$. B is preferred: same expected return, less risk, because B has the higher Sharpe ratio.
+
+### Three-stage analysis and indifference curves
+
+The general method (L2 s.24–28): (1) estimate inputs (means, variances, covariances; the means are the hardest), (2) map the investment opportunity set, (3) pick the point that maximizes utility.
+
+Indifference curves connect portfolios with equal utility; utility rises toward the upper left. More risk-averse investors have steeper curves. The optimal portfolio is where the highest attainable indifference curve just touches the CAL (L2 s.29–35). Vocabulary (L2 s.33): an investment is *mean-variance preferred* if it has higher $E$ **and** lower $\sigma$, *mean-variance dominated* if it has lower $E$ **and** higher $\sigma$; "preferred" and "dominated" alone refer to higher or lower indifference curves and depend on the investor.
+
+## Portfolio mathematics
+
+Expected returns are always weighted averages (L2 s.38). Covariance and correlation measure co-movement (L2 s.39–42): **[know it]**
+
+$$
+\text{cov}(r_1, r_2) = \sigma_{1,2} = \sum_s p_s (r_{1,s} - E[r_1])(r_{2,s} - E[r_2]), \qquad \rho_{1,2} = \frac{\sigma_{1,2}}{\sigma_1 \sigma_2} \in [-1, 1]
+$$
+
+Two-asset variance **[on sheet]**:
+
+$$
+\sigma_p^2 = w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1w_2\sigma_{1,2} = w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1w_2\rho_{1,2}\sigma_1\sigma_2
+$$
+
+Three or more assets (PS2 hint) **[know it]**: every pair contributes a covariance term, and there are $(N^2 - N)/2$ distinct pairs (TA2 s.11).
+
+$$
+\sigma_p^2 = \sum_i \sum_j w_i w_j \sigma_{i,j} = w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + w_3^2\sigma_3^2 + 2w_1w_2\sigma_{1,2} + 2w_1w_3\sigma_{1,3} + 2w_2w_3\sigma_{2,3}
+$$
+
+Covariance between two portfolios $a$ and $b$ built from the same assets (PS2 hint) **[know it]**: $\text{cov}(r_a, r_b) = \sum_i \sum_j w_i^a w_j^b \sigma_{i,j}$.
+
+*Example (L2 s.40–42).* IBM and Google across three states (p = 0.8, 0.1, 0.1): $E = 11\%$ and $13\%$, $\text{cov} = 0.0357$, $\sigma = 19.2\%$ and $26.5\%$, so $\rho = 0.70$.
+
+*Example (L2 s.44).* $\sigma_1 = 30\%$, $\sigma_2 = 20\%$, covariance 0.0002, equal weights: $\sigma_p^2 = 0.0326$, $\sigma_p = 18.1\%$, below the 25% average of the two.
+
+## Diversification and the role of correlation
+
+With two assets of variance 0.04 each, the equal-weighted variance is $0.02 + 0.02\rho$ (L2 s.48). As long as $\rho < 1$, diversification lowers risk below the weighted average of the individual risks.
+
+```{=html}
+<figure style="max-width:680px;margin:1.5em auto;">
+<svg viewBox="0 0 640 420" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif" role="img" aria-label="Correlation and the frontier">
+<rect x="0" y="0" width="640" height="420" fill="#ffffff"/>
+<line x1="70.0" y1="30" x2="70.0" y2="360" stroke="#eeeeee"/><text x="70.0" y="378" font-size="12" text-anchor="middle" fill="#444">0%</text>
+<line x1="178.0" y1="30" x2="178.0" y2="360" stroke="#eeeeee"/><text x="178.0" y="378" font-size="12" text-anchor="middle" fill="#444">20%</text>
+<line x1="286.0" y1="30" x2="286.0" y2="360" stroke="#eeeeee"/><text x="286.0" y="378" font-size="12" text-anchor="middle" fill="#444">40%</text>
+<line x1="394.0" y1="30" x2="394.0" y2="360" stroke="#eeeeee"/><text x="394.0" y="378" font-size="12" text-anchor="middle" fill="#444">60%</text>
+<line x1="502.0" y1="30" x2="502.0" y2="360" stroke="#eeeeee"/><text x="502.0" y="378" font-size="12" text-anchor="middle" fill="#444">80%</text>
+<line x1="610.0" y1="30" x2="610.0" y2="360" stroke="#eeeeee"/><text x="610.0" y="378" font-size="12" text-anchor="middle" fill="#444">100%</text>
+<line x1="70" y1="360.0" x2="610" y2="360.0" stroke="#eeeeee"/><text x="62" y="364.0" font-size="12" text-anchor="end" fill="#444">0%</text>
+<line x1="70" y1="305.0" x2="610" y2="305.0" stroke="#eeeeee"/><text x="62" y="309.0" font-size="12" text-anchor="end" fill="#444">5%</text>
+<line x1="70" y1="250.0" x2="610" y2="250.0" stroke="#eeeeee"/><text x="62" y="254.0" font-size="12" text-anchor="end" fill="#444">10%</text>
+<line x1="70" y1="195.0" x2="610" y2="195.0" stroke="#eeeeee"/><text x="62" y="199.0" font-size="12" text-anchor="end" fill="#444">15%</text>
+<line x1="70" y1="140.0" x2="610" y2="140.0" stroke="#eeeeee"/><text x="62" y="144.0" font-size="12" text-anchor="end" fill="#444">20%</text>
+<line x1="70" y1="85.0" x2="610" y2="85.0" stroke="#eeeeee"/><text x="62" y="89.0" font-size="12" text-anchor="end" fill="#444">25%</text>
+<line x1="70" y1="30.0" x2="610" y2="30.0" stroke="#eeeeee"/><text x="62" y="34.0" font-size="12" text-anchor="end" fill="#444">30%</text>
+<line x1="70" y1="360" x2="610" y2="360" stroke="#333"/><line x1="70" y1="30" x2="70" y2="360" stroke="#333"/>
+<text x="340.0" y="405" font-size="13" text-anchor="middle" fill="#222">Standard deviation σ</text>
+<text x="18" y="195.0" font-size="13" text-anchor="middle" fill="#222" transform="rotate(-90 18 195.0)">Expected return E[r]</text>
+<path d="M205.0,250.0 L205.9,249.4 L206.8,248.9 L207.7,248.3 L208.6,247.8 L209.5,247.2 L210.4,246.7 L211.3,246.1 L212.2,245.6 L213.1,245.0 L214.0,244.5 L214.9,243.9 L215.8,243.4 L216.7,242.8 L217.6,242.3 L218.5,241.7 L219.4,241.2 L220.4,240.6 L221.3,240.1 L222.2,239.5 L223.1,239.0 L224.0,238.4 L224.9,237.9 L225.8,237.3 L226.7,236.8 L227.6,236.2 L228.5,235.7 L229.4,235.1 L230.3,234.5 L231.2,234.0 L232.1,233.4 L233.0,232.9 L233.9,232.3 L234.8,231.8 L235.7,231.2 L236.6,230.7 L237.5,230.1 L238.4,229.6 L239.3,229.0 L240.2,228.5 L241.1,227.9 L242.0,227.4 L242.9,226.8 L243.8,226.3 L244.7,225.7 L245.6,225.2 L246.5,224.6 L247.4,224.1 L248.3,223.5 L249.2,223.0 L250.2,222.4 L251.1,221.9 L252.0,221.3 L252.9,220.8 L253.8,220.2 L254.7,219.6 L255.6,219.1 L256.5,218.5 L257.4,218.0 L258.3,217.4 L259.2,216.9 L260.1,216.3 L261.0,215.8 L261.9,215.2 L262.8,214.7 L263.7,214.1 L264.6,213.6 L265.5,213.0 L266.4,212.5 L267.3,211.9 L268.2,211.4 L269.1,210.8 L270.0,210.3 L270.9,209.7 L271.8,209.2 L272.7,208.6 L273.6,208.1 L274.5,207.5 L275.4,207.0 L276.3,206.4 L277.2,205.9 L278.1,205.3 L279.0,204.7 L279.9,204.2 L280.9,203.6 L281.8,203.1 L282.7,202.5 L283.6,202.0 L284.5,201.4 L285.4,200.9 L286.3,200.3 L287.2,199.8 L288.1,199.2 L289.0,198.7 L289.9,198.1 L290.8,197.6 L291.7,197.0 L292.6,196.5 L293.5,195.9 L294.4,195.4 L295.3,194.8 L296.2,194.3 L297.1,193.7 L298.0,193.2 L298.9,192.6 L299.8,192.1 L300.7,191.5 L301.6,191.0 L302.5,190.4 L303.4,189.8 L304.3,189.3 L305.2,188.7 L306.1,188.2 L307.0,187.6 L307.9,187.1 L308.8,186.5 L309.7,186.0 L310.7,185.4 L311.6,184.9 L312.5,184.3 L313.4,183.8 L314.3,183.2 L315.2,182.7 L316.1,182.1 L317.0,181.6 L317.9,181.0 L318.8,180.5 L319.7,179.9 L320.6,179.4 L321.5,178.8 L322.4,178.3 L323.3,177.7 L324.2,177.2 L325.1,176.6 L326.0,176.1 L326.9,175.5 L327.8,174.9 L328.7,174.4 L329.6,173.8 L330.5,173.3 L331.4,172.7 L332.3,172.2 L333.2,171.6 L334.1,171.1 L335.0,170.5 L335.9,170.0 L336.8,169.4 L337.7,168.9 L338.6,168.3 L339.5,167.8 L340.5,167.2 L341.4,166.7 L342.3,166.1 L343.2,165.6 L344.1,165.0 L345.0,164.5 L345.9,163.9 L346.8,163.4 L347.7,162.8 L348.6,162.3 L349.5,161.7 L350.4,161.2 L351.3,160.6 L352.2,160.1 L353.1,159.5 L354.0,158.9 L354.9,158.4 L355.8,157.8 L356.7,157.3 L357.6,156.7 L358.5,156.2 L359.4,155.6 L360.3,155.1 L361.2,154.5 L362.1,154.0 L363.0,153.4 L363.9,152.9 L364.8,152.3 L365.7,151.8 L366.6,151.2 L367.5,150.7 L368.4,150.1 L369.3,149.6 L370.3,149.0 L371.2,148.5 L372.1,147.9 L373.0,147.4 L373.9,146.8 L374.8,146.3 L375.7,145.7 L376.6,145.2 L377.5,144.6 L378.4,144.0 L379.3,143.5 L380.2,142.9 L381.1,142.4 L382.0,141.8 L382.9,141.3 L383.8,140.7 L384.7,140.2 L385.6,139.6 L386.5,139.1 L387.4,138.5 L388.3,138.0 L389.2,137.4 L390.1,136.9 L391.0,136.3 L391.9,135.8 L392.8,135.2 L393.7,134.7 L394.6,134.1 L395.5,133.6 L396.4,133.0 L397.3,132.5 L398.2,131.9 L399.1,131.4 L400.1,130.8 L401.0,130.3 L401.9,129.7 L402.8,129.1 L403.7,128.6 L404.6,128.0 L405.5,127.5 L406.4,126.9 L407.3,126.4 L408.2,125.8 L409.1,125.3 L410.0,124.7 L410.9,124.2 L411.8,123.6 L412.7,123.1 L413.6,122.5 L414.5,122.0 L415.4,121.4 L416.3,120.9 L417.2,120.3 L418.1,119.8 L419.0,119.2 L419.9,118.7 L420.8,118.1 L421.7,117.6 L422.6,117.0 L423.5,116.5 L424.4,115.9 L425.3,115.4 L426.2,114.8 L427.1,114.2 L428.0,113.7 L428.9,113.1 L429.8,112.6 L430.8,112.0 L431.7,111.5 L432.6,110.9 L433.5,110.4 L434.4,109.8 L435.3,109.3 L436.2,108.7 L437.1,108.2 L438.0,107.6 L438.9,107.1 L439.8,106.5 L440.7,106.0 L441.6,105.4 L442.5,104.9 L443.4,104.3 L444.3,103.8 L445.2,103.2 L446.1,102.7 L447.0,102.1 L447.9,101.6 L448.8,101.0 L449.7,100.5 L450.6,99.9 L451.5,99.3 L452.4,98.8 L453.3,98.2 L454.2,97.7 L455.1,97.1 L456.0,96.6 L456.9,96.0 L457.8,95.5 L458.7,94.9 L459.6,94.4 L460.6,93.8 L461.5,93.3 L462.4,92.7 L463.3,92.2 L464.2,91.6 L465.1,91.1 L466.0,90.5 L466.9,90.0 L467.8,89.4 L468.7,88.9 L469.6,88.3 L470.5,87.8 L471.4,87.2 L472.3,86.7 L473.2,86.1 L474.1,85.6 L475.0,85.0" fill="none" stroke="#7f8c8d" stroke-width="2.2" stroke-dasharray="6,4"/>
+<path d="M205.0,250.0 L204.6,249.4 L204.1,248.9 L203.7,248.3 L203.3,247.8 L202.9,247.2 L202.5,246.7 L202.2,246.1 L201.8,245.6 L201.5,245.0 L201.2,244.5 L200.9,243.9 L200.6,243.4 L200.3,242.8 L200.1,242.3 L199.8,241.7 L199.6,241.2 L199.4,240.6 L199.2,240.1 L199.0,239.5 L198.8,239.0 L198.7,238.4 L198.6,237.9 L198.5,237.3 L198.3,236.8 L198.3,236.2 L198.2,235.7 L198.1,235.1 L198.1,234.5 L198.1,234.0 L198.1,233.4 L198.1,232.9 L198.1,232.3 L198.1,231.8 L198.2,231.2 L198.3,230.7 L198.4,230.1 L198.5,229.6 L198.6,229.0 L198.7,228.5 L198.9,227.9 L199.0,227.4 L199.2,226.8 L199.4,226.3 L199.6,225.7 L199.9,225.2 L200.1,224.6 L200.4,224.1 L200.7,223.5 L200.9,223.0 L201.2,222.4 L201.6,221.9 L201.9,221.3 L202.3,220.8 L202.6,220.2 L203.0,219.6 L203.4,219.1 L203.8,218.5 L204.2,218.0 L204.6,217.4 L205.1,216.9 L205.6,216.3 L206.0,215.8 L206.5,215.2 L207.0,214.7 L207.5,214.1 L208.1,213.6 L208.6,213.0 L209.1,212.5 L209.7,211.9 L210.3,211.4 L210.9,210.8 L211.5,210.3 L212.1,209.7 L212.7,209.2 L213.3,208.6 L214.0,208.1 L214.7,207.5 L215.3,207.0 L216.0,206.4 L216.7,205.9 L217.4,205.3 L218.1,204.7 L218.8,204.2 L219.6,203.6 L220.3,203.1 L221.1,202.5 L221.8,202.0 L222.6,201.4 L223.4,200.9 L224.2,200.3 L225.0,199.8 L225.8,199.2 L226.6,198.7 L227.4,198.1 L228.2,197.6 L229.1,197.0 L229.9,196.5 L230.8,195.9 L231.7,195.4 L232.5,194.8 L233.4,194.3 L234.3,193.7 L235.2,193.2 L236.1,192.6 L237.0,192.1 L238.0,191.5 L238.9,191.0 L239.8,190.4 L240.8,189.8 L241.7,189.3 L242.7,188.7 L243.6,188.2 L244.6,187.6 L245.6,187.1 L246.5,186.5 L247.5,186.0 L248.5,185.4 L249.5,184.9 L250.5,184.3 L251.5,183.8 L252.5,183.2 L253.6,182.7 L254.6,182.1 L255.6,181.6 L256.7,181.0 L257.7,180.5 L258.7,179.9 L259.8,179.4 L260.8,178.8 L261.9,178.3 L263.0,177.7 L264.0,177.2 L265.1,176.6 L266.2,176.1 L267.3,175.5 L268.4,174.9 L269.5,174.4 L270.6,173.8 L271.7,173.3 L272.8,172.7 L273.9,172.2 L275.0,171.6 L276.1,171.1 L277.2,170.5 L278.3,170.0 L279.5,169.4 L280.6,168.9 L281.7,168.3 L282.9,167.8 L284.0,167.2 L285.2,166.7 L286.3,166.1 L287.5,165.6 L288.6,165.0 L289.8,164.5 L290.9,163.9 L292.1,163.4 L293.3,162.8 L294.5,162.3 L295.6,161.7 L296.8,161.2 L298.0,160.6 L299.2,160.1 L300.4,159.5 L301.5,158.9 L302.7,158.4 L303.9,157.8 L305.1,157.3 L306.3,156.7 L307.5,156.2 L308.7,155.6 L309.9,155.1 L311.1,154.5 L312.3,154.0 L313.6,153.4 L314.8,152.9 L316.0,152.3 L317.2,151.8 L318.4,151.2 L319.7,150.7 L320.9,150.1 L322.1,149.6 L323.3,149.0 L324.6,148.5 L325.8,147.9 L327.1,147.4 L328.3,146.8 L329.5,146.3 L330.8,145.7 L332.0,145.2 L333.3,144.6 L334.5,144.0 L335.8,143.5 L337.0,142.9 L338.3,142.4 L339.5,141.8 L340.8,141.3 L342.0,140.7 L343.3,140.2 L344.6,139.6 L345.8,139.1 L347.1,138.5 L348.4,138.0 L349.6,137.4 L350.9,136.9 L352.2,136.3 L353.4,135.8 L354.7,135.2 L356.0,134.7 L357.3,134.1 L358.6,133.6 L359.8,133.0 L361.1,132.5 L362.4,131.9 L363.7,131.4 L365.0,130.8 L366.3,130.3 L367.5,129.7 L368.8,129.1 L370.1,128.6 L371.4,128.0 L372.7,127.5 L374.0,126.9 L375.3,126.4 L376.6,125.8 L377.9,125.3 L379.2,124.7 L380.5,124.2 L381.8,123.6 L383.1,123.1 L384.4,122.5 L385.7,122.0 L387.0,121.4 L388.3,120.9 L389.6,120.3 L390.9,119.8 L392.2,119.2 L393.5,118.7 L394.9,118.1 L396.2,117.6 L397.5,117.0 L398.8,116.5 L400.1,115.9 L401.4,115.4 L402.8,114.8 L404.1,114.2 L405.4,113.7 L406.7,113.1 L408.0,112.6 L409.4,112.0 L410.7,111.5 L412.0,110.9 L413.3,110.4 L414.6,109.8 L416.0,109.3 L417.3,108.7 L418.6,108.2 L420.0,107.6 L421.3,107.1 L422.6,106.5 L423.9,106.0 L425.3,105.4 L426.6,104.9 L427.9,104.3 L429.3,103.8 L430.6,103.2 L431.9,102.7 L433.3,102.1 L434.6,101.6 L436.0,101.0 L437.3,100.5 L438.6,99.9 L440.0,99.3 L441.3,98.8 L442.6,98.2 L444.0,97.7 L445.3,97.1 L446.7,96.6 L448.0,96.0 L449.4,95.5 L450.7,94.9 L452.1,94.4 L453.4,93.8 L454.7,93.3 L456.1,92.7 L457.4,92.2 L458.8,91.6 L460.1,91.1 L461.5,90.5 L462.8,90.0 L464.2,89.4 L465.5,88.9 L466.9,88.3 L468.2,87.8 L469.6,87.2 L470.9,86.7 L472.3,86.1 L473.6,85.6 L475.0,85.0" fill="none" stroke="#1f4e79" stroke-width="2.2"/>
+<path d="M205.0,250.0 L203.2,249.4 L201.4,248.9 L199.6,248.3 L197.8,247.8 L196.0,247.2 L194.2,246.7 L192.4,246.1 L190.6,245.6 L188.7,245.0 L186.9,244.5 L185.1,243.9 L183.3,243.4 L181.5,242.8 L179.7,242.3 L177.9,241.7 L176.1,241.2 L174.3,240.6 L172.5,240.1 L170.7,239.5 L168.9,239.0 L167.1,238.4 L165.3,237.9 L163.5,237.3 L161.7,236.8 L159.8,236.2 L158.0,235.7 L156.2,235.1 L154.4,234.5 L152.6,234.0 L150.8,233.4 L149.0,232.9 L147.2,232.3 L145.4,231.8 L143.6,231.2 L141.8,230.7 L140.0,230.1 L138.2,229.6 L136.4,229.0 L134.6,228.5 L132.8,227.9 L131.0,227.4 L129.1,226.8 L127.3,226.3 L125.5,225.7 L123.7,225.2 L121.9,224.6 L120.1,224.1 L118.3,223.5 L116.5,223.0 L114.7,222.4 L112.9,221.9 L111.1,221.3 L109.3,220.8 L107.5,220.2 L105.7,219.6 L103.9,219.1 L102.1,218.5 L100.3,218.0 L98.4,217.4 L96.6,216.9 L94.8,216.3 L93.0,215.8 L91.2,215.2 L89.4,214.7 L87.6,214.1 L85.8,213.6 L84.0,213.0 L82.2,212.5 L80.4,211.9 L78.6,211.4 L76.8,210.8 L75.0,210.3 L73.2,209.7 L71.4,209.2 L70.5,208.6 L72.3,208.1 L74.1,207.5 L75.9,207.0 L77.7,206.4 L79.5,205.9 L81.3,205.3 L83.1,204.7 L84.9,204.2 L86.7,203.6 L88.5,203.1 L90.3,202.5 L92.1,202.0 L93.9,201.4 L95.7,200.9 L97.5,200.3 L99.3,199.8 L101.2,199.2 L103.0,198.7 L104.8,198.1 L106.6,197.6 L108.4,197.0 L110.2,196.5 L112.0,195.9 L113.8,195.4 L115.6,194.8 L117.4,194.3 L119.2,193.7 L121.0,193.2 L122.8,192.6 L124.6,192.1 L126.4,191.5 L128.2,191.0 L130.1,190.4 L131.9,189.8 L133.7,189.3 L135.5,188.7 L137.3,188.2 L139.1,187.6 L140.9,187.1 L142.7,186.5 L144.5,186.0 L146.3,185.4 L148.1,184.9 L149.9,184.3 L151.7,183.8 L153.5,183.2 L155.3,182.7 L157.1,182.1 L158.9,181.6 L160.8,181.0 L162.6,180.5 L164.4,179.9 L166.2,179.4 L168.0,178.8 L169.8,178.3 L171.6,177.7 L173.4,177.2 L175.2,176.6 L177.0,176.1 L178.8,175.5 L180.6,174.9 L182.4,174.4 L184.2,173.8 L186.0,173.3 L187.8,172.7 L189.6,172.2 L191.5,171.6 L193.3,171.1 L195.1,170.5 L196.9,170.0 L198.7,169.4 L200.5,168.9 L202.3,168.3 L204.1,167.8 L205.9,167.2 L207.7,166.7 L209.5,166.1 L211.3,165.6 L213.1,165.0 L214.9,164.5 L216.7,163.9 L218.5,163.4 L220.4,162.8 L222.2,162.3 L224.0,161.7 L225.8,161.2 L227.6,160.6 L229.4,160.1 L231.2,159.5 L233.0,158.9 L234.8,158.4 L236.6,157.8 L238.4,157.3 L240.2,156.7 L242.0,156.2 L243.8,155.6 L245.6,155.1 L247.4,154.5 L249.2,154.0 L251.1,153.4 L252.9,152.9 L254.7,152.3 L256.5,151.8 L258.3,151.2 L260.1,150.7 L261.9,150.1 L263.7,149.6 L265.5,149.0 L267.3,148.5 L269.1,147.9 L270.9,147.4 L272.7,146.8 L274.5,146.3 L276.3,145.7 L278.1,145.2 L279.9,144.6 L281.8,144.0 L283.6,143.5 L285.4,142.9 L287.2,142.4 L289.0,141.8 L290.8,141.3 L292.6,140.7 L294.4,140.2 L296.2,139.6 L298.0,139.1 L299.8,138.5 L301.6,138.0 L303.4,137.4 L305.2,136.9 L307.0,136.3 L308.8,135.8 L310.7,135.2 L312.5,134.7 L314.3,134.1 L316.1,133.6 L317.9,133.0 L319.7,132.5 L321.5,131.9 L323.3,131.4 L325.1,130.8 L326.9,130.3 L328.7,129.7 L330.5,129.1 L332.3,128.6 L334.1,128.0 L335.9,127.5 L337.7,126.9 L339.5,126.4 L341.4,125.8 L343.2,125.3 L345.0,124.7 L346.8,124.2 L348.6,123.6 L350.4,123.1 L352.2,122.5 L354.0,122.0 L355.8,121.4 L357.6,120.9 L359.4,120.3 L361.2,119.8 L363.0,119.2 L364.8,118.7 L366.6,118.1 L368.4,117.6 L370.3,117.0 L372.1,116.5 L373.9,115.9 L375.7,115.4 L377.5,114.8 L379.3,114.2 L381.1,113.7 L382.9,113.1 L384.7,112.6 L386.5,112.0 L388.3,111.5 L390.1,110.9 L391.9,110.4 L393.7,109.8 L395.5,109.3 L397.3,108.7 L399.1,108.2 L401.0,107.6 L402.8,107.1 L404.6,106.5 L406.4,106.0 L408.2,105.4 L410.0,104.9 L411.8,104.3 L413.6,103.8 L415.4,103.2 L417.2,102.7 L419.0,102.1 L420.8,101.6 L422.6,101.0 L424.4,100.5 L426.2,99.9 L428.0,99.3 L429.8,98.8 L431.7,98.2 L433.5,97.7 L435.3,97.1 L437.1,96.6 L438.9,96.0 L440.7,95.5 L442.5,94.9 L444.3,94.4 L446.1,93.8 L447.9,93.3 L449.7,92.7 L451.5,92.2 L453.3,91.6 L455.1,91.1 L456.9,90.5 L458.7,90.0 L460.6,89.4 L462.4,88.9 L464.2,88.3 L466.0,87.8 L467.8,87.2 L469.6,86.7 L471.4,86.1 L473.2,85.6 L475.0,85.0" fill="none" stroke="#c0392b" stroke-width="2.2"/>
+<circle cx="475.0" cy="85.0" r="5" fill="#000"/><text x="485.0" y="103.0" font-size="13" fill="#000" text-anchor="start">A (75%, 25%)</text>
+<circle cx="205.0" cy="250.0" r="5" fill="#000"/><text x="215.0" y="268.0" font-size="13" fill="#000" text-anchor="start">B (25%, 10%)</text>
+<circle cx="70.0" cy="208.7" r="5" fill="#c0392b"/>
+<line x1="72.7" y1="213.7" x2="102.4" y2="277.5" stroke="#c0392b" stroke-width="1"/>
+<text x="105.1" y="288.5" font-size="12" fill="#c0392b">zero-risk mix: w_A = 25%, E = 13.75%</text>
+<rect x="82" y="36" width="300" height="70" fill="#ffffff" stroke="#dddddd"/>
+<line x1="90" y1="48" x2="118" y2="48" stroke="#7f8c8d" stroke-width="2.5" stroke-dasharray="6,4"/><text x="126" y="52" font-size="12" fill="#222">ρ = +1 (no diversification)</text>
+<line x1="90" y1="68" x2="118" y2="68" stroke="#1f4e79" stroke-width="2.5"/><text x="126" y="72" font-size="12" fill="#222">ρ = 0</text>
+<line x1="90" y1="88" x2="118" y2="88" stroke="#c0392b" stroke-width="2.5"/><text x="126" y="92" font-size="12" fill="#222">ρ = −1 (perfect hedge possible)</text>
+</svg>
+<figcaption style="font-size:0.9em;color:#555;margin-top:0.4em;">Long-only combinations of A (25%, 75%) and B (10%, 25%) under three correlations (L2 s.49–55). Lower correlation bends the frontier further left.</figcaption>
+</figure>
+```
+
+The three cases (L2 s.49–55), using A (25%, 75%) and B (10%, 25%):
+
+- **$\rho = +1$**: the frontier is a straight line, so there is no diversification benefit.
+- **$\rho = 0$**: the frontier bows to the left, so some mixes have less risk than B alone.
+- **$\rho = -1$**: a perfect hedge exists. Setting $\sigma_p = |w\sigma_A - (1-w)\sigma_B| = 0$ gives **[know it]** $w_A = \sigma_B/(\sigma_A + \sigma_B) = 0.25$, with $E = 13.75\%$ and zero risk.
+
+::: {.callout-important title="Zero risk must earn the risk-free rate"}
+If two assets with $\rho = -1$ can be combined into a riskless portfolio, that portfolio must earn $r_f$, or there is an arbitrage. TA2 Q2: Tesla (26%, 50%) and IBM (6%, 25%) with $\rho = -1$ give $w_{Tesla} = 1/3$ and $E = 12.67\%$, so $r_f$ must be 12.67%. TA3 Q7: stocks and crypto mixed 40/60 return 2% in both states; if T-bills pay 4%, short the 2% portfolio and buy T-bills for a riskless profit.
+:::
+
+### Systematic versus diversifiable risk
+
+For an equally weighted portfolio of $N$ stocks, the $N$-asset formula collapses to
+
+$$
+\sigma_p^2 = \frac{1}{N}\,\overline{\sigma^2} + \left(1 - \frac{1}{N}\right)\overline{\text{cov}} \;\longrightarrow\; \overline{\text{cov}} \text{ as } N \to \infty
+$$
+
+The variances wash out but the average covariance stays. For NYSE stocks the average standard deviation is 49%, the average covariance 0.037, and the average correlation about 39% (L2 s.91–92), so even a huge portfolio keeps roughly $\sqrt{0.037} \approx 19\%$ volatility. That floor is **systematic** risk; what disappears is **diversifiable** (non-systematic) risk. In large portfolios, covariance matters, not variance (L2 s.93). Total risk falls at a decreasing rate as you add stocks (TA3 Q1).
+
+### Covariance is marginal risk
+
+The appendix result that sets up the CAPM (L2 s.96–99): **[know it, conceptually]**
+
+$$
+\frac{\partial\, \text{var}(r_p)}{\partial w_j} = 2\,\text{cov}(r_j, r_p)
+$$
+
+Adding a little of asset $j$ raises portfolio variance if $j$ covaries positively with the portfolio and lowers it if negatively. That is why, in TA3 Q3, adding stock Z (covariance −0.5 with your holding) cuts risk more than adding Y (+0.5). At the minimum-variance portfolio you cannot reduce variance by tilting, which happens exactly when $\text{cov}(r_p, r_A) = \text{cov}(r_p, r_B)$.
+
+### Case study: stock–bond correlation (L2 s.62–68)
+
+From 2010–2019 the SPY–AGG correlation was −0.23; from 2020 to September 2026 it was +0.52. When stocks and bonds move together, bonds diversify less and the frontier shifts right. Correlations are not constant across regimes, which is a problem for any analysis that treats them as known.
+
+## The minimum variance portfolio (MVP)
+
+The lowest-variance combination of the risky assets (no risk-free asset involved). Minimizing $\sigma_p^2$ over $w_1$ gives (L2 s.59–60): **[know it]** — the TA says "make sure to memorize the last line" (TA2 s.12)
+
+$$
+w_1^{MVP} = \frac{\sigma_2^2 - \sigma_{1,2}}{\sigma_1^2 + \sigma_2^2 - 2\sigma_{1,2}}, \qquad w_2^{MVP} = 1 - w_1^{MVP}
+$$
+
+*Example (L2 s.60).* $\sigma_1 = 20\%$, $\sigma_2 = 40\%$, $\rho = 0.3$: $\sigma_{1,2} = 0.024$, so $w_1 = (0.16 - 0.024)/(0.04 + 0.16 - 0.048) = 89.47\%$.
+
+The MVP uses only variances and covariances. Expected returns and $r_f$ never enter.
+
+## The mean-variance efficient (tangency) portfolio
+
+With a risk-free asset, the best risky portfolio is the one with the **highest Sharpe ratio**: it gives the steepest CAL (L2 s.74). For two risky assets (L2 s.76): **[on sheet]**
+
+$$
+w_B^{MVE} = \frac{E[r_B^e]\,\sigma_C^2 - E[r_C^e]\,\text{cov}(r_B, r_C)}{E[r_B^e]\,\sigma_C^2 + E[r_C^e]\,\sigma_B^2 - \left(E[r_B^e] + E[r_C^e]\right)\text{cov}(r_B, r_C)}, \qquad r^e = r - r_f
+$$
+
+::: {.callout-warning title="Exam trap: excess returns"}
+Plug in **excess** returns $E[r] - r_f$, not raw returns. This is the single most common slip in PS2. Also convert $\rho$ to covariance: $\text{cov} = \rho\sigma_B\sigma_C$.
+:::
+
+*Example (L2 s.70–76).* B (10%, 20%), C (15%, 30%), $\rho = 0.5$, $r_f = 3\%$. Excess returns 7% and 12%; covariance 0.03. $w_B = (0.07 \cdot 0.09 - 0.12 \cdot 0.03)/(0.07 \cdot 0.09 + 0.12 \cdot 0.04 - 0.19 \cdot 0.03) = 0.50$. Then $E_{MVE} = 12.5\%$, $\sigma_{MVE} = 21.79\%$, Sharpe $= 0.436$, beating B alone (0.35) and C alone (0.40).
+
+```{=html}
+<figure style="max-width:680px;margin:1.5em auto;">
+<svg viewBox="0 0 640 420" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif" role="img" aria-label="Efficient frontier, CAL and MVE portfolio">
+<rect x="0" y="0" width="640" height="420" fill="#ffffff"/>
+<line x1="70.0" y1="30" x2="70.0" y2="360" stroke="#eeeeee"/><text x="70.0" y="378" font-size="12" text-anchor="middle" fill="#444">0%</text>
+<line x1="137.5" y1="30" x2="137.5" y2="360" stroke="#eeeeee"/><text x="137.5" y="378" font-size="12" text-anchor="middle" fill="#444">5%</text>
+<line x1="205.0" y1="30" x2="205.0" y2="360" stroke="#eeeeee"/><text x="205.0" y="378" font-size="12" text-anchor="middle" fill="#444">10%</text>
+<line x1="272.5" y1="30" x2="272.5" y2="360" stroke="#eeeeee"/><text x="272.5" y="378" font-size="12" text-anchor="middle" fill="#444">15%</text>
+<line x1="340.0" y1="30" x2="340.0" y2="360" stroke="#eeeeee"/><text x="340.0" y="378" font-size="12" text-anchor="middle" fill="#444">20%</text>
+<line x1="407.5" y1="30" x2="407.5" y2="360" stroke="#eeeeee"/><text x="407.5" y="378" font-size="12" text-anchor="middle" fill="#444">25%</text>
+<line x1="475.0" y1="30" x2="475.0" y2="360" stroke="#eeeeee"/><text x="475.0" y="378" font-size="12" text-anchor="middle" fill="#444">30%</text>
+<line x1="542.5" y1="30" x2="542.5" y2="360" stroke="#eeeeee"/><text x="542.5" y="378" font-size="12" text-anchor="middle" fill="#444">35%</text>
+<line x1="610.0" y1="30" x2="610.0" y2="360" stroke="#eeeeee"/><text x="610.0" y="378" font-size="12" text-anchor="middle" fill="#444">40%</text>
+<line x1="70" y1="360.0" x2="610" y2="360.0" stroke="#eeeeee"/><text x="62" y="364.0" font-size="12" text-anchor="end" fill="#444">0%</text>
+<line x1="70" y1="294.0" x2="610" y2="294.0" stroke="#eeeeee"/><text x="62" y="298.0" font-size="12" text-anchor="end" fill="#444">4%</text>
+<line x1="70" y1="228.0" x2="610" y2="228.0" stroke="#eeeeee"/><text x="62" y="232.0" font-size="12" text-anchor="end" fill="#444">8%</text>
+<line x1="70" y1="162.0" x2="610" y2="162.0" stroke="#eeeeee"/><text x="62" y="166.0" font-size="12" text-anchor="end" fill="#444">12%</text>
+<line x1="70" y1="96.0" x2="610" y2="96.0" stroke="#eeeeee"/><text x="62" y="100.0" font-size="12" text-anchor="end" fill="#444">16%</text>
+<line x1="70" y1="30.0" x2="610" y2="30.0" stroke="#eeeeee"/><text x="62" y="34.0" font-size="12" text-anchor="end" fill="#444">20%</text>
+<line x1="70" y1="360" x2="610" y2="360" stroke="#333"/><line x1="70" y1="30" x2="70" y2="360" stroke="#333"/>
+<text x="340.0" y="405" font-size="13" text-anchor="middle" fill="#222">Standard deviation σ</text>
+<text x="18" y="195.0" font-size="13" text-anchor="middle" fill="#222" transform="rotate(-90 18 195.0)">Expected return E[r]</text>
+<path d="M607.8,75.1 L605.5,75.7 L603.2,76.4 L600.9,77.0 L598.7,77.6 L596.4,78.2 L594.1,78.8 L591.9,79.4 L589.6,80.0 L587.3,80.6 L585.1,81.2 L582.8,81.8 L580.6,82.4 L578.3,83.0 L576.1,83.6 L573.9,84.2 L571.6,84.9 L569.4,85.5 L567.2,86.1 L565.0,86.7 L562.7,87.3 L560.5,87.9 L558.3,88.5 L556.1,89.1 L553.9,89.7 L551.7,90.3 L549.5,90.9 L547.3,91.5 L545.2,92.1 L543.0,92.7 L540.8,93.4 L538.6,94.0 L536.5,94.6 L534.3,95.2 L532.2,95.8 L530.0,96.4 L527.9,97.0 L525.7,97.6 L523.6,98.2 L521.5,98.8 L519.3,99.4 L517.2,100.0 L515.1,100.6 L513.0,101.2 L510.9,101.8 L508.8,102.5 L506.7,103.1 L504.6,103.7 L502.5,104.3 L500.5,104.9 L498.4,105.5 L496.3,106.1 L494.3,106.7 L492.2,107.3 L490.2,107.9 L488.2,108.5 L486.1,109.1 L484.1,109.7 L482.1,110.3 L480.1,111.0 L478.1,111.6 L476.1,112.2 L474.1,112.8 L472.1,113.4 L470.1,114.0 L468.2,114.6 L466.2,115.2 L464.3,115.8 L462.3,116.4 L460.4,117.0 L458.5,117.6 L456.6,118.2 L454.7,118.8 L452.8,119.5 L450.9,120.1 L449.0,120.7 L447.1,121.3 L445.2,121.9 L443.4,122.5 L441.5,123.1 L439.7,123.7 L437.9,124.3 L436.1,124.9 L434.3,125.5 L432.5,126.1 L430.7,126.7 L428.9,127.3 L427.1,128.0 L425.4,128.6 L423.6,129.2 L421.9,129.8 L420.2,130.4 L418.5,131.0 L416.8,131.6 L415.1,132.2 L413.4,132.8 L411.7,133.4 L410.1,134.0 L408.4,134.6 L406.8,135.2 L405.2,135.8 L403.6,136.4 L402.0,137.1 L400.4,137.7 L398.9,138.3 L397.3,138.9 L395.8,139.5 L394.3,140.1 L392.8,140.7 L391.3,141.3 L389.8,141.9 L388.3,142.5 L386.9,143.1 L385.5,143.7 L384.0,144.3 L382.6,144.9 L381.3,145.6 L379.9,146.2 L378.5,146.8 L377.2,147.4 L375.9,148.0 L374.6,148.6 L373.3,149.2 L372.0,149.8 L370.8,150.4 L369.5,151.0 L368.3,151.6 L367.1,152.2 L366.0,152.8 L364.8,153.4 L363.7,154.1 L362.5,154.7 L361.4,155.3 L360.4,155.9 L359.3,156.5 L358.3,157.1 L357.2,157.7 L356.2,158.3 L355.3,158.9 L354.3,159.5 L353.4,160.1 L352.4,160.7 L351.5,161.3 L350.7,161.9 L349.8,162.6 L349.0,163.2 L348.2,163.8 L347.4,164.4 L346.6,165.0 L345.9,165.6 L345.2,166.2 L344.5,166.8 L343.8,167.4 L343.2,168.0 L342.6,168.6 L342.0,169.2 L341.4,169.8 L340.8,170.4 L340.3,171.1 L339.8,171.7 L339.3,172.3 L338.9,172.9 L338.5,173.5 L338.1,174.1 L337.7,174.7 L337.3,175.3 L337.0,175.9 L336.7,176.5 L336.4,177.1 L336.2,177.7 L336.0,178.3 L335.8,178.9 L335.6,179.5 L335.5,180.2 L335.3,180.8 L335.3,181.4 L335.2,182.0 L335.1,182.6 L335.1,183.2 L335.1,183.8 L335.2,184.4 L335.2,185.0 L335.3,185.6 L335.5,186.2 L335.6,186.8 L335.8,187.4 L336.0,188.0 L336.2,188.7 L336.4,189.3 L336.7,189.9 L337.0,190.5 L337.3,191.1 L337.7,191.7 L338.0,192.3 L338.4,192.9 L338.9,193.5 L339.3,194.1 L339.8,194.7 L340.3,195.3 L340.8,195.9 L341.3,196.5 L341.9,197.2 L342.5,197.8 L343.1,198.4 L343.8,199.0 L344.4,199.6 L345.1,200.2 L345.8,200.8 L346.6,201.4 L347.3,202.0 L348.1,202.6 L348.9,203.2 L349.8,203.8 L350.6,204.4 L351.5,205.0 L352.4,205.7 L353.3,206.3 L354.2,206.9 L355.2,207.5 L356.2,208.1 L357.2,208.7 L358.2,209.3 L359.2,209.9 L360.3,210.5 L361.4,211.1 L362.5,211.7 L363.6,212.3 L364.7,212.9 L365.9,213.5 L367.0,214.1 L368.2,214.8 L369.4,215.4 L370.7,216.0 L371.9,216.6 L373.2,217.2 L374.5,217.8 L375.8,218.4 L377.1,219.0 L378.4,219.6 L379.8,220.2 L381.1,220.8 L382.5,221.4 L383.9,222.0 L385.3,222.6 L386.8,223.3 L388.2,223.9 L389.7,224.5 L391.2,225.1 L392.6,225.7 L394.2,226.3 L395.7,226.9 L397.2,227.5 L398.8,228.1 L400.3,228.7 L401.9,229.3 L403.5,229.9 L405.1,230.5 L406.7,231.1 L408.3,231.8 L410.0,232.4 L411.6,233.0 L413.3,233.6 L414.9,234.2 L416.6,234.8 L418.3,235.4 L420.0,236.0 L421.8,236.6 L423.5,237.2 L425.2,237.8 L427.0,238.4 L428.8,239.0 L430.5,239.6 L432.3,240.3 L434.1,240.9 L435.9,241.5 L437.7,242.1 L439.6,242.7 L441.4,243.3 L443.2,243.9 L445.1,244.5" fill="none" stroke="#1f4e79" stroke-width="2.5"/>
+<path d="M70.0,310.5 L610.0,22.8" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+<path d="M70.0,310.5 L610.0,79.5" fill="none" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="6,4"/>
+<path d="M70.0,310.5 L610.0,46.5" fill="none" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="6,4"/>
+<path d="M70.0,271.3 L75.1,271.3 L80.3,271.1 L85.4,270.9 L90.5,270.6 L95.6,270.1 L100.8,269.6 L105.9,269.0 L111.0,268.3 L116.1,267.5 L121.3,266.6 L126.4,265.6 L131.5,264.5 L136.6,263.3 L141.8,262.0 L146.9,260.6 L152.0,259.1 L157.2,257.6 L162.3,255.9 L167.4,254.1 L172.5,252.3 L177.7,250.3 L182.8,248.3 L187.9,246.1 L193.0,243.9 L198.2,241.6 L203.3,239.1 L208.4,236.6 L213.5,234.0 L218.7,231.3 L223.8,228.5 L228.9,225.6 L234.1,222.6 L239.2,219.5 L244.3,216.3 L249.4,213.0 L254.6,209.6 L259.7,206.2 L264.8,202.6 L269.9,198.9 L275.1,195.2 L280.2,191.3 L285.3,187.4 L290.4,183.3 L295.6,179.2 L300.7,174.9 L305.8,170.6 L310.9,166.2 L316.1,161.7 L321.2,157.1 L326.3,152.3 L331.5,147.5 L336.6,142.6 L341.7,137.6 L346.8,132.5 L352.0,127.4 L357.1,122.1 L362.2,116.7 L367.3,111.2 L372.5,105.7 L377.6,100.0 L382.7,94.2 L387.8,88.4 L393.0,82.4 L398.1,76.4 L403.2,70.3 L408.4,64.0 L413.5,57.7 L418.6,51.3 L423.7,44.7 L428.9,38.1 L434.0,31.4" fill="none" stroke="#27ae60" stroke-width="2" stroke-dasharray="3,3"/>
+<circle cx="70.0" cy="310.5" r="5" fill="#000"/><text x="80.0" y="328.5" font-size="13" fill="#000" text-anchor="start">r_f = 3%</text>
+<circle cx="340.0" cy="195.0" r="5" fill="#1f4e79"/><text x="340.0" y="217.0" font-size="13" fill="#1f4e79" text-anchor="middle">B</text>
+<circle cx="475.0" cy="112.5" r="5" fill="#1f4e79"/><text x="475.0" y="134.5" font-size="13" fill="#1f4e79" text-anchor="middle">C</text>
+<circle cx="335.1" cy="183.2" r="5" fill="#8e44ad"/><text x="325.1" y="179.2" font-size="13" fill="#8e44ad" text-anchor="end">MVP</text>
+<circle cx="364.2" cy="153.8" r="5" fill="#c0392b"/><text x="352.2" y="139.8" font-size="13" fill="#c0392b" text-anchor="end">MVE</text>
+<circle cx="217.1" cy="232.1" r="5" fill="#27ae60"/><text x="229.1" y="254.1" font-size="13" fill="#27ae60" text-anchor="start">optimal for γ = 2 (w = 50%)</text>
+<rect x="82" y="36" width="300" height="90" fill="#ffffff" stroke="#dddddd"/>
+<line x1="90" y1="48" x2="118" y2="48" stroke="#1f4e79" stroke-width="2.5"/><text x="126" y="52" font-size="12" fill="#222">frontier of risky assets B and C</text>
+<line x1="90" y1="68" x2="118" y2="68" stroke="#c0392b" stroke-width="2.5"/><text x="126" y="72" font-size="12" fill="#222">CAL through MVE (Sharpe ≈ 0.44)</text>
+<line x1="90" y1="88" x2="118" y2="88" stroke="#7f8c8d" stroke-width="2.5" stroke-dasharray="6,4"/><text x="126" y="92" font-size="12" fill="#222">CAL with B alone (0.35) or C alone (0.40)</text>
+<line x1="90" y1="108" x2="118" y2="108" stroke="#27ae60" stroke-width="2.5" stroke-dasharray="3,3"/><text x="126" y="112" font-size="12" fill="#222">indifference curve, γ = 2</text>
+</svg>
+<figcaption style="font-size:0.9em;color:#555;margin-top:0.4em;">Assets B (10%, 20%) and C (15%, 30%) with ρ = 0.5 and r_f = 3% (the L2 s.70–76 example). The MVE portfolio is where a line from r_f is tangent to the frontier; an investor with γ = 2 puts 50% of wealth in it.</figcaption>
+</figure>
+```
+
+### Many assets: two-fund separation
+
+All efficient portfolios are combinations of any two efficient portfolios, so the MVP and the MVE trace out the whole frontier (L2 s.85). In matrix form (L2 s.87):
+
+$$
+w^{MV} = \frac{\Sigma^{-1}\mathbf{1}}{\mathbf{1}'\Sigma^{-1}\mathbf{1}}, \qquad w^{MVE} = \frac{\Sigma^{-1}(\mu - r_f\mathbf{1})}{\mathbf{1}'\Sigma^{-1}(\mu - r_f\mathbf{1})}
+$$
+
+The slide is explicit: **you will not be asked to solve this with more than two risky assets on the exam** (L2 s.86). Know the idea, use Solver in practice. One conceptual point from L2 s.89–90: adding asset D (5%, 45%) with −0.2 correlation to the others raises the maximum Sharpe ratio from 0.413 to 0.434 despite D's poor stand-alone profile, because its negative correlation is valuable.
+
+## The complete portfolio: putting it together
+
+The key lesson of mean-variance analysis (L2 s.79, s.93): **everyone holds the same risky portfolio (the MVE)**; risk aversion only decides how much of it to hold versus the risk-free asset.
+
+```{mermaid}
+flowchart TD
+  S1["1. MVE weights<br/>w_B, w_C = 1 − w_B<br/>(use excess returns)"] --> S2["2. MVE statistics<br/>E[r_MVE], σ_MVE"]
+  S2 --> S3["3. Fraction y in MVE<br/>y = (E[r_MVE] − r_f) / (2γσ²_MVE)<br/>or y = σ* / σ_MVE, or y = (E* − r_f)/(E[r_MVE] − r_f)"]
+  S3 --> S4["4. Total-wealth weights<br/>B: y·w_B, C: y·w_C, risk-free: 1 − y"]
+  S4 --> S5["5. Dollars = weight × wealth"]
+```
+
+::: {.callout-important title="Risky weights versus total weights (TA2 s.19)"}
+$w_A^{MVE}$ is the share of your *risky* money in A, not the share of your *wealth*. Your total weight in A is $y \times w_A^{MVE}$. In TA2 Q3(c), with 60% in the MVE and $w_A^{MVE} = 74\%$, you hold 44.4% of wealth (\$66,600 of \$150,000) in A.
+:::
+
+### Worked: PS2 Q2 (Triad funds; also PP Q1)
+
+A is risk-free at 4%; B (19%, 25%); C (10%, 15%); \$200,000 to invest.
+
+*(a)* Match C's 15% risk with A and B: $w_B = 0.15/0.25 = 60\%$, so \$120,000 in B and \$80,000 in A, earning $0.6(19\%) + 0.4(4\%) = 13\%$ versus C's 10%. Same risk, more return.
+
+*(c)* With $\rho_{BC} = 0$: $w_B^{MVE} = (0.15 \cdot 0.0225)/(0.15 \cdot 0.0225 + 0.06 \cdot 0.0625) = 47.4\%$, $w_C = 52.6\%$. $E_{MVE} = 14.26\%$, $\sigma_{MVE} = 14.23\%$, Sharpe 0.72 versus 0.60 (B) and 0.40 (C).
+
+*(d)* Match 15% risk with A and the MVE: $y = 0.15/0.1423 = 105.4\%$. Dollars: risk-free −\$10,786 (borrowing), B \$99,846, C \$110,940. Expected return $4\% + 0.72 \times 15\% = 14.8\%$, beating (a)'s 13% because the MVE's Sharpe ratio (0.72) beats B's (0.60).
+
+*(e)* The efficient set is the CAL through the MVE; every combination on it has the same Sharpe ratio.
+
+### Worked: PS2 Q3(c), recomputed
+
+Funds A (8%, 20%) and B (12%, 30%), $\rho = 0.2$, $r_f = 2\%$, target 10%, \$1 million. Covariance $= 0.012$. $w_B^{MVE} = (0.10 \cdot 0.04 - 0.06 \cdot 0.012)/(0.10 \cdot 0.04 + 0.06 \cdot 0.09 - 0.16 \cdot 0.012) = 0.00328/0.00748 = 43.85\%$, so $w_A = 56.15\%$. $E_{MVE} = 9.75\%$, $\sigma_{MVE} = 18.93\%$, Sharpe 0.41 (vs. 0.30 for A and 0.33 for B). $y = (10 - 2)/(9.75 - 2) = 103.2\%$. Dollars: A \$579,310, B \$452,414, T-bill −\$31,724. Portfolio $\sigma = 19.53\%$, the lowest risk achievable for a 10% target. (The posted solution reports 43.95% and slightly different dollars; see @sec-errata.)
+
+### Worked: TA2 Q3
+
+A (10%, 10%), B (20%, 29%), $\rho = -0.25$, $r_f = 5\%$. $w_A^{MVE} \approx 74\%$, $E_{MVE} \approx 12.6\%$, $\sigma_{MVE} \approx 9.15\%$. To match B's 29% risk: $y = 0.29/0.0915 = 3.17$ (borrow 2.17 times your wealth), giving $E \approx 29.1\%$ versus B's 20%.
+
+## Self-test: Week 2
+
+**1.** Why does every mean-variance investor hold the same mix of risky assets, regardless of risk aversion?
+
+::: {.callout-tip collapse="true" title="Answer"}
+With a risk-free asset available, the steepest CAL (highest Sharpe ratio) dominates every other risky combination. Every investor wants to be on that line; risk aversion only chooses the point on it, i.e., the split between the MVE and the risk-free asset.
+:::
+
+**2.** $\sigma_1 = 10\%$, $\sigma_2 = 20\%$, $\rho = 0$. What is the MVP weight on asset 1?
+
+::: {.callout-tip collapse="true" title="Answer"}
+$w_1 = (0.04 - 0)/(0.01 + 0.04 - 0) = 80\%$.
+:::
+
+**3.** (TAR Q5 / PP Q3) $r_f = 5\%$. Which security belongs in the complete portfolio? A (15%, $\sigma^2 = 0.04$), B (10%, 0.0225), C (12%, 0.10), D (13%, 0.0625).
+
+::: {.callout-tip collapse="true" title="Answer"}
+A. Sharpe ratios: A 0.50, B 0.33, C 0.22, D 0.32. Watch out: the table gives **variances**, so take square roots first.
+:::
+
+**4.** (TAR Q6 / PP Q4) Which cannot lie on the efficient frontier: A (13%, 31%), B (7%, 10%), C (22%, 54%), D (18%, 22%)?
+
+::: {.callout-tip collapse="true" title="Answer"}
+A. D has a higher expected return and lower standard deviation, so A is mean-variance dominated.
+:::
+
+**5.** (TAR Q7 / PP Q5) Your portfolio has $E = 12\%$, $\sigma = 4\%$. Stock XYZ has correlation −1 with it. What can adding XYZ do?
+
+::: {.callout-tip collapse="true" title="Answer"}
+With a carefully chosen weight you can drive risk to zero: $\sigma_p^2 = (w_{XYZ}\sigma_{XYZ} - w_{op}\sigma_{op})^2$, which is zero when $w_{XYZ}\sigma_{XYZ} = w_{op}\sigma_{op}$. Not "any weight."
+:::
+
+**6.** (TA2 Q1) \$1,000 of your own, borrow \$1,000 at 5%, split equally between stocks returning 10% and 15%. Expected return?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Weights 100%, 100%, −100%: $10\% + 15\% - 5\% = 20\%$.
+:::
+
+**7.** Your complete portfolio is 70% MVE and 30% T-bills. How does its Sharpe ratio compare with the MVE's?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Identical. Any mix of the risk-free asset and one risky portfolio lies on that portfolio's CAL.
+:::
+
+
+# Week 3a — Mean-variance analysis in practice {#sec-mvpractice}
+
+Mean-variance theory is uncontroversial; implementing it is hard (L2 s.94). The Harvard Management Company (HMC) case shows why.
+
+## Getting inputs (L3a s.18–20)
+
+The consensus is that variances and covariances can be estimated reasonably well from history, while **expected returns cannot**: the future may look very different from the past, and the optimal weights are far more sensitive to means than to variances. HMC combined long and short histories, consultant views, current market conditions, and sanity checks across asset classes. Its estimates ranged from cash (3%, 1%) and inflation-indexed bonds (3.6%, 3%) up to emerging markets (8.5%, 20%) and private equity (9.5%, 20%).
+
+## What goes wrong with unconstrained optimization
+
+Unconstrained, HMC's MVE put about 30% in commodities and 18% in inflation-indexed bonds and *shorted* absolute-return funds (about −9%); the minimum variance portfolio was 86% inflation-indexed bonds (L3a s.23). These are not portfolios anyone would hold. The reasons (L3a s.34–37):
+
+- **Sensitivity.** Optimal weights swing wildly with small changes in inputs, especially expected returns.
+- **Estimation error.** Britten-Jones (1999) estimated global tangency weights with standard errors: Australia 12.8% (SE 23.6%), Canada −45.2% (SE 38.9%), U.S. 59.3% (SE 47.0%). The 95% interval for Australia runs from roughly −33% to +59%, so we know almost nothing about the true weights.
+- **1/N is hard to beat.** DeMiguel, Garlappi, and Uppal (2009): none of 14 optimization models consistently beats equal weighting out of sample across 7 datasets. You would need about 250 years of data with 25 assets (500 years with 50) for sample-based MVE to win.
+
+The fix in practice is to impose constraints: no short sales or margin ($0 \le w_i \le 1$), or policy bands around target weights (L3a s.24–29). HMC's constrained policy portfolio had a Sharpe ratio of about 0.35 (L3a s.31). In step three, practitioners pick a risk level rather than a $\gamma$, using the normal-distribution rule of thumb: returns fall within $E \pm \sigma$ about 68% of the time and $E \pm 2\sigma$ about 95% of the time (L3a s.30).
+
+The same lesson showed up in **PS4 Q3**: the unconstrained MVE of the market, small-cap, and value portfolios was −125.95% market, −31.55% small, and +257.50% value (L5a s.20). The posted solution's advice: these are ex post optimal, but you should not use them going forward. Remedies listed: forbid short sales (which pushed the solution to a corner of 100% value), shrink correlations toward their mean, assume stocks covary only through the market, or shrink weights toward 1/3. The trade-off is that constraints sacrifice in-sample Sharpe ratio in exchange for robustness to estimation error.
+
+## Estimating expected returns (L3a s.38–39)
+
+Averaging the last ten years of returns is not reasonable: the estimate is noisy and backward-looking. A better route is a variable observed today that forecasts returns. The dividend yield, the earnings-price ratio, and some interest-rate variables work. Example regression: $r_t = -0.0932 + 4.46\,(D_{t-1}/P_{t-1}) + \varepsilon_t$, with a slope standard error of 1.70. The t-statistic is $4.46/1.70 = 2.62$; since $|t| \geq 2$, the slope is statistically significant.
+
+Harvard's actual allocation shows how much practice drifted from 1980's 66% public equity and 35% bonds to 2025's 14% public equity, 41% private equity, and 31% hedge funds (L3a s.32).
+
+# Weeks 3–4 — The Capital Asset Pricing Model {#sec-capm}
+
+Mean-variance analysis tells *you* what to hold given inputs. The CAPM asks what happens in equilibrium if *everyone* does it, and the answer pins down every asset's expected return.
+
+## Assumptions and the separation principle
+
+The lecture's two key assumptions (L3b s.3, L4a s.3): **everybody knows what the tangency portfolio is** (everyone uses mean-variance analysis with the same inputs), and **everybody wants to hold it**. The TA's fuller list (TA3 s.7): homogeneous expectations, rational risk-averse utility maximizers, price takers, no transaction costs, and unlimited borrowing and lending at $r_f$.
+
+The separation principle follows: everyone holds risky assets in the same proportions (L3b s.4). If the tangency portfolio is 40% utilities and 60% tech, an aggressive investor holds exactly 40/60, while a cautious one holding 90% T-bills holds 4% utilities and 6% tech. The ratio is always 4:6.
+
+## Deriving the CAPM (L3b s.5–7)
+
+At the tangency portfolio $T$, the reward per unit of marginal risk must be equal across all assets (otherwise you could tilt and raise the Sharpe ratio):
+
+$$
+\frac{E[r_i] - r_f}{\text{cov}(r_i, r_T)} = \frac{E[r_j] - r_f}{\text{cov}(r_j, r_T)} = \frac{E[r_T] - r_f}{\text{var}(r_T)}
+$$
+
+Solving for $E[r_i]$ needs $T$, which we do not know. Market clearing closes the loop: all shares must be held, so in aggregate investors hold the market portfolio. Since everyone holds $T$, **the tangency portfolio is the market portfolio**. Replacing $T$ with $M$: **[on sheet]**
+
+$$
+E[r_i] = r_f + \beta_i\left(E[r_m] - r_f\right), \qquad \beta_i = \frac{\text{cov}(r_i, r_m)}{\text{var}(r_m)}
+$$
+
+Read it as $E[r_i] = r_f + \beta_i \times \lambda$: $\beta_i$ is the *amount* of risk, and $\lambda = E[r_m] - r_f$ is the *price* of risk (L4a s.5).
+
+## What is risk in the CAPM?
+
+**Covariance with the market, measured by beta** (L3b s.7–9). Covariance is marginal variance (Week 2's $\partial\text{var}/\partial w_j = 2\text{cov}$), and as in economics, it is the margin that sets prices.
+
+The intuition: high-beta stocks pay off when the market is up, exactly when you need money least, so they must offer high expected returns to be held. An asset with huge variance but zero covariance with the market earns only $r_f$: in a diversified portfolio its variance washes out, so it deserves no compensation. A negative-beta asset acts as insurance and should earn *less* than $r_f$.
+
+```{=html}
+<figure style="max-width:680px;margin:1.5em auto;">
+<svg viewBox="0 0 640 420" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif" role="img" aria-label="Security market line">
+<rect x="0" y="0" width="640" height="420" fill="#ffffff"/>
+<line x1="70.0" y1="30" x2="70.0" y2="360" stroke="#eeeeee"/><text x="70.0" y="378" font-size="12" text-anchor="middle" fill="#444">0</text>
+<line x1="137.5" y1="30" x2="137.5" y2="360" stroke="#eeeeee"/><text x="137.5" y="378" font-size="12" text-anchor="middle" fill="#444">0.25</text>
+<line x1="205.0" y1="30" x2="205.0" y2="360" stroke="#eeeeee"/><text x="205.0" y="378" font-size="12" text-anchor="middle" fill="#444">0.5</text>
+<line x1="272.5" y1="30" x2="272.5" y2="360" stroke="#eeeeee"/><text x="272.5" y="378" font-size="12" text-anchor="middle" fill="#444">0.75</text>
+<line x1="340.0" y1="30" x2="340.0" y2="360" stroke="#eeeeee"/><text x="340.0" y="378" font-size="12" text-anchor="middle" fill="#444">1</text>
+<line x1="407.5" y1="30" x2="407.5" y2="360" stroke="#eeeeee"/><text x="407.5" y="378" font-size="12" text-anchor="middle" fill="#444">1.25</text>
+<line x1="475.0" y1="30" x2="475.0" y2="360" stroke="#eeeeee"/><text x="475.0" y="378" font-size="12" text-anchor="middle" fill="#444">1.5</text>
+<line x1="542.5" y1="30" x2="542.5" y2="360" stroke="#eeeeee"/><text x="542.5" y="378" font-size="12" text-anchor="middle" fill="#444">1.75</text>
+<line x1="610.0" y1="30" x2="610.0" y2="360" stroke="#eeeeee"/><text x="610.0" y="378" font-size="12" text-anchor="middle" fill="#444">2</text>
+<line x1="70" y1="360.0" x2="610" y2="360.0" stroke="#eeeeee"/><text x="62" y="364.0" font-size="12" text-anchor="end" fill="#444">0%</text>
+<line x1="70" y1="277.5" x2="610" y2="277.5" stroke="#eeeeee"/><text x="62" y="281.5" font-size="12" text-anchor="end" fill="#444">4%</text>
+<line x1="70" y1="195.0" x2="610" y2="195.0" stroke="#eeeeee"/><text x="62" y="199.0" font-size="12" text-anchor="end" fill="#444">8%</text>
+<line x1="70" y1="112.5" x2="610" y2="112.5" stroke="#eeeeee"/><text x="62" y="116.5" font-size="12" text-anchor="end" fill="#444">12%</text>
+<line x1="70" y1="30.0" x2="610" y2="30.0" stroke="#eeeeee"/><text x="62" y="34.0" font-size="12" text-anchor="end" fill="#444">16%</text>
+<line x1="70" y1="360" x2="610" y2="360" stroke="#333"/><line x1="70" y1="30" x2="70" y2="360" stroke="#333"/>
+<text x="340.0" y="405" font-size="13" text-anchor="middle" fill="#222">Beta β</text>
+<text x="18" y="195.0" font-size="13" text-anchor="middle" fill="#222" transform="rotate(-90 18 195.0)">Expected return E[r]</text>
+<path d="M70.0,298.1 L610.0,50.6" fill="none" stroke="#1f4e79" stroke-width="2.5"/>
+<circle cx="70.0" cy="298.1" r="5" fill="#000"/><text x="80.0" y="316.1" font-size="13" fill="#000" text-anchor="start">r_f = 3%</text>
+<circle cx="340.0" cy="174.4" r="5" fill="#1f4e79"/><text x="350.0" y="192.4" font-size="13" fill="#1f4e79" text-anchor="start">M (β = 1, 9%)</text>
+<line x1="286.0" y1="133.1" x2="286.0" y2="199.1" stroke="#27ae60" stroke-width="2" stroke-dasharray="4,3"/>
+<line x1="475.0" y1="174.4" x2="475.0" y2="112.5" stroke="#c0392b" stroke-width="2" stroke-dasharray="4,3"/>
+<circle cx="286.0" cy="133.1" r="5" fill="#27ae60"/><text x="276.0" y="119.1" font-size="13" fill="#27ae60" text-anchor="end">U: α = +3.2%</text>
+<text x="276.0" y="135.1" font-size="13" fill="#27ae60" text-anchor="end">underpriced (buy)</text>
+<circle cx="475.0" cy="174.4" r="5" fill="#c0392b"/><text x="485.0" y="179.4" font-size="13" fill="#c0392b" text-anchor="start">O: α = −3%</text>
+<text x="485.0" y="195.4" font-size="13" fill="#c0392b">overpriced (sell)</text>
+<text x="596.5" y="44.8" font-size="12" fill="#1f4e79" text-anchor="end">SML: slope = E[r_m] − r_f = 6%</text>
+</svg>
+<figcaption style="font-size:0.9em;color:#555;margin-top:0.4em;">The security market line with r_f = 3% and E[r_m] = 9%. Alpha is the vertical distance from the line.</figcaption>
+</figure>
+```
+
+## Three lines you must not confuse
+
+| | CAL | CML | SML |
+|:--|:--|:--|:--|
+| Axes | $E[r]$ vs. $\sigma$ | $E[r]$ vs. $\sigma$ | $E[r]$ vs. $\beta$ |
+| What it plots | Risk-free + *any* risky portfolio | Risk-free + the *market* (CAL with $T = M$) | Every asset's CAPM expected return |
+| Slope | Sharpe ratio of that portfolio | Market Sharpe ratio $(E[r_m] - r_f)/\sigma_m$ | Market risk premium $E[r_m] - r_f$ (the Treynor ratio of the market) |
+| Who lies on it | Combinations of that portfolio and $r_f$ | Only efficient portfolios | **All** assets and portfolios, if the CAPM holds |
+
+The SML is not about efficiency: a portfolio deep inside the frontier can still sit on the SML (L3b s.12–13, L4a s.6–7, TA4 s.7–9).
+
+## Beta facts worth memorizing
+
+Beta can be written with a correlation, which is often how exam questions give it: **[know it]**
+
+$$
+\beta_i = \frac{\rho_{i,m}\,\sigma_i\,\sigma_m}{\sigma_m^2} = \rho_{i,m}\frac{\sigma_i}{\sigma_m}
+$$
+
+- The market has $\beta = 1$; the risk-free asset has $\beta = 0$.
+- A portfolio's beta is the weighted average of its components' betas **[on sheet]**. Holding 75% market and 25% T-bills gives $\beta = 0.75$ (TA4 Q4).
+- The market-cap-weighted average beta of all assets equals 1. TAR Q10: A is \$300,000 of a \$500,000 market with $\beta_A = 1.1$, so $1 = 0.6(1.1) + 0.4\beta_B$ and $\beta_B = 0.85$.
+- Two stocks with the same $\sigma$ can have different expected returns under the CAPM, because their correlations with the market can differ (TA4 Q3).
+- Cyclical businesses have high betas: luxury goods above necessities (TA4 Q2); tech and consumer discretionary near the top of sector betas, consumer staples and energy near the bottom (L3b s.11).
+
+## Estimating beta and alpha
+
+Run a time-series regression of excess returns on market excess returns (L3b s.15, L4a s.8): **[on sheet]**
+
+$$
+r_{i,t} - r_{f,t} = \alpha_i + \beta_i(r_{m,t} - r_{f,t}) + \varepsilon_{i,t}
+$$
+
+IBM's estimate is $\hat\beta = 0.7754$, so with $r_f = 4\%$ and $E[r_m] = 8\%$ the CAPM expected return is $4\% + 0.7754 \times 4\% = 7.1\%$ (L3b s.17). Betas drift, so use recent data: five years of monthly returns is reasonable (Yahoo uses three).
+
+Alpha is what you got minus what the CAPM says you should have gotten (L3b s.18): **[on sheet]**
+
+$$
+\hat\alpha_i = (\bar r_i - \bar r_f) - \hat\beta_i(\bar r_m - \bar r_f)
+$$
+
+A positive alpha means the asset beat its risk-adjusted benchmark. It means *either* the asset is mispriced *or* the CAPM is the wrong model; the data alone cannot tell you which (L3b s.18, TA3 s.13). This is the seed of the joint hypothesis problem in @sec-efficiency.
+
+::: {.callout-note title="Using alpha to trade (TA3 Q6, TAR Q11)"}
+If your forecast of a stock's return is **above** the SML, it is underpriced: buy. Below the SML, it is overpriced: sell. TA3 Q6: $\beta = 0.8$, $r_f = 4\%$, $E[r_m] = 11\%$ gives a required 9.6%, but the stock is expected to earn 11%, so buy. TAR Q11: ABC ($\beta = 2.25$) should have earned $4\% + 2.25 \times 8\% = 22\%$ yesterday but earned 15%; under market efficiency, bad firm-specific news came out.
+:::
+
+## Variance decomposition and $R^2$
+
+Taking the variance of the regression splits risk into two pieces (PS3 hint, L4b s.30): **[know it]**
+
+$$
+\underbrace{\sigma_i^2}_{\text{total}} = \underbrace{\beta_i^2\sigma_m^2}_{\text{systematic}} + \underbrace{\sigma_\varepsilon^2}_{\text{idiosyncratic}}, \qquad R_i^2 = \frac{\beta_i^2\sigma_m^2}{\sigma_i^2} = \rho_{i,m}^2
+$$
+
+$R^2$ is the share of variance that is systematic; $1 - R^2$ is the share you can diversify away. TA4 Q5: GameStop's correlation with the S&P is 0.5, so $R^2 = 0.25$ and **75%** of its variance is diversifiable.
+
+### Worked: PS3 Q1
+
+$\sigma_1^2 = 0.16$, $\sigma_2^2 = 0.09$, $\sigma_M^2 = 0.04$, $\sigma_{1,2} = 0.02$, $\sigma_{1,M} = 0.064$, $\sigma_{2,M} = 0.032$; portfolio 75/25.
+
+| | Variance | Beta | $R^2$ |
+|:--|--:|--:|--:|
+| Asset 1 | 0.16 | $0.064/0.04 = 1.60$ | $1.6^2(0.04)/0.16 = 0.64$ |
+| Asset 2 | 0.09 | $0.032/0.04 = 0.80$ | $0.8^2(0.04)/0.09 = 0.284$ |
+| Portfolio | $0.75^2(0.16) + 0.25^2(0.09) + 2(0.75)(0.25)(0.02) = 0.103$ | $0.75(1.6) + 0.25(0.8) = 1.40$ | $1.4^2(0.04)/0.103 = 0.76$ |
+
+### Worked: PS3 Q2 (interpretation)
+
+| Portfolio | Mean | SD | Variance | Beta | $R^2$ |
+|:--|--:|--:|--:|--:|--:|
+| GM + IBM | 0.95 | 6.38 | 40.72 | 0.76 | 0.24 |
+| GM + IBM + Busch | 1.19 | 5.24 | 27.45 | 0.72 | 0.32 |
+| GM + Toyota + IBM + Busch | 1.32 | 4.58 | 20.95 | 0.78 | 0.49 |
+| 13 stocks | 1.68 | 5.00 | 25.02 | 0.93 | 0.58 |
+
+Variance falls from 2 to 4 stocks (diversification), then rises slightly at 13 because the added stocks are individually more volatile. **Beta does not diversify away**: it is a weighted average and drifts toward 1, the average stock's beta. **$R^2$ rises steadily** as idiosyncratic risk cancels and the portfolio looks more like the market (PS3 solution; L4a s.11).
+
+### The two-asset ratio trick (TA4 Q6)
+
+If the CAPM holds for two assets, dividing their SML equations cancels the market risk premium and $\sigma_m^2$:
+
+$$
+\frac{E[r_B] - r_f}{E[r_A] - r_f} = \frac{\beta_B}{\beta_A} = \frac{\text{cov}(r_B, r_m)}{\text{cov}(r_A, r_m)}
+$$
+
+With covariances 0.15 and 0.10, $E[r_A] = 8\%$, and $r_f = 5\%$: $E[r_B] = 5\% + 1.5 \times 3\% = 9.5\%$. (The TA slide prints 14.375%, which does not follow from its own formula; see @sec-errata.)
+
+## Why the CAPM is useful
+
+It replaces a giant estimation problem with a small one. For $N = 100$ assets, full mean-variance analysis needs 100 means, 100 standard deviations, and 4,950 correlations (5,150 inputs); the TA's count for the CAPM is $3N + 2 = 302$ (100 expected returns, 100 standard deviations, 100 betas, plus the market premium and market variance), with no pairwise correlations at all (TA3 s.8). Firms use it for the cost of capital, and investors use it to evaluate managers (L3b s.19, s.30).
+
+### Worked: cost of capital (TAR Q8, PP Q6)
+
+A start-up pays \$3,000 a year forever, $\beta = 0.8$, $r_f = 6\%$, market premium 3%. Discount rate $6\% + 0.8 \times 3\% = 8.4\%$, value $3000/0.084 = \$35{,}714.29$. If the true beta is 1.1, the rate is 9.3% and the value \$32,258.06: you overpaid \$3,456.22. If beta is 0.8 but the premium is 5%, the rate is 10% and the value \$30,000: you overpaid \$5,714.29. **Getting the market risk premium right matters at least as much as getting beta right.**
+
+### Worked: TAR Q12 / PP Q10 (hard but important)
+
+You hold the S&P (12%, 15%), $r_f = 5\%$. Strategy 1: 15%, $\sigma = 0.50$, $\rho = 0.35$. Strategy 2: 6%, $\sigma = 0.30$, $\rho = 0.25$. Are their alphas and betas equal? **False.** $\beta_1 = 0.35(0.50)(0.15)/0.15^2 = 1.167$ and $\beta_2 = 0.25(0.30)(0.15)/0.15^2 = 0.50$. $\alpha_1 = 10\% - 1.167(7\%) = +1.83\%$ and $\alpha_2 = 1\% - 0.5(7\%) = -2.5\%$. Notice that $\rho_{1,2} = 0.4$ is a red herring. Going further (L4b s.20–26): strategy 1's positive alpha means tilting toward it raises your Sharpe ratio; strategy 2's negative alpha means *shorting* it would.
+
+## Does the CAPM work? (L3b s.20–31, L4a s.12–23)
+
+Tests sort stocks into beta portfolios and compare average returns with the SML. The general finding (1963–2013 U.S.; Frazzini and Pedersen 2014 across many assets): **the empirical SML is too flat — high beta means low alpha.** The classic test is Fama–MacBeth (1973): first estimate each asset's beta from time series, then regress average returns on betas across assets (TA4 s.10).
+
+Why might it fail?
+
+- **Roll critique (1977).** The true market portfolio (including real estate and human capital) is unobservable, so a test with the S&P 500 only tests whether the S&P is mean-variance efficient.
+- **Time variation.** Betas and the market premium change over time; the conditional CAPM helps but still fails.
+- **Leverage constraints.** Investors who want high returns but cannot borrow buy high-beta stocks instead, bidding up their prices and pushing down their alphas. That produces exactly the flat SML. The trade that exploits it is *betting against beta*: lever up low-beta stocks and short high-beta stocks.
+- **Wrong model or wrong beliefs.** Either people want to hold something other than the tangency portfolio (multifactor models, Week 4) or they do not know what it is (behavioral finance, Week 5).
+
+Even so, the model remains central: its notion of risk is intuitive and it gives precise predictions (L3b s.30–31).
+
+## Self-test: CAPM
+
+**1.** (TA3 Q5) $E[r_m] = 16\%$, $\sigma_m = 0.30$, $r_f = 5\%$, $\sigma_A = 0.40$, $\rho_{A,m} = 0.6$. CAPM expected return on A?
+
+::: {.callout-tip collapse="true" title="Answer"}
+$\text{cov} = 0.6(0.4)(0.3) = 0.072$, $\beta = 0.072/0.09 = 0.8$, $E[r_A] = 5\% + 0.8(11\%) = 13.8\% \approx 14\%$.
+:::
+
+**2.** (TA4 Q1) XYZ has $E = 11\%$, $\beta = 0.5$; the market has $E = 14\%$. Is XYZ above, on, or below the SML?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Cannot tell without $r_f$. The SML is anchored at $r_f$. (If $r_f = 5\%$, the SML gives 9.5% at $\beta = 0.5$, so XYZ would be above it.)
+:::
+
+**3.** (TA3 Q2) What is the relevant risk measure for a security held in a diversified portfolio?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Covariance (beta) risk, not standard deviation.
+:::
+
+**4.** (TA3 Q4) $\beta = 1.3$, $r_f = 3\%$, expected market **return** 9%. CAPM expected return?
+
+::: {.callout-tip collapse="true" title="Answer"}
+$3\% + 1.3(9\% - 3\%) = 10.8\%$. Watch for "market return" versus "market risk premium."
+:::
+
+**5.** Why does the CAPM say an asset with enormous variance but zero beta earns only $r_f$?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Its risk is entirely idiosyncratic, which disappears in a diversified portfolio. It adds nothing at the margin to the variance of the market portfolio, so investors require no premium.
+:::
+
+**6.** A stock's $R^2$ against the market is 0.36 and its total volatility is 50%. What are its correlation with the market and its idiosyncratic volatility?
+
+::: {.callout-tip collapse="true" title="Answer"}
+$\rho = \sqrt{0.36} = 0.6$ (assuming positive beta). Idiosyncratic variance $= (1 - 0.36)(0.25) = 0.16$, so idiosyncratic volatility is 40%.
+:::
+
+
+# Weeks 4–5 — Multifactor models {#sec-multifactor}
+
+## Expanding the notion of "bad times"
+
+The principle is unchanged from the CAPM: assets that do poorly in bad times are risky and must offer high returns. In the CAPM, bad times are when the market falls. In reality, bad times can also be when real estate falls, the labor market weakens, or news about future investment opportunities turns bad (L4b s.4). If portfolios of assets $\tilde F_k$ capture those bad times, we measure exposure with a time-series regression and price it: **[on sheet]**
+
+$$
+r_i - r_f = a_i + \beta_{i,1}\tilde F_1 + \cdots + \beta_{i,K}\tilde F_K + \varepsilon_i, \qquad E[r_i] - r_f = \alpha_i + \beta_{i,1}\lambda_1 + \cdots + \beta_{i,K}\lambda_K
+$$
+
+$\lambda_k$ is factor $k$'s risk premium. When factors are traded long-short portfolios (as in Fama–French), **the risk premium is just the factor's expected return** (FS). If the model holds, $\alpha_i = 0$.
+
+How do we find factors (L4b s.7)? Approach 1 builds portfolios correlated with things we believe are risks (say, labor-market news), but such factors have not commanded much of a premium in the data. Approach 2 starts from assets with high CAPM alpha: if markets are efficient, those returns must be compensation for some risk, so use them as factors. Fama and French took approach 2.
+
+## Size and value
+
+Value is measured with the book-to-market ratio, $B/M$ = book equity / market equity (L4b s.9). **High B/M = value** firms; **low B/M = growth** firms. Size is market equity: small versus big. Both small and value firms have historically earned high returns that **CAPM beta does not explain**; the effect shows up in alpha (L4b s.10). Fama and French (1992) found a size spread of about 7.1% a year between the smallest and largest deciles, and a value spread of about 6.3% between high and low B/M deciles (TA4 s.13–14).
+
+## The Fama–French three-factor model (1993)
+
+$$
+r_i - r_f = \alpha_i + \beta_{MKT}(r_{MKT} - r_f) + \beta_{SMB}\,r_{SMB} + \beta_{HML}\,r_{HML} + \varepsilon_i
+$$
+
+**SMB** (small minus big) is long small stocks, short big stocks. **HML** (high minus low) is long high-B/M (value), short low-B/M (growth). Reading the loadings: a positive $\beta_{SMB}$ means the asset behaves like a small stock; a positive $\beta_{HML}$ means it behaves like a value stock; negative loadings mean big or growth.
+
+*Small-value example (L4b s.12, 1963–2026).* CAPM: intercept 0.34, $\beta = 1.08$. Three-factor: intercept 0.04 with loadings 1.00 on the market, 0.88 on SMB, and 0.71 on HML. (The intercepts are presumably % per month, roughly 4% a year shrinking to 0.5%.) The alpha is no longer significant: the "anomaly" is explained by the portfolio's size and value exposures. In the TA's summary, $R^2$ rises from about 25% to 75% (TA4 s.12).
+
+### Evidence and extensions (L4b s.13–17)
+
+Value has survived substantial out-of-sample testing (international, cross-country, other asset classes), though it has been weaker since its discovery. Size is more troublesome and depends on the specification. HML has a *negative* market beta, so controlling for the market makes its alpha look better than its raw return. Many more anomalies have since been documented (Jensen, Kelly, and Pedersen 2021 replicate them worldwide), and the 2015 **five-factor model** adds **RMW** (robust minus weak profitability) and **CMA** (conservative minus aggressive investment). Momentum is another well-known factor (TA4 s.12). None of these is the full story.
+
+## Alphas and the mean-variance frontier
+
+This is one of the most important conceptual links in the course (L4b s.20–26).
+
+::: {.callout-important title="Non-zero alpha = a chance to raise your Sharpe ratio"}
+Regress asset $i$ on your current portfolio $p$: $r_i - r_f = \alpha_i + \beta_i(r_p - r_f) + \varepsilon_i$. A positive $\alpha_i$ means the asset's *marginal* Sharpe ratio exceeds your portfolio's, so tilting toward it raises your Sharpe ratio. Therefore, if any asset has a non-zero CAPM alpha, **the market portfolio cannot be mean-variance efficient**.
+:::
+
+The lecture example: with MKT, SMB, and HML available, the maximum Sharpe ratio is 0.69. Add an asset A with zero alpha relative to the three factors (loadings 0.5 on each) and the maximum stays at 0.69, since A is just a repackaging of existing factors. Give A an alpha of **−4%** and the maximum jumps to **0.84**. The position you take in A is a **short** one. Any non-zero alpha, positive or negative, expands the frontier if you can trade it in the right direction.
+
+## Systematic versus idiosyncratic risk, and the market model
+
+Realized returns come from a few common factors (interest rates, inflation, productivity: systematic, non-diversifiable) plus firm-specific news (product launches, management changes, lawsuits, strikes: idiosyncratic, diversifiable) (L4b s.28). The one-factor **market model** $r_i = \alpha_i + \beta_i r_m + \varepsilon_i$ describes *realized* returns, while the CAPM is a statement about *expected* returns; the two are consistent, since taking expectations of the market model gives the CAPM if alpha is zero (L4b s.29). The residual has mean zero and is uncorrelated with the market, which is what makes $\sigma_i^2 = \beta_i^2\sigma_m^2 + \sigma_\varepsilon^2$ work.
+
+## Problem Set 4: what the 25 portfolios showed
+
+Rows are size quintiles (small at top), columns are B/M quintiles (growth on the left, value on the right). Alphas are annualized: $12 \times 100 \times \hat\alpha$ (L5a s.14).
+
+:::: {.columns}
+::: {.column width="48%"}
+**CAPM alphas (% per year)**
+
+| | Low | | | | High |
+|:--|--:|--:|--:|--:|--:|
+| Small | −4.88 | −1.62 | 1.92 | 5.14 | 5.91 |
+| 2 | −1.98 | 1.71 | 2.58 | 3.89 | 4.18 |
+| 3 | −1.17 | 2.20 | 2.12 | 3.45 | 3.12 |
+| 4 | 0.07 | 0.68 | 1.86 | 2.90 | 1.17 |
+| Big | −0.16 | −0.11 | 1.39 | −0.52 | 1.58 |
+:::
+::: {.column width="4%"}
+:::
+::: {.column width="48%"}
+**Three-factor alphas (% per year)**
+
+| | Low | | | | High |
+|:--|--:|--:|--:|--:|--:|
+| Small | −8.42 | −4.40 | −1.48 | 1.45 | 0.88 |
+| 2 | −2.56 | −0.04 | 0.18 | 0.76 | −0.22 |
+| 3 | −1.33 | 1.39 | 0.41 | 0.86 | −0.84 |
+| 4 | 0.93 | 0.06 | 0.32 | 0.58 | −2.66 |
+| Big | 0.98 | 0.06 | 0.51 | −2.63 | −1.78 |
+:::
+::::
+
+The patterns to be able to describe in words:
+
+- **CAPM alphas rise from growth to value**, especially among small stocks: from −4.88% (small growth) to +5.91% (small value). Average excess returns rise from about 9.5% (growth column) to 15.4% (value column).
+- **Betas do not line up with returns.** Small growth has the *highest* CAPM beta (1.65) but the *lowest* return in its row (9.75%). The CAPM's fitted returns span only about 8.4%–14.6%, while actual average excess returns span 8.3%–18.3%, so the predicted-versus-actual plot is too flat and misses the 45° line (L5a s.15).
+- **Consistency check:** the implied market premium $(\bar r^e_i - \hat\alpha_i)/\hat\beta_i$ comes out at about 8.9% for every portfolio, as it must.
+- **Three-factor loadings behave as designed:** $\beta_{SMB}$ falls from about 1.2–1.5 in the small row to about −0.2 in the big row; $\beta_{HML}$ rises from negative in the growth column to about 0.9–1.0 in the value column; market betas cluster near 1.
+- **Fit improves:** the mean absolute alpha falls from 2.25% (CAPM) to 1.43% (three-factor), and the fitted-versus-actual points move toward the 45° line (L5a s.19).
+- **The famous failure remains:** small growth gets *worse* (−8.42%). The three-factor model cannot explain the very low returns of small, low-B/M stocks.
+
+::: {.callout-warning title="Technical trap from the problem set"}
+Excel's `LINEST` with several x-columns returns coefficients in **reverse** order (last x-column first, intercept last). Mislabeling SMB and HML betas this way is easy. Not an exam issue, but a good reason to sanity-check that HML loadings rise from growth to value.
+:::
+
+## Rational versus behavioral interpretations (L4b s.32)
+
+Do the factors capture risk, or mispricing? The **rational** view says value and size stocks must be exposed to some bad-times risk. The **behavioral** view says investors overreact to growth stories and overpay for growth firms. The debate continues in @sec-efficiency.
+
+# Week 5a — Performance evaluation and the money management industry {#sec-performance}
+
+This material appears in the Week 5 slides; the syllabus schedules the full treatment for Week 6, so expect lighter emphasis, but the measures are quick points.
+
+**Passive** funds track an index at low fees. **Active** funds pick a benchmark and try to beat it (L5a s.22). Ways to measure performance (L5a s.23–25): **[know it]**
+
+| Measure | Formula | Comment |
+|:--|:--|:--|
+| Benchmark-adjusted return | $\bar r_{fund} - \bar r_{index}$ | Weak: a manager can win just by taking more risk |
+| CAPM alpha | $(\bar r_{fund} - r_f) - \hat\beta(\bar r_m - r_f)$ | Regression intercept |
+| Multifactor alpha | intercept with SMB, HML, … | Do not pay active fees for factor exposure you could buy cheaply |
+| Sharpe ratio | $(\bar r_{fund} - r_f)/\sigma_{fund}$ | Excess return per unit of *total* risk |
+| Treynor ratio | $(\bar r_{fund} - r_f)/\beta_{fund}$ | Excess return per unit of *systematic* risk |
+| Information ratio | $\alpha/\sigma_\varepsilon$ | Alpha per unit of idiosyncratic risk |
+
+A standard rule of thumb (from the textbook, not the slides): the Sharpe ratio suits a fund that is your whole risky portfolio, the Treynor ratio suits one piece of an already diversified portfolio, and the information ratio measures how efficiently a manager generates alpha.
+
+Why do active managers exist if the average one underperforms after fees (L5a s.26–29)?
+
+- **Berk and Green (2004).** If skill is visible, money floods into skilled funds until decreasing returns to scale erode the alpha, and managers capture the rest through fees: no alpha net of fees ("efficient markets for managers").
+- **Gârleanu and Pedersen (2018).** If finding skilled managers takes costly research, alpha survives for those who search and managers share profits to reward the search ("efficiently inefficient markets").
+- **Gennaioli, Shleifer, and Vishny (2015).** Investors pay for comfort and trust ("money doctors"), not only alpha.
+
+The empirical summary: the average fund underperforms after fees; some managers outperform; identifying them in advance is hard. That is consistent with market efficiency, and with investors valuing more than alpha.
+
+## Self-test: multifactor and performance
+
+**1.** A fund's CAPM alpha is +3% a year, but its three-factor alpha is about 0, with loadings of 0.8 on SMB and 0.6 on HML. Should you pay active-management fees for it?
+
+::: {.callout-tip collapse="true" title="Answer"}
+No. Its outperformance comes from tilting toward small and value stocks, exposures you can buy cheaply through factor or index funds. Its CAPM alpha is factor exposure, not skill.
+:::
+
+**2.** Monthly regression: $r - r_f = 0.10\% + 1.1\,MKT + 0.6\,SMB - 0.3\,HML$. Annual premiums: MKT 7%, SMB 2%, HML 4%; $r_f = 3\%$. What is the model-implied expected return, and the annualized alpha? Describe the stock.
+
+::: {.callout-tip collapse="true" title="Answer"}
+Excess return $= 1.1(7) + 0.6(2) - 0.3(4) = 7.7\%$, so $E[r] = 10.7\%$ (imposing $\alpha = 0$). Annualized alpha $= 12 \times 0.10\% = 1.2\%$. It behaves like a small growth stock: positive SMB, negative HML, slightly above-market beta.
+:::
+
+**3.** An asset has a large *negative* alpha relative to your portfolio. Is it useless to you?
+
+::: {.callout-tip collapse="true" title="Answer"}
+No. If you can short it, a non-zero alpha of either sign raises your attainable Sharpe ratio (0.69 → 0.84 in the lecture example).
+:::
+
+**4.** Fund A: $\bar r = 12\%$, $\sigma = 20\%$, $\beta = 1.2$, $\sigma_\varepsilon = 8\%$. Fund B: $\bar r = 10\%$, $\sigma = 12\%$, $\beta = 0.8$, $\sigma_\varepsilon = 5\%$. Market 9%, $\sigma_m = 15\%$, $r_f = 2\%$. Rank them on every measure.
+
+::: {.callout-tip collapse="true" title="Answer"}
+Sharpe: A 0.50, B 0.67 (market 0.47). Treynor: A 8.3%, B 10.0%. CAPM alpha: A $12 - (2 + 1.2 \times 7) = 1.6\%$, B $10 - (2 + 0.8 \times 7) = 2.4\%$. Information ratio: A 0.20, B 0.48. B wins on every measure despite the lower raw return.
+:::
+
+
+# Week 5b — Market efficiency {#sec-efficiency}
+
+Why care? Capital flows to the best firms only if prices are roughly right; optimal regulation depends on it; and as investors, inefficiencies are where trading profits would come from (L5b s.2).
+
+## Definition and the three forms
+
+A market is efficient if prices **fully reflect all available information** (L5b s.7). The three forms differ in what "information" means (L5b s.7–11, TAR s.10):
+
+| Form | Prices reflect… | What it rules out (risk-adjusted, net of costs) |
+|:--|:--|:--|
+| **Weak** | all information in past prices | Profits from technical analysis, price patterns, seasonality |
+| **Semi-strong** | past prices + all public information | Profits from fundamental analysis of public data; reactions to already-public news |
+| **Strong** | all information, public and private | Profits even from insider information |
+
+The forms are nested: strong implies semi-strong, which implies weak. So **a violation of the weak form is automatically a violation of the semi-strong and strong forms**, but a strong-form violation (profitable insider trading) says nothing about the weak form. The strong form is unlikely to hold: insider trading appears profitable and prices often move before announcements (L5b s.11).
+
+Implications (TAR s.11): prices are "right," investors cannot *consistently* beat the market, trading on available information cannot beat the market after costs, **alpha should be zero**, and if the EMH holds, passive buy-and-hold beats active management.
+
+::: {.callout-note title="Efficiency does not mean 'pick stocks at random'"}
+TAR Q2: even if the EMH holds, you should still diversify and match the portfolio's risk to the investor's risk tolerance. Efficiency says you cannot find mispriced stocks, not that portfolio choice is irrelevant.
+:::
+
+## Evidence that prices respond to information quickly
+
+**Event studies.** In takeover announcements (Keown and Pinkerton 1981), target prices drift up *before* the announcement (private information leaking in, a strong-form violation), jump on the announcement day, and then stay flat, with no predictable drift afterward, consistent with semi-strong efficiency (L5b s.12). Prediction markets show similar private information being incorporated (L5b s.13).
+
+**The Grossman–Stiglitz paradox (1980).** If prices were perfectly efficient, no one would pay to research stocks, but without research prices could not become efficient. So markets must be inefficient *enough* to reward the people who make them nearly efficient (L5b s.14).
+
+## Time-series evidence: are prices too volatile?
+
+Start from the PV formula: the price should be the discounted expected value of future dividends (L5b s.16).
+
+- **Fama's view:** prices trend up with the economy and fall in recessions, when expected dividends fall. Prices are linked to fundamentals (L5b s.17).
+- **Shiller's response (1981):** compute the *perfect-foresight* price (the PV of the dividends that actually occurred, at a constant discount rate). Because the actual price is a *forecast* of that value, it should be *less* volatile. Instead actual prices are far more volatile than the perfect-foresight price, while dividends barely move (L5b s.18–19).
+
+Reconciliation: prices do move with dividends, but they move *more* than dividends can justify, so **expected returns (discount rates) must vary over time** (L5b s.21).
+
+Does that make markets inefficient? Not necessarily: risk and risk aversion may vary. The real question is whether discount rates move *more than our models can justify* (L5b s.22).
+
+### Price ratios predict returns
+
+Rewriting the PV formula in ratio form shows that a high price-dividend ratio goes with low future expected returns (L5b s.23). Cochrane (2011) regresses future excess returns on $D/P$: a 1-percentage-point higher dividend yield predicts about **4 pp** higher returns over 1 year and **20 pp** over 5 years (L5b s.24). Returns are predictable, and the magnitude is large.
+
+**Rational view:** expected returns vary because risk and risk premia vary. **Behavioral view:** investors do not realize expected returns vary. Greenwood and Shleifer (2014) find that retail investors expect *high* returns after prices have risen, the opposite of the actual relation, which supports the behavioral view; large institutions' published capital-market assumptions look more rational (L5b s.26–27). Likely causes all contribute: changing risk, a changing investor base, and changing sentiment (L5b s.28). Shiller's CAPE was used to warn of "irrational exuberance" in 1996, yet valuations have stayed at those levels for about 30 years (L5b s.30–31).
+
+## The joint hypothesis problem
+
+::: {.callout-important title="The single most testable concept in this unit"}
+Any test of market efficiency is simultaneously a test of an asset pricing model, because "abnormal" returns are only defined relative to a model of normal returns. If a test rejects, either the market is inefficient (and the model is right) **or** the model is wrong (and the market may be efficient). Two unknowns, one equation (L5b s.32, TAR s.12).
+:::
+
+*Nvidia in the AI boom (L5b s.33).* A rational story: AI demand raised expected earnings, and discount rates may have changed. A behavioral story: investors extrapolated recent growth too far. A high valuation alone does not prove mispricing; you need a model of expected cash flows and discount rates, and you are jointly testing that model.
+
+## Cross-sectional anomalies
+
+**Value versus growth** (L5b s.35–38). Growth firms (low B/M) have low returns. *Behavioral:* investors overreact to high growth, overpaying for growth firms and underpaying for value firms. *Rational:* value firms are riskier. Lakonishok, Shleifer, and Vishny (1993) find value does *not* do worse in drawdowns or recessions, which favors mispricing; whether value is exposed to consumption risk depends on the sample period.
+
+**Momentum** (L5b s.39–40). Buy stocks with the highest returns over the past 12 months (skipping the most recent month), sell the worst. This zero-cost portfolio has earned about **8% a year with close to zero beta**. *Behavioral:* investors underreact to news or extrapolate. *Rational:* no clear risk story, which makes momentum a real challenge to the EMH.
+
+**Horizon matters (TAR Q3).** "Past winners are future losers" depends on the horizon: winners over the past 3–12 months keep winning in the following months (Jegadeesh and Titman 1993), while winners over the past 3–5 years tend to underperform (De Bondt and Thaler 1985).
+
+## Apparent violations
+
+**Reaction to stale news (L5b s.45).** Nature published EntreMed's cancer research in November 1997; when the New York Times ran the same story in May 1998, the stock soared. Under semi-strong efficiency, already-public news should not move prices.
+
+**Can the market add and subtract? (L5b s.46–51).** In 2000, 3Com sold 5% of Palm and planned to give 3Com holders 1.5 Palm shares per 3Com share. 3Com traded *below* 1.5 times Palm's price, implying a negative value for the rest of 3Com's business (a negative "stub"). That violates the law of one price.
+
+## Limits to arbitrage
+
+Arbitrage is a risk-free profit (L5b s.49). The 3Com/Palm trade was to buy 3Com and short Palm. It did not close the gap because (L5b s.50–52):
+
+1. Palm shares were hard to borrow for shorting.
+2. The trade was risky: the distribution date was uncertain, and if Palm rose in the meantime the short lost money.
+3. Transaction and shorting costs eat into profits, and holding positions over time is costly.
+
+*Numerical illustration (L5b s.51).* Long 1.16 shares of 3Com, short 1 Palm, with \$20 of collateral. After 2 weeks Palm rises to \$105: position −\$10. After 4 weeks: −\$23, more than your collateral. You can be forced out before the trade converges. **Markets can stay mispriced longer than you can stay solvent.** Noise traders can push prices further from value in the interim (Shleifer and Vishny 1997; TAR s.13).
+
+**Samuelson's dictum (L5b s.41, s.53):** markets are *micro efficient but macro inefficient*. Arbitrageurs can correct individual mispricings, but no one can afford to bet against the whole market.
+
+**Conclusion (L5b s.42).** Prices are linked to fundamentals and absorb news quickly, but they move more than fundamentals justify, for reasons that are hard to pin down because of the joint hypothesis problem. Clear violations exist but are rare.
+
+## Classifying statements (exam practice)
+
+For each statement, decide whether it violates the weak, semi-strong, or strong form, or none. Try it before opening.
+
+| # | Statement |
+|:--|:--|
+| a | About 50% of pension funds outperform the market each year. |
+| b | Stocks with low returns one week earn high returns the next week. |
+| c | Small stocks outperform large stocks on average. |
+| d | Corporate insiders earn abnormal returns trading their own stock. |
+| e | A trading rule based on 50-day moving averages earns risk-adjusted profits. |
+| f | A stock jumps on a newspaper article repeating news published months earlier. |
+| g | High aggregate price-dividend ratios predict low future market returns. |
+| h | Careful analysis of public financial statements earns abnormal risk-adjusted returns. |
+
+::: {.callout-tip collapse="true" title="Answers"}
+**a.** None. With public information, about half should beat the market by chance (TAR Q1a).
+**b.** Weak form (and therefore semi-strong and strong): past prices predict returns (TAR Q1b).
+**c.** Not necessarily a violation. Small stocks may be riskier and earn a premium. This is the joint hypothesis problem (TAR Q1c).
+**d.** Strong form only.
+**e.** Weak form (and therefore the others).
+**f.** Semi-strong form (EntreMed).
+**g.** Not necessarily: it can reflect time-varying risk premia (rational) or sentiment (behavioral). Joint hypothesis again.
+**h.** Semi-strong form.
+:::
+
+**One more (TAR Q11 / PP Q9).** ABC ($\beta = 2.25$) returned 15% yesterday while the market returned 12% and $r_f = 4\%$. What happened?
+
+::: {.callout-tip collapse="true" title="Answer"}
+The CAPM benchmark was $4\% + 2.25(8\%) = 22\%$. The 7-point shortfall, under efficiency, means bad firm-specific news was released. A positive raw return can still be bad news.
+:::
+
+
+# Putting it together {#sec-synthesis}
+
+## Which risk measure, when?
+
+| Situation | Relevant risk | Why |
+|:--|:--|:--|
+| Choosing how much to put in your *entire* risky portfolio | $\sigma$ of that portfolio | Your utility depends on total portfolio variance |
+| Comparing stand-alone portfolios or funds you would hold alone | Sharpe ratio ($\sigma$) | Total risk is what you bear |
+| Pricing one asset held inside a diversified portfolio | $\beta$ (covariance with the market) | Idiosyncratic risk diversifies away; only marginal risk is priced |
+| Deciding whether to add an asset to an existing portfolio | Its covariance with *your* portfolio, and its alpha relative to it | $\partial\text{var}(r_p)/\partial w_j = 2\text{cov}(r_j, r_p)$; positive alpha raises the Sharpe ratio |
+| Multifactor world | $\beta$s on each factor | Each factor captures a different kind of bad times |
+
+## How the models connect
+
+```{mermaid}
+flowchart TD
+  MV["Mean-variance: everyone holds the max-Sharpe portfolio T"] --> EQ["Market clearing: aggregate holdings = market portfolio"]
+  EQ --> CAPM["CAPM: T = M, so E[r_i] − r_f = β_i (E[r_m] − r_f)"]
+  CAPM --> TEST["Test: are alphas zero? Is the SML right?"]
+  TEST -->|"No: flat SML, size, value, momentum"| FF["Multifactor models: add SMB, HML, ..."]
+  TEST --> JH["Joint hypothesis: wrong model, or inefficient market?"]
+  FF --> JH
+  JH --> R["Rational: factors are risks"]
+  JH --> BEH["Behavioral: factors are mispricing"]
+```
+
+## Common traps checklist
+
+Read this list right before the exam.
+
+1. **MVE formula uses excess returns.** Subtract $r_f$ from both means before plugging in.
+2. **Correlation is not covariance.** Convert with $\sigma_{1,2} = \rho\sigma_1\sigma_2$ before using the variance, MVP, or MVE formulas.
+3. **Check whether a table gives $\sigma$ or $\sigma^2$.** TAR Q5 gives variances.
+4. **Risky weights versus total weights.** Total weight in an asset $= y \times w^{MVE}$; the rest, $1 - y$, is in the risk-free asset.
+5. **Negative risk-free weight means borrowing.** $y > 1$ is leverage; say so in dollars.
+6. **No ½ in the utility function.** $U = E - \gamma\sigma^2$, so $w^* = (E - r_f)/(2\gamma\sigma^2)$.
+7. **Gordon uses next period's dividend.** $D_{t+1} = D_t(1+g)$. State whether you used the exact or approximate version.
+8. **Terminal value timing.** $P_T$ is discounted $T$ periods, and it uses $D_{T+1} = D_T(1 + g_{new})$.
+9. **Probability tables use probabilities, not $N - 1$.**
+10. **"Market return" versus "market risk premium."** The SML needs $E[r_m] - r_f$.
+11. **The SML needs $r_f$.** Without it you cannot say whether an asset is above or below the line (TA4 Q1).
+12. **Beta does not diversify away.** Portfolio beta is a weighted average; $R^2$ rises with diversification.
+13. **The risk-free asset has $\beta = 0$; the market has $\beta = 1$.**
+14. **$R^2 = \rho^2$.** The diversifiable share of variance is $1 - \rho^2$.
+15. **Annualize monthly alphas** by multiplying by 12 (and by 100 for percent).
+16. **Every portfolio on a CAL has the same Sharpe ratio.**
+17. **Geometric $\le$ arithmetic.** Use arithmetic for one-period expected returns.
+18. **Positive alpha does not prove the CAPM is wrong**; it means mispricing *or* a wrong model.
+19. **Weak-form violations imply semi-strong and strong violations**, not the reverse.
+20. **Zero-risk portfolios must earn $r_f$.** Otherwise there is an arbitrage.
+
+# Errors spotted in the course materials {#sec-errata}
+
+Each item was recomputed. When in doubt on the exam, show your formula so the grader can follow your logic.
+
+| Source | What it says | What it should say |
+|:--|:--|:--|
+| TA4 Q6 (s.27) | $E[r_B] = 14.375\%$ | Its own formula gives $5\% + (0.15/0.10)(8\% - 5\%) = 9.5\%$ |
+| PS2 solutions Q3(c) | $w_B^{MVE} = 43.95\%$; A \$578,054, B \$453,296, T-bill −\$31,350 | $w_B = 0.00328/0.00748 = 43.85\%$; A \$579,310, B \$452,414, T-bill −\$31,724. The 0.474/0.526 labels in the dollar table are carried over from Q2. Sharpe ratio 0.41 is unaffected |
+| PS2 solutions Q3(a) i–ii | "to achieve the expected return of 8%" | The target is 10% |
+| PS4 problem text, Q1 | B/M columns "from low to high (value to growth)" | Low B/M is **growth**, high B/M is **value** |
+| PS4 problem text, Q2 | $f_{hml}$ described as the "smb" column and $f_{smb}$ as the "hml" column; "mktrl" | The labels are swapped; the market factor column is `mktrf` |
+| TAR Q4 (Ford) | $\sigma \approx 40\%$ | $\sqrt{0.1536} = 39.2\%$ (rounding) |
+| TA2 s.8 (PS1 Q3b) | $P_0 = \$1{,}304.20$ | \$1,304.53 without rounding the dividends |
+| TA2 Q3(b) | $E[r_C] = 0.30$ (note says 0.29) | 29.1% without intermediate rounding |
+
+# Practice exam {#sec-practice}
+
+These are original problems in the style of the problem sets and TA questions, mixing topics the way an exam does. Aim for about 90 minutes, write out every step, and only then open the solutions.
+
+**Problem 1 — Valuation meets the CAPM.** A stock just paid a \$2.00 dividend, trades at \$40, and dividends are expected to grow 4% a year forever. Its beta is 1.2, $r_f = 3\%$, and the market risk premium is 5%.
+
+(a) What expected return is the market price implying? (b) What return does the CAPM require? (c) What is the CAPM-consistent price? (d) Is the stock under- or overpriced, and what is its alpha?
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) $r = 2(1.04)/40 + 0.04 = 9.2\%$. (b) $3\% + 1.2(5\%) = 9.0\%$. (c) $P = 2.08/(0.09 - 0.04) = \$41.60$. (d) Underpriced: the price is below \$41.60, equivalently the implied return beats the required return by $\alpha = +0.2\%$. It plots above the SML.
+:::
+
+**Problem 2 — Two-stage growth.** $D_0 = \$3$. Dividends grow 10% for two years and 4% forever after. The discount rate is 9%. Price the stock.
+
+::: {.callout-tip collapse="true" title="Solution"}
+$D_1 = 3.30$, $D_2 = 3.63$. $P_2 = 3.63(1.04)/(0.09 - 0.04) = \$75.50$. $P_0 = 3.30/1.09 + (3.63 + 75.50)/1.09^2 = 3.03 + 66.60 = \$69.63$.
+:::
+
+**Problem 3 — Utility and the CAL.** A risky fund has $E = 10\%$ and $\sigma = 20\%$; $r_f = 2\%$; your $\gamma = 3$ with $U = E - \gamma\sigma^2$.
+
+(a) Optimal weight in the fund? (b) Expected return, risk, and utility of that portfolio? (c) Compare utility with 100% T-bills and 100% fund.
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) $w^* = 0.08/(2 \cdot 3 \cdot 0.04) = 33.3\%$. (b) $E = 2\% + 0.333(8\%) = 4.67\%$, $\sigma = 6.67\%$, $U = 0.0467 - 3(0.0667)^2 = 0.0333$. (c) T-bills: $U = 0.02$. All fund: $U = 0.10 - 3(0.04) = -0.02$. The optimal mix beats both.
+:::
+
+**Problem 4 — The full asset allocation recipe.** Asset X: $E = 8\%$, $\sigma = 15\%$. Asset Y: $E = 14\%$, $\sigma = 30\%$. $\rho_{XY} = 0.2$, $r_f = 2\%$, and you have \$100,000.
+
+(a) Find the MVE weights, its expected return, standard deviation, and Sharpe ratio. Compare with the Sharpe ratios of X and Y. (b) With $\gamma = 2$, how much goes into the MVE? Give dollars in X, Y, and T-bills. (c) Instead, you want a 12% expected return. What are your total-wealth weights and your risk? (d) What are the MVP weights?
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) $\text{cov} = 0.2(0.15)(0.30) = 0.009$; excess returns 6% and 12%. $w_X = (0.06 \cdot 0.09 - 0.12 \cdot 0.009)/(0.06 \cdot 0.09 + 0.12 \cdot 0.0225 - 0.18 \cdot 0.009) = 0.00432/0.00648 = 2/3$, so $w_Y = 1/3$. $E_{MVE} = 10\%$; $\sigma^2_{MVE} = (4/9)(0.0225) + (1/9)(0.09) + 2(2/9)(0.009) = 0.024$, $\sigma = 15.49\%$; Sharpe $= 0.08/0.1549 = 0.52$. X and Y each have a Sharpe ratio of 0.40, so combining them helps a lot.
+
+(b) $y = 0.08/(2 \cdot 2 \cdot 0.024) = 83.3\%$. X: $0.833 \times 2/3 = 55.6\%$ (\$55,556); Y: $27.8\%$ (\$27,778); T-bills: 16.7% (\$16,667).
+
+(c) $y = (12 - 2)/(10 - 2) = 1.25$. X 83.3%, Y 41.7%, T-bills −25% (borrow \$25,000). $\sigma = 1.25 \times 15.49\% = 19.4\%$.
+
+(d) $w_X^{MVP} = (0.09 - 0.009)/(0.0225 + 0.09 - 0.018) = 85.7\%$, $w_Y = 14.3\%$ ($E = 8.86\%$, $\sigma = 14.34\%$).
+:::
+
+**Problem 5 — Statistics from states.** Probabilities 25%, 50%, 25%. Stock A returns −10%, 8%, 20%; stock B returns 4%, 6%, 2%. Find each mean and standard deviation, their covariance and correlation, and the standard deviation of a 50/50 portfolio.
+
+::: {.callout-tip collapse="true" title="Solution"}
+$E_A = 6.5\%$, $E_B = 4.5\%$. Deviations: A (−16.5, 1.5, 13.5), B (−0.5, 1.5, −2.5) in percent. $\sigma_A = 10.71\%$, $\sigma_B = 1.66\%$. $\text{cov} = 0.25(-16.5)(-0.5) + 0.5(1.5)(1.5) + 0.25(13.5)(-2.5) = -5.25\ \%^2 = -0.000525$; $\rho = -0.30$. 50/50 variance $= 0.25(0.011475) + 0.25(0.000275) + 2(0.25)(-0.000525) = 0.002675$, so $\sigma = 5.17\%$, well below the 6.19% weighted average.
+:::
+
+**Problem 6 — Beta, $R^2$, and portfolio beta.** A stock has $\sigma = 48\%$ and correlation 0.5 with the market; $\sigma_m = 20\%$, $r_f = 3\%$, $E[r_m] = 9\%$.
+
+(a) Beta and CAPM expected return? (b) Systematic and idiosyncratic variance, and $R^2$? (c) An analyst forecasts 12%. Alpha, and what do you do? (d) A portfolio is 50% this stock, 30% a stock with $\beta = 0.6$, and 20% T-bills. Its beta and CAPM expected return?
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) $\beta = 0.5(0.48/0.20) = 1.2$; $E = 3\% + 1.2(6\%) = 10.2\%$. (b) Systematic $= 1.44 \times 0.04 = 0.0576$; total $= 0.2304$; idiosyncratic $= 0.1728$; $R^2 = 0.25$ ($= \rho^2$). (c) $\alpha = 12\% - 10.2\% = +1.8\%$: above the SML, so buy (if you trust the forecast). (d) $\beta_p = 0.5(1.2) + 0.3(0.6) + 0.2(0) = 0.78$; $E = 3\% + 0.78(6\%) = 7.68\%$.
+:::
+
+**Problem 7 — Perfect negative correlation.** A: $E = 12\%$, $\sigma = 30\%$. B: $E = 6\%$, $\sigma = 10\%$. $\rho = -1$. T-bills yield 5%.
+
+(a) Find the zero-risk portfolio and its return. (b) Is there an arbitrage? Describe the trade.
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) $w_A = \sigma_B/(\sigma_A + \sigma_B) = 0.10/0.40 = 25\%$; $E = 0.25(12\%) + 0.75(6\%) = 7.5\%$ with zero risk. (b) Yes: a riskless 7.5% beats the 5% risk-free rate. Borrow at 5% (short T-bills) and buy the 25/75 portfolio, earning 2.5% per dollar with no risk. In equilibrium this cannot persist.
+:::
+
+**Problem 8 — Compounding and annuities.** (a) A loan quotes 6% APR compounded monthly. Effective annual rate? (b) Value of \$500 a year for 10 years at 7%? (c) Value of \$500 a year forever at 7%?
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) $(1.005)^{12} - 1 = 6.17\%$. (b) $(500/0.07)(1 - 1.07^{-10}) = \$3{,}511.79$. (c) $500/0.07 = \$7{,}142.86$.
+:::
+
+**Problem 9 — True, false, or uncertain? Explain briefly.**
+
+1. Adding a stock that is more volatile than anything you own must raise your portfolio's variance.
+2. If the CAPM holds, a stock with $\beta = 0$ and $\sigma = 60\%$ earns the risk-free rate.
+3. The minimum variance portfolio depends on the risk-free rate.
+4. A more risk-averse investor should hold a less risky *mix* of risky assets.
+5. An asset with a positive CAPM alpha must plot above the CML.
+6. Adding more stocks to a portfolio pushes its beta toward zero.
+7. A sharp market fall with no change in expected dividends proves investors are irrational.
+8. Every portfolio on the same CAL has the same Sharpe ratio.
+9. Momentum profits with near-zero beta are an anomaly relative to the CAPM.
+10. The geometric average return is the right input for one-period expected returns in mean-variance analysis.
+
+::: {.callout-tip collapse="true" title="Solution"}
+1. **False.** What matters is covariance with your portfolio; a volatile but negatively correlated stock can *reduce* variance.
+2. **True.** Zero beta means no systematic risk, so no premium; its variance diversifies away.
+3. **False.** The MVP uses only variances and covariances.
+4. **False** under the model's assumptions: everyone holds the same MVE mix and the risk-averse investor just holds more T-bills (separation). **Uncertain** if borrowing is constrained, since then risk-tolerant investors tilt toward high-beta stocks.
+5. **False.** Alpha is measured against the SML in $(\beta, E)$ space. A positive-alpha asset with lots of idiosyncratic risk can sit inside the frontier, below the CML.
+6. **False.** Beta is a weighted average and tends toward 1 for broad portfolios; it is idiosyncratic *variance* that falls.
+7. **Uncertain.** A higher discount rate from more risk or more risk aversion is a rational explanation (channel 3). Distinguishing them runs into the joint hypothesis problem.
+8. **True.** That is what defines a CAL.
+9. **True.** About 8% a year with roughly zero beta is a large CAPM alpha. Whether it is inefficiency or an unmodeled risk is the joint hypothesis question.
+10. **False.** Use the arithmetic average for one-period expected returns; geometric averages describe compound growth.
+:::
+
+**Problem 10 — Short essays.**
+
+(a) An unconstrained optimizer recommends −126% in the market, −32% in small caps, and +258% in value. Would you implement it? What would you change, and at what cost?
+
+(b) Explain in three sentences why the empirical SML is flatter than the CAPM predicts.
+
+(c) Value stocks have earned higher average returns than growth stocks. Give the rational and the behavioral explanation, and explain why the data alone cannot settle it.
+
+::: {.callout-tip collapse="true" title="Solution sketches"}
+(a) No. The weights are ex post optimal for that sample, but expected returns are estimated with large error and highly correlated assets turn small differences in means into huge long-short positions. Impose no-short-sale or policy-band constraints, shrink correlations or weights toward 1/N, or use a factor-based covariance. The cost is a lower in-sample Sharpe ratio (and possibly a corner solution such as 100% value); the benefit is robustness out of sample (PS4 Q3; L3a s.34–37).
+
+(b) Investors who want high returns but cannot or will not borrow buy high-beta stocks instead of levering the market. That demand raises high-beta prices and lowers their expected returns, while low-beta stocks become cheap. So high-beta stocks have negative alphas and low-beta stocks positive alphas (L3b s.27–29).
+
+(c) Rational: value firms are riskier (they do badly in some bad times), so their premium is compensation. Behavioral: investors overreact to growth prospects, overpaying for growth and underpaying for value. Any test needs a model of what returns *should* be, so a high value return is either a mispricing or a risk premium the model omits — the joint hypothesis problem (L5b s.32, s.35–37).
+:::
+
+# Formulas not on the official sheet {#sec-offsheet}
+
+Everything below is used in the problem sets or TA sessions but does not appear on "Useful Formulas for 35000."
+
+**Returns**
+
+$$
+r_{t+1} = \frac{P_{t+1} + D_{t+1} - P_t}{P_t} \qquad r_{0,T} = \prod_{t=1}^{T}(1 + r_t) - 1 \qquad \bar r_g = \Big[\prod(1 + r_t)\Big]^{1/T} - 1 \qquad 1 + r_{real} = \frac{1 + r_{nom}}{1 + \pi}
+$$
+
+**Scenario statistics**
+
+$$
+E[r] = \sum_s p_s r_s \qquad \sigma^2 = \sum_s p_s (r_s - E[r])^2 \qquad \sigma_{1,2} = \sum_s p_s (r_{1,s} - E[r_1])(r_{2,s} - E[r_2]) \qquad \rho = \frac{\sigma_{1,2}}{\sigma_1\sigma_2}
+$$
+
+**Valuation**
+
+$$
+r = \frac{D_{t+1}}{P_t} + g \qquad \text{Perpetuity: } \frac{C}{r} \qquad \text{Annuity: } \frac{C}{r}\left[1 - (1+r)^{-T}\right] \qquad EAR = \left(1 + \frac{APR}{m}\right)^m - 1
+$$
+
+**Mean-variance**
+
+$$
+U = E - \gamma\sigma^2 \qquad E[r_p] = r_f + \frac{E[r_A] - r_f}{\sigma_A}\,\sigma_p \qquad w = \frac{\sigma^*}{\sigma_A} \;\text{ or }\; w = \frac{E^* - r_f}{E[r_A] - r_f}
+$$
+
+$$
+w_1^{MVP} = \frac{\sigma_2^2 - \sigma_{1,2}}{\sigma_1^2 + \sigma_2^2 - 2\sigma_{1,2}} \qquad w_A^{\rho = -1} = \frac{\sigma_B}{\sigma_A + \sigma_B} \qquad w_i^{total} = y \cdot w_i^{MVE},\; w_f = 1 - y
+$$
+
+$$
+\sigma_p^2 = \sum_i\sum_j w_i w_j \sigma_{i,j} \qquad \text{cov}(r_a, r_b) = \sum_i\sum_j w_i^a w_j^b \sigma_{i,j} \qquad \sigma^2_{\text{equal-wt}} = \tfrac{1}{N}\overline{\sigma^2} + \left(1 - \tfrac{1}{N}\right)\overline{\text{cov}}
+$$
+
+**CAPM and factors**
+
+$$
+\beta_i = \rho_{i,m}\frac{\sigma_i}{\sigma_m} \qquad \sigma_i^2 = \beta_i^2\sigma_m^2 + \sigma_\varepsilon^2 \qquad R^2 = \frac{\beta_i^2\sigma_m^2}{\sigma_i^2} = \rho_{i,m}^2 \qquad \frac{E[r_B] - r_f}{E[r_A] - r_f} = \frac{\beta_B}{\beta_A}
+$$
+
+$$
+\beta_{market} = \sum_i w_i^{cap}\beta_i = 1 \qquad \alpha_{annual} = 12 \times \alpha_{monthly}
+$$
+
+**Performance**
+
+$$
+\text{Sharpe} = \frac{\bar r - r_f}{\sigma} \qquad \text{Treynor} = \frac{\bar r - r_f}{\beta} \qquad \text{IR} = \frac{\alpha}{\sigma_\varepsilon}
+$$
+
+# If you have one evening left {.unnumbered}
+
+1. Read the **traps checklist** (@sec-synthesis) and the **off-sheet formulas** (@sec-offsheet).
+2. Redo by hand, without looking: PS1 Q3(b), PS2 Q2(c)–(d), PS3 Q1, and TAR Q12. These cover two-stage valuation, MVE plus the complete portfolio, beta and $R^2$, and alpha.
+3. Work Problems 4, 6, and 9 of the practice exam.
+4. Do the classification table in @sec-efficiency and say the joint hypothesis problem out loud in one sentence.
+5. Skim the PS4 alpha tables and be able to describe the growth-to-value pattern and what the three-factor model fixes (and doesn't).

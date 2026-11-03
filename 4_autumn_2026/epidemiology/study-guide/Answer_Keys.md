@@ -2,7 +2,7 @@
 
 **Try the questions first.** The sample midterm is in `Midterm_question_examples.docx`; the fresh practice problems are in Section 7 of the study guide. The instructor won't post a key for the sample questions, so this one is worked from your lecture definitions — if anything here conflicts with what your TA said in section, go with the TA.
 
----
+------------------------------------------------------------------------
 
 ## Part A — 2025 sample midterm, worked
 
@@ -28,13 +28,13 @@
 
 **Calculation method for the figure.** Kaplan-Meier (plotted as cumulative incidence = 1 − KM survival), compared with the log-rank test.
 
-**Median survival in each group.** **Not reached / cannot be estimated** in either group — only ~4–6% developed cancer, far below the 50% needed for a median.
+**Median survival in each group.** **Not reached / cannot be estimated** in either group — only \~4–6% developed cancer, far below the 50% needed for a median.
 
 **Null hypothesis of the log-rank test.** The cancer-free survival curves of the two groups are the same over the whole follow-up period.
 
 **Cumulative probability of being cancer-free at 4 years, vitamin D + Ca.** About 1 − 0.042 ≈ **0.96 (≈ 96%)**.
 
-**Conclusion.** No statistically significant evidence that vitamin D + calcium prevents cancer: log-rank p = 0.06 > 0.05, so we fail to reject H0. The curves trend toward benefit, so the trial may have been underpowered — "not significant" isn't proof of no effect, but it doesn't support claiming prevention.
+**Conclusion.** No statistically significant evidence that vitamin D + calcium prevents cancer: log-rank p = 0.06 \> 0.05, so we fail to reject H0. The curves trend toward benefit, so the trial may have been underpowered — "not significant" isn't proof of no effect, but it doesn't support claiming prevention.
 
 ### Melanoma: Madison vs Orlando
 
@@ -44,21 +44,21 @@
 
 **Expected cases** (rate × standard population ÷ 100,000):
 
-| Age | Madison rate | Madison expected | Orlando rate | Orlando expected |
-|---|---|---|---|---|
-| 15–24 | 0.6 | 2.1 | 2.2 | 8 |
-| 25–34 | 13.0 | 35 | 26.0 | 70 |
-| 35–44 | 31.3 | 68 | 99.2 | 216 |
-| 45–54 | 77.2 | 157 | 198.2 | 402 |
-| 55–64 | 138.9 | **215** | 313.3 | 486 |
-| 65–74 | 240.7 | **267** | 553.6 | 614 |
-| 75–84 | 406.3 | **248** | 775.9 | 473 |
-| 85+ | 500 | **80** | 855.3 | 137 |
-| **Total** | | **≈ 1,072** | | **≈ 2,406** |
+| Age       | Madison rate | Madison expected | Orlando rate | Orlando expected |
+|-----------|--------------|------------------|--------------|------------------|
+| 15–24     | 0.6          | 2.1              | 2.2          | 8                |
+| 25–34     | 13.0         | 35               | 26.0         | 70               |
+| 35–44     | 31.3         | 68               | 99.2         | 216              |
+| 45–54     | 77.2         | 157              | 198.2        | 402              |
+| 55–64     | 138.9        | **215**          | 313.3        | 486              |
+| 65–74     | 240.7        | **267**          | 553.6        | 614              |
+| 75–84     | 406.3        | **248**          | 775.9        | 473              |
+| 85+       | 500          | **80**           | 855.3        | 137              |
+| **Total** |              | **≈ 1,072**      |              | **≈ 2,406**      |
 
 **Age-adjusted rates.** Madison: 1,072 ÷ 1,387,600 × 100,000 = **77.3 per 100,000**. Orlando: 2,406 ÷ 1,387,600 × 100,000 = **173.4 per 100,000**.
 
-**Same story or different?** Same story: Orlando's rate is about twice Madison's whether crude (169.1 vs 80.1, ratio 2.1) or adjusted (173.4 vs 77.3, ratio 2.2). The two cities have similar age structures (about 26% vs 24% aged 55+), so age wasn't distorting the crude comparison much; the difference reflects something else (e.g., sun exposure). The small shifts make sense: Madison is slightly older than the standard (adjusted < crude), Orlando slightly younger (adjusted > crude).
+**Same story or different?** Same story: Orlando's rate is about twice Madison's whether crude (169.1 vs 80.1, ratio 2.1) or adjusted (173.4 vs 77.3, ratio 2.2). The two cities have similar age structures (about 26% vs 24% aged 55+), so age wasn't distorting the crude comparison much; the difference reflects something else (e.g., sun exposure). The small shifts make sense: Madison is slightly older than the standard (adjusted \< crude), Orlando slightly younger (adjusted \> crude).
 
 ### Phase III
 
@@ -68,7 +68,7 @@
 
 **NNT.** Number needed to treat = 1 ÷ (rate in control group − rate in treated group): how many people must receive the intervention to prevent one bad outcome. *Purpose:* an intuitive measure of absolute benefit that reflects baseline risk — useful for clinical and policy decisions (cost, harms).
 
-**Salk vaccine.** Jonas Salk's injected, inactivated (killed) poliovirus vaccine, tested in the 1954 field trial of ~1.8 million children (observed-control and randomized placebo-controlled parts). *Purpose:* prevent paralytic polio by producing bloodstream antibodies that stop the virus from reaching the nervous system (it does not prevent intestinal infection).
+**Salk vaccine.** Jonas Salk's injected, inactivated (killed) poliovirus vaccine, tested in the 1954 field trial of \~1.8 million children (observed-control and randomized placebo-controlled parts). *Purpose:* prevent paralytic polio by producing bloodstream antibodies that stop the virus from reaching the nervous system (it does not prevent intestinal infection).
 
 ### Cervical cancer: Pap vs HPV
 
@@ -82,7 +82,7 @@
 
 **Better for preventing deaths?** **HPV test** — sensitivity 95% vs 55% means it misses 5 instead of 45 of every 100 cancers. When early treatment greatly reduces mortality, catching cases matters most; its extra false positives can be sorted out with follow-up testing.
 
----
+------------------------------------------------------------------------
 
 ## Part B — Fresh practice problems (study guide Section 7)
 
@@ -99,14 +99,14 @@
 **P6.**
 
 | Time | At risk | Events | Conditional survival | Cumulative S(t) |
-|---|---|---|---|---|
-| 3 | 8 | 1 | 7/8 = .875 | .875 |
-| 5+ | — | — | — | — |
-| 6 | 6 | 2 | 4/6 = .667 | .583 |
-| 9 | 4 | 1 | 3/4 = .750 | .438 |
-| 11+ | — | — | — | — |
-| 12 | 2 | 1 | 1/2 = .500 | .219 |
-| 15+ | — | — | — | — |
+|------|---------|--------|----------------------|-----------------|
+| 3    | 8       | 1      | 7/8 = .875           | .875            |
+| 5+   | —       | —      | —                    | —               |
+| 6    | 6       | 2      | 4/6 = .667           | .583            |
+| 9    | 4       | 1      | 3/4 = .750           | .438            |
+| 11+  | —       | —      | —                    | —               |
+| 12   | 2       | 1      | 1/2 = .500           | .219            |
+| 15+  | —       | —      | —                    | —               |
 
 Median = **9 months** (first time S ≤ 0.5). Relapse-free at 13 months = **0.219**. Note the tied events at 6 (2 events, at risk 6 because one person was censored at 5) and that the curve ends at .219, not 0.
 
@@ -124,6 +124,6 @@ Median = **9 months** (first time S ≤ 0.5). Relapse-free at 13 months = **0.21
 
 **P13.** Observed = (50 + 110)/200 = **80%**. Chance both + = 0.30 × 0.40 = 0.12; chance both − = 0.70 × 0.60 = 0.42; chance agreement = **54%**. κ = (0.80 − 0.54)/(1 − 0.54) = **0.57** — moderate agreement beyond chance.
 
-**P14.** RR = 0.20/0.10 = **2.0**. SE(ln RR) = √[(1 − 0.2)/20 + (1 − 0.1)/10] = √0.13 = 0.361. ln 2 = 0.693; 0.693 ± 1.96 × 0.361 → (−0.014, 1.400). Exponentiate: **95% CI (0.99, 4.05)**. It includes 1 → **not statistically significant** at α = 0.05, despite a doubled risk (small numbers of cases → imprecise).
+**P14.** RR = 0.20/0.10 = **2.0**. SE(ln RR) = √\[(1 − 0.2)/20 + (1 − 0.1)/10\] = √0.13 = 0.361. ln 2 = 0.693; 0.693 ± 1.96 × 0.361 → (−0.014, 1.400). Exponentiate: **95% CI (0.99, 4.05)**. It includes 1 → **not statistically significant** at α = 0.05, despite a doubled risk (small numbers of cases → imprecise).
 
 **P15.** (a) Historical (retrospective) exposure-based cohort. (b) Case-control. (c) Cluster (community/group) randomized trial. (d) Ecologic. (e) Crossover trial.
