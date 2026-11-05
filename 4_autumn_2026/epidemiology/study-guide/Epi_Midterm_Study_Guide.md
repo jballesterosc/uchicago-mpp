@@ -264,32 +264,32 @@ Count vs. proportion (0–1, numerator in denominator) vs. rate (time in denomin
 
 ### L4 & L7 — Randomized trials
 
-| Concept | Key point |
-|---|---|
-| Control options | Placebo, sham, standard/usual care, alternate therapy/activity, nothing |
-| Equipoise | Genuine uncertainty about which arm is better — needed to randomize ethically |
-| Randomization purpose | Arms comparable on known **and unknown** risk factors → differences due to intervention; prevents selection bias |
-| Non-random pitfalls | Historical controls (other changes), alternation/day-of-week (predictable, gameable), physician choice (BCG example) |
-| Stratified randomization | Randomize within subgroups to ensure balance or study subgroup effects |
-| Cluster/community trial | When the intervention is group-level or would spill over (fluoride; schools; villages) |
-| Target / defined / study population | Who results apply to / who's eligible / who consented |
-| Internal validity threats | Noncompliance/crossovers, loss to follow-up, too-small sample |
-| External validity threats | Eligibility criteria, refusals |
-| Blinding | Single = participant; double = + those giving the intervention/assessing; triple = + analyst. Prevents placebo effects and biased reporting/assessment |
-| ITT | Analyze everyone as randomized ("once randomized, always analyze"); preserves randomization; conservative |
-| Per protocol | Only adherers; bigger effect if treatment works, but self-selected → selection bias |
-| Table 1 | Baseline characteristics by arm — did randomization work? who is in the study? |
-| Phase I | Safety/dose in ~10–50 people |
-| Phase II | Any sign it works; interim markers (antibodies, tumor size); 100–300 |
-| Phase III | Large RCT vs placebo/standard; **efficacy** + safety |
-| Phase IV | Post-marketing observational surveillance; **effectiveness**, rare adverse events |
-| Crossover | Each person gets both treatments in random order + washout; symptom control, not curative/surgical |
-| Factorial | Two independent interventions tested at once (Physicians' Health Study: aspirin & beta carotene) |
-| DSMB | Independent experts monitor safety and data quality; apply stopping rules at interim looks |
-| Sample size inputs | α (usually 5%), β (10–20% → power 80–90%), allocation ratio, expected difference |
-| What drives power | The **number of events**, not the number enrolled — rare outcomes need huge trials |
-| MRFIT lesson | CHD deaths fell in the usual-care group (secular decline) → underpowered, null trial |
-| Informed consent | Capacity, adequate information, voluntary, explicit decision |
+| Concept                             | Key point                                                                                                                                              |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Control options                     | Placebo, sham, standard/usual care, alternate therapy/activity, nothing                                                                                |
+| Equipoise                           | Genuine uncertainty about which arm is better — needed to randomize ethically                                                                          |
+| Randomization purpose               | Arms comparable on known **and unknown** risk factors → differences due to intervention; prevents selection bias                                       |
+| Non-random pitfalls                 | Historical controls (other changes), alternation/day-of-week (predictable, gameable), physician choice (BCG example)                                   |
+| Stratified randomization            | Randomize within subgroups to ensure balance or study subgroup effects                                                                                 |
+| Cluster/community trial             | When the intervention is group-level or would spill over (fluoride; schools; villages)                                                                 |
+| Target / defined / study population | Who results apply to / who's eligible / who consented                                                                                                  |
+| Internal validity threats           | Noncompliance/crossovers, loss to follow-up, too-small sample                                                                                          |
+| External validity threats           | Eligibility criteria, refusals                                                                                                                         |
+| Blinding                            | Single = participant; double = + those giving the intervention/assessing; triple = + analyst. Prevents placebo effects and biased reporting/assessment |
+| ITT                                 | Analyze everyone as randomized ("once randomized, always analyze"); preserves randomization; conservative                                              |
+| Per protocol                        | Only adherers; bigger effect if treatment works, but self-selected → selection bias                                                                    |
+| Table 1                             | Baseline characteristics by arm — did randomization work? who is in the study?                                                                         |
+| Phase I                             | Safety/dose in ~10–50 people                                                                                                                           |
+| Phase II                            | Any sign it works; interim markers (antibodies, tumor size); 100–300                                                                                   |
+| Phase III                           | Large RCT vs placebo/standard; **efficacy** + safety                                                                                                   |
+| Phase IV                            | Post-marketing observational surveillance; **effectiveness**, rare adverse events                                                                      |
+| Crossover                           | Each person gets both treatments in random order + washout; symptom control, not curative/surgical                                                     |
+| Factorial                           | Two independent interventions tested at once (Physicians' Health Study: aspirin & beta carotene)                                                       |
+| DSMB                                | Independent experts monitor safety and data quality; apply stopping rules at interim looks                                                             |
+| Sample size inputs                  | α (usually 5%), β (10–20% → power 80–90%), allocation ratio, expected difference                                                                       |
+| What drives power                   | The **number of events**, not the number enrolled — rare outcomes need huge trials                                                                     |
+| MRFIT lesson                        | CHD deaths fell in the usual-care group (secular decline) → underpowered, null trial                                                                   |
+| Informed consent                    | Capacity, adequate information, voluntary, explicit decision                                                                                           |
 
 ### L5 — Survival analysis & life expectancy
 
