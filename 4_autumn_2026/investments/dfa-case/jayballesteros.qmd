@@ -1,0 +1,103 @@
+---
+title: "DFA Case"
+subtitle: "Investments"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.2  
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+jupyter:
+  kernelspec:
+    name: DAP
+    display_name: DAP
+    language: python
+---
+
+# Q1
+**Describe the investment strategy employed by DFA (at the time of the case 2002).**
+
+DFA ran a passive strategy by investing in small-cap and value stocks because studies showed these stocks had historically earned higher returns, and it built diversified portfolios from size and book-to-market characteristics instead of picking individual stocks.
+
+The firm acted as a liquidity provider by buying large blocks of shares from investors who needed to sell quickly and asked for a discount in return. This lowered its transaction costs and added to its returns.
+
+In factor terms, DFA aimed to capture SMB and value HML premiums, with its trading adding returns on top. Its advantage came from following its rules consistently and executing trades well, since it did no stock selection.
+
+# Q2
+**Does DFA consider itself an active or passive manager. What aspects of its strategy are active? What aspects are passive?**
+
+A passive manager. It does not pick individual stocks, forecast company performance, or time the market. It builds diversified portfolios around size and value alone.
+
+What aspects of its strategy are active? DFA deliberately chooses to invest in small-cap and value stocks. Its traders negotiate discounts when buying shares and use discretion to decide which trades to execute, and its tax-managed funds are run to reduce clients’ taxes.
+
+# Q3
+**Who are DFA’s clients, and what are their concerns? What new clients (in 2002) was DFA trying to serve, and what are some of the new issues DFA will face in meeting these clients’ needs**
+
+DFA’s main clients are institutional investors, such as pension funds, endowments, and charities, along with high-net-worth individuals who invest through selected financial advisors. These clients care about low fees, diversification, consistent performance, and a strong research-based investment strategy. Individual investors also care about taxes.
+
+In 2002, DFA was trying to attract more taxable investors through its tax-managed funds. Serving them meant balancing tax savings against diversification and performance, because reducing dividends could increase tracking error and volatility. DFA also had to manage capital gains, clients’ different tax situations, and the extra costs of tax management.
+
+Growth raised a further problem. As DFA attracted more assets, attractive block trades could become harder to find, and its trading advantage could shrink.
+
+# Q4
+**What level of market efficiency does DFA accept? Why this level and not any other?**
+
+The semi-strong form of market efficiency. It believes stock prices reflect all publicly available information, so analyzing financial statements or predicting stock performance will not consistently generate excess returns.
+
+DFA does not believe markets are perfectly efficient, however, because private information is not always reflected in stock prices. That is why it screens block trades to avoid sellers who may have negative private information.
+
+They chose this level because it fits a passive investment philosophy and still leaves room to profit from trading. With public information already priced in, the opportunities to earn additional returns come from private information and sellers’ liquidity needs.
+
+# Q5
+**Does DFA believe in “fundamental analysis”? Why or why not? What other sources of value is DFA providing then?**
+
+No, because it believes markets are semi-strong efficient, meaning public information is already reflected in stock prices. Analyzing financial statements to identify undervalued companies would therefore not consistently generate excess returns.
+
+DFA adds value without picking stocks. It provides low-cost exposure to small-cap and value stocks, and its trading expertise lets it buy shares at discounts, which lowers its transaction costs. It offers tax-efficient investment strategies, and it uses academic research to develop new investment products.
+
+# Q6
+**Explain the DFA small and value stock strategies in both rational and irrational/behavioral terms. What do efficient market enthusiasts say about the performance of small stocks over large ones, and the performance of high book-to-market equity (BE/ME) or “value” stocks over low BE/ME or “growth” stocks? How do behavioralists view the size and value premia? What does DFA believe?**
+
+Two main explanations compete for why small-cap and value stocks outperform: the rational, risk-based view and the behavioral view.
+
+In the rational, efficient-market view, small and value stocks earn higher returns because they carry higher risk. Small companies are more vulnerable during economic downturns and less liquid, and value companies may be financially distressed, with more uncertain future earnings. Investors receive higher expected returns as compensation for bearing these risks.
+
+The behavioral view attributes the higher returns to investor mistakes. Investors tend to overvalue growth stocks because of their strong past performance and to overlook small and value stocks. The resulting mispricing can persist because these stocks are less liquid and harder to trade.
+
+Efficient-market enthusiasts treat the size and value premiums as compensation for risk, not as evidence of market inefficiency, so the higher returns do not represent free or guaranteed profits.
+
+DFA sides with the rational, risk-based explanation. It believes small and value stocks earn higher returns because they are riskier, and it rejects the idea that investors misprice them. 
+
+# Q7
+**What are some of the trading costs associated with small, value stocks? How does DFA manage these potential trading frictions?**
+
+Small and value stocks often carry high trading costs. They are less liquid and have wider bid-ask spreads, and large trades can move their prices significantly. Buyers also face adverse selection, since sellers may have negative private information.
+
+DFA manages these costs by acting as a liquidity provider: it buys large blocks of shares from investors who need to sell quickly, in exchange for a discount. It also screens trades to avoid insider information risks, works orders patiently to minimize price impact, and sells gradually in small quantities.
+
+Their trading expertise turns the high transaction costs of small and value stocks into an opportunity to generate additional returns.
+
+# Q8
+**Explain the Fama and French three factor model, and the rational argument behind it. Is beta a useful measure under the Fama and French model? Why or why not? Why does DFA not utilize macroeconomic variables to explain risk and design investment products? (Why do you think? Make a convincing argument as a DFA representative.)**
+
+The Fama-French three-factor model explains stock returns using three factors: market risk (beta), company size (SMB), and book-to-market ratio (HML). It argues that small-cap and value stocks earn higher returns because they carry additional risks that investors are compensated for taking. These factors explain returns better than the CAPM does alone.
+
+Market beta remains useful, though in a more limited role. It measures a stock’s exposure to overall market movements, but on its own it explains expected returns less well, and size and value exposures help explain the differences.
+
+DFA does not use macroeconomic variables. It believes market prices already reflect publicly available economic information, so predicting inflation, interest rates, or recessions would not consistently create extra returns. It focuses instead on observable characteristics like company size and book-to-market ratio, which are easier to measure and to build portfolios around. From DFA’s perspective, capturing proven risk premiums makes more sense than trying to predict the economy.
+
+# Q9
+**If DFA believes its size and BE/ME strategies are tied to systematic risk, then how do they justify these strategies as sound investments for their clients? Specifically, if DFA believes in efficient markets, how do they justify their existence?**
+
+DFA argues that even though small-cap and value stocks carry higher systematic risk, they can still be good investments for clients who are willing and able to bear that risk in exchange for higher expected returns. DFA makes no promise of risk-free outperformance. Efficient markets do not mean everyone should hold the same portfolio, because investors have different risk tolerances and investment horizons.
+
+They also justify its existence by giving clients efficient, low-cost access to these factor premiums. Its specialized trading strategy reduces trading costs, and it offers tax-efficient investment options.

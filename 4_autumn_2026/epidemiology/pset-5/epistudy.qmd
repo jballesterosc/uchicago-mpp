@@ -1,0 +1,247 @@
+---
+title: "Epidemiology Study Guide 2026: Worked Problem Set"
+subtitle: "Cohort and case-control design, odds ratios, confounding"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    embed-resources: true
+    html-math-method: mathjax
+---
+
+Answers are in collapsed boxes so you can try each part first. Click a box to open it. To show every answer at once, change `collapse="true"` to `collapse="false"` throughout the file.
+
+## Formulas used {#sec-formulas}
+
+|           | Cases | Controls |
+|:----------|:-----:|:--------:|
+| Exposed   |  $A$  |   $B$    |
+| Unexposed |  $C$  |   $D$    |
+
+$$
+\text{OR} = \frac{AD}{BC}
+$$
+
+$$
+\text{SE}\big[\ln(\text{OR})\big] = \sqrt{\frac{1}{A} + \frac{1}{B} + \frac{1}{C} + \frac{1}{D}}
+\qquad
+95\%\ \text{CI} = \exp\Big(\ln(\text{OR}) \pm 1.96 \times \text{SE}\Big)
+$$
+
+$$
+\text{OR}_{M\text{-}H} = \frac{\sum_i a_i d_i / N_i}{\sum_i b_i c_i / N_i}
+\qquad N_i = \text{total in age group } i
+$$
+
+## Question 1: Maternal RSV vaccination {#sec-q1}
+
+The following is drawn from a Practice Advisory developed by the American College of Obstetricians & Gynecologists (ACOG) and posted on their [website](https://www.acog.org/clinical/guidance/practice-advisory/2023/09/maternal-respiratory-syncytial-virus-vaccination/).
+
+Respiratory syncytial virus (RSV) is a common respiratory virus that usually causes upper respiratory illness, but can be serious for some groups, including infants and older adults. Currently, there is no licensed pediatric vaccine.
+
+Pfizer's bivalent RSV vaccine is the only RSV vaccine approved for use during pregnancy to prevent severe RSV disease in young infants.
+
+Pregnant patients in most of the continental United States are eligible to receive the maternal RSV vaccine from September 1 through March 1 to provide adequate protection during the time of circulation of RSV. The 2025–2026 season peaked in March, with active disease lasting through May.
+
+In the phase 3 clinical trial, maternal vaccination reduced the risk of a baby being hospitalized for RSV by 68% and risk of having a healthcare visit for RSV by 57% within 3 months after birth. However, effectiveness in practice outside the trial may be quite different. You would like to develop a study at the University of Chicago to estimate the real-world effectiveness of the RSV vaccine during pregnancy in reducing hospitalizations and healthcare visits for infants.
+
+You need to decide whether it makes more sense to carry out a cohort or a case-control study to address your question. As you consider your design, think concretely about how this might be carried out at the University of Chicago.
+
+### 1a. Basic design {#sec-q1a}
+
+What would be the basic design of a cohort and a case-control study with respect to (1) who is enrolled, (2) what is the exposure, (3) data collection, (4) what is the outcome, (5) what are the approximate dates when data collection begins and ends, (6) null hypothesis are you testing?
+
+::: {.callout-tip collapse="true"}
+## Answer: cohort design
+
+- **Who is enrolled:** Babies born at UChicago Medicine whose mothers got prenatal care there and were 32–36 weeks pregnant at some point between September 1 and March 1.
+- **Exposure:** The mother got the RSV vaccine at least 14 days before delivery. The comparison group is babies whose mothers were not vaccinated and who did not get an RSV antibody shot (nirsevimab or clesrovimab).
+- **Outcome:** An RSV hospitalization, and separately an RSV healthcare visit, confirmed by lab test within 3 months of birth.
+- **Data collection:** The mother's vaccine date comes from the UChicago medical record and the Illinois vaccine registry. The baby's RSV visits come from UChicago records, plus a monthly check-in with parents to catch visits at other hospitals.
+- **Dates:** September 1, 2026 to about July 31, 2027. The last mothers are vaccinated by March 1, give birth by late April, and their babies are followed for 3 months.
+- **Null hypothesis:** Babies of vaccinated and unvaccinated mothers have the same risk of RSV hospitalization ($H_0: \text{RR} = 1$). The same null applies to healthcare visits.
+:::
+
+::: {.callout-tip collapse="true"}
+## Answer: case-control design
+
+- **Who is enrolled:**
+  - Cases are babies under 6 months old seen at UChicago (Comer Children's Hospital, the ER, or clinics) with a respiratory illness and a positive RSV test.
+  - Controls are babies the same age, seen at the same places in the same weeks with a respiratory illness, who test negative for RSV.
+- **Exposure:** Same as the cohort. The mother got the RSV vaccine at least 14 days before delivery.
+- **Outcome:** An RSV hospitalization or RSV visit. In this design the outcome decides who counts as a case.
+- **Data collection:** Cases and controls are found through lab test results. The mother's vaccine status comes from medical records and the state registry. Asking her would let memory affect the answer (recall bias).
+- **Dates:** October 1, 2026 to May 31, 2027, which is one RSV season.
+- **Null hypothesis:** Mothers of cases and mothers of controls were equally likely to have been vaccinated ($H_0: \text{OR} = 1$).
+:::
+
+### 1b. Advantages and disadvantages {#sec-q1b}
+
+Describe the advantages and disadvantages of a cohort study and of a case-control study to investigate your question of interest. Answer with what you see as [the most important]{.underline} advantage and disadvantage of each design.
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+- **Cohort advantage:** It measures the risk of RSV in each group directly. You can calculate an RR for both hospitalizations and visits and compare it with the trial's 68% and 57%.
+- **Cohort disadvantage:** RSV hospitalization in young babies is rare. You would need a very large number of births to get enough cases.
+- **Case-control advantage:** It works well for rare outcomes. You can enroll every RSV case at Comer in one season, which is faster and cheaper than following thousands of babies.
+- **Case-control disadvantage:** Choosing the right controls is hard. Families who vaccinate may also take their babies to the doctor more often. If controls don't reflect that, the OR will be biased.
+:::
+
+## Question 2: Arsenic in drinking water and kidney cancer {#sec-q2}
+
+The following is taken from "Case-control study of arsenic in drinking water and kidney cancer in uniquely exposed Northern Chile," *Am J Epidemiol.* 2013 Sep 1;178(5):813–8.
+
+> "Millions of people worldwide are exposed to arsenic in drinking water. The International Agency for Research on Cancer has concluded that ingested arsenic causes lung, bladder, and skin cancer. However, a similar conclusion was not made for kidney cancer because of a lack of research with individual data on exposure and dose-response. With its unusual geology, high exposures, and good information on past arsenic water concentrations, northern Chile is one of the best places in the world to investigate the carcinogenicity of arsenic. We performed a case-control study in 2007–2010 of 122 kidney cancer cases and 640 population-based controls with individual data on exposure and potential confounders."
+
+Average arsenic intake was categorized into three groups: (1) \<400, (2) 400–1,000, and (3) \>1,000 µg/day.
+
+| Arsenic intake (µg/day) | Cases | Controls |
+|:------------------------|------:|---------:|
+| \<400                   |    71 |      405 |
+| 400–1,000               |    25 |      141 |
+| \>1,000                 |    26 |       94 |
+| **Total**               | **122** | **640** |
+: Kidney cancer cases and controls by arsenic intake {#tbl-arsenic}
+
+### 2a. Odds ratios {#sec-q2a}
+
+What is the odds ratios for each of the two higher ingestion groups (400–1,000 and \>1,000 µg/day) relative to the lowest \<400 group? Show the two tables for each of the two odds ratio calculations.
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+The \<400 group is the reference (unexposed) in both tables.
+
+| 400–1,000 vs. \<400 | Cases | Controls |
+|:--|:-:|:-:|
+| 400–1,000 | 25 | 141 |
+| \<400     | 71 | 405 |
+: 400–1,000 vs. \<400 µg/day {#tbl-as-mid}
+
+$$
+\text{OR} = \frac{25 \times 405}{141 \times 71} = \frac{10{,}125}{10{,}011} = \mathbf{1.01}
+$$
+
+| \>1,000 vs. \<400 | Cases | Controls |
+|:--|:-:|:-:|
+| \>1,000 | 26 | 94  |
+| \<400   | 71 | 405 |
+: \>1,000 vs. \<400 µg/day {#tbl-as-high}
+
+$$
+\text{OR} = \frac{26 \times 405}{94 \times 71} = \frac{10{,}530}{6{,}674} = \mathbf{1.58}
+$$
+:::
+
+### 2b. Confidence interval {#sec-q2b}
+
+What is the 95% CI for the OR comparing the \>1,000 µg group to the \<400 group?
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+1. $\ln(\text{OR}) = \ln(1.58) = 0.456$
+2. $\text{SE} = \sqrt{\tfrac{1}{26} + \tfrac{1}{94} + \tfrac{1}{71} + \tfrac{1}{405}} = \sqrt{0.0657} = 0.256$
+3. $0.456 \pm (1.96 \times 0.256) = 0.456 \pm 0.502$, which gives $-0.046$ to $0.958$
+4. Exponentiate both ends: $e^{-0.046} = 0.95$ and $e^{0.958} = 2.61$
+
+**95% CI = 0.95 to 2.61**
+:::
+
+### 2c. Interpretation {#sec-q2c}
+
+Write a sentence (or 2 sentences) interpreting the odds ratio and the 95% CI.
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+People drinking more than 1,000 µg/day of arsenic had 1.58 times the odds of kidney cancer compared with people drinking less than 400 µg/day. The 95% CI (0.95 to 2.61) includes 1, so the result is not statistically significant. The true effect could be anywhere from no increase to about a 2.6-fold increase in odds.
+:::
+
+## Question 3: Military service and hearing loss {#sec-q3}
+
+In a case-control study of hearing loss among older men, 418 cases with hearing loss and 866 controls are recruited. It had been observed that men were more likely to have hearing loss than women at the same age, and one hypothesis was that a history of military service was a risk factor for hearing loss at older ages because of noise exposure during combat experiences. 259 of the cases and 435 of the controls had served in the military.
+
+### 3a. Crude OR {#sec-q3a}
+
+What is the crude (unadjusted) OR?
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+Men who didn't serve: $418 - 259 = 159$ cases and $866 - 435 = 431$ controls.
+
+|               | Cases | Controls |
+|:--------------|:-:|:-:|
+| Served        | 259 | 435 |
+| Did not serve | 159 | 431 |
+: Crude table {#tbl-crude}
+
+$$
+\text{OR}_{\text{crude}} = \frac{259 \times 431}{435 \times 159} = \frac{111{,}629}{69{,}165} = \mathbf{1.61}
+$$
+:::
+
+There was also a concern that any association could be due to age confounding. Although all of the men were older than 60, men older than 75 at the time that the study was done were more likely to have served in the military because of the timing of armed conflicts. @tbl-hearing gives the cross tabulations of cases and controls by military service and age \>75 years.
+
+| Military service | Age group | Cases | Controls |
+|:-----------------|:----------|------:|---------:|
+| Yes              | 75+       |   219 |      365 |
+| Yes              | 60–74     |    40 |       70 |
+| No               | 75+       |   125 |      337 |
+| No               | 60–74     |    34 |       94 |
+: Cases and controls by military service and age {#tbl-hearing}
+
+### 3b. Stratum-specific ORs {#sec-q3b}
+
+If this analysis was stratified by age 75+ versus age 60–74, what are the stratum-specific odds ratios? Show the stratified tables.
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+| Age 75+       | Cases | Controls |
+|:--------------|:-:|:-:|
+| Served        | 219 | 365 |
+| Did not serve | 125 | 337 |
+: Age 75+ {#tbl-s1}
+
+$$
+\text{OR}_{75+} = \frac{219 \times 337}{365 \times 125} = \frac{73{,}803}{45{,}625} = \mathbf{1.62}
+$$
+
+| Age 60–74     | Cases | Controls |
+|:--------------|:-:|:-:|
+| Served        | 40 | 70 |
+| Did not serve | 34 | 94 |
+: Age 60–74 {#tbl-s2}
+
+$$
+\text{OR}_{60\text{–}74} = \frac{40 \times 94}{70 \times 34} = \frac{3{,}760}{2{,}380} = \mathbf{1.58}
+$$
+:::
+
+### 3c. Mantel-Haenszel OR {#sec-q3c}
+
+What would be the Mantel-Haenszel odds ratio for hearing problems and military service, adjusted for age? Comparing the crude and adjusted ORs, does it appear that age confounded the association?
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+For each age group, divide by that group's total: 1,046 men aged 75+ and 238 men aged 60–74.
+
+- Top of the fraction: $\dfrac{73{,}803}{1{,}046} + \dfrac{3{,}760}{238} = 70.56 + 15.80 = 86.36$
+- Bottom of the fraction: $\dfrac{45{,}625}{1{,}046} + \dfrac{2{,}380}{238} = 43.62 + 10.00 = 53.62$
+
+$$
+\text{OR}_{M\text{-}H} = \frac{86.36}{53.62} = \mathbf{1.61}
+$$
+
+Age did not confound the association. The crude OR (1.61) and the age-adjusted OR (1.61) are the same, and both age groups give about the same OR.
+
+Age didn't confound because a confounder has to be linked to both the exposure and the outcome, and age is linked only to the exposure:
+
+- **Age and military service are linked.** Among controls, 52% of men aged 75+ served, compared with 43% of men aged 60–74.
+- **Age and hearing loss are not linked.** Among men who never served, cases and controls were equally likely to be 75+ (79% vs. 78%).
+:::
