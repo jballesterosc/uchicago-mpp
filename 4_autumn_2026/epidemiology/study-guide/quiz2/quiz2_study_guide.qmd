@@ -1,0 +1,937 @@
+---
+title: "Quiz 2 study guide"
+subtitle: "PSET 5: cohort and case-control designs, odds ratios, confounding, and interaction"
+author: "Jay Ballesteros"
+date: 2026-11-15
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    toc-location: left
+    number-sections: true
+    html-math-method: mathjax
+    smooth-scroll: true
+    theme: cosmo
+crossref:
+  eq-prefix: "Eq."
+---
+
+# How to use this guide {#sec-how}
+
+Your TA said Quiz 2 is mostly PSET 5. Quiz 1 took the first 30 minutes of a Monday class (Week 4 reading notes), so plan for short calculations plus a few questions on design and interpretation.
+
+A plan for the next few hours:
+
+1. Skim @sec-designs through @sec-ve once. They explain the ideas behind every PSET question in plain language. Budget about 90 minutes.
+2. Read the corrected PSET 5 in @sec-pset, about 30 minutes.
+3. Close everything and do the recall drill in @sec-drill from memory. The answers are folded, so write yours on paper before you open one.
+4. Work the problems in @sec-practice. They use new numbers, so remembered answers won't help.
+5. Right before the quiz, read the formula sheet (@sec-formulas) and the list of traps (@sec-traps).
+
+Citations point to your course materials. "L10 s27" means Lecture 10, slide 27, and "Gordis p.248" means page 248 of *Gordis Epidemiology*, 7th edition.
+
+# Cohort or case-control: the basic idea {#sec-designs}
+
+Both designs ask whether an exposure changes the chance of getting a disease. They start from opposite ends of the story.
+
+A cohort study starts with people who don't have the disease yet. You sort them by exposure, wait, and count who gets sick in each group. Picture two trays of seeds, one with fertilizer and one without, where you count how many sprout in each tray.
+
+A case-control study starts at the end of the story. You find people who already have the disease (cases) and people who don't (controls), then look back to see how many in each group were exposed. A detective works this way, starting at the crime scene and reasoning backward.
+
+| | Cohort | Case-control |
+|:--|:--|:--|
+| You start with | People without the disease, grouped by exposure | People with the disease (cases) and without it (controls) |
+| Direction | Forward: exposure, then outcome | Backward: outcome, then past exposure |
+| You compare | Incidence in the exposed vs. the unexposed | How often cases vs. controls were exposed |
+| Measures you can get | Risk, RR, AR, OR | OR only |
+| Works best when | The exposure is rare | The disease is rare |
+| Can study | Many outcomes of one exposure | Many exposures for one outcome |
+| Time and cost | Long and expensive if prospective | Relatively short and cheap |
+| Hardest part | Keeping everyone in follow-up | Picking the right controls |
+| Main bias worry | Assessing the outcome; loss to follow-up | Assessing past exposure |
+
+: Cohort vs. case-control at a glance (Gordis Table 9.1, p.198; L8 s44; L10 s13). {#tbl-designs tbl-colwidths="[22,39,39]"}
+
+The course's rule for picking a design (L12 s33):
+
+- A fairly common disease, with a sample size you can afford: cohort study.
+- A rare disease, or a health emergency that needs answers fast: case-control study.
+- How common a condition or behavior is in a population: cross-sectional survey, ideally from a national source such as NHANES.
+- A possibly helpful treatment that isn't in guidelines yet: randomized trial, if ethical and feasible.
+- Writing or testing survey questions: qualitative study.
+
+Two word choices cost points. In a cohort study the comparison group is "the unexposed," never "controls" (L8 s19). And the instructor prefers "historical cohort" to "retrospective cohort," because "retrospective" confuses people (L8 s8).
+
+# Cohort studies {#sec-cohort}
+
+## Types of cohort studies
+
+A cohort enrolls people who are free of the outcome at the start, measures their exposure, and follows them to count new cases. Anyone who already has the outcome at baseline is excluded (L8 s4, s7).
+
+Cohorts are classified three ways:
+
+- By timing relative to the investigator (L8 s8). A prospective cohort enrolls people now and follows them in real time. A historical cohort uses records that already show past exposure, and the outcomes have already happened. A mixed cohort uses old records for exposure and keeps following people forward.
+- By how people get in (L8 s6, s19, s26). An exposure-based cohort recruits people because of their exposure, like the radium dial painters or the Dutch Hunger Winter births. A general population cohort recruits everyone in a place, as Framingham did, or everyone on a ready-made list, as the British Doctors Study and the Nurses' Health Study did. The instructor calls the list-based kind "opportunistic" and notes that the term is hers (L8 s26, s39).
+- By follow-up time (L8 s6). In a fixed cohort everyone is watched over the same calendar time, so you use cumulative incidence. In a dynamic cohort people are watched for different lengths of time, so you use incidence rates.
+
+A general population cohort can study many exposures and many outcomes, because each analysis can sort members into exposed and unexposed using any variable that was collected (L8 s26).
+
+## Relative risk {#sec-rr}
+
+$$
+\text{RR} = \frac{\text{incidence in the exposed}}{\text{incidence in the unexposed}} = \frac{a/(a+b)}{c/(c+d)}
+$$ {#eq-rr}
+
+An RR of 2 means the exposed got the disease twice as often. An RR of 1 means no difference. If nobody exposed gets sick, the RR is 0, and if nobody unexposed gets sick, it is undefined (infinite). An RR of 2 and an RR of 0.5 describe the same size of effect with the groups swapped (L8 s9).
+
+An interpretation needs the size of the effect and who is compared with whom (L8 s10). The lecture's model sentence for its hepatitis C example: among HCV-positive women giving birth, those who were also HIV-positive had an 80% greater risk (RR = 1.8) of passing HCV to their babies than HIV-negative women (L8 s13).
+
+## Confidence interval for an RR
+
+Ratios are lopsided. An RR of 0.5 is squeezed between 0 and 1, while an RR of 2 sits on a scale that runs to infinity, even though both describe the same size of effect. The natural log makes the scale symmetric: $\ln(2) = 0.69$ and $\ln(0.5) = -0.69$. So you build the interval on the log scale and then exponentiate back (L8 s11).
+
+$$
+95\%\ \text{CI} = \exp\left[\ln(\text{RR}) \pm 1.96\sqrt{\frac{b/a}{a+b} + \frac{d/c}{c+d}}\,\right]
+$$ {#eq-rr-ci}
+
+The lecture's worked example has RR = 1.8, so $\ln(1.8) = 0.59$ and SE = 0.424. Then $0.59 \pm 1.96 \times 0.424$ gives $-0.24$ to $1.42$, and exponentiating gives a CI of 0.78 to 4.14. The CI includes 1, so you can't reject H0: RR = 1 (L8 s14). An RR's precision depends on the number of events (cells a and c), not on the total number of people (L9 s26).
+
+## Attributable risk
+
+These come from Lecture 8 and are fair game as background:
+
+- $\text{AR} = I_{\text{exp}} - I_{\text{unexp}}$ is the extra risk among the exposed that is due to the exposure. It assumes the exposure really causes the outcome (L8 s15).
+- $\text{AR}\% = \dfrac{I_{\text{exp}} - I_{\text{unexp}}}{I_{\text{exp}}} \times 100 = \dfrac{\text{RR} - 1}{\text{RR}} \times 100$ is the share of the exposed group's cases that the exposure caused (L8 s16).
+- $\text{PAR} = I_{\text{total}} - I_{\text{unexp}} = \text{AR} \times P_e$ is the excess in the whole population, so it depends on how common the exposure is (L8 s17).
+
+The lecture's example (L8 s18): 25 of 100 women with gestational diabetes and 8 of 100 without it had macrosomic babies. That gives RR = 3.125 and $\text{AR} = 0.25 - 0.08 = 0.17$, or 17 cases per 100 exposed women. AR% is $0.17/0.25 = 68\%$, and with gestational diabetes in 6% of pregnancies, $\text{PAR} = 0.17 \times 0.06 = 0.01$.
+
+## Strengths, weaknesses, and biases
+
+Strengths (L8 s44): the exposure clearly comes before the outcome, which is stronger evidence for causation than a case-control study gives. One cohort can study many outcomes, and many exposures too if it is a general population cohort. The number of events grows over time, and so does the power to reject a false H0.
+
+Weaknesses (L8 s44): a prospective cohort takes a lot of time and money. Loss to follow-up threatens internal validity, especially when it differs by exposure and outcome. Rare outcomes need very large cohorts. And the design is open to selection bias.
+
+In this course, "selection bias" in a cohort means that people with different exposures differ in other ways that also predict disease, such as education, depression, or access to care. Those other characteristics are confounders (L8 s45; L9 s6).
+
+Gordis adds two practical points. A cohort is easier to run when the time from exposure to outcome is short, as with rubella in pregnancy and malformations in the baby, and when you can keep dropouts low (p.190). And whoever decides whether a person developed the disease should be masked to that person's exposure, to avoid information bias (p.189).
+
+# Case-control studies {#sec-cc}
+
+## Design
+
+A case-control study is an observational study that works like a case series with a comparison group of non-cases. It is often the only practical way to study a rare disease (L10 s11). You recruit cases and controls, then look back at their exposures (L10 s12).
+
+Advantages (L10 s13): efficient for rare diseases, can test many exposures, relatively quick and inexpensive, and needs a smaller sample than a cohort.
+
+Disadvantages (L10 s13): an appropriate control group can be hard to select and enroll, unbiased measures of past exposure can be hard to get, the order of exposure and disease may be unclear, and the design can miss rare exposures with low attributable risk.
+
+## Choosing cases
+
+Incident (newly diagnosed) cases are preferred. Prevalent cases include only people who survived long enough to be counted, so a "risk factor" found with them may be a factor for surviving the disease instead of getting it (L10 s14; Gordis p.163).
+
+Case finding should be reproducible: define the source population, try to find every case in it, use uniform diagnostic criteria, and write clear inclusion and exclusion rules. Good sources are hospital, clinic, or lab records, health department reports, registries, administrative records, and death certificates. Flyers are not reproducible (L10 s15). Cases from a single tertiary-care hospital may reflect its referral patterns or only the most severe disease (Gordis p.163).
+
+## Choosing controls
+
+The rule to memorize: controls should be people who would have become cases in your study if they had developed the disease (L10 s16). If cases come from a whole population, such as a state cancer registry, controls should come from that population. If cases come from one clinic, controls can come from the people who would have been diagnosed at that clinic (L10 s16).
+
+| Type of control | Good | Bad |
+|:--|:--|:--|
+| Population (from a roster such as health plan or voter lists, or from random addresses or phone numbers) | Results generalize better | Costly and slow; few people agree to take part |
+| Hospital or clinic patients | Easy to find; similar data quality; willing | May share hidden risk factors with cases, as in early studies of smoking and lung cancer |
+| Neighbors, friends, siblings | Fast, no roster needed, high response | Too similar to the cases (overmatching) |
+| Dead controls for dead cases | Proxy respondents for both groups | Only broad exposure information |
+
+: Types of controls (L10 s17 to s19). {#tbl-controls}
+
+For hospital controls, the lecture advises avoiding diagnoses linked to the exposure, preferring acute conditions such as injuries or infections, and mixing several diagnoses (L10 s18). If only 5% of invited population controls agree to take part, the group may no longer be population-based (L10 s17).
+
+The classic warning (Gordis p.164): in 1929 Raymond Pearl compared 816 autopsies of people with cancer with 816 autopsies of people without it at Johns Hopkins. Tuberculosis showed up in 6.6% of cases and 16.3% of controls, so he concluded that TB protects against cancer. But TB was a common reason for admission there, so his controls were loaded with TB patients. A repeat study that used heart disease deaths as controls found no difference.
+
+## Why a case-control study can't give you an RR
+
+You decide how many cases and controls to enroll. Enroll twice as many controls and $a/(a+b)$ changes, even though nothing about the disease changed. So a "risk" computed from a case-control table only reflects your enrollment choices (L10 s20). The odds ratio survives because the sampling fractions cancel out of the cross-product (L10 s41, s42).
+
+## The odds ratio {#sec-or}
+
+| | Cases | Controls |
+|:--|:--:|:--:|
+| Exposed | $a$ | $b$ |
+| Unexposed | $c$ | $d$ |
+
+: The 2x2 table. Keep exposed in the top row and cases in the left column, or the cross-product gives the wrong OR (Gordis p.248). {#tbl-2x2}
+
+$$
+\text{OR} = \frac{\text{odds of exposure in cases}}{\text{odds of exposure in controls}} = \frac{a/c}{b/d} = \frac{ad}{bc}
+$$ {#eq-or}
+
+The OR of exposure (cases vs. controls) equals the OR of disease (exposed vs. unexposed), so you can describe it either way (L10 s21; Gordis p.248). In the lecture's Zika example, 24 of 30 case mothers and 39 of 61 control mothers were Zika-positive, so $\text{OR} = (24 \times 22)/(39 \times 6) = 2.26$ (L10 s22).
+
+Odds and probability are different things. If 1 in 4 people is sick, the probability is $1/4 = 0.25$, but the odds are 1 sick to 3 well, or $1/3 = 0.33$. For a rare disease, 1 in 100, the two almost match: 0.01 and 0.0101 (L10 s25).
+
+How to read an OR (L10 s23, s25):
+
+- OR = 1 is the null value: cases and controls have the same odds of exposure. H0 is tested with a chi-square test of independence on the 2x2 table.
+- OR above 1 means the exposure goes with more disease. It can reach infinity if no controls were exposed.
+- OR below 1 means the exposure goes with less disease. It can reach 0 if no cases were exposed.
+- Say "odds," because an OR is not a risk: "The odds of disease were [OR] times as high in the exposed as in the unexposed" (L10 s25). Gordis says the interpretation of an OR is always prospective, so you can describe it as the odds of disease given exposure even in a case-control study (p.248).
+
+The OR approximates the RR when the disease is rare (under about 10%) and when the cases and controls are representative of all cases and non-cases with respect to past exposure (L10 s24; Gordis p.249). The OR is always farther from 1 than the RR, and much farther when the disease is common (L10 s25). The lecture compares two cohorts with the same RR (L10 s26):
+
+| Disease frequency | RR | OR |
+|:--|:--:|:--:|
+| Rare (5% incidence) | 2.68 | 2.79 |
+| Common (50% incidence) | 2.68 | 6.00 |
+
+: Same RR, different ORs (L10 s26). {#tbl-or-rr}
+
+## Confidence interval for an OR {#sec-or-ci}
+
+$$
+95\%\ \text{CI} = \exp\left[\ln(\text{OR}) \pm 1.96\sqrt{\frac{1}{a} + \frac{1}{b} + \frac{1}{c} + \frac{1}{d}}\,\right]
+$$ {#eq-or-ci}
+
+Every cell enters the SE, and a small cell adds a big piece, because 1 divided by a small number is large. That is the lecture's main point about OR precision: one small cell greatly increases the SE. For an RR, only the event cells a and c matter (L10 s27). In Lecture 11, a stratum with a cell of 1 gave OR = 25.9 with a CI of 3.4 to 198 (L11 s23).
+
+## Bias in case-control studies
+
+Bias is a systematic error that limits internal validity. It comes from who is in the study (selection bias) or from the quality of the data (information bias), and case-control studies are open to both (L10 s36).
+
+Selection bias happens when finding cases or controls is also related to exposure (L10 s37). The lecture's examples are controls with a different income level from the cases (cases from a referral practice, controls from a primary care clinic), a diagnosis that depends on the exposure (family dynamics and bulimia in teenagers), and low control response, where whatever predicts taking part, such as more education, will look protective.
+
+Recall bias happens when cases and controls remember or report past exposures differently, usually because cases search their memory harder (L10 s38). Gordis gives an invented example (Table 7.10, p.171). Mothers of babies with and without malformations both truly had infections 15% of the time, but case mothers recalled 60% of their infections and control mothers 10%. The interviews would show 9% vs. 1.5%, an association that isn't real. Ways to reduce recall bias (L10 s38): use controls with another disease, interview cases soon after diagnosis, check exposures against records, and add "dummy" risk factors to the questionnaire.
+
+Observation (interviewer) bias happens when interviewers know who is a case and ask or interpret differently. The fixes are standardized questionnaires with little room for prompting, interviewers blinded to case status when possible, and hiding the hypothesis from interviewers (L10 s39).
+
+## Matching {#sec-matching}
+
+Matching means choosing controls so they resemble the cases on a few likely confounders (L10 s29; Gordis p.171).
+
+- Individual matching gives each case one or more controls with the same values, such as birth year, sex, ZIP code, or hospital.
+- Frequency (group) matching makes the control group as a whole have the same proportions as the cases, such as 50% female or 25% aged 65 and over.
+
+Case-control studies do not have to be matched (L10 s28). Match only when you can't adjust in the analysis, which happens when there are too few cases or when the confounder has too many categories, like ZIP code or diagnosing physician (L10 s29).
+
+Matching has costs (L10 s30). The controls are no longer representative, so you must use methods made for matched data. And you can't study a matched factor as a risk factor, because you forced it to be equally common in cases and controls. You can still stratify on it to see whether the OR differs between, say, women and men, which is an interaction question. Matching on too many variables makes controls impossible to find (Gordis p.172).
+
+In a 1:1 matched-pairs study, only discordant pairs carry information. The OR is the number of pairs where only the case was exposed divided by the number where only the control was exposed (L10 s31):
+
+| | Control exposed | Control unexposed |
+|:--|:--:|:--:|
+| Case exposed | 8 | 18 |
+| Case unexposed | 7 | 38 |
+
+: Each number is a pair. OR = 18/7 = 2.57, and the 8 + 38 concordant pairs add nothing (L10 s31). {#tbl-pairs}
+
+Enrolling more than one control per case helps for the same reason: a matched set is less likely to have everyone sharing one exposure status (L10 s31).
+
+## Variants: case-crossover and nested case-control
+
+In a case-crossover study, each case is its own control. You compare the person's exposure just before the event with their exposure at other times. It suits short-lived exposures and sudden events, which is why it shows up in environmental and injury research (L12 s5). The lecture's example compared heat and wildfire smoke in the 6 days before each preterm birth in California with the same weekdays at other times in that month (L12 s6).
+
+A nested case-control study sits inside an existing cohort. Each time a cohort member gets the disease, several members who are still disease-free at that moment are picked as controls, matched on confounders (L12 s7, s8). Because exposure data and specimens were collected before anyone got sick, information bias is as low as in a cohort. The controls certainly come from the right population, so selection bias is low too. It also saves money, because you test stored specimens only for the cases and controls, and it can be built from electronic records (L12 s9; Gordis p.197).
+
+The D'Souza HPV study you read in Week 6 used several of these features. It was a hospital-based case-control study of 100 patients with newly diagnosed oropharyngeal cancer and 200 control patients without cancer at Johns Hopkins. The cases came from a cohort of patients with newly diagnosed head and neck cancer seen in the hospital's otolaryngology clinic from 2000 through 2005, and the paper describes the study as nested within that cohort. Two controls were individually matched to each case on sex and 5-year age group, and oral rinse specimens were collected from cases before treatment and from controls at enrollment. Because of the matching, the study can't test age or sex as risk factors, and because HPV infection was measured in lab specimens, those data aren't subject to recall bias.
+
+# Confounding {#sec-confounding}
+
+A confounder is a third variable that travels with the exposure and also causes the outcome, so the exposure gets blamed (or credited) for the confounder's work. Ice cream sales and drownings both rise in summer because hot weather drives both, so ice cream looks dangerous until you compare days with the same weather.
+
+The course definition (L9 s14) says a confounder is any third variable that is
+
+1. associated with the exposure,
+2. a cause of the outcome, and
+3. not on the causal pathway between the exposure and the outcome.
+
+Gordis states it as two conditions: the factor is a known risk factor for the disease, and it is associated with the exposure without being a result of it (p.294).
+
+The course example (L9 s4, s5): in the British Doctors Study, 2% of nonsmokers and 20% of heavy smokers were heavy drinkers. Alcohol could confound the link between smoking and heart disease, where the RR is only about 1.5, so a little confounding matters. It matters much less for lung cancer, where the RR for heavy smoking is about 30.
+
+Mediators are not confounders (L9 s15 to s17). A mediator is a step on the causal path from exposure to outcome. Chronic HBV causes cirrhosis and cirrhosis causes liver cancer, so cirrhosis mediates the link between HBV and liver cancer. Late-night snacking sits the same way between late bedtimes and weight gain, and so does higher HDL between light drinking and less heart disease. Adjusting for a mediator removes part of the effect you are trying to measure.
+
+Confounding can push an estimate in any direction (L9 s18):
+
+- Positive confounding: the crude estimate is farther from 1 than the adjusted one, so the association looks exaggerated.
+- Negative confounding: the crude estimate is closer to 1 than the adjusted one, so the association looks weaker than it is.
+- Qualitative confounding: the direction of the association flips.
+
+Confounding is common in observational studies because people with different exposures usually differ in other ways too, especially age, sex, race and ethnicity, education, income, and where they live (L9 s20).
+
+## Controlling confounding
+
+| Stage | Method | Example or note |
+|:--|:--|:--|
+| Design | Restriction: include only one level of the confounder | A study of cannabis and heart events included only people who didn't use tobacco (L9 s22) |
+| Design | Matching | See @sec-matching; mostly used in case-control studies |
+| Analysis | Stratification | Compare estimates within levels of the confounder, then combine them with M-H |
+| Analysis | Regression | Handles many confounders and continuous variables at once (L9 s34) |
+
+: Ways to control confounding (L9 s21, s23; Gordis Box 15.2, p.295). {#tbl-control}
+
+You can only adjust for a confounder you measured. The instructor calls unmeasured confounding a form of selection bias, as when men who smoked partly chose to smoke along with their drinking habits (L9 s6).
+
+## The stratified approach {#sec-strat}
+
+The classic method has four steps (L9 s24):
+
+1. Calculate the crude (unadjusted) RR or OR.
+2. Pick plausible confounders from prior research or knowledge.
+3. Stratify by the confounder and calculate the estimate in each stratum. Ask whether the strata are similar to each other and whether they are similar to the crude estimate.
+4. Combine the stratum estimates with a weighted average, the Mantel-Haenszel (M-H) estimate. This is the adjusted estimate.
+
+Deciding whether confounding is present is a judgment call. The crude and adjusted estimates always differ a little, and there is no statistical test for confounding (L9 s24, s31).
+
+A plain average of the strata won't do, because strata with more outcomes give more precise estimates and should count more (L9 s25). The M-H estimate does the weighting for you. For each stratum, divide each cross-product by that stratum's total, then add up the tops, add up the bottoms, and divide (L10 s32):
+
+$$
+\text{OR}_{\text{M-H}} = \frac{\sum_i \dfrac{a_i d_i}{N_i}}{\sum_i \dfrac{b_i c_i}{N_i}}
+$$ {#eq-mh-or}
+
+The RR version for cohort data (L9 s27):
+
+$$
+\text{RR}_{\text{M-H}} = \frac{\sum_i \dfrac{a_i (c_i + d_i)}{n_i}}{\sum_i \dfrac{c_i (a_i + b_i)}{n_i}}
+$$ {#eq-mh-rr}
+
+You don't have to memorize these, but you do have to be able to use them (L10 s32; L9 s27). The M-H method also avoids dropping a whole stratum that has a 0 cell (L10 s32).
+
+A course example with confounding (L9 s28 to s31): in Framingham, the crude RR for hypertension and stroke was 3.2. Within age groups the RRs were 2.7 (under 60), 2.3 (60 to 69), and 2.3 (70 and over), and the M-H RR was 2.4. Hypertension became more common with age (19%, 41%, and 54% of each group), and so did stroke, so age was a confounder.
+
+A Gordis example with complete confounding (pp.294 to 295): a crude OR of 1.95 split into two age strata that each had OR = 1.0. Before stratifying, Gordis checks the two links. Age is related to case status, since 50% of cases but only 20% of controls were 40 or older. Age is related to exposure, since 10% of people under 40 were exposed vs. 50% of those 40 or older. The whole crude association came from the age difference.
+
+## Limits of adjustment
+
+Residual confounding is confounding that remains after you adjust (L9 s32). It happens when the confounder's categories are too broad, such as 10-year age groups or a top age group with no upper limit, or when the variable poorly measures the real thing, such as private vs. public insurance standing in for socioeconomic status. With several confounders, the strata multiply (3 age groups × 2 sexes × 4 race groups = 24 strata), cells go empty, and the M-H approach stops working, so regression takes over (L9 s34).
+
+# Interaction (effect modification) {#sec-interaction}
+
+Effect modification means the exposure's effect has a different size in different groups. In Framingham, obesity raised heart attack risk a lot for women (RR = 1.97) and very little for men (RR = 1.08), so sex modified the effect of obesity (L11 s6, s17). Confounding is a nuisance that can show up in one study population and not another, so you remove it. Effect modification is a real feature of the population, so you look for it and report it (L11 s8).
+
+After stratifying, you will see one of three patterns:
+
+| What the strata show | What it means | What you report |
+|:--|:--|:--|
+| Similar to each other and to the crude estimate | No confounding and no effect modification | The crude or adjusted estimate (they agree) |
+| Similar to each other, different from the crude estimate | Confounding | The adjusted (M-H) estimate |
+| Different from each other | Effect modification | Each stratum's estimate, plus the test of homogeneity |
+
+: Reading a stratified analysis (L11 s5, s7, s17). {#tbl-patterns}
+
+The test of homogeneity checks H0: the association is the same in every stratum. It is a chi-square test with $k - 1$ degrees of freedom for $k$ strata, and you need its logic, not its formula (L11 s16). When it rejects H0, report the stratum estimates and the test's p-value instead of the M-H estimate (L11 s17).
+
+Two course examples:
+
+- Obesity and MI in Framingham (L11 s4 to s6, s17): the crude RR was 1.29, with 1.08 for men, 1.97 for women, and an M-H RR of 1.35. The homogeneity test gave p = 0.015, so the lecture reports the RRs by sex.
+- Hepatitis C and liver cancer, stratified by hepatitis B (L11 s18 to s25): the crude OR was 9.19, with 25.9 in the HBV-positive stratum and 6.0 in the HBV-negative stratum. The homogeneity test gave p = 0.145, so H0 was not rejected, and the M-H OR of 8.07 adjusts for HBV as a confounder. The two ORs look very different, but the HBV-positive stratum has a cell of 1, so its CI runs from 3.4 to 198 (L11 s23).
+
+One typo to know about: slide 25 gives the crude OR as 9.17, but slide 18 and the arithmetic, $(63 \times 357)/(24 \times 102) = 9.19$, give 9.19.
+
+## Additive and multiplicative models
+
+To say two factors interact, you need an idea of what their combined effect would be if they didn't. There are two standard answers (L11 s10 to s13):
+
+- Multiplicative null: the RRs multiply, so $\text{RR}_{ef} = \text{RR}_e \times \text{RR}_f$. Logistic regression and the standard interaction tests assume this, and it is the usual default when nobody names a model.
+- Additive null: the extra risks add, so $\text{RR}_{ef} = \text{RR}_e + \text{RR}_f - 1$. Linear regression assumes this, and in public health communication it is considered more intuitive.
+
+::: {.column-page-right}
+
+| Example | RR, first factor alone | RR, second factor alone | Expected if multiplicative | Expected if additive | Observed together | Verdict |
+|:--|:--:|:--:|:--:|:--:|:--:|:--|
+| Oral cancer: smoking, alcohol (L11 s14) | 1.53 | 1.23 | 1.88 | 1.76 | 5.71 | Interaction on both scales |
+| Lung cancer: smoking, asbestos (L11 s15) | 10.9 | 5.2 | 56.7 | 15.1 | 53.2 | Additive interaction only |
+
+: Checking for interaction against each null model. {#tbl-models}
+
+:::
+
+For asbestos and smoking, the lecture's policy message is that people exposed to asbestos really should not smoke, because the combined RR is enormous whether or not it is "expected" (L11 s15).
+
+You look for interaction when you have a hypothesis for it, when an earlier study found one, or as a routine check of the main exposure against other variables. Interactions are relatively rare in etiologic epidemiology and more common in clinical and health services research. An unexpected interaction is hypothesis-generating, and studies built to test interactions need to be bigger, because each stratum needs its own precise estimate (L11 s8, s26, s27). The summary slide lists the jobs of any analysis: remove confounding, detect effect modification, and summarize the associations (L11 s30).
+
+# Other observational designs {#sec-other}
+
+An ecologic study uses group-level data, such as rates by country or county (L12 s11). Its signature problem is the ecological fallacy, also called aggregation bias: a relationship seen across groups may not hold for individuals. The lecture's example is Durkheim's finding that Catholic regions of Germany had lower suicide rates than Protestant ones. It was later suggested that Catholics living in Protestant areas were the ones more likely to die by suicide, though this is disputed (L12 s13). Ecologic studies are also prone to confounding, which can only be adjusted for with group-level data, and they usually draw on data that are already public (L12 s13). Exposures can be aggregate (average meat consumption per person), environmental (PM2.5 or hours of sunlight), or global, meaning they exist only at the group level (income inequality or form of government) (L12 s14).
+
+A cross-sectional study is a snapshot (L12 s18, s20). People are usually not chosen by exposure or disease, they are surveyed once and not followed, and the disease is always prevalent. It gives prevalence and distributions, and it measures associations as a prevalence ratio (PRR) or prevalence odds ratio (POR), which can be adjusted for confounders. Because exposure and disease are measured at the same time, it usually can't tell which came first (Gordis p.197). NHANES and NHIS are the standard national sources (L12 s21 to s25). A serial cross-sectional study repeats independent snapshots over time. In NHANES, the share of energy US youths got from ultraprocessed foods rose from 61.4% to 67.0% between 1999 and 2018 (L12 s26, s28).
+
+A qualitative study collects non-numerical data, such as interviews, open-text survey answers, and focus groups, to understand people's perspectives. In epidemiology it shows up mostly in open-ended survey questions and in developing survey questions, for example through cognitive interviews (L12 s29 to s32).
+
+# Efficacy, effectiveness, and the link to Q1 {#sec-ve}
+
+$$
+\text{Efficacy} = \frac{\text{rate in placebo group} - \text{rate in vaccine group}}{\text{rate in placebo group}} = 1 - \text{RR}
+$$ {#eq-ve}
+
+Efficacy is how well a vaccine works under the ideal conditions of a trial, and effectiveness is how well it works in the real world (L7 s3). Q1 asks about effectiveness, which is why the trial's numbers aren't the final word.
+
+The trial's 68% reduction in hospitalization means $\text{RR} \approx 0.32$, and the 57% reduction in healthcare visits means $\text{RR} \approx 0.43$. From a cohort study you estimate effectiveness as $1 - \text{RR}$. From a case-control study you use $1 - \text{OR}$, which works because RSV hospitalization in young babies is rare enough for the OR to approximate the RR (L10 s24).
+
+The number needed to treat (or vaccinate) is $1/(\text{rate in placebo group} - \text{rate in vaccine group})$, the number of people you would vaccinate to prevent one bad outcome (L7 s5).
+
+# PSET 5, corrected and explained {#sec-pset}
+
+Your calculations were all correct. The changes below make the wording and the design details more precise.
+
+## Q1: RSV vaccine in pregnancy {#sec-q1}
+
+Q1 is a design question. A strong answer covers all six required elements for both designs and makes both designs answer the same question: are babies of vaccinated mothers hospitalized with RSV less often?
+
+### 1a. The two designs
+
+::: {.column-page-right}
+
+| | Cohort | Case-control |
+|:--|:--|:--|
+| Who is enrolled | Babies born at UChicago Medicine on or after September 15, 2026, whose mothers got prenatal care there and were 32 to 36 weeks pregnant at some point while the vaccine was offered (September 1 to March 1). Exclude babies who got nirsevimab or clesrovimab, and babies whose mothers were vaccinated less than 14 days before delivery. This is a prospective cohort (L8 s8). | Cases: babies under 3 months seen at UChicago (Comer Children's Hospital, the ED, or clinics) with a respiratory illness and a positive RSV test. Controls: babies the same age, seen at the same sites in the same weeks with a respiratory illness, who test negative (a test-negative design). In both groups the baby was born on or after September 15, the mother was 32 to 36 weeks pregnant while the vaccine was offered, and the baby got no nirsevimab or clesrovimab. |
+| Exposure | The mother got the RSV vaccine at least 14 days before delivery. The comparison group is the unexposed: babies of unvaccinated mothers (L8 s19). | The same: maternal vaccination at least 14 days before delivery. |
+| Data collection | Vaccine date from the UChicago record and the Illinois immunization registry (I-CARE). RSV visits and hospitalizations from UChicago records, plus a monthly check-in with parents to catch care elsewhere. Also record likely confounders: gestational age at birth, maternal age, insurance, older siblings or daycare, smoking at home, and birth month. | Cases and controls found through lab results. Vaccine status from the medical record and I-CARE, because asking mothers invites recall bias (L10 s38). The same confounders as the cohort. Controls are matched on age, site, and week, so the analysis must account for the matching (L10 s29, s30). |
+| Outcome | Lab-confirmed RSV hospitalization within 3 months of birth, and separately, a lab-confirmed RSV healthcare visit within 3 months. | RSV hospitalization or RSV visit. Here the outcome decides who is a case, and hospitalized and outpatient cases can be analyzed separately to get both outcomes. |
+| Dates | September 1, 2026 to about July 31, 2027. The last mothers are vaccinated by March 1, give birth by late April, and their babies are followed for 3 months. | October 1, 2026 to May 31, 2027, one RSV season. The prompt says the last season peaked in March and lasted through May. |
+| Null hypothesis | Babies of vaccinated and unvaccinated mothers have the same risk of RSV hospitalization in the first 3 months (H0: RR = 1, so effectiveness = 0). The same null applies to visits. | Cases and controls have the same odds of maternal vaccination (H0: OR = 1). |
+
+: Q1a, corrected. {#tbl-q1 tbl-colwidths="[14,43,43]"}
+
+:::
+
+What changed from your version:
+
+- The nirsevimab and clesrovimab exclusion now applies to both groups and both designs. An antibody shot protects the baby by itself, so a baby who got one doesn't fit either exposure group.
+- Babies whose mothers were vaccinated less than 14 days before delivery are excluded explicitly. They don't count as exposed, and they aren't truly unexposed either.
+- Cases are under 3 months instead of under 6 months, which matches your cohort and the trial's window.
+- Both designs now enroll only babies whose mothers could have been vaccinated at least 14 days before delivery. That is why births start on September 15 and why the case-control study requires an eligible mother. A 5-month-old seen in October was born in May, when no vaccine was offered, so that baby could never have been exposed.
+- Data collection now lists confounders. Families who vaccinate may differ in income, health care use, and smoking (L8 s3, s45; L9 s20). Prematurity matters too: premature babies have a higher RSV risk, and their mothers had less time to get vaccinated at least 14 days before delivery.
+- The case-control design notes that matched controls need a matched analysis.
+- The cohort is labeled prospective.
+
+### 1b. Advantages, disadvantages, and a pick
+
+- Cohort advantage: it measures the risk in each group directly, for both outcomes in one study, so effectiveness ($1 - \text{RR}$) compares straight to the trial's 68% and 57% (L8 s44; Gordis p.196).
+- Cohort disadvantage: RSV hospitalization in the first 3 months is uncommon, so you need a very large number of births to see enough cases (L8 s44).
+- Case-control advantage: it is efficient for a rare outcome. You can enroll every RSV case at Comer in one season, faster and cheaper than following thousands of babies (L10 s13).
+- Case-control disadvantage: choosing appropriate controls is hard (L10 s13). The test-negative design takes care of the worry that vaccinating families also see doctors more, because every control also came in sick. Two problems remain. Controls must come from the same population as the cases, meaning babies who would have come to UChicago if they had RSV (L10 s16). And vaccines given outside UChicago that never reach the records will misclassify exposure.
+
+The pick is the case-control study. The main outcome is rare, the course sends rare outcomes to case-control designs (L12 s33), and effectiveness is then about $1 - \text{OR}$. A cohort becomes competitive if UChicago can pull every eligible birth from its records as a historical cohort, since that removes most of the cost of following babies.
+
+What changed: your case-control disadvantage named healthcare-seeking bias, which your own test-negative controls already handle, so a reader could see a contradiction. The new version keeps the lecture's point about control selection and names the problems a test-negative design leaves. The pick is new.
+
+## Q2: Arsenic and kidney cancer {#sec-q2}
+
+| Arsenic intake (µg/day) | Cases | Controls |
+|:--|--:|--:|
+| Under 400 | 71 | 405 |
+| 400 to 1,000 | 25 | 141 |
+| Over 1,000 | 26 | 94 |
+| Total | 122 | 640 |
+
+: Kidney cancer cases and population-based controls by average arsenic intake, northern Chile. {#tbl-q2}
+
+### 2a. ORs for the two higher groups
+
+The lowest group is the yardstick, and each higher group gets its own 2x2 table against it.
+
+| 400 to 1,000 vs. under 400 | Cases | Controls |
+|:--|--:|--:|
+| 400 to 1,000 (exposed) | 25 | 141 |
+| Under 400 (reference) | 71 | 405 |
+
+: 400 to 1,000 vs. under 400 µg/day. {#tbl-q2a1}
+
+$$
+\text{OR} = \frac{25 \times 405}{141 \times 71} = \frac{10{,}125}{10{,}011} = 1.01
+$$
+
+| Over 1,000 vs. under 400 | Cases | Controls |
+|:--|--:|--:|
+| Over 1,000 (exposed) | 26 | 94 |
+| Under 400 (reference) | 71 | 405 |
+
+: Over 1,000 vs. under 400 µg/day. {#tbl-q2a2}
+
+$$
+\text{OR} = \frac{26 \times 405}{94 \times 71} = \frac{10{,}530}{6{,}674} = 1.58
+$$
+
+### 2b. 95% CI for the over-1,000 group
+
+Using @eq-or-ci:
+
+1. $\ln(1.578) = 0.456$
+2. $\text{SE} = \sqrt{\tfrac{1}{26} + \tfrac{1}{94} + \tfrac{1}{71} + \tfrac{1}{405}} = \sqrt{0.0385 + 0.0106 + 0.0141 + 0.0025} = \sqrt{0.0657} = 0.256$
+3. $0.456 \pm 1.96 \times 0.256 = 0.456 \pm 0.502$, which gives $-0.046$ to $0.958$
+4. $e^{-0.046} = 0.95$ and $e^{0.958} = 2.61$
+
+The 95% CI is 0.95 to 2.61.
+
+More than half of the SE comes from one cell, the 26 cases in the top group ($1/26 = 0.0385$ out of $0.0657$). With more cases there, the interval would be narrower (L10 s27).
+
+### 2c. Interpretation, corrected
+
+> People with average arsenic intake above 1,000 µg/day had 1.58 times the odds of kidney cancer of people with intake below 400 µg/day. The 95% CI (0.95 to 2.61) includes 1, so at the 0.05 level we can't reject H0: OR = 1. The data fit anything from about 5% lower odds to about 2.6 times the odds.
+
+What changed: your version said the effect could be anywhere "from no increase," but the lower bound of 0.95 is slightly below 1, so the interval includes slightly lower odds. "Drinking more than 1,000 µg/day of arsenic" became "average arsenic intake above 1,000 µg/day," which is what the categories measure.
+
+Points to have ready in case the quiz asks more:
+
+- These ORs are crude. The study collected data on potential confounders, so its published estimates would be adjusted.
+- There is no gradual dose-response here. The middle group's OR is 1.01, so any increase shows up only above 1,000 µg/day. The passage says missing dose-response evidence is part of why IARC hadn't concluded that arsenic causes kidney cancer.
+- The controls are population-based, which helps generalizability (L10 s17).
+
+## Q3: Military service and hearing loss {#sec-q3}
+
+### 3a. Crude OR
+
+Men who didn't serve: $418 - 259 = 159$ cases and $866 - 435 = 431$ controls.
+
+| Crude | Cases | Controls |
+|:--|--:|--:|
+| Served | 259 | 435 |
+| Did not serve | 159 | 431 |
+
+: Crude table. {#tbl-q3a}
+
+$$
+\text{OR}_{\text{crude}} = \frac{259 \times 431}{435 \times 159} = \frac{111{,}629}{69{,}165} = 1.61
+$$
+
+### 3b. Stratum-specific ORs
+
+| Age 75+ | Cases | Controls |
+|:--|--:|--:|
+| Served | 219 | 365 |
+| Did not serve | 125 | 337 |
+
+: Age 75+ ($N = 1{,}046$). {#tbl-q3b1}
+
+$$
+\text{OR}_{75+} = \frac{219 \times 337}{365 \times 125} = \frac{73{,}803}{45{,}625} = 1.62
+$$
+
+| Age 60 to 74 | Cases | Controls |
+|:--|--:|--:|
+| Served | 40 | 70 |
+| Did not serve | 34 | 94 |
+
+: Age 60 to 74 ($N = 238$). {#tbl-q3b2}
+
+$$
+\text{OR}_{60\text{-}74} = \frac{40 \times 94}{70 \times 34} = \frac{3{,}760}{2{,}380} = 1.58
+$$
+
+### 3c. M-H OR and the confounding question
+
+Using @eq-mh-or, divide each cross-product by its own stratum's total:
+
+$$
+\text{OR}_{\text{M-H}} = \frac{\dfrac{73{,}803}{1{,}046} + \dfrac{3{,}760}{238}}{\dfrac{45{,}625}{1{,}046} + \dfrac{2{,}380}{238}} = \frac{70.56 + 15.80}{43.62 + 10.00} = \frac{86.36}{53.62} = 1.61
+$$
+
+The corrected conclusion:
+
+> Age did not confound the association. The stratum ORs (1.62 and 1.58) are similar to each other and to the crude OR (1.61), and the age-adjusted M-H OR (1.61) equals the crude OR, which is the no-confounding pattern (L11 s5). Because the two stratum ORs are similar, there is no sign that age modifies the effect either, so a single M-H OR is a fair summary (L11 s7). After adjusting for age, men who served had 1.61 times the odds of hearing loss of men who didn't.
+
+If the quiz asks how you decided, say it is a judgment call, since there is no statistical test for confounding (L9 s24, s31).
+
+Why age fails as a confounder here, using the three criteria (L9 s14):
+
+1. Associated with the exposure: yes. Among controls, 52% of men 75 and older had served, vs. 43% of men 60 to 74.
+2. A cause of the outcome: in this sample, age isn't associated with being a case. Among men who never served, 79% of cases and 78% of controls were 75 or older. Gordis's simpler check gives the same answer, with 82% of all cases and 81% of all controls aged 75 or older (p.294).
+3. Not on the causal pathway: military service can't change a man's age, so this criterion is met.
+
+Age passes criteria 1 and 3 but fails criterion 2 in these data, so it can't distort the comparison.
+
+What changed: your version said "age and hearing loss are not linked," which sounds like a claim about biology, and in real life age does cause hearing loss. The corrected wording limits the claim to this sample. The answer also now uses the lecture's three criteria, the pattern from L11 s5, and the point about effect modification. Your PDF has stray `:::` marks after 3a and 3b, left over from formatting.
+
+# Recall drill {#sec-drill}
+
+Write each answer on paper before you open its fold.
+
+## PSET 5 from memory
+
+### Q1a {.unnumbered}
+
+You want the real-world effectiveness of the maternal RSV vaccine at UChicago, for infant RSV hospitalizations and healthcare visits in the first 3 months. For both a cohort study and a case-control study, give (1) who is enrolled, (2) the exposure, (3) data collection, (4) the outcome, (5) approximate start and end dates, and (6) the null hypothesis.
+
+::: {.callout-tip collapse="true" title="Answer"}
+Compare with @tbl-q1. The points a grader looks for:
+
+- Cohort: babies of eligible mothers, enrolled regardless of outcome. The exposure is vaccination at least 14 days before delivery, and the comparison group is called the unexposed.
+- Exclusions in both groups and both designs: nirsevimab or clesrovimab, and mothers vaccinated less than 14 days before delivery.
+- Outcomes: lab-confirmed RSV hospitalization and RSV visits within 3 months of birth.
+- Case-control: cases are RSV-positive babies under 3 months; controls are RSV-negative babies with a respiratory illness, same age, site, and week (test-negative), with eligible mothers.
+- Vaccine status comes from records and the registry, not from interviews (recall bias).
+- Dates: cohort from September 1, 2026 to about July 31, 2027; case-control from October 1, 2026 to May 31, 2027.
+- H0: RR = 1 for the cohort, OR = 1 for the case-control study.
+:::
+
+### Q1b {.unnumbered}
+
+Give the most important advantage and disadvantage of each design, and say which design you would pick.
+
+::: {.callout-tip collapse="true" title="Answer"}
+Cohort: it gives risks directly for both outcomes, so $1 - \text{RR}$ compares with the trial's 68% and 57%. But the outcome is rare, so it needs a huge number of births.
+
+Case-control: it is efficient for a rare outcome, since you can enroll every case at Comer in one season. But choosing controls is hard: they must come from the same population as the cases, and incomplete vaccine records misclassify exposure.
+
+Pick: case-control, because the outcome is rare (L12 s33). Effectiveness is about $1 - \text{OR}$.
+:::
+
+### Q2 {.unnumbered}
+
+Use @tbl-q2. (a) Find the ORs for the 400 to 1,000 and over 1,000 groups vs. the under 400 group, showing both tables. (b) Find the 95% CI for the over 1,000 vs. under 400 OR. (c) Interpret the OR and CI in one or two sentences.
+
+::: {.callout-tip collapse="true" title="Answer"}
+(a) 1.01 and 1.58 (@tbl-q2a1 and @tbl-q2a2).
+
+(b) $\ln(1.58) = 0.456$, SE $= 0.256$, so the 95% CI is 0.95 to 2.61.
+
+(c) People with average intake above 1,000 µg/day had 1.58 times the odds of kidney cancer of people below 400 µg/day. The CI includes 1, so the result is not significant at 0.05, and the data fit anything from about 5% lower odds to about 2.6 times the odds.
+:::
+
+### Q3 {.unnumbered}
+
+A case-control study of hearing loss in older men has 418 cases and 866 controls. 259 cases and 435 controls served in the military. @tbl-q3data gives the counts by age.
+
+| Military service | Age group | Cases | Controls |
+|:--|:--|--:|--:|
+| Yes | 75+ | 219 | 365 |
+| Yes | 60 to 74 | 40 | 70 |
+| No | 75+ | 125 | 337 |
+| No | 60 to 74 | 34 | 94 |
+
+: Hearing loss cases and controls by military service and age. {#tbl-q3data}
+
+(a) Find the crude OR. (b) Find the OR in each age stratum, showing the tables. (c) Find the M-H OR adjusted for age, and say whether age confounded the association.
+
+::: {.callout-tip collapse="true" title="Answer"}
+(a) 1.61.
+
+(b) 1.62 for 75+ and 1.58 for 60 to 74.
+
+(c) The M-H OR is $86.36/53.62 = 1.61$. There is no confounding by age, because the strata are similar to each other and to the crude OR, and there is no effect modification. Age is linked to military service (52% vs. 43% of controls served) but not to case status in these data (79% vs. 78% of never-served cases and controls were 75+).
+:::
+
+## Concept questions
+
+C1\. Why can't you calculate an RR from a case-control study?
+
+::: {.callout-tip collapse="true" title="Answer"}
+The investigator chooses how many cases and controls to enroll, and that choice sets $a/(a+b)$ and $c/(c+d)$, so those "risks" don't estimate anything real. The sampling fractions cancel out of the OR (L10 s20, s41, s42).
+:::
+
+C2\. When is an OR a good estimate of the RR?
+
+::: {.callout-tip collapse="true" title="Answer"}
+When the disease is rare (under about 10%) and the cases and controls are representative of all cases and non-cases with respect to exposure (L10 s24; Gordis p.249).
+:::
+
+C3\. Which is farther from 1, the OR or the RR?
+
+::: {.callout-tip collapse="true" title="Answer"}
+The OR, always, and much farther when the outcome is common (L10 s25, s26).
+:::
+
+C4\. What determines the precision of an OR? Of an RR?
+
+::: {.callout-tip collapse="true" title="Answer"}
+For an OR, the counts in every cell, so one small cell inflates the SE. For an RR, the number of events, cells a and c (L10 s27; L9 s26).
+:::
+
+C5\. Who should the controls be?
+
+::: {.callout-tip collapse="true" title="Answer"}
+People who would have become cases in your study if they had developed the disease. Population-based cases need population-based controls (L10 s16).
+:::
+
+C6\. Why are incident cases preferred over prevalent cases?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Prevalent cases reflect incidence plus survival, so a risk factor you find may be a factor for surviving the disease (L10 s14; Gordis p.163).
+:::
+
+C7\. What is recall bias, and how do you reduce it?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Cases and controls remember or report past exposure differently. Reduce it by using controls with another disease, interviewing soon after diagnosis, checking exposures against records, and adding dummy risk factors (L10 s38).
+:::
+
+C8\. Name the two kinds of matching and two costs of matching.
+
+::: {.callout-tip collapse="true" title="Answer"}
+Individual matching and frequency (group) matching. Costs: you must use methods for matched data, and you can't study the matched factor as a risk factor (L10 s29, s30). Matching on too many variables also makes controls hard to find (Gordis p.172).
+:::
+
+C9\. In a 1:1 matched-pairs study, which pairs carry information, and what is the OR?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Only the discordant pairs. The OR is the number of pairs where only the case was exposed divided by the number where only the control was exposed (L10 s31).
+:::
+
+C10\. What are the three criteria for a confounder?
+
+::: {.callout-tip collapse="true" title="Answer"}
+It is associated with the exposure, it is a cause of the outcome, and it is not on the causal pathway (L9 s14).
+:::
+
+C11\. Is cirrhosis a confounder of the link between HBV and liver cancer?
+
+::: {.callout-tip collapse="true" title="Answer"}
+No. HBV causes cirrhosis and cirrhosis causes liver cancer, so cirrhosis is a mediator on the causal pathway (L9 s15).
+:::
+
+C12\. The crude RR is 3.0 and the adjusted RR is 2.0. What kind of confounding is this?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Positive confounding, because the crude estimate is farther from 1 than the adjusted one (L9 s18).
+:::
+
+C13\. Name two ways to control confounding in the design and two in the analysis.
+
+::: {.callout-tip collapse="true" title="Answer"}
+Design: restriction and matching. Analysis: stratification (with M-H) and regression (L9 s23).
+:::
+
+C14\. The stratum ORs are 2.1 and 2.0, and the crude OR is 3.4. What is going on, and what do you report?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Confounding: the strata are similar to each other but different from the crude estimate. Report the M-H (adjusted) OR (L11 s5).
+:::
+
+C15\. The stratum ORs are 1.1 and 4.0. What is going on?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Possible effect modification. Run the test of homogeneity, and if it rejects H0, report the stratum ORs and the p-value instead of the M-H OR (L11 s7, s17).
+:::
+
+C16\. Is there a statistical test for confounding? For interaction?
+
+::: {.callout-tip collapse="true" title="Answer"}
+There is no test for confounding; deciding is a judgment call. For interaction there is the test of homogeneity (L9 s31; L11 s16, s30).
+:::
+
+C17\. The RR for factor e alone is 2, and for factor f alone it is 3. What RR would you expect with both under each null model?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Multiplicative: $2 \times 3 = 6$. Additive: $2 + 3 - 1 = 4$ (L11 s12, s13).
+:::
+
+C18\. What do you call the comparison group in a cohort study?
+
+::: {.callout-tip collapse="true" title="Answer"}
+The unexposed. "Controls" belong to case-control studies (L8 s19).
+:::
+
+C19\. How does a prospective cohort differ from a historical cohort?
+
+::: {.callout-tip collapse="true" title="Answer"}
+A prospective cohort enrolls people at the start of the study and follows them in real time. A historical cohort uses records of past exposure, and the outcomes have already happened (L8 s8).
+:::
+
+C20\. What is the biggest threat to internal validity in a cohort study?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Loss to follow-up, especially when it differs by exposure and outcome (L8 s44).
+:::
+
+C21\. What is the ecological fallacy?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Assuming that a relationship seen across groups holds for individuals. It is also called aggregation bias (L12 s13).
+:::
+
+C22\. What measures come from a cross-sectional study, and what is its main weakness?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Prevalence, the prevalence ratio (PRR), and the prevalence odds ratio (POR). The disease is always prevalent, and exposure and disease are measured at the same time, so you usually can't tell which came first (L12 s18, s20; Gordis p.197).
+:::
+
+C23\. Give two advantages of a nested case-control study.
+
+::: {.callout-tip collapse="true" title="Answer"}
+Any two of these: exposure data were collected before the disease (less information bias), the controls certainly come from the source population (less selection bias), only some stored specimens need testing (cheaper), and it can be built from electronic records (L12 s9).
+:::
+
+C24\. When would you use a case-crossover design?
+
+::: {.callout-tip collapse="true" title="Answer"}
+For short-lived exposures and sudden events, with each case serving as its own control (L12 s5).
+:::
+
+C25\. What is the difference between efficacy and effectiveness?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Efficacy is the result under ideal trial conditions, and effectiveness is the result in the real world (L7 s3).
+:::
+
+C26\. What is a DALY?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Years of life lost to early death plus years lived with disability: DALY = YLL + YLD (L13 s39).
+:::
+
+# New practice problems {#sec-practice}
+
+All numbers in this section are invented.
+
+## P1: Pesticides and Parkinson's disease {.unnumbered}
+
+A case-control study enrolls 150 people with Parkinson's disease and 300 controls. In interviews, 45 cases and 54 controls report past exposure to farm pesticides. (a) Build the 2x2 table. (b) Calculate the OR. (c) Calculate the 95% CI. (d) Interpret the result in one sentence. (e) Name one bias that could produce this result and one way to reduce it.
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) Exposed: 45 cases and 54 controls. Unexposed: $150 - 45 = 105$ cases and $300 - 54 = 246$ controls.
+
+(b) $\text{OR} = \dfrac{45 \times 246}{54 \times 105} = \dfrac{11{,}070}{5{,}670} = 1.95$
+
+(c) $\ln(1.952) = 0.669$ and $\text{SE} = \sqrt{\tfrac{1}{45} + \tfrac{1}{54} + \tfrac{1}{105} + \tfrac{1}{246}} = \sqrt{0.0543} = 0.233$. Then $0.669 \pm 1.96 \times 0.233 = 0.669 \pm 0.457$, which gives $0.212$ to $1.126$, so the 95% CI is $e^{0.212} = 1.24$ to $e^{1.126} = 3.08$.
+
+(d) People exposed to pesticides had 1.95 times the odds of Parkinson's disease compared with unexposed people (95% CI 1.24 to 3.08), and the CI excludes 1, so the association is significant at the 0.05 level.
+
+(e) Recall bias: people with Parkinson's may search their memory harder for past exposures. Reduce it by checking exposure against work or pesticide-use records, or by using controls with another disease (L10 s38). Interviewer bias is also possible if interviewers know who is a case, so blind them (L10 s39).
+:::
+
+## P2: Coffee, smoking, and pancreatic cancer {.unnumbered}
+
+| Stratum | Coffee | Cases | Controls |
+|:--|:--|--:|--:|
+| Smokers | Yes | 62 | 30 |
+| Smokers | No | 40 | 21 |
+| Nonsmokers | Yes | 19 | 41 |
+| Nonsmokers | No | 80 | 158 |
+
+: Invented case-control data, stratified by smoking. {#tbl-p2}
+
+(a) Combine the strata and find the crude OR. (b) Find the OR in each stratum. (c) Find the M-H OR. (d) Is smoking a confounder, and of what kind? (e) Check the confounder criteria with the data.
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) Crude table: coffee drinkers are 81 cases and 71 controls, and non-drinkers are 120 cases and 179 controls. $\text{OR} = \dfrac{81 \times 179}{71 \times 120} = \dfrac{14{,}499}{8{,}520} = 1.70$
+
+(b) Smokers: $\dfrac{62 \times 21}{30 \times 40} = \dfrac{1{,}302}{1{,}200} = 1.085$. Nonsmokers: $\dfrac{19 \times 158}{41 \times 80} = \dfrac{3{,}002}{3{,}280} = 0.915$.
+
+(c) The strata have $N = 153$ and $N = 298$. $\text{OR}_{\text{M-H}} = \dfrac{1{,}302/153 + 3{,}002/298}{1{,}200/153 + 3{,}280/298} = \dfrac{8.510 + 10.074}{7.843 + 11.007} = \dfrac{18.584}{18.850} = 0.99$
+
+(d) Yes. The strata are similar to each other (both near 1) and far from the crude 1.70, which is the confounding pattern (L11 s5). It is positive confounding, since the crude estimate is farther from 1 than the adjusted one (L9 s18). Once smoking is accounted for, coffee has essentially no association with pancreatic cancer.
+
+(e) Exposure: among controls, 59% of smokers drank coffee vs. 21% of nonsmokers (30 of 51 vs. 41 of 199). Outcome: among people who didn't drink coffee, 33% of cases smoked vs. 12% of controls (40 of 120 vs. 21 of 179). Pathway: drinking coffee doesn't cause smoking, so smoking isn't a mediator. Gordis uses the same coffee and smoking story on p.294.
+:::
+
+## P3: Night-shift work and diabetes, by sex {.unnumbered}
+
+| Stratum | Night shifts | Cases | Controls |
+|:--|:--|--:|--:|
+| Men | Yes | 30 | 50 |
+| Men | No | 70 | 150 |
+| Women | Yes | 60 | 30 |
+| Women | No | 40 | 70 |
+
+: Invented case-control data, stratified by sex. {#tbl-p3}
+
+(a) Find the OR for men and for women. (b) Find the crude OR. (c) What would you check next, and what would you report?
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) Men: $\dfrac{30 \times 150}{50 \times 70} = \dfrac{4{,}500}{3{,}500} = 1.29$. Women: $\dfrac{60 \times 70}{30 \times 40} = \dfrac{4{,}200}{1{,}200} = 3.50$.
+
+(b) Crude: $\dfrac{90 \times 220}{80 \times 110} = \dfrac{19{,}800}{8{,}800} = 2.25$.
+
+(c) The strata differ a lot, so sex may be an effect modifier. Run the test of homogeneity (L11 s16). If it rejects H0, report the ORs for men and women with the test's p-value, and skip the M-H OR (which would be 2.04) as a summary (L11 s17). For example: "Night-shift work was associated with higher odds of diabetes in both sexes, more strongly in women (OR 3.50) than in men (OR 1.29)." If the test doesn't reject H0, as in the hepatitis example, you can report the M-H OR (L11 s21, s24).
+:::
+
+## P4: A real-world vaccine cohort {.unnumbered}
+
+A historical cohort uses hospital records for one RSV season. Of 2,000 babies whose mothers were vaccinated at least 14 days before delivery, 12 were hospitalized with RSV in their first 3 months. Of 3,000 babies of unvaccinated mothers, 45 were. (a) Find the risk in each group. (b) Find the RR and its 95% CI. (c) Find the vaccine effectiveness and its CI. (d) Find the NNT. (e) Give one reason this real-world estimate could be biased.
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) Vaccinated: $12/2{,}000 = 0.006$, or 6 per 1,000. Unvaccinated: $45/3{,}000 = 0.015$, or 15 per 1,000.
+
+(b) $\text{RR} = 0.006/0.015 = 0.40$. Then $\ln(0.40) = -0.916$ and $\text{SE} = \sqrt{\dfrac{1{,}988/12}{2{,}000} + \dfrac{2{,}955/45}{3{,}000}} = \sqrt{0.0828 + 0.0219} = \sqrt{0.1047} = 0.324$. So $-0.916 \pm 1.96 \times 0.324 = -0.916 \pm 0.634$, which gives $-1.551$ to $-0.282$, and the 95% CI is 0.21 to 0.75.
+
+(c) Effectiveness is $1 - 0.40 = 60\%$. For the CI, $1 - 0.75 = 25\%$ and $1 - 0.21 = 79\%$, so it runs from 25% to 79%. The bounds swap places when you convert.
+
+(d) $\text{NNT} = 1/(0.015 - 0.006) = 1/0.009 = 111$. About 111 mothers would need to be vaccinated to prevent one infant RSV hospitalization in the first 3 months.
+
+(e) Vaccinated and unvaccinated families may differ in prenatal care, income, smoking, or prematurity, which is confounding (the course's "selection bias" in a cohort, L8 s45). Hospitalizations elsewhere may also be missed, which biases the RR if missing records differ by exposure (L8 s44).
+:::
+
+## P5: Matched pairs {.unnumbered}
+
+A 1:1 matched case-control study has 100 pairs. In 15 pairs both were exposed, in 30 only the case was exposed, in 12 only the control was exposed, and in 43 neither was. (a) Find the OR. (b) Which pairs carry information?
+
+::: {.callout-tip collapse="true" title="Solution"}
+(a) $\text{OR} = 30/12 = 2.5$.
+
+(b) Only the 42 discordant pairs. The 58 concordant pairs add nothing (L10 s31).
+:::
+
+## P6: Pick the design {.unnumbered}
+
+You want to know whether starting daycare before 12 months of age raises the chance of a doctor-diagnosed ear infection between the first and second birthdays, using UChicago pediatric records. Which design fits, and why? Give the six design elements.
+
+::: {.callout-tip collapse="true" title="Solution"}
+Ear infections are common in toddlers, so a cohort study is feasible and gives risks directly (L12 s33).
+
+- Enrolled: children seen for their 12-month well visit at UChicago clinics during 2027.
+- Exposure: started daycare before 12 months, from the well-visit record or a short parent questionnaire at that visit. The unexposed are children not in daycare by 12 months.
+- Data collection: ear infection diagnoses from clinic records, parent check-ins for care elsewhere, and confounders such as older siblings, breastfeeding, smoking at home, and insurance.
+- Outcome: at least one doctor-diagnosed ear infection between 12 and 24 months.
+- Dates: enroll from January to December 2027 and follow each child for 12 months, so data collection ends in December 2028.
+- Null hypothesis: H0: RR = 1.
+
+A good extra point: some unexposed children will start daycare during follow-up. That misclassifies exposure and usually pulls the RR toward 1.
+:::
+
+# Formula sheet {#sec-formulas}
+
+::: {.column-page-right}
+
+| Measure | Formula | Source |
+|:--|:--|:--|
+| Risk (cumulative incidence) | $\dfrac{\text{new cases during the period}}{\text{people at risk at the start}}$ | Background |
+| Relative risk | $\text{RR} = \dfrac{a/(a+b)}{c/(c+d)}$ | L8 s9 |
+| 95% CI of an RR | $\exp\left[\ln \text{RR} \pm 1.96\sqrt{\tfrac{b/a}{a+b} + \tfrac{d/c}{c+d}}\right]$ | L8 s11, s14 |
+| Attributable risk | $\text{AR} = I_{\text{exp}} - I_{\text{unexp}}$ | L8 s15 |
+| Attributable risk percent | $\text{AR}\% = \dfrac{I_{\text{exp}} - I_{\text{unexp}}}{I_{\text{exp}}} \times 100 = \dfrac{\text{RR} - 1}{\text{RR}} \times 100$ | L8 s16 |
+| Population attributable risk | $\text{PAR} = I_{\text{total}} - I_{\text{unexp}} = \text{AR} \times P_e$ | L8 s17 |
+| Odds ratio | $\text{OR} = \dfrac{a/c}{b/d} = \dfrac{ad}{bc}$ | L10 s21 |
+| 95% CI of an OR | $\exp\left[\ln \text{OR} \pm 1.96\sqrt{\tfrac{1}{a} + \tfrac{1}{b} + \tfrac{1}{c} + \tfrac{1}{d}}\right]$ | L10 s27 |
+| Matched-pairs OR | $\dfrac{\text{pairs with only the case exposed}}{\text{pairs with only the control exposed}}$ | L10 s31 |
+| Mantel-Haenszel OR | $\dfrac{\sum_i a_i d_i / N_i}{\sum_i b_i c_i / N_i}$ | L10 s32 |
+| Mantel-Haenszel RR | $\dfrac{\sum_i a_i (c_i + d_i) / n_i}{\sum_i c_i (a_i + b_i) / n_i}$ | L9 s27 |
+| Efficacy or effectiveness | $\dfrac{R_{\text{placebo}} - R_{\text{vaccine}}}{R_{\text{placebo}}} = 1 - \text{RR}$ | L7 s3 |
+| Number needed to treat | $\dfrac{1}{R_{\text{placebo}} - R_{\text{vaccine}}}$ | L7 s5 |
+| No interaction, multiplicative | $\text{RR}_{ef} = \text{RR}_{e} \times \text{RR}_{f}$ | L11 s13 |
+| No interaction, additive | $\text{RR}_{ef} = \text{RR}_{e} + \text{RR}_{f} - 1$ | L11 s12, s15 |
+| Years lived with disability | incident cases × disability weight × duration | L13 s37 |
+| DALYs | YLL + YLD | L13 s39 |
+
+: Formulas for Quiz 2. In the 2x2 table, a = exposed cases, b = exposed controls (or exposed non-cases), c = unexposed cases, d = unexposed controls. {#tbl-formulas tbl-colwidths="[22,62,16]"}
+
+:::
+
+# Traps that cost points {#sec-traps}
+
+1. Put exposed in the top row and cases in the left column before you cross-multiply (Gordis p.248).
+2. With three or more exposure levels, compare every level with the same reference group, usually the lowest (Q2).
+3. Use the natural log, and exponentiate both ends of the interval at the end.
+4. Keep three or four decimals through the ln and SE steps, and round at the end. Small differences in the third decimal are normal.
+5. Use "odds" for an OR and "risk" for an RR (L10 s25).
+6. Give the size of the effect and the comparison, as in "1.58 times the odds of kidney cancer of people with intake below 400 µg/day" (L8 s10).
+7. A CI that includes 1 means the result is not significant at 0.05. Still describe both ends, since a lower bound below 1 means the data allow a small protective effect.
+8. In the M-H formula, divide each stratum's products by that stratum's own total.
+9. Strata that are similar to each other mean no effect modification. Then compare the M-H estimate with the crude estimate to judge confounding.
+10. Don't adjust for a mediator (L9 s15 to s17).
+11. Call the comparison group in a cohort "the unexposed" (L8 s19).
+12. You can't study a factor you matched on (L10 s30).
+13. Say "historical cohort" instead of "retrospective cohort" (L8 s8).
+14. A protective exposure has an RR or OR below 1, and effectiveness is $1 - \text{RR}$. When you convert a CI to effectiveness, the bounds swap (P4).
+
+# Lecture 13 basics: the global burden of disease {#sec-gbd}
+
+The guest lecture might show up in a question or two.
+
+- High-income countries lose most of their health to non-communicable diseases and low-income countries to infectious diseases, and the profile is shifting from infectious toward non-communicable diseases (L13 s2).
+- Years of life lost (YLL) for a death is life expectancy minus age at death. The worked version multiplies the number of deaths by the life expectancy at that age (L13 s32, s50).
+- Years lived with disability (YLD) is incident cases × disability weight × duration (L13 s37, s50).
+- DALYs = YLL + YLD, a summary measure of population health (L13 s39, s40).
+- Ranking causes by deaths and by DALYs gives different lists. Globally, low back pain causes about 81 million DALYs, more than road injuries (75 million) or lung cancer (32 million), while causing almost no deaths (L13 s39, s41).
+- Every country where non-communicable diseases account for less than half of DALYs is in sub-Saharan Africa (L13 s42).
+
+Sources: Lectures 7 to 13; *Gordis Epidemiology*, 7th edition, chapters 7, 8, 9, 12, and 15; the Week 4 to 6 reading notes; and PSET 5.
