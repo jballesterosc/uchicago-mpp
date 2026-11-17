@@ -1,0 +1,216 @@
+---
+title: "Problem Set 5: Bonds and Interest Rates"
+subtitle: "Investments"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.2  
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+jupyter:
+  kernelspec:
+    name: DAP
+    display_name: DAP
+    language: python
+---
+
+# Q1
+
+**Suppose that the term structure is currently flat so that bonds of all maturities have yields to maturity of 10%. Currently a 5 year coupon bond with annual coupons (with the first one due in 1 year) and face value of \$1,000 is selling at par.**
+
+**(a) What is the current price of the 5 year bond? What are the annual coupons?**
+
+The bond sells at par, so its current price is \$1,000. Because a bond sells at par only when its coupon rate equals its yield, the coupon rate is 10%, so the annual coupon is $0.10 \times 1{,}000 = \$100$.
+
+$$
+PV = \frac{100}{1.10} + \frac{100}{1.10^2} + \frac{100}{1.10^3} + \frac{100}{1.10^4} + \frac{1{,}100}{1.10^5} = 1{,}000
+$$
+
+**(b) A year from now interest rates will depend on the stance of monetary policy. If monetary policy is "tight" the yields to maturity on all bonds will be 12%. If monetary policy is "loose" the yields to maturity on all bonds will be 8%. If you sell the bond a year from now when monetary policy is tight what will be the return to your investment over the year? If you sell the bond a year from now when monetary policy is loose what will be the return to your investment over the year?**
+
+When monetary policy is tight, the return on the investment is 3.93%. A year from now the bond has four coupons left:
+
+$$
+P_1 = \frac{100}{1.12} + \frac{100}{1.12^2} + \frac{100}{1.12^3} + \frac{1{,}100}{1.12^4} = 939.25
+$$
+
+$$
+r = \frac{100 + 939.25 - 1{,}000}{1{,}000} = 0.0393
+$$
+
+When monetary policy is loose, the return is 16.62%:
+
+$$
+P_1 = \frac{100}{1.08} + \frac{100}{1.08^2} + \frac{100}{1.08^3} + \frac{1{,}100}{1.08^4} = 1{,}066.24
+$$
+
+$$
+r = \frac{100 + 1{,}066.24 - 1{,}000}{1{,}000} = 0.1662
+$$
+
+# Q2
+
+**You are an investment manager for Lemon County. You are given the following information about the yields of U.S. Treasury strips (which are zero-coupon, or pure discount, bonds which pay \$100 at maturity): r(1) = 3%, r(2) = 4%, r(29) = 6.1%, and r(30) = 6.0%, where r(j) is the yield-to-maturity on a j-year strip. Assume that all cash flows are riskless and we can borrow and lend at the stated rates. You buy 50,000 30-year strips and partially finance these by issuing 5,000 2-year strips (i.e., you are borrowing money by promising to pay \$500,000 = 5,000 × \$100 in two years).**
+
+**(a) What is the price of the 30 year-strip? What is the price of a 2- year strip? How much of Lemon County's money are you investing (i.e., what is the net investment)?**
+
+The price of the 30-year strip is \$17.41:
+
+$$
+P_{30} = \frac{100}{(1.06)^{30}} = 17.4110
+$$
+
+The price of the 2-year strip is \$92.46:
+
+$$
+P_{2} = \frac{100}{(1.04)^{2}} = 92.4556
+$$
+
+Buying 50,000 30-year strips costs
+
+$$
+50{,}000 \times 17.4110 = 870{,}550.65
+$$
+
+and issuing 5,000 2-year strips raises
+
+$$
+5{,}000 \times 92.4556 = 462{,}278.11
+$$
+
+so the net investment of the county's money is
+
+$$
+870{,}550.65 - 462{,}278.11 = 408{,}272.55
+$$
+
+**(b) Suppose that one second after you make the above investments, the Federal Reserve Board announces that it is taking steps to raise interest rates. Assume that the yields on all of the strips immediately increase by one percentage point (i.e., r(1) = 4%, r(2) = 5%, r(29) = 7.1%, and r(30) = 7.0%). By how much (in dollars and in percentage terms) does the value of the county's investment change due to the unexpected announcement?**
+
+At the new yields, the 30-year strips are worth
+
+$$
+P_{30} = \frac{100}{(1.07)^{30}} = 13.1367
+\qquad
+50{,}000 \times 13.1367 = 656{,}835.59
+$$
+
+and the 2-year strips the county owes are worth
+
+$$
+P_{2} = \frac{100}{(1.05)^{2}} = 90.7029
+\qquad
+5{,}000 \times 90.7029 = 453{,}514.74
+$$
+
+The new net value of the position is
+
+$$
+656{,}835.59 - 453{,}514.74 = 203{,}320.85
+$$
+
+The dollar and percentage changes are
+
+$$
+203{,}320.85 - 408{,}272.55 = -204{,}951.70
+$$
+
+$$
+\frac{-204{,}951.70}{408{,}272.55} = -0.5020
+$$
+
+The county's investment loses \$204,951.70, about 50.2% of its value. The 30-year strips alone fall about 24.5% ($13.1367/17.4110 - 1$), but the county paid for only about 47% of them with its own money and borrowed the rest short term. The value of the 2-year borrowing barely moves when rates rise, so the leverage roughly doubles the percentage loss on the county's money.
+
+# Q3
+
+**We see the following yield curve for discount, or zero–coupon, bonds.**
+
+| Maturity | Yield to Maturity |
+|----------|-------------------|
+| 1 year   | 6%                |
+| 2 years  | 7%                |
+| 3 years  | 8%                |
+
+**(a) What is the implied forward rate between year 1 and year 2?**
+
+$$
+(1.07)^2 = (1.06)(1+f_{1,2})
+$$
+
+$$
+f_{1,2} = \frac{(1.07)^2}{1.06}-1 = 0.0801
+$$
+
+**(b) What is the implied forward rate between year 2 and year 3?**
+
+$$
+(1+r_3)^3 = (1+r_2)^2(1+f_{2,3})
+$$
+
+$$
+(1.08)^3 = (1.07)^2(1+f_{2,3})
+$$
+
+$$
+f_{2,3} = \frac{(1.08)^3}{(1.07)^2}-1 = 0.1003
+$$
+
+# Q4
+
+**A one-year zero coupon bond with face value \$100 sells for \$99.46, a two-year zero coupon bond sells for \$97.23, and an three-year zero coupon bond sells for \$90.50. Suppose a new coupon paying bond is issued today with face value \$100, maturity of three years, and an annual coupon payment of 9%.**
+
+**(a) Calculate the no-arbitrage price of the coupon paying bond today.**
+
+Each cash flow is priced with the zero-coupon bond of the same maturity (the discount factors are the zero prices divided by 100):
+
+$$
+P_0 = 9(0.9946)+9(0.9723)+109(0.9050)
+$$
+
+$$
+P_0 = 8.9514+8.7507+98.645 = 116.35
+$$
+
+The bond sells above par because its 9% coupon is higher than the yield at every maturity on this curve.
+
+**(b) Calculate the implied forward rates in this economy.**
+
+Forward rate between year 0 and year 1:
+
+$$
+f_{0,1}=\frac{100}{99.46}-1 = 0.00543
+$$
+
+Forward rate between year 1 and year 2:
+
+$$
+f_{1,2}=\frac{99.46}{97.23}-1 = 0.02294
+$$
+
+Forward rate between year 2 and year 3:
+
+$$
+f_{2,3}=\frac{97.23}{90.50}-1 = 0.07436
+$$
+
+**(c) If the expectations hypothesis is correct, what is the market's expectation of the price the bond will sell for in one year? [Hint: if the expectations hypothesis is correct, forwards are expected future spot rates.]**
+
+Under the expectations hypothesis, the expected one-year rates in years 2 and 3 equal $f_{1,2}$ and $f_{2,3}$. Discounting the remaining cash flows at those rates gives
+
+$$
+P_1=\frac{9}{1+f_{1,2}} + \frac{109}{(1+f_{1,2})(1+f_{2,3})}
+$$
+
+$$
+P_1=\frac{9}{1.022935}+\frac{109}{(1.022935)(1.074365)} = 107.98
+$$
+
+This is the expected price right after the year-1 coupon is paid. A holder also receives the \$9 coupon at that date, so the total expected value at year 1 is $107.98 + 9 = 116.98$.
