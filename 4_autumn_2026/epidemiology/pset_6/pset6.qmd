@@ -1,0 +1,334 @@
+---
+title: "Problem Set 6"
+subtitle: "Epidemiology and Population Health"
+author: "Jay Ballesteros"
+date: today
+date-format: "MMMM DD, YYYY"
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+      - margin=1in
+    fontsize: 12pt
+    linestretch: 1.2  
+    number-sections: false
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+jupyter:
+  kernelspec:
+    name: DAP
+    display_name: DAP
+    language: python
+---
+
+## Q1
+
+**Study A**
+
+| Stratum 1 | Cases | Controls |
+|:----------|:-----:|:--------:|
+| Exposed   |  20   |    49    |
+| Unexposed |  32   |    40    |
+
+: Study A, Stratum 1
+
+| Stratum 2 | Cases | Controls |
+|:----------|:-----:|:--------:|
+| Exposed   |  40   |    83    |
+| Unexposed |  30   |    49    |
+
+: Study A, Stratum 2
+
+M-H adjusted OR: **0.66**. p-value for the test of homogeneity: **0.35**.
+
+### 1a.
+**What are the stratum-specific ORs?**
+
+For stratum 1:
+$$
+OR_{\text{S1}} = \frac{20\times40}{32\times49} = \frac{800}{1568} = 0.51
+$$
+
+And stratum 2:
+
+$$
+OR_{\text{S2}} = \frac{40\times49}{30\times83} = \frac{1960}{2490} = 0.787
+$$
+
+### 1b.
+**What is the crude OR?**
+
+$$
+OR_{\text{crude}} = \frac{60\times89}{62\times132} = \frac{5340}{8184} = 0.652
+$$
+
+### 1c.
+**Given the M-H adjusted OR provided – is there confounding? If so, positive or negative?**
+
+No meaningful confounding by the stratification variable (difference around 0.01).
+
+### 1d.
+**Given the p-value provided for the test of homogeneity, is there an interaction present?**
+
+No, there is no evidence of interaction. The p-value of 0.35 is well above the conventional alpha of 0.05, so we fail to reject the null hypothesis. 
+
+### 1e.
+**Write a one-sentence summary of the key finding from the data.**
+
+Exposure was associated with lower odds of the outcome and there was no evidence of interaction or confounding by the stratification variable, so the crude association can be reported as the summary effect. 
+
+## Q2
+
+**Study B**
+
+| Stratum 1 | Cases | Controls |
+|:----------|:-----:|:--------:|
+| Exposed   |  34   |   301    |
+| Unexposed |  62   |  1,750   |
+
+: Study B, Stratum 1
+
+| Stratum 2 | Cases | Controls |
+|:----------|:-----:|:--------:|
+| Exposed   |  99   |   395    |
+| Unexposed |  59   |   785    |
+
+: Study B, Stratum 2
+
+M-H adjusted OR: **3.29**. p-value for the test of homogeneity: **0.87**.
+
+### 2a.
+
+**What are the stratum-specific ORs?**
+
+$$
+OR_{\text{S1}} = \frac{34\times1750}{301\times62} = \frac{59,500}{18,662} = 3.19
+$$
+
+$$
+OR_{\text{S2}} = \frac{99\times785}{395\times59} = \frac{77,715}{23,305} = 3.33
+$$
+
+### 2b.
+
+**What is the crude OR?**
+
+$$
+OR_{\text{crude}} = \frac{133\times2535}{696\times121} = \frac{337,155}{84,216} = 4.00
+$$
+
+
+### 2c.
+
+**Given the M-H adjusted OR provided, is there confounding? If so, is it positive or negative?**
+
+$$
+\frac{4.00 - 3.29}{3.29} = 0.216
+$$
+
+Given the percentage change of 21.6%, the results suggests the confounding is present, and it's positive.
+
+### 2d.
+
+**Given the p-value provided for the test of homogeneity, is there an interaction present?**
+
+No, there's no evidence of interacton. The p-value is well above of alpha 0.05, so we fail to reject the null hypothesis.
+
+### 2e.
+
+**Write a one sentence summary of the key finding from the data.**
+
+Exposure was associated with higher odds of the outcome, and after adjusting the stratification variable via the M-H method, there was evidence of positivo confounding by that variable, while the homogeneity test showed no interaction, so the adjusted OR of 3.29 should be reported as the summary effect. 
+
+## Q3
+
+**Study C**
+
+| Stratum 1 | Cases | Controls |
+|:----------|:-----:|:--------:|
+| Exposed   |  40   |    23    |
+| Unexposed |  51   |   105    |
+
+: Study C, Stratum 1
+
+| Stratum 2 | Cases | Controls |
+|:----------|:-----:|:--------:|
+| Exposed   |  125  |   856    |
+| Unexposed |  58   |  1,254   |
+
+: Study C, Stratum 2
+
+M-H adjusted OR: **3.24**. p-value for the test of homogeneity: **0.72**.
+
+### 3a.
+
+**What are the stratum-specific ORs?**
+
+$$
+OR_{\text{S1}} = \frac{40\times105}{23\times51} = \frac{4{,}200}{1{,}173} = 3.58
+$$
+
+$$
+OR_{\text{S2}} = \frac{125\times1{,}254}{856\times58} = \frac{156{,}750}{49{,}648} = 3.16
+$$
+
+### 3b.
+
+**What is the crude OR?**
+
+$$
+OR_{\text{crude}} = \frac{165\times1{,}359}{879\times109} = \frac{224{,}235}{95{,}811} = 2.34
+$$
+
+### 3c.
+
+**Given the M-H adjusted OR provided, is there confounding? If so, is it positive or negative?**
+
+$$
+\frac{2.34 - 3.24}{3.24}\times100\% = -27.8\%
+$$
+
+Yes, there is negative confounding. The crude OR (2.34) is closer to 1 than the adjusted OR (3.24), so the crude estimate underestimates the association.
+
+### 3d.
+
+**Given the p-value provided for the test of homogeneity, is there an interaction present?**
+
+No. The p-value of 0.72 is above 0.05, so we fail to reject the null hypothesis of homogeneous stratum-specific ORs (3.58 and 3.16).
+
+### 3e.
+
+**Write a one-sentence summary of the key finding from the data.**
+
+After M-H adjustment for the stratification variable, exposure was associated with 3.24 times the odds of the outcome; the stratification variable was a negative confounder that masked part of the association in the crude OR, and there was no evidence of interaction.
+
+## Q4
+
+**Study D**
+
+| Stratum 1 | Cases | Controls |
+|:----------|:-----:|:--------:|
+| Exposed   |  30   |    23    |
+| Unexposed |  50   |   105    |
+
+: Study D, Stratum 1
+
+| Stratum 2 | Cases | Controls |
+|:----------|:-----:|:--------:|
+| Exposed   |  19   |    29    |
+| Unexposed |  89   |   148    |
+
+: Study D, Stratum 2
+
+M-H adjusted OR: **1.71**. p-value for the test of homogeneity: **0.04**.
+
+### 4a.
+
+**What are the stratum-specific ORs?**
+
+$$
+OR_{\text{S1}} = \frac{30\times105}{23\times50} = \frac{3{,}150}{1{,}150} = 2.74
+$$
+
+$$
+OR_{\text{S2}} = \frac{19\times148}{29\times89} = \frac{2{,}812}{2{,}581} = 1.09
+$$
+
+### 4b.
+
+**What is the crude OR?**
+
+$$
+OR_{\text{crude}} = \frac{49\times253}{52\times139} = \frac{12{,}397}{7{,}228} = 1.72
+$$
+
+### 4c.
+
+**Given the M-H adjusted OR provided, is there confounding? If so, is it positive or negative?**
+
+$$
+\frac{1.72 - 1.71}{1.71}\times100\% \approx 0.6\%
+$$
+
+No meaningful confounding by the stratification variable, since the crude and adjusted estimates essentially agree.
+
+### 4d.
+
+**Given the p-value provided for the test of homogeneity, is there an interaction present?**
+
+Yes, there is evidence of interaction. So we reject the null hypothesis of homogeneous stratum-specific ORs.
+
+### 4e.
+
+**Write a one-sentence summary of the key finding from the data.**
+
+There was evidence of interaction between exposure and the stratification variable, with a strong positive association in stratum 1 but essentially no association in stratum 2, so the stratum-specific ORs should be reported rather than a single pooled estimate.
+
+## Q5
+
+The following questions are loosely adapted from data in an article in the *American Journal of Epidemiology* (2011): "Interaction between smoking and obesity and the risk of developing breast cancer among postmenopausal women."
+
+From the study:
+
+> "Obesity is a well-established risk factor for postmenopausal breast cancer. Recent studies suggest that smoking increases the risk of breast cancer. However, the effect of co-occurrence of smoking and obesity on breast cancer risk remains unclear. More than 60,000 women aged 50–79 years enrolled in the Women's Health Initiative Observational Study were followed through August 14, 2009. Over an average 10.3 years of follow-up, 3,378 incident cases of invasive breast cancer were identified."
+
+@tbl-smoking is based on the study described above. It gives the RR for breast cancer among ever smokers compared with never smokers by obesity status, adjusted for age, race, education, alcohol intake, and family history of cancer.
+
+| Obesity status | Smoking status |  Cases/Total | Adj. RR (95% CI)  |
+|:---------------|:---------------|-------------:|:------------------|
+| Non-obese      | Never smoker   | 1,210/30,471 | 1.00 (reference)  |
+| Non-obese      | Ever smoker    | 1,296/27,221 | 1.16 (1.07, 1.26) |
+| Obese          | Never smoker   |    458/9,852 | 1.00 (reference)  |
+| Obese          | Ever smoker    |    414/9,084 | 0.96 (0.84, 1.10) |
+
+: Breast cancer by smoking status, stratified by obesity
+
+### 5a.
+
+**Calculate the crude relative risk for each stratum (by obesity status).**
+
+$$
+RR_{\text{non-obese}} = \frac{1296/27{,}221}{1210/30{,}471}
+= \frac{0.04761}{0.03971} \approx 1.20
+$$
+
+$$
+RR_{\text{obese}} = \frac{414/9{,}084}{458/9{,}852}
+= \frac{0.04558}{0.04649} \approx 0.98
+$$
+
+### 5b.
+
+**Comparing the crude RRs you calculated above with those in the table, do you think that age, race, education, alcohol intake, and family history of cancer (considered together) confounded the smoking–breast cancer association? Why or why not?**
+
+$$
+\text{Non-obese: } \frac{1.20-1.16}{1.16}\times100\% \approx 3.4\%
+\qquad
+\text{Obese: } \frac{0.98-0.96}{0.96}\times100\% \approx 2.1\%
+$$
+
+No meaningful confounding by these covariates (considered together).
+
+### 5c.
+
+**Consider each of the confounders they included and discuss whether each one is likely to fulfill the criteria for being a confounder of the smoking and breast cancer association. Consider the three parts of the definition of a confounder for each one.**
+
+A brief look at breast cancer risk factors may help here, such as the [CDC's overview](https://www.cdc.gov/cancer/breast/basic_info/risk_factors.htm), along with the [population distribution of smoking](https://www.cdc.gov/tobacco/php/data-statistics/adult-data-cigarettes/index.html).
+
+A confounder must be associated with smoking, associated with breast cancer independent of smoking, and not an intermediate on the causal pathway. Age, education, and alcohol intake plausibly meet all three criteria: smoking varies by age and socioeconomic status, drinkers are more likely to smoke, and all three are established breast cancer risk factors. Race also plausibly qualifies (smoking prevalence differs by race/ethnicity, and breast cancer incidence varies by race), though the confounding may be modest.
+
+Family history of cancer is unlikely to be a confounder, because it is a strong breast cancer risk factor but is essentially unrelated to smoking, so it fails the first criterion.
+
+### 5d.
+
+**Propose an additional potential confounder they might have considered and explain how it could fulfill the definition of a confounder.**
+
+An additional potential confounder is HRT use. It is a known breast cancer risk factor, may differ between smokers and non-smokers, and is not caused by smoking—so if its distribution differs by smoking status, it could confound the association.
+
+### 5e.
+
+**The p-value for a test of homogeneity across strata is 0.02. Is there an interaction of obesity and smoking on breast cancer risk? If so, describe the interaction in words.**
+
+Yes, there is evidence of interaction between obesity and smoking on breast cancer risk (homogeneity p = 0.02, below alpha = 0.05).
