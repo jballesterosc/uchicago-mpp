@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mini-Project 3 Quiz Guide</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="MP3_Quiz_Study_Guide_files/libs/clipboard/clipboard.min.js"></script>
+<script src="MP3_Quiz_Study_Guide_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="MP3_Quiz_Study_Guide_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="MP3_Quiz_Study_Guide_files/libs/quarto-html/popper.min.js"></script>
+<script src="MP3_Quiz_Study_Guide_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="MP3_Quiz_Study_Guide_files/libs/quarto-html/anchor.min.js"></script>
+<link href="MP3_Quiz_Study_Guide_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="MP3_Quiz_Study_Guide_files/libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="MP3_Quiz_Study_Guide_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="MP3_Quiz_Study_Guide_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="MP3_Quiz_Study_Guide_files/libs/bootstrap/bootstrap-22b4c1abd28e63ff45684f4962f09b6b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#how-to-use-this-guide" id="toc-how-to-use-this-guide" class="nav-link active" data-scroll-target="#how-to-use-this-guide">How to use this guide</a></li>
+  <li><a href="#if-you-only-have-30-minutes" id="toc-if-you-only-have-30-minutes" class="nav-link" data-scroll-target="#if-you-only-have-30-minutes">If you only have 30 minutes</a></li>
+  <li><a href="#writing-answers-that-get-full-credit" id="toc-writing-answers-that-get-full-credit" class="nav-link" data-scroll-target="#writing-answers-that-get-full-credit">0. Writing answers that get full credit</a></li>
+  <li><a href="#the-whole-project-in-one-picture" id="toc-the-whole-project-in-one-picture" class="nav-link" data-scroll-target="#the-whole-project-in-one-picture">1. The whole project in one picture</a></li>
+  <li><a href="#data-prep-the-code-and-its-traps" id="toc-data-prep-the-code-and-its-traps" class="nav-link" data-scroll-target="#data-prep-the-code-and-its-traps">2. Data prep: the code and its traps</a></li>
+  <li><a href="#ols-mse-and-overfitting" id="toc-ols-mse-and-overfitting" class="nav-link" data-scroll-target="#ols-mse-and-overfitting">3. OLS, MSE, and overfitting</a></li>
+  <li><a href="#ridge-and-lasso-the-theory" id="toc-ridge-and-lasso-the-theory" class="nav-link" data-scroll-target="#ridge-and-lasso-the-theory">4. Ridge and lasso: the theory</a></li>
+  <li><a href="#scaling" id="toc-scaling" class="nav-link" data-scroll-target="#scaling">5. Scaling</a></li>
+  <li><a href="#tuning-λ-with-10-fold-cv" id="toc-tuning-λ-with-10-fold-cv" class="nav-link" data-scroll-target="#tuning-λ-with-10-fold-cv">6. Tuning λ with 10-fold CV</a></li>
+  <li><a href="#reading-your-results" id="toc-reading-your-results" class="nav-link" data-scroll-target="#reading-your-results">7. Reading your results</a></li>
+  <li><a href="#bug-cheat-sheet" id="toc-bug-cheat-sheet" class="nav-link" data-scroll-target="#bug-cheat-sheet">8. Bug cheat sheet</a></li>
+  <li><a href="#practice-questions" id="toc-practice-questions" class="nav-link" data-scroll-target="#practice-questions">9. Practice questions</a></li>
+  <li><a href="#formula-sheet" id="toc-formula-sheet" class="nav-link" data-scroll-target="#formula-sheet">10. Formula sheet</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mini-Project 3 Quiz Guide</h1>
+<p class="subtitle lead">PPHA 30545: OLS vs.&nbsp;ridge vs.&nbsp;lasso for predicting COVID-19 deaths</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="how-to-use-this-guide" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-guide">How to use this guide</h2>
+<p>The quiz covers the mini-project you just turned in. It’s in person with no AI, so the goal is to be able to explain each step in your own words.</p>
+<p>Every section follows the same pattern: a plain-language version first, then the formal version from lecture, then how it showed up in your code. The numbers are from your own notebook.</p>
+<p>Slide references point to the deck by name. “Reg” is Lecture 6 (Model Selection &amp; Regularization), “Res” is Lecture 5 (Resampling), and “SL” is Lecture 2 (Statistical Learning). The Reg deck has no printed page numbers, so references to it use the slide title.</p>
+<p>Read a section, then go to the practice questions at the end and answer them before you open the answers.</p>
+</section>
+<section id="if-you-only-have-30-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="if-you-only-have-30-minutes">If you only have 30 minutes</h2>
+<ol type="1">
+<li>Section 0, on how to phrase answers for full credit.</li>
+<li>Section 4, on what λ does and why lasso makes zeros while ridge doesn’t.</li>
+<li>Section 6, on the tuning algorithm and why the test set is never used to pick λ.</li>
+<li>The results table in Section 7.</li>
+<li>Practice questions 3, 6, 11, 15, 17, and 18. They’re the most likely to trip you up.</li>
+</ol>
+<hr>
+</section>
+<section id="writing-answers-that-get-full-credit" class="level2">
+<h2 class="anchored" data-anchor-id="writing-answers-that-get-full-credit">0. Writing answers that get full credit</h2>
+<p>These habits come from how your earlier quizzes were graded and from the 6(b) drafts on this project.</p>
+<ol type="1">
+<li><strong>Start with the answer.</strong> “Yes.” “Lasso.” “λ = 0.0058.” Graders shouldn’t have to infer your choice.</li>
+<li><strong>Give one “because” sentence after it.</strong> A correct answer with no reason rarely gets full points.</li>
+<li><strong>Cite the numbers you’re comparing.</strong> “Test MSE 1.8113 vs.&nbsp;1.8274” beats “lasso is lower.”</li>
+<li><strong>Don’t hedge your conclusion.</strong> “Might,” “potential,” and “suggests” stacked in one sentence read as no answer. Make the claim, then add a caveat if you need one.</li>
+<li><strong>Answer every part of the question.</strong> 6(b) asked two things: why you’d be concerned, and whether there’s evidence. Number the parts in your head and check each one off.</li>
+<li><strong>Check the direction.</strong> Lower MSE is better. Higher λ means more shrinkage.</li>
+<li><strong>Don’t overclaim small gaps.</strong> Lasso beat OLS by 0.0161 in test MSE. That’s real but modest, so say so.</li>
+<li><strong>Never leave a blank.</strong> A partly right sentence can get partial credit.</li>
+</ol>
+<hr>
+</section>
+<section id="the-whole-project-in-one-picture" class="level2">
+<h2 class="anchored" data-anchor-id="the-whole-project-in-one-picture">1. The whole project in one picture</h2>
+<p>The CDC wants to predict which counties will be hit hardest by COVID-19 so it can send vaccines there first. You built three prediction models and compared how well each predicts counties it never saw.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>What you did</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3.1 Filter</td>
+<td>Kept <code>county</code>, <code>state</code>, <code>deathspc</code>, and the 60 Opportunity Insights and PM_COVID predictors</td>
+<td>Use only the variables the assignment specifies</td>
+</tr>
+<tr class="even">
+<td>3.2 Summarize</td>
+<td><code>describe().T</code> on the filtered columns</td>
+<td>Know your data’s scale and spread</td>
+</tr>
+<tr class="odd">
+<td>3.3 Drop missing</td>
+<td><code>dropna()</code> takes 3,107 rows to 2,915</td>
+<td>Models can’t handle NaN</td>
+</tr>
+<tr class="even">
+<td>3.4 Dummies</td>
+<td><code>get_dummies(..., dtype=int)</code> gives 47 state dummies</td>
+<td>State fixed effects: each state gets its own baseline</td>
+</tr>
+<tr class="odd">
+<td>3.5 Split</td>
+<td>80/20, <code>random_state=11</code>, giving 2,332 train and 583 test</td>
+<td>Keep a test set the model never touches</td>
+</tr>
+<tr class="even">
+<td>3.6 OLS</td>
+<td><code>LinearRegression</code> on all 107 predictors</td>
+<td>The baseline model</td>
+</tr>
+<tr class="odd">
+<td>3.7 Ridge/lasso</td>
+<td>Scale, build a λ grid, 10-fold CV, pick the best λ, refit</td>
+<td>Shrink coefficients to fight overfitting</td>
+</tr>
+<tr class="even">
+<td>3.8 Compare</td>
+<td>Train and test MSE for all three</td>
+<td>Pick the model that predicts new counties best</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="data-prep-the-code-and-its-traps" class="level2">
+<h2 class="anchored" data-anchor-id="data-prep-the-code-and-its-traps">2. Data prep: the code and its traps</h2>
+<section id="filtering-from-the-spreadsheet" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-from-the-spreadsheet">Filtering from the spreadsheet</h3>
+<div id="4cc6ea69" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>predictors <span class="op">=</span> variables.loc[</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    variables[<span class="st">'Source'</span>].isin([<span class="st">'Opportunity Insights'</span>, <span class="st">'PM_COVID'</span>]),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Variable'</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>].tolist()                      <span class="co"># 60 names</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df_raw[[<span class="st">'county'</span>, <span class="st">'state'</span>, <span class="st">'deathspc'</span>] <span class="op">+</span> predictors]   <span class="co"># (3107, 63)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>isin</code> keeps rows whose <code>Source</code> matches either label. <code>.loc[rows, 'Variable']</code> pulls just the names. Adding the two lists with <code>+</code> makes one flat list of column names.</p>
+<p><strong>Trap 1:</strong> the spreadsheet says <code>PM_COVID</code> with an underscore. Typing “PM COVID” silently drops 7 variables (53 instead of 60).</p>
+<p><strong>Trap 2: filter before you drop missing rows.</strong> Some columns you don’t need, like <code>csa</code>, are missing for most counties. If you run <code>dropna()</code> before filtering, you lose those counties for no reason. Done in the wrong order, you’d keep only 401 rows instead of 2,915.</p>
+<p><strong>Trap 3: leakage.</strong> The raw data has <code>deaths</code> and <code>population</code>, and <code>deathspc</code> is built from them. Leaving them in as predictors would let the model “cheat” by seeing the answer.</p>
+</section>
+<section id="state-dummies" class="level3">
+<h3 class="anchored" data-anchor-id="state-dummies">State dummies</h3>
+<div id="cb0be573" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.get_dummies(df, columns<span class="op">=</span>[<span class="st">'state'</span>], drop_first<span class="op">=</span><span class="va">False</span>, dtype<span class="op">=</span><span class="bu">int</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The prompt mentions 49 dummies (48 states plus DC), but you get <strong>47</strong> because DC and New Jersey had no complete rows after <code>dropna()</code>.</p>
+<p>You kept all 47. They add up to 1 in every row, which is exactly the same as the intercept column. That’s <strong>perfect collinearity</strong>, also called the dummy variable trap. OLS can still predict fine (sklearn picks one of the many equally good solutions), but the individual state coefficients aren’t uniquely identified, so you can’t interpret them. Ridge and lasso don’t have this problem, because the penalty picks out one unique solution.</p>
+<p>A related point: <code>tax_st_diff_top20</code> has the same value for every county within a state, so the state dummies fully absorb it. Lasso set its coefficient to exactly 0.</p>
+</section>
+<section id="building-x-and-y" class="level3">
+<h3 class="anchored" data-anchor-id="building-x-and-y">Building X and y</h3>
+<div id="83d75554" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'deathspc'</span>, <span class="st">'county'</span>])   <span class="co"># 107 columns</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'deathspc'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mistake</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>df.drop(['deathspc', 'county'])</code></td>
+<td><code>KeyError</code>: <code>drop</code> looks in the <strong>row</strong> index by default</td>
+</tr>
+<tr class="even">
+<td><code>y = df.loc['deathspc']</code></td>
+<td><code>KeyError</code>: <code>.loc[label]</code> looks for a <strong>row</strong> label</td>
+</tr>
+<tr class="odd">
+<td>Keeping <code>county</code> in X</td>
+<td>It’s a text ID, not a predictor</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="ols-mse-and-overfitting" class="level2">
+<h2 class="anchored" data-anchor-id="ols-mse-and-overfitting">3. OLS, MSE, and overfitting</h2>
+<section id="mse-in-plain-words" class="level3">
+<h3 class="anchored" data-anchor-id="mse-in-plain-words">MSE in plain words</h3>
+<p>For every county, take actual minus predicted, square it, and average:</p>
+<p><span class="math display">\[\text{MSE} = \frac{1}{n}\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2\]</span></p>
+<p>Squaring keeps misses above and below from canceling and punishes big misses more. The units are squared, so take the square root (RMSE) to get back to <code>deathspc</code> units. Your OLS test RMSE is √1.8274 ≈ 1.35.</p>
+<p>A useful baseline: if you predicted the training mean for every county, your MSE would equal the variance of y (about 2.14 in training). Any model worth using has to beat that.</p>
+</section>
+<section id="training-mse-vs.-test-mse-sl-deck-training-vs.-test-mses" class="level3">
+<h3 class="anchored" data-anchor-id="training-mse-vs.-test-mse-sl-deck-training-vs.-test-mses">Training MSE vs.&nbsp;test MSE (SL deck, “Training vs.&nbsp;Test MSEs”)</h3>
+<p>Training MSE measures how well the model fits the counties it learned from. Test MSE measures how well it predicts counties it never saw. The slides say you <strong>can’t use training MSE to judge models because it’s biased toward overfitting.</strong></p>
+<p>Here’s the analogy. A student memorizes the answers to one practice exam, including its quirks. They ace that practice exam and then do worse on the real one. Training MSE is the practice score. Test MSE is the real exam.</p>
+</section>
+<section id="why-overfitting-was-a-concern-here-reg-deck-big-data-new-challenges" class="level3">
+<h3 class="anchored" data-anchor-id="why-overfitting-was-a-concern-here-reg-deck-big-data-new-challenges">Why overfitting was a concern here (Reg deck, “Big Data ⇒ New Challenges!”)</h3>
+<p>OLS does well when n is much bigger than p.&nbsp;Here OLS estimated 107 coefficients from 2,332 training counties, about one coefficient for every 22 counties. Each coefficient is another knob OLS can turn to shrink training error, even when the pattern is only noise.</p>
+<p>Some knobs rest on almost no data. Delaware has 2 counties in the training set, so its dummy can basically fit those 2 counties’ death rates, noise included.</p>
+<p>The extreme version is von Neumann’s elephant from the slides: with as many parameters as data points, the model is <strong>saturated</strong>. In-sample fit is perfect and out-of-sample fit is terrible.</p>
+</section>
+<section id="your-evidence" class="level3">
+<h3 class="anchored" data-anchor-id="your-evidence">Your evidence</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Train MSE</th>
+<th>Test MSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OLS</td>
+<td>1.2867</td>
+<td>1.8274</td>
+</tr>
+</tbody>
+</table>
+<p>Test MSE is about 42% higher than training MSE, which is evidence of overfitting. Part of the gap comes from the test counties being more spread out (variance 2.55 vs.&nbsp;2.14), but the gap persists after adjusting: the model leaves 60% of the variance unexplained in training (1.29 / 2.14) and 72% in test (1.83 / 2.55).</p>
+<hr>
+</section>
+</section>
+<section id="ridge-and-lasso-the-theory" class="level2">
+<h2 class="anchored" data-anchor-id="ridge-and-lasso-the-theory">4. Ridge and lasso: the theory</h2>
+<section id="the-idea-in-one-sentence" class="level3">
+<h3 class="anchored" data-anchor-id="the-idea-in-one-sentence">The idea in one sentence</h3>
+<p>Ridge and lasso fit the same linear model as OLS but add a <strong>penalty for big coefficients</strong>, so the model can’t chase noise as hard.</p>
+<p>The ELI5 version: OLS gets unlimited money to buy coefficients. Ridge and lasso charge a price for each one, so the model only “buys” a big coefficient when it really pays off in fit.</p>
+</section>
+<section id="the-formulas-reg-deck-rr-the-lasso-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="the-formulas-reg-deck-rr-the-lasso-estimation">The formulas (Reg deck, “RR &amp; The Lasso Estimation”)</h3>
+<p>OLS minimizes: <span class="math display">\[\text{RSS} = \sum_{i=1}^{n}\Big(y_i - \beta_0 - \sum_{j=1}^{p}\beta_j x_{ij}\Big)^2\]</span></p>
+<p>Ridge minimizes: <span class="math display">\[\text{RSS} + \lambda \sum_{j=1}^{p}\beta_j^2 \qquad (\ell_2 \text{ penalty, squared})\]</span></p>
+<p>Lasso minimizes: <span class="math display">\[\text{RSS} + \lambda \sum_{j=1}^{p}|\beta_j| \qquad (\ell_1 \text{ penalty})\]</span></p>
+<p>The intercept β₀ is not penalized. The RSS term pulls coefficients toward fitting the training data, and the penalty pulls them toward zero. λ sets how hard the penalty pulls.</p>
+</section>
+<section id="what-λ-does" class="level3">
+<h3 class="anchored" data-anchor-id="what-λ-does">What λ does</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>λ</th>
+<th>Ridge</th>
+<th>Lasso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>λ = 0</td>
+<td>Exactly OLS</td>
+<td>Exactly OLS</td>
+</tr>
+<tr class="even">
+<td>Small λ</td>
+<td>Slight shrinkage</td>
+<td>Slight shrinkage, a few coefficients become exactly 0</td>
+</tr>
+<tr class="odd">
+<td>Large λ</td>
+<td>Everything shrunk close to 0, but <strong>never exactly 0</strong></td>
+<td>Many coefficients <strong>exactly 0</strong> (a sparse model)</td>
+</tr>
+<tr class="even">
+<td>λ → ∞</td>
+<td>All slopes → 0, predicts ≈ the mean</td>
+<td>All slopes = 0, predicts the mean</td>
+</tr>
+</tbody>
+</table>
+<p>λ is a <strong>hyperparameter</strong>. You choose it before fitting, and it can’t be chosen by in-sample fit. The βs are <strong>parameters</strong>, which are estimated by fitting.</p>
+</section>
+<section id="why-lasso-makes-exact-zeros-and-ridge-doesnt-reg-deck-the-lasso-vs.-rr-picture" class="level3">
+<h3 class="anchored" data-anchor-id="why-lasso-makes-exact-zeros-and-ridge-doesnt-reg-deck-the-lasso-vs.-rr-picture">Why lasso makes exact zeros and ridge doesn’t (Reg deck, “The Lasso vs.&nbsp;RR Picture”)</h3>
+<p>Rewrite each as “minimize RSS subject to a budget.” Ridge’s budget is β₁² + β₂² ≤ s, a <strong>circle</strong>. Lasso’s budget is |β₁| + |β₂| ≤ s, a <strong>diamond</strong> with corners sitting on the axes.</p>
+<p>The RSS contours are ellipses that grow outward from the OLS estimate until they first touch the budget region. A diamond’s corners stick out, so the first touch is often at a corner, where one coefficient is exactly 0. A circle has no corners, so the touch point almost never lands exactly on an axis.</p>
+<p>That’s why the slides say lasso <strong>performs variable selection</strong> and ridge <strong>doesn’t</strong>.</p>
+</section>
+<section id="why-accepting-bias-can-improve-prediction-reg-deck-why-do-rrthe-lasso-improve-over-ols" class="level3">
+<h3 class="anchored" data-anchor-id="why-accepting-bias-can-improve-prediction-reg-deck-why-do-rrthe-lasso-improve-over-ols">Why accepting bias can improve prediction (Reg deck, “Why Do RR/The Lasso Improve Over OLS?”)</h3>
+<p>Recall from SL that expected test MSE = variance + bias² + irreducible error. The penalty reduces flexibility, so <strong>bias goes up and variance goes down</strong>. If OLS’s variance is high (n not much bigger than p, or lots of correlated predictors), the drop in variance outweighs the added bias and test MSE falls.</p>
+<p>This also explains why training MSE always gets worse with a penalty. OLS already found the coefficients with the lowest possible training RSS, so any shrinkage moves away from that. Your results show it: ridge and lasso had higher training MSE than OLS but lower test MSE.</p>
+</section>
+<section id="ridge-vs.-lasso-which-wins-reg-deck-comparing-rr-the-lasso" class="level3">
+<h3 class="anchored" data-anchor-id="ridge-vs.-lasso-which-wins-reg-deck-comparing-rr-the-lasso">Ridge vs.&nbsp;lasso: which wins? (Reg deck, “Comparing RR &amp; the Lasso”)</h3>
+<p>Neither always wins. Ridge tends to do better when the outcome depends on <strong>many</strong> predictors with small effects. Lasso tends to do better when it depends on <strong>relatively few</strong>. You never know which in advance, so you <strong>use cross-validation to decide</strong>.</p>
+<p>Elastic net mixes both penalties and adds a second hyperparameter α for the mix.</p>
+<hr>
+</section>
+</section>
+<section id="scaling" class="level2">
+<h2 class="anchored" data-anchor-id="scaling">5. Scaling</h2>
+<section id="why-scale-before-ridge-and-lasso-reg-deck-standardized-coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="why-scale-before-ridge-and-lasso-reg-deck-standardized-coefficients">Why scale before ridge and lasso (Reg deck, “Standardized Coefficients”)</h3>
+<p>OLS is <strong>scale equivariant</strong>. If you measure income in thousands instead of dollars, its coefficient just gets multiplied by 1,000, and predictions don’t change.</p>
+<p>Ridge and lasso aren’t. The penalty depends on the size of the coefficient, and that size depends on the units. <code>median_house_value</code> is in dollars (up to about 1.3 million), so its coefficient is tiny and barely gets penalized. Measured in millions, its coefficient would be bigger and get penalized more. Standardizing puts every predictor in standard-deviation units, so the penalty treats them all fairly.</p>
+<p>Standardizing means subtracting the mean and dividing by the standard deviation, which gives each predictor mean 0 and variance 1.</p>
+</section>
+<section id="fit-the-scaler-on-training-data-only" class="level3">
+<h3 class="anchored" data-anchor-id="fit-the-scaler-on-training-data-only">Fit the scaler on training data only</h3>
+<div id="0027cc4b" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>X_train_s <span class="op">=</span> scaler.fit_transform(X_train)   <span class="co"># learn mean/sd from TRAIN, apply to train</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>X_test_s  <span class="op">=</span> scaler.transform(X_test)        <span class="co"># reuse TRAIN mean/sd on test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Calling <code>fit</code> on the test set would let test information leak into training. The assignment’s footnote says to scale <strong>after</strong> splitting for this reason.</p>
+</section>
+<section id="the-scaled-data-trap" class="level3">
+<h3 class="anchored" data-anchor-id="the-scaled-data-trap">The scaled-data trap</h3>
+<p>Ridge and lasso were fit on <code>X_train_s</code>, so their coefficients expect standardized inputs. In your first Q8 run, predicting on unscaled <code>X_test</code> gave a ridge MSE of about 32 million. The clue was sklearn’s warning, “X has feature names, but Ridge was fitted without feature names.” It meant the model was trained on a plain array and was now getting a DataFrame.</p>
+<hr>
+</section>
+</section>
+<section id="tuning-λ-with-10-fold-cv" class="level2">
+<h2 class="anchored" data-anchor-id="tuning-λ-with-10-fold-cv">6. Tuning λ with 10-fold CV</h2>
+<section id="the-algorithm-reg-deck-rr-the-lasso-tuning-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="the-algorithm-reg-deck-rr-the-lasso-tuning-algorithm">The algorithm (Reg deck, “RR &amp; the Lasso Tuning Algorithm”)</h3>
+<ol type="1">
+<li>Choose a grid of λ values.</li>
+<li>For each λ, estimate the model and compute the CV error.</li>
+<li>Pick the λ with the <strong>smallest CV error</strong>.</li>
+<li>Refit the model with that λ on <strong>all</strong> the training data.</li>
+</ol>
+</section>
+<section id="how-k-fold-cv-works-res-deck-slides-31-to-33" class="level3">
+<h3 class="anchored" data-anchor-id="how-k-fold-cv-works-res-deck-slides-31-to-33">How k-fold CV works (Res deck, slides 31 to 33)</h3>
+<ol type="1">
+<li>Randomly divide the training data into k folds (you used 10).</li>
+<li>Fit the model on k − 1 folds.</li>
+<li>Predict the held-out fold and compute its MSE.</li>
+<li>Repeat until each fold has been held out once.</li>
+<li>Average the k MSEs. That average estimates the test error.</li>
+</ol>
+<p>From the Res deck: k-fold CV sits between LOOCV and the validation-set approach. It’s less biased and less noisy than a single validation split, and much cheaper than LOOCV. In practice, k = 5 or 10.</p>
+</section>
+<section id="your-code" class="level3">
+<h3 class="anchored" data-anchor-id="your-code">Your code</h3>
+<div id="9f723eb2" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>exponents_lasso <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">101</span>)   <span class="co"># 101 evenly spaced exponents</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>alphas_lasso <span class="op">=</span> <span class="dv">10</span> <span class="op">**</span> exponents_lasso         <span class="co"># 0.0001 ... 1 on a log scale</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>folds <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">10</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>cv_mse_lasso <span class="op">=</span> []</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> alphas_lasso:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    scores <span class="op">=</span> cross_val_score(Lasso(alpha<span class="op">=</span>a, max_iter<span class="op">=</span><span class="dv">10000</span>), X_train_s, y_train,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                             cv<span class="op">=</span>folds, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    cv_mse_lasso.append(<span class="op">-</span>scores.mean())     <span class="co"># flip sign, average the 10 folds</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>best_alpha_lasso <span class="op">=</span> alphas_lasso[np.argmin(cv_mse_lasso)]</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>lasso_best <span class="op">=</span> Lasso(alpha<span class="op">=</span>best_alpha_lasso, max_iter<span class="op">=</span><span class="dv">10000</span>).fit(X_train_s, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Piece</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>np.linspace(a, b, 101)</code></td>
+<td>101 evenly spaced numbers from a to b, including both ends</td>
+</tr>
+<tr class="even">
+<td><code>10 ** exponents</code></td>
+<td>Spaces λ evenly on a log scale, so small and large values get equal coverage</td>
+</tr>
+<tr class="odd">
+<td><code>KFold(..., shuffle=True, random_state=25)</code></td>
+<td>Instructions for cutting the data into folds. It doesn’t cut anything until it’s used</td>
+</tr>
+<tr class="even">
+<td><code>cross_val_score</code></td>
+<td>Runs the fit-and-predict loop over all 10 folds and returns 10 scores</td>
+</tr>
+<tr class="odd">
+<td><code>'neg_mean_squared_error'</code></td>
+<td>sklearn treats bigger scores as better, so it reports <strong>negative</strong> MSE. That’s why you flip the sign</td>
+</tr>
+<tr class="even">
+<td><code>np.argmin</code></td>
+<td>Position of the smallest CV error</td>
+</tr>
+<tr class="odd">
+<td><code>max_iter=10000</code></td>
+<td>Lasso is solved iteratively and may not converge at small λ with the default 1,000</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="two-seeds-two-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="two-seeds-two-jobs">Two seeds, two jobs</h3>
+<p><code>random_state=11</code> controls the <strong>train/test split</strong>. <code>random_state=25</code> controls the <strong>CV folds</strong> inside the training set. Mixing them up changes your results.</p>
+</section>
+<section id="why-λ-is-never-picked-with-the-test-set" class="level3">
+<h3 class="anchored" data-anchor-id="why-λ-is-never-picked-with-the-test-set">Why λ is never picked with the test set</h3>
+<p>The test set is your honest final exam. If you used it to choose λ, you’d be tuning to those particular 583 counties, and the test MSE would be optimistic. It’s the same reason training MSE can’t be used.</p>
+<p>Training MSE can’t choose λ either, because the penalty only ever raises training RSS. Training MSE would always pick λ = 0, which is just OLS.</p>
+</section>
+<section id="a-minimum-on-the-edge-of-the-grid" class="level3">
+<h3 class="anchored" data-anchor-id="a-minimum-on-the-edge-of-the-grid">A minimum on the edge of the grid</h3>
+<p>Your starting grid (0.01 to 100) put ridge’s minimum at the right edge and lasso’s at the left edge. A minimum on the edge means the true best λ is probably <strong>outside</strong> the grid, so you widen it in that direction and rerun until the curve bottoms out in the middle. You moved ridge to 10⁰ through 10⁴ and lasso to 10⁻⁴ through 10⁰.</p>
+</section>
+<section id="why-ridges-λ-is-so-much-bigger-than-lassos" class="level3">
+<h3 class="anchored" data-anchor-id="why-ridges-λ-is-so-much-bigger-than-lassos">Why ridge’s λ is so much bigger than lasso’s</h3>
+<p>sklearn writes the two losses differently. <code>Ridge</code> uses RSS + α‖β‖², while <code>Lasso</code> uses RSS / (2n) + α‖β‖₁. Dividing by 2n shrinks lasso’s RSS term, so its α values live on a much smaller scale. <strong>You can’t compare λ_ridge = 208.93 with λ_lasso = 0.0058 and conclude ridge penalizes harder.</strong></p>
+</section>
+<section id="reading-the-lasso-cv-plot" class="level3">
+<h3 class="anchored" data-anchor-id="reading-the-lasso-cv-plot">Reading the lasso CV plot</h3>
+<p>For λ above about 0.5, the lasso curve goes flat at around 2.14. That number is roughly the variance of <code>y_train</code>: every coefficient has been shrunk to exactly 0, so the model predicts the mean for every county. Ridge’s curve never flattens like that, because ridge never sets coefficients exactly to 0.</p>
+<hr>
+</section>
+</section>
+<section id="reading-your-results" class="level2">
+<h2 class="anchored" data-anchor-id="reading-your-results">7. Reading your results</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>λ</th>
+<th>Train MSE</th>
+<th>Test MSE</th>
+<th>Test RMSE</th>
+<th>Nonzero coefs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OLS</td>
+<td>none</td>
+<td>1.2867</td>
+<td>1.8274</td>
+<td>1.352</td>
+<td>107</td>
+</tr>
+<tr class="even">
+<td>Ridge</td>
+<td>208.93</td>
+<td>1.3002</td>
+<td>1.8209</td>
+<td>1.349</td>
+<td>107</td>
+</tr>
+<tr class="odd">
+<td>Lasso</td>
+<td>0.0058</td>
+<td>1.2966</td>
+<td>1.8113</td>
+<td>1.346</td>
+<td>91</td>
+</tr>
+</tbody>
+</table>
+<p>What it says:</p>
+<ol type="1">
+<li><strong>Both penalized models improved test MSE.</strong> Ridge was 0.0065 lower than OLS (about 0.4%), and lasso was 0.0161 lower (about 0.9%).</li>
+<li><strong>Both had higher training MSE than OLS.</strong> That’s the penalty working as intended: a looser fit to the training data in exchange for better generalization.</li>
+<li><strong>Lasso had the lowest test MSE</strong> and dropped 16 predictors, including <code>tax_st_diff_top20</code> (absorbed by the state dummies) and two state dummies.</li>
+<li><strong>The gains are modest.</strong> With about 22 counties per coefficient, OLS’s variance wasn’t extreme, so shrinkage had limited room to help. The slides say penalties help most when n ≈ p.</li>
+</ol>
+<p>A recommendation to the CDC would point to lasso: it predicts new counties best, and a 91-variable model is somewhat easier to explain and points to which county traits carry predictive weight. Its largest standardized coefficients include population density and the Black population share.</p>
+<p><strong>Careful with interpretation:</strong> a lasso coefficient of 0 means the variable wasn’t needed for <strong>prediction</strong>, given the other variables. It doesn’t mean the factor has no relationship with COVID deaths, and nonzero coefficients aren’t causal effects.</p>
+<hr>
+</section>
+<section id="bug-cheat-sheet" class="level2">
+<h2 class="anchored" data-anchor-id="bug-cheat-sheet">8. Bug cheat sheet</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>53 predictors instead of 60</td>
+<td>Filtered on “PM COVID”</td>
+<td>Use <code>PM_COVID</code>; check <code>variables['Source'].unique()</code></td>
+</tr>
+<tr class="even">
+<td>Only 401 rows after <code>dropna()</code></td>
+<td>Didn’t filter columns first</td>
+<td>Filter to the spreadsheet variables, then <code>dropna()</code></td>
+</tr>
+<tr class="odd">
+<td><code>KeyError</code> from <code>drop</code></td>
+<td><code>drop</code> defaults to rows</td>
+<td><code>drop(columns=[...])</code></td>
+</tr>
+<tr class="even">
+<td><code>KeyError</code> from <code>df.loc['deathspc']</code></td>
+<td><code>.loc[label]</code> looks up rows</td>
+<td><code>df['deathspc']</code></td>
+</tr>
+<tr class="odd">
+<td>MSE in the millions</td>
+<td>Predicted on unscaled X</td>
+<td>Use <code>X_train_s</code> / <code>X_test_s</code></td>
+</tr>
+<tr class="even">
+<td>“fitted without feature names” warning</td>
+<td>Same as above</td>
+<td>Same as above</td>
+</tr>
+<tr class="odd">
+<td>Best λ on the grid edge</td>
+<td>Grid too narrow</td>
+<td>Widen in that direction and rerun</td>
+</tr>
+<tr class="even">
+<td>Plot legend shows the wrong λ</td>
+<td>Copy-pasted the ridge variable into the lasso cell</td>
+<td>Rename everything to <code>_lasso</code></td>
+</tr>
+<tr class="odd">
+<td>Plot doesn’t match the code</td>
+<td>Stale output from an earlier run</td>
+<td>Restart and Run All</td>
+</tr>
+<tr class="even">
+<td><code>ConvergenceWarning</code> from Lasso</td>
+<td>Too few iterations</td>
+<td>Raise <code>max_iter</code></td>
+</tr>
+<tr class="odd">
+<td>Lasso results overwrite ridge</td>
+<td>Generic names like <code>cv_mse</code></td>
+<td>Use <code>cv_mse_ridge</code> / <code>cv_mse_lasso</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="practice-questions" class="level2">
+<h2 class="anchored" data-anchor-id="practice-questions">9. Practice questions</h2>
+<p>Answer each one out loud or on paper before opening the answer.</p>
+<section id="concepts" class="level3">
+<h3 class="anchored" data-anchor-id="concepts">Concepts</h3>
+<p><strong>1.</strong> What does λ control in ridge and lasso? What do you get at λ = 0 and as λ → ∞?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>λ controls how strongly the penalty pulls coefficients toward zero compared with fitting the training data. At λ = 0, both are exactly OLS. As λ → ∞, all slope coefficients go to 0 (exactly 0 for lasso, approaching 0 for ridge), and the model predicts the mean of y.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> Why can lasso set coefficients exactly to zero when ridge can’t?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Lasso’s constraint region (|β₁| + |β₂| ≤ s) is a diamond with corners on the axes, and the RSS ellipses often first touch it at a corner, where one coefficient is exactly 0. Ridge’s region (β₁² + β₂² ≤ s) is a circle with no corners, so the touch point almost never lands exactly on an axis. So lasso does variable selection and ridge doesn’t.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Which coefficient vector gets the bigger ridge penalty, β = (3, 4) or β = (2, 5)? Which gets the bigger lasso penalty?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ridge: 3² + 4² = 25 vs.&nbsp;2² + 5² = 29, so (2, 5) is penalized more, because squaring punishes the single big coefficient. Lasso: |3| + |4| = 7 vs.&nbsp;|2| + |5| = 7, so they’re tied.</p>
+</div>
+</div>
+</div>
+<p><strong>4.</strong> Ridge and lasso add bias. How can that lower test MSE?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Test MSE depends on bias² plus variance. The penalty makes the model less flexible, which raises bias but lowers variance. When OLS’s variance is high, the drop in variance is bigger than the rise in bias², so test MSE goes down.</p>
+</div>
+</div>
+</div>
+<p><strong>5.</strong> When would you expect ridge to beat lasso, and the other way around?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ridge tends to win when the outcome depends on many predictors with small effects. Lasso tends to win when only a few predictors matter. Since you don’t know which is true beforehand, you compare their cross-validated errors.</p>
+</div>
+</div>
+</div>
+<p><strong>6.</strong> Why can’t you choose λ by picking the value with the lowest training MSE?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>OLS already minimizes training RSS, and the penalty can only move the fit away from that. Training MSE would always choose λ = 0, which is just OLS. λ has to be chosen by an estimate of test error, like cross-validation.</p>
+</div>
+</div>
+</div>
+<p><strong>7.</strong> Why is λ tuned with cross-validation on the training set instead of with the test set?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you used the test set to pick λ, you’d be tuning to those specific counties, and the test MSE would be an optimistic, contaminated estimate. Keeping the test set untouched until the end gives an honest measure of how the final model performs on new data.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="code" class="level3">
+<h3 class="anchored" data-anchor-id="code">Code</h3>
+<p><strong>8.</strong> Why do you scale predictors before ridge and lasso, and why fit the scaler only on the training data?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The penalty depends on coefficient size, and coefficient size depends on each variable’s units, so without scaling, some predictors would be penalized far more than others for no real reason. Standardizing puts them all in standard-deviation units. You fit the scaler on training data only so that no information from the test set leaks into training.</p>
+</div>
+</div>
+</div>
+<p><strong>9.</strong> What does <code>cross_val_score(..., cv=folds, scoring='neg_mean_squared_error')</code> return, and why is there a minus sign in <code>-scores.mean()</code>?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>It returns 10 numbers, one per fold, each the negative MSE on that held-out fold. sklearn uses negative MSE because it treats bigger scores as better. Flipping the sign and averaging gives the 10-fold CV estimate of test MSE for that λ.</p>
+</div>
+</div>
+</div>
+<p><strong>10.</strong> Your ridge CV plot shows the lowest error at λ = 100, the largest value in your grid. What does that tell you, and what do you do?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The best λ is probably larger than 100, outside the grid, so the curve hasn’t reached its minimum yet. Extend the grid upward (for example, 10⁰ to 10⁴), rerun the CV, and check that the minimum now sits in the middle of the curve.</p>
+</div>
+</div>
+</div>
+<p><strong>11.</strong> A classmate’s ridge test MSE is 32,650,167 while OLS is 1.83. What’s the most likely bug?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>They fit ridge on scaled data but predicted on unscaled <code>X_test</code>. The coefficients expect standardized inputs, so raw values like house prices in the hundreds of thousands blow up the predictions. The fix is to predict on <code>X_test_s</code>.</p>
+</div>
+</div>
+</div>
+<p><strong>12.</strong> You kept all 47 state dummies plus an intercept in OLS. Why did it still run, and what can’t you interpret?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The 47 dummies sum to 1 in every row, which duplicates the intercept (perfect collinearity). sklearn still finds one of the many equally good least-squares solutions, and they all give the same predictions, so the MSEs are valid. But the individual state coefficients aren’t uniquely identified, so you can’t interpret them.</p>
+</div>
+</div>
+</div>
+<p><strong>13.</strong> What’s the difference between <code>random_state=11</code> and <code>random_state=25</code> in this project?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>random_state=11</code> fixes the 80/20 train/test split. <code>random_state=25</code> fixes how the training data is shuffled into 10 CV folds. Both make the results reproducible, but they control different random steps.</p>
+</div>
+</div>
+</div>
+<p><strong>14.</strong> The prompt mentions 49 state dummies. Why did you end up with 47?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>After dropping rows with missing values, no counties remained for DC or New Jersey, so <code>get_dummies</code> had no category to create for them.</p>
+</div>
+</div>
+</div>
+<p><strong>15.</strong> True or false: since λ_ridge = 208.93 and λ_lasso = 0.0058, ridge is penalizing far more heavily. Explain.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>False. sklearn’s <code>Lasso</code> divides the RSS by 2n while <code>Ridge</code> doesn’t, so their λ values are on different scales. The penalties also have different forms (sum of squares vs.&nbsp;sum of absolute values), so the raw λ values can’t be compared across the two models.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation">Interpretation</h3>
+<p><strong>16.</strong> OLS has a training MSE of 1.2867 and a test MSE of 1.8274. Write a full-credit answer to “Why might you be concerned about overfitting, and is there evidence of it?”</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Overfitting is a concern because OLS estimates 107 coefficients from only 2,332 training counties, and some state dummies rest on very few counties (Delaware has 2), so the model has enough flexibility to fit noise. Yes, there is evidence of overfitting: test MSE (1.8274) is about 42% higher than training MSE (1.2867), so the model predicts the counties it was fit on much better than new ones. The gap remains after accounting for the test set’s higher variance (60% of the variance unexplained in training vs.&nbsp;72% in test).</p>
+</div>
+</div>
+</div>
+<p><strong>17.</strong> In the lasso CV plot, the error goes flat at about 2.14 for large λ. Why that value?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>At large λ, lasso sets every slope coefficient to exactly 0, so the model predicts the training mean for every county. The MSE of predicting the mean is the variance of y, which is about 2.14 in your training data.</p>
+</div>
+</div>
+</div>
+<p><strong>18.</strong> Lasso set the coefficient on <code>tax_st_diff_top20</code> to 0. Does that mean state tax progressivity has no relationship with COVID deaths?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No.&nbsp;<code>tax_st_diff_top20</code> has the same value for every county in a state, so the state dummies already capture it completely, and lasso doesn’t need it for prediction. A zero lasso coefficient means a variable isn’t needed for prediction given the others. It says nothing about whether the factor is related to deaths.</p>
+</div>
+</div>
+</div>
+<p><strong>19.</strong> Did ridge and lasso improve on OLS? By how much, and why might the gains be small here?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Yes, both did. Ridge lowered test MSE from 1.8274 to 1.8209 (about 0.4%), and lasso lowered it to 1.8113 (about 0.9%). The gains are modest because n is much larger than p (about 22 training counties per coefficient), so OLS’s variance wasn’t extreme and shrinkage had limited room to help.</p>
+</div>
+</div>
+</div>
+<p><strong>20.</strong> Three counties have actual <code>deathspc</code> values of 1, 0, and 3, and predictions of 1.5, 0.5, and 2. Compute the MSE.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Errors: 1 − 1.5 = −0.5, 0 − 0.5 = −0.5, 3 − 2 = 1. Squared: 0.25, 0.25, 1. MSE = 1.5 / 3 = <strong>0.5</strong>. RMSE = √0.5 ≈ 0.71.</p>
+</div>
+</div>
+</div>
+<p><strong>21.</strong> Which model would you recommend to the CDC, and why?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Lasso, because it has the lowest test MSE (1.8113 vs.&nbsp;1.8209 for ridge and 1.8274 for OLS), so it predicts new counties best, which is what the CDC needs to target vaccines. It also drops 16 predictors, which makes the model somewhat simpler to explain. The improvement over OLS is modest (about 0.9%), so OLS isn’t a bad model, but lasso is the best of the three.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="formula-sheet" class="level2">
+<h2 class="anchored" data-anchor-id="formula-sheet">10. Formula sheet</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Thing</th>
+<th>Formula or rule</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MSE</td>
+<td>(1/n) Σ (yᵢ − ŷᵢ)²</td>
+</tr>
+<tr class="even">
+<td>RMSE</td>
+<td>√MSE, in the units of y</td>
+</tr>
+<tr class="odd">
+<td>Ridge</td>
+<td>RSS + λ Σ βⱼ² (ℓ₂), shrinks but never to exactly 0</td>
+</tr>
+<tr class="even">
+<td>Lasso</td>
+<td>RSS + λ Σ |βⱼ| (ℓ₁), shrinks and sets some to exactly 0</td>
+</tr>
+<tr class="odd">
+<td>λ = 0</td>
+<td>OLS</td>
+</tr>
+<tr class="even">
+<td>λ → ∞</td>
+<td>All slopes 0, predicts the mean</td>
+</tr>
+<tr class="odd">
+<td>Penalty effect</td>
+<td>Bias ↑, variance ↓, training MSE ↑, test MSE ↓ if OLS variance was high</td>
+</tr>
+<tr class="even">
+<td>Standardize</td>
+<td>(x − mean) / sd, fit on training data only</td>
+</tr>
+<tr class="odd">
+<td>k-fold CV error</td>
+<td>Average of the k held-out fold MSEs</td>
+</tr>
+<tr class="even">
+<td>Tuning</td>
+<td>Grid → CV error per λ → pick minimum → refit on all training data</td>
+</tr>
+<tr class="odd">
+<td>Edge minimum</td>
+<td>Widen the grid in that direction</td>
+</tr>
+<tr class="even">
+<td>Lasso zero coefficient</td>
+<td>Not needed for prediction given the others, not “no effect”</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="MP3_Quiz_Study_Guide_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

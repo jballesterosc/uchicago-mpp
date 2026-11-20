@@ -1,0 +1,493 @@
+---
+title: "Mini-Project 3 Quiz Guide"
+subtitle: "PPHA 30545: OLS vs. ridge vs. lasso for predicting COVID-19 deaths"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-copy: true
+    smooth-scroll: true
+execute:
+  eval: false
+---
+
+## How to use this guide
+
+The quiz covers the mini-project you just turned in. It's in person with no AI, so the goal is to be able to explain each step in your own words.
+
+Every section follows the same pattern: a plain-language version first, then the formal version from lecture, then how it showed up in your code. The numbers are from your own notebook.
+
+Slide references point to the deck by name. "Reg" is Lecture 6 (Model Selection & Regularization), "Res" is Lecture 5 (Resampling), and "SL" is Lecture 2 (Statistical Learning). The Reg deck has no printed page numbers, so references to it use the slide title.
+
+Read a section, then go to the practice questions at the end and answer them before you open the answers.
+
+## If you only have 30 minutes
+
+1. Section 0, on how to phrase answers for full credit.
+2. Section 4, on what λ does and why lasso makes zeros while ridge doesn't.
+3. Section 6, on the tuning algorithm and why the test set is never used to pick λ.
+4. The results table in Section 7.
+5. Practice questions 3, 6, 11, 15, 17, and 18. They're the most likely to trip you up.
+
+---
+
+## 0. Writing answers that get full credit
+
+These habits come from how your earlier quizzes were graded and from the 6(b) drafts on this project.
+
+1. **Start with the answer.** "Yes." "Lasso." "λ = 0.0058." Graders shouldn't have to infer your choice.
+2. **Give one "because" sentence after it.** A correct answer with no reason rarely gets full points.
+3. **Cite the numbers you're comparing.** "Test MSE 1.8113 vs. 1.8274" beats "lasso is lower."
+4. **Don't hedge your conclusion.** "Might," "potential," and "suggests" stacked in one sentence read as no answer. Make the claim, then add a caveat if you need one.
+5. **Answer every part of the question.** 6(b) asked two things: why you'd be concerned, and whether there's evidence. Number the parts in your head and check each one off.
+6. **Check the direction.** Lower MSE is better. Higher λ means more shrinkage.
+7. **Don't overclaim small gaps.** Lasso beat OLS by 0.0161 in test MSE. That's real but modest, so say so.
+8. **Never leave a blank.** A partly right sentence can get partial credit.
+
+---
+
+## 1. The whole project in one picture
+
+The CDC wants to predict which counties will be hit hardest by COVID-19 so it can send vaccines there first. You built three prediction models and compared how well each predicts counties it never saw.
+
+| Step | What you did | Why |
+|---|---|---|
+| 3.1 Filter | Kept `county`, `state`, `deathspc`, and the 60 Opportunity Insights and PM_COVID predictors | Use only the variables the assignment specifies |
+| 3.2 Summarize | `describe().T` on the filtered columns | Know your data's scale and spread |
+| 3.3 Drop missing | `dropna()` takes 3,107 rows to 2,915 | Models can't handle NaN |
+| 3.4 Dummies | `get_dummies(..., dtype=int)` gives 47 state dummies | State fixed effects: each state gets its own baseline |
+| 3.5 Split | 80/20, `random_state=11`, giving 2,332 train and 583 test | Keep a test set the model never touches |
+| 3.6 OLS | `LinearRegression` on all 107 predictors | The baseline model |
+| 3.7 Ridge/lasso | Scale, build a λ grid, 10-fold CV, pick the best λ, refit | Shrink coefficients to fight overfitting |
+| 3.8 Compare | Train and test MSE for all three | Pick the model that predicts new counties best |
+
+---
+
+## 2. Data prep: the code and its traps
+
+### Filtering from the spreadsheet
+
+```{python}
+predictors = variables.loc[
+    variables['Source'].isin(['Opportunity Insights', 'PM_COVID']),
+    'Variable'
+].tolist()                      # 60 names
+
+df = df_raw[['county', 'state', 'deathspc'] + predictors]   # (3107, 63)
+```
+
+`isin` keeps rows whose `Source` matches either label. `.loc[rows, 'Variable']` pulls just the names. Adding the two lists with `+` makes one flat list of column names.
+
+**Trap 1:** the spreadsheet says `PM_COVID` with an underscore. Typing "PM COVID" silently drops 7 variables (53 instead of 60).
+
+**Trap 2: filter before you drop missing rows.** Some columns you don't need, like `csa`, are missing for most counties. If you run `dropna()` before filtering, you lose those counties for no reason. Done in the wrong order, you'd keep only 401 rows instead of 2,915.
+
+**Trap 3: leakage.** The raw data has `deaths` and `population`, and `deathspc` is built from them. Leaving them in as predictors would let the model "cheat" by seeing the answer.
+
+### State dummies
+
+```{python}
+df = pd.get_dummies(df, columns=['state'], drop_first=False, dtype=int)
+```
+
+The prompt mentions 49 dummies (48 states plus DC), but you get **47** because DC and New Jersey had no complete rows after `dropna()`.
+
+You kept all 47. They add up to 1 in every row, which is exactly the same as the intercept column. That's **perfect collinearity**, also called the dummy variable trap. OLS can still predict fine (sklearn picks one of the many equally good solutions), but the individual state coefficients aren't uniquely identified, so you can't interpret them. Ridge and lasso don't have this problem, because the penalty picks out one unique solution.
+
+A related point: `tax_st_diff_top20` has the same value for every county within a state, so the state dummies fully absorb it. Lasso set its coefficient to exactly 0.
+
+### Building X and y
+
+```{python}
+X = df.drop(columns=['deathspc', 'county'])   # 107 columns
+y = df['deathspc']
+```
+
+| Mistake | What happens |
+|---|---|
+| `df.drop(['deathspc', 'county'])` | `KeyError`: `drop` looks in the **row** index by default |
+| `y = df.loc['deathspc']` | `KeyError`: `.loc[label]` looks for a **row** label |
+| Keeping `county` in X | It's a text ID, not a predictor |
+
+---
+
+## 3. OLS, MSE, and overfitting
+
+### MSE in plain words
+
+For every county, take actual minus predicted, square it, and average:
+
+$$\text{MSE} = \frac{1}{n}\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2$$
+
+Squaring keeps misses above and below from canceling and punishes big misses more. The units are squared, so take the square root (RMSE) to get back to `deathspc` units. Your OLS test RMSE is √1.8274 ≈ 1.35.
+
+A useful baseline: if you predicted the training mean for every county, your MSE would equal the variance of y (about 2.14 in training). Any model worth using has to beat that.
+
+### Training MSE vs. test MSE (SL deck, "Training vs. Test MSEs")
+
+Training MSE measures how well the model fits the counties it learned from. Test MSE measures how well it predicts counties it never saw. The slides say you **can't use training MSE to judge models because it's biased toward overfitting.**
+
+Here's the analogy. A student memorizes the answers to one practice exam, including its quirks. They ace that practice exam and then do worse on the real one. Training MSE is the practice score. Test MSE is the real exam.
+
+### Why overfitting was a concern here (Reg deck, "Big Data ⇒ New Challenges!")
+
+OLS does well when n is much bigger than p. Here OLS estimated 107 coefficients from 2,332 training counties, about one coefficient for every 22 counties. Each coefficient is another knob OLS can turn to shrink training error, even when the pattern is only noise.
+
+Some knobs rest on almost no data. Delaware has 2 counties in the training set, so its dummy can basically fit those 2 counties' death rates, noise included.
+
+The extreme version is von Neumann's elephant from the slides: with as many parameters as data points, the model is **saturated**. In-sample fit is perfect and out-of-sample fit is terrible.
+
+### Your evidence
+
+| | Train MSE | Test MSE |
+|---|---|---|
+| OLS | 1.2867 | 1.8274 |
+
+Test MSE is about 42% higher than training MSE, which is evidence of overfitting. Part of the gap comes from the test counties being more spread out (variance 2.55 vs. 2.14), but the gap persists after adjusting: the model leaves 60% of the variance unexplained in training (1.29 / 2.14) and 72% in test (1.83 / 2.55).
+
+---
+
+## 4. Ridge and lasso: the theory
+
+### The idea in one sentence
+
+Ridge and lasso fit the same linear model as OLS but add a **penalty for big coefficients**, so the model can't chase noise as hard.
+
+The ELI5 version: OLS gets unlimited money to buy coefficients. Ridge and lasso charge a price for each one, so the model only "buys" a big coefficient when it really pays off in fit.
+
+### The formulas (Reg deck, "RR & The Lasso Estimation")
+
+OLS minimizes:
+$$\text{RSS} = \sum_{i=1}^{n}\Big(y_i - \beta_0 - \sum_{j=1}^{p}\beta_j x_{ij}\Big)^2$$
+
+Ridge minimizes:
+$$\text{RSS} + \lambda \sum_{j=1}^{p}\beta_j^2 \qquad (\ell_2 \text{ penalty, squared})$$
+
+Lasso minimizes:
+$$\text{RSS} + \lambda \sum_{j=1}^{p}|\beta_j| \qquad (\ell_1 \text{ penalty})$$
+
+The intercept β₀ is not penalized. The RSS term pulls coefficients toward fitting the training data, and the penalty pulls them toward zero. λ sets how hard the penalty pulls.
+
+### What λ does
+
+| λ | Ridge | Lasso |
+|---|---|---|
+| λ = 0 | Exactly OLS | Exactly OLS |
+| Small λ | Slight shrinkage | Slight shrinkage, a few coefficients become exactly 0 |
+| Large λ | Everything shrunk close to 0, but **never exactly 0** | Many coefficients **exactly 0** (a sparse model) |
+| λ → ∞ | All slopes → 0, predicts ≈ the mean | All slopes = 0, predicts the mean |
+
+λ is a **hyperparameter**. You choose it before fitting, and it can't be chosen by in-sample fit. The βs are **parameters**, which are estimated by fitting.
+
+### Why lasso makes exact zeros and ridge doesn't (Reg deck, "The Lasso vs. RR Picture")
+
+Rewrite each as "minimize RSS subject to a budget." Ridge's budget is β₁² + β₂² ≤ s, a **circle**. Lasso's budget is |β₁| + |β₂| ≤ s, a **diamond** with corners sitting on the axes.
+
+The RSS contours are ellipses that grow outward from the OLS estimate until they first touch the budget region. A diamond's corners stick out, so the first touch is often at a corner, where one coefficient is exactly 0. A circle has no corners, so the touch point almost never lands exactly on an axis.
+
+That's why the slides say lasso **performs variable selection** and ridge **doesn't**.
+
+### Why accepting bias can improve prediction (Reg deck, "Why Do RR/The Lasso Improve Over OLS?")
+
+Recall from SL that expected test MSE = variance + bias² + irreducible error. The penalty reduces flexibility, so **bias goes up and variance goes down**. If OLS's variance is high (n not much bigger than p, or lots of correlated predictors), the drop in variance outweighs the added bias and test MSE falls.
+
+This also explains why training MSE always gets worse with a penalty. OLS already found the coefficients with the lowest possible training RSS, so any shrinkage moves away from that. Your results show it: ridge and lasso had higher training MSE than OLS but lower test MSE.
+
+### Ridge vs. lasso: which wins? (Reg deck, "Comparing RR & the Lasso")
+
+Neither always wins. Ridge tends to do better when the outcome depends on **many** predictors with small effects. Lasso tends to do better when it depends on **relatively few**. You never know which in advance, so you **use cross-validation to decide**.
+
+Elastic net mixes both penalties and adds a second hyperparameter α for the mix.
+
+---
+
+## 5. Scaling
+
+### Why scale before ridge and lasso (Reg deck, "Standardized Coefficients")
+
+OLS is **scale equivariant**. If you measure income in thousands instead of dollars, its coefficient just gets multiplied by 1,000, and predictions don't change.
+
+Ridge and lasso aren't. The penalty depends on the size of the coefficient, and that size depends on the units. `median_house_value` is in dollars (up to about 1.3 million), so its coefficient is tiny and barely gets penalized. Measured in millions, its coefficient would be bigger and get penalized more. Standardizing puts every predictor in standard-deviation units, so the penalty treats them all fairly.
+
+Standardizing means subtracting the mean and dividing by the standard deviation, which gives each predictor mean 0 and variance 1.
+
+### Fit the scaler on training data only
+
+```{python}
+scaler = StandardScaler()
+X_train_s = scaler.fit_transform(X_train)   # learn mean/sd from TRAIN, apply to train
+X_test_s  = scaler.transform(X_test)        # reuse TRAIN mean/sd on test
+```
+
+Calling `fit` on the test set would let test information leak into training. The assignment's footnote says to scale **after** splitting for this reason.
+
+### The scaled-data trap
+
+Ridge and lasso were fit on `X_train_s`, so their coefficients expect standardized inputs. In your first Q8 run, predicting on unscaled `X_test` gave a ridge MSE of about 32 million. The clue was sklearn's warning, "X has feature names, but Ridge was fitted without feature names." It meant the model was trained on a plain array and was now getting a DataFrame.
+
+---
+
+## 6. Tuning λ with 10-fold CV
+
+### The algorithm (Reg deck, "RR & the Lasso Tuning Algorithm")
+
+1. Choose a grid of λ values.
+2. For each λ, estimate the model and compute the CV error.
+3. Pick the λ with the **smallest CV error**.
+4. Refit the model with that λ on **all** the training data.
+
+### How k-fold CV works (Res deck, slides 31 to 33)
+
+1. Randomly divide the training data into k folds (you used 10).
+2. Fit the model on k − 1 folds.
+3. Predict the held-out fold and compute its MSE.
+4. Repeat until each fold has been held out once.
+5. Average the k MSEs. That average estimates the test error.
+
+From the Res deck: k-fold CV sits between LOOCV and the validation-set approach. It's less biased and less noisy than a single validation split, and much cheaper than LOOCV. In practice, k = 5 or 10.
+
+### Your code
+
+```{python}
+exponents_lasso = np.linspace(-4, 0, 101)   # 101 evenly spaced exponents
+alphas_lasso = 10 ** exponents_lasso         # 0.0001 ... 1 on a log scale
+
+folds = KFold(n_splits=10, shuffle=True, random_state=25)
+
+cv_mse_lasso = []
+for a in alphas_lasso:
+    scores = cross_val_score(Lasso(alpha=a, max_iter=10000), X_train_s, y_train,
+                             cv=folds, scoring='neg_mean_squared_error')
+    cv_mse_lasso.append(-scores.mean())     # flip sign, average the 10 folds
+
+best_alpha_lasso = alphas_lasso[np.argmin(cv_mse_lasso)]
+lasso_best = Lasso(alpha=best_alpha_lasso, max_iter=10000).fit(X_train_s, y_train)
+```
+
+| Piece | What it does |
+|---|---|
+| `np.linspace(a, b, 101)` | 101 evenly spaced numbers from a to b, including both ends |
+| `10 ** exponents` | Spaces λ evenly on a log scale, so small and large values get equal coverage |
+| `KFold(..., shuffle=True, random_state=25)` | Instructions for cutting the data into folds. It doesn't cut anything until it's used |
+| `cross_val_score` | Runs the fit-and-predict loop over all 10 folds and returns 10 scores |
+| `'neg_mean_squared_error'` | sklearn treats bigger scores as better, so it reports **negative** MSE. That's why you flip the sign |
+| `np.argmin` | Position of the smallest CV error |
+| `max_iter=10000` | Lasso is solved iteratively and may not converge at small λ with the default 1,000 |
+
+### Two seeds, two jobs
+
+`random_state=11` controls the **train/test split**. `random_state=25` controls the **CV folds** inside the training set. Mixing them up changes your results.
+
+### Why λ is never picked with the test set
+
+The test set is your honest final exam. If you used it to choose λ, you'd be tuning to those particular 583 counties, and the test MSE would be optimistic. It's the same reason training MSE can't be used.
+
+Training MSE can't choose λ either, because the penalty only ever raises training RSS. Training MSE would always pick λ = 0, which is just OLS.
+
+### A minimum on the edge of the grid
+
+Your starting grid (0.01 to 100) put ridge's minimum at the right edge and lasso's at the left edge. A minimum on the edge means the true best λ is probably **outside** the grid, so you widen it in that direction and rerun until the curve bottoms out in the middle. You moved ridge to 10⁰ through 10⁴ and lasso to 10⁻⁴ through 10⁰.
+
+### Why ridge's λ is so much bigger than lasso's
+
+sklearn writes the two losses differently. `Ridge` uses RSS + α‖β‖², while `Lasso` uses RSS / (2n) + α‖β‖₁. Dividing by 2n shrinks lasso's RSS term, so its α values live on a much smaller scale. **You can't compare λ_ridge = 208.93 with λ_lasso = 0.0058 and conclude ridge penalizes harder.**
+
+### Reading the lasso CV plot
+
+For λ above about 0.5, the lasso curve goes flat at around 2.14. That number is roughly the variance of `y_train`: every coefficient has been shrunk to exactly 0, so the model predicts the mean for every county. Ridge's curve never flattens like that, because ridge never sets coefficients exactly to 0.
+
+---
+
+## 7. Reading your results
+
+| Model | λ | Train MSE | Test MSE | Test RMSE | Nonzero coefs |
+|---|---|---|---|---|---|
+| OLS | none | 1.2867 | 1.8274 | 1.352 | 107 |
+| Ridge | 208.93 | 1.3002 | 1.8209 | 1.349 | 107 |
+| Lasso | 0.0058 | 1.2966 | 1.8113 | 1.346 | 91 |
+
+What it says:
+
+1. **Both penalized models improved test MSE.** Ridge was 0.0065 lower than OLS (about 0.4%), and lasso was 0.0161 lower (about 0.9%).
+2. **Both had higher training MSE than OLS.** That's the penalty working as intended: a looser fit to the training data in exchange for better generalization.
+3. **Lasso had the lowest test MSE** and dropped 16 predictors, including `tax_st_diff_top20` (absorbed by the state dummies) and two state dummies.
+4. **The gains are modest.** With about 22 counties per coefficient, OLS's variance wasn't extreme, so shrinkage had limited room to help. The slides say penalties help most when n ≈ p.
+
+A recommendation to the CDC would point to lasso: it predicts new counties best, and a 91-variable model is somewhat easier to explain and points to which county traits carry predictive weight. Its largest standardized coefficients include population density and the Black population share.
+
+**Careful with interpretation:** a lasso coefficient of 0 means the variable wasn't needed for **prediction**, given the other variables. It doesn't mean the factor has no relationship with COVID deaths, and nonzero coefficients aren't causal effects.
+
+---
+
+## 8. Bug cheat sheet
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| 53 predictors instead of 60 | Filtered on "PM COVID" | Use `PM_COVID`; check `variables['Source'].unique()` |
+| Only 401 rows after `dropna()` | Didn't filter columns first | Filter to the spreadsheet variables, then `dropna()` |
+| `KeyError` from `drop` | `drop` defaults to rows | `drop(columns=[...])` |
+| `KeyError` from `df.loc['deathspc']` | `.loc[label]` looks up rows | `df['deathspc']` |
+| MSE in the millions | Predicted on unscaled X | Use `X_train_s` / `X_test_s` |
+| "fitted without feature names" warning | Same as above | Same as above |
+| Best λ on the grid edge | Grid too narrow | Widen in that direction and rerun |
+| Plot legend shows the wrong λ | Copy-pasted the ridge variable into the lasso cell | Rename everything to `_lasso` |
+| Plot doesn't match the code | Stale output from an earlier run | Restart and Run All |
+| `ConvergenceWarning` from Lasso | Too few iterations | Raise `max_iter` |
+| Lasso results overwrite ridge | Generic names like `cv_mse` | Use `cv_mse_ridge` / `cv_mse_lasso` |
+
+---
+
+## 9. Practice questions
+
+Answer each one out loud or on paper before opening the answer.
+
+### Concepts
+
+**1.** What does λ control in ridge and lasso? What do you get at λ = 0 and as λ → ∞?
+
+::: {.callout-tip collapse="true" title="Answer"}
+λ controls how strongly the penalty pulls coefficients toward zero compared with fitting the training data. At λ = 0, both are exactly OLS. As λ → ∞, all slope coefficients go to 0 (exactly 0 for lasso, approaching 0 for ridge), and the model predicts the mean of y.
+:::
+
+**2.** Why can lasso set coefficients exactly to zero when ridge can't?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Lasso's constraint region (|β₁| + |β₂| ≤ s) is a diamond with corners on the axes, and the RSS ellipses often first touch it at a corner, where one coefficient is exactly 0. Ridge's region (β₁² + β₂² ≤ s) is a circle with no corners, so the touch point almost never lands exactly on an axis. So lasso does variable selection and ridge doesn't.
+:::
+
+**3.** Which coefficient vector gets the bigger ridge penalty, β = (3, 4) or β = (2, 5)? Which gets the bigger lasso penalty?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Ridge: 3² + 4² = 25 vs. 2² + 5² = 29, so (2, 5) is penalized more, because squaring punishes the single big coefficient. Lasso: |3| + |4| = 7 vs. |2| + |5| = 7, so they're tied.
+:::
+
+**4.** Ridge and lasso add bias. How can that lower test MSE?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Test MSE depends on bias² plus variance. The penalty makes the model less flexible, which raises bias but lowers variance. When OLS's variance is high, the drop in variance is bigger than the rise in bias², so test MSE goes down.
+:::
+
+**5.** When would you expect ridge to beat lasso, and the other way around?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Ridge tends to win when the outcome depends on many predictors with small effects. Lasso tends to win when only a few predictors matter. Since you don't know which is true beforehand, you compare their cross-validated errors.
+:::
+
+**6.** Why can't you choose λ by picking the value with the lowest training MSE?
+
+::: {.callout-tip collapse="true" title="Answer"}
+OLS already minimizes training RSS, and the penalty can only move the fit away from that. Training MSE would always choose λ = 0, which is just OLS. λ has to be chosen by an estimate of test error, like cross-validation.
+:::
+
+**7.** Why is λ tuned with cross-validation on the training set instead of with the test set?
+
+::: {.callout-tip collapse="true" title="Answer"}
+If you used the test set to pick λ, you'd be tuning to those specific counties, and the test MSE would be an optimistic, contaminated estimate. Keeping the test set untouched until the end gives an honest measure of how the final model performs on new data.
+:::
+
+### Code
+
+**8.** Why do you scale predictors before ridge and lasso, and why fit the scaler only on the training data?
+
+::: {.callout-tip collapse="true" title="Answer"}
+The penalty depends on coefficient size, and coefficient size depends on each variable's units, so without scaling, some predictors would be penalized far more than others for no real reason. Standardizing puts them all in standard-deviation units. You fit the scaler on training data only so that no information from the test set leaks into training.
+:::
+
+**9.** What does `cross_val_score(..., cv=folds, scoring='neg_mean_squared_error')` return, and why is there a minus sign in `-scores.mean()`?
+
+::: {.callout-tip collapse="true" title="Answer"}
+It returns 10 numbers, one per fold, each the negative MSE on that held-out fold. sklearn uses negative MSE because it treats bigger scores as better. Flipping the sign and averaging gives the 10-fold CV estimate of test MSE for that λ.
+:::
+
+**10.** Your ridge CV plot shows the lowest error at λ = 100, the largest value in your grid. What does that tell you, and what do you do?
+
+::: {.callout-tip collapse="true" title="Answer"}
+The best λ is probably larger than 100, outside the grid, so the curve hasn't reached its minimum yet. Extend the grid upward (for example, 10⁰ to 10⁴), rerun the CV, and check that the minimum now sits in the middle of the curve.
+:::
+
+**11.** A classmate's ridge test MSE is 32,650,167 while OLS is 1.83. What's the most likely bug?
+
+::: {.callout-tip collapse="true" title="Answer"}
+They fit ridge on scaled data but predicted on unscaled `X_test`. The coefficients expect standardized inputs, so raw values like house prices in the hundreds of thousands blow up the predictions. The fix is to predict on `X_test_s`.
+:::
+
+**12.** You kept all 47 state dummies plus an intercept in OLS. Why did it still run, and what can't you interpret?
+
+::: {.callout-tip collapse="true" title="Answer"}
+The 47 dummies sum to 1 in every row, which duplicates the intercept (perfect collinearity). sklearn still finds one of the many equally good least-squares solutions, and they all give the same predictions, so the MSEs are valid. But the individual state coefficients aren't uniquely identified, so you can't interpret them.
+:::
+
+**13.** What's the difference between `random_state=11` and `random_state=25` in this project?
+
+::: {.callout-tip collapse="true" title="Answer"}
+`random_state=11` fixes the 80/20 train/test split. `random_state=25` fixes how the training data is shuffled into 10 CV folds. Both make the results reproducible, but they control different random steps.
+:::
+
+**14.** The prompt mentions 49 state dummies. Why did you end up with 47?
+
+::: {.callout-tip collapse="true" title="Answer"}
+After dropping rows with missing values, no counties remained for DC or New Jersey, so `get_dummies` had no category to create for them.
+:::
+
+**15.** True or false: since λ_ridge = 208.93 and λ_lasso = 0.0058, ridge is penalizing far more heavily. Explain.
+
+::: {.callout-tip collapse="true" title="Answer"}
+False. sklearn's `Lasso` divides the RSS by 2n while `Ridge` doesn't, so their λ values are on different scales. The penalties also have different forms (sum of squares vs. sum of absolute values), so the raw λ values can't be compared across the two models.
+:::
+
+### Interpretation
+
+**16.** OLS has a training MSE of 1.2867 and a test MSE of 1.8274. Write a full-credit answer to "Why might you be concerned about overfitting, and is there evidence of it?"
+
+::: {.callout-tip collapse="true" title="Answer"}
+Overfitting is a concern because OLS estimates 107 coefficients from only 2,332 training counties, and some state dummies rest on very few counties (Delaware has 2), so the model has enough flexibility to fit noise. Yes, there is evidence of overfitting: test MSE (1.8274) is about 42% higher than training MSE (1.2867), so the model predicts the counties it was fit on much better than new ones. The gap remains after accounting for the test set's higher variance (60% of the variance unexplained in training vs. 72% in test).
+:::
+
+**17.** In the lasso CV plot, the error goes flat at about 2.14 for large λ. Why that value?
+
+::: {.callout-tip collapse="true" title="Answer"}
+At large λ, lasso sets every slope coefficient to exactly 0, so the model predicts the training mean for every county. The MSE of predicting the mean is the variance of y, which is about 2.14 in your training data.
+:::
+
+**18.** Lasso set the coefficient on `tax_st_diff_top20` to 0. Does that mean state tax progressivity has no relationship with COVID deaths?
+
+::: {.callout-tip collapse="true" title="Answer"}
+No. `tax_st_diff_top20` has the same value for every county in a state, so the state dummies already capture it completely, and lasso doesn't need it for prediction. A zero lasso coefficient means a variable isn't needed for prediction given the others. It says nothing about whether the factor is related to deaths.
+:::
+
+**19.** Did ridge and lasso improve on OLS? By how much, and why might the gains be small here?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Yes, both did. Ridge lowered test MSE from 1.8274 to 1.8209 (about 0.4%), and lasso lowered it to 1.8113 (about 0.9%). The gains are modest because n is much larger than p (about 22 training counties per coefficient), so OLS's variance wasn't extreme and shrinkage had limited room to help.
+:::
+
+**20.** Three counties have actual `deathspc` values of 1, 0, and 3, and predictions of 1.5, 0.5, and 2. Compute the MSE.
+
+::: {.callout-tip collapse="true" title="Answer"}
+Errors: 1 − 1.5 = −0.5, 0 − 0.5 = −0.5, 3 − 2 = 1. Squared: 0.25, 0.25, 1. MSE = 1.5 / 3 = **0.5**. RMSE = √0.5 ≈ 0.71.
+:::
+
+**21.** Which model would you recommend to the CDC, and why?
+
+::: {.callout-tip collapse="true" title="Answer"}
+Lasso, because it has the lowest test MSE (1.8113 vs. 1.8209 for ridge and 1.8274 for OLS), so it predicts new counties best, which is what the CDC needs to target vaccines. It also drops 16 predictors, which makes the model somewhat simpler to explain. The improvement over OLS is modest (about 0.9%), so OLS isn't a bad model, but lasso is the best of the three.
+:::
+
+---
+
+## 10. Formula sheet
+
+| Thing | Formula or rule |
+|---|---|
+| MSE | (1/n) Σ (yᵢ − ŷᵢ)² |
+| RMSE | √MSE, in the units of y |
+| Ridge | RSS + λ Σ βⱼ² (ℓ₂), shrinks but never to exactly 0 |
+| Lasso | RSS + λ Σ \|βⱼ\| (ℓ₁), shrinks and sets some to exactly 0 |
+| λ = 0 | OLS |
+| λ → ∞ | All slopes 0, predicts the mean |
+| Penalty effect | Bias ↑, variance ↓, training MSE ↑, test MSE ↓ if OLS variance was high |
+| Standardize | (x − mean) / sd, fit on training data only |
+| k-fold CV error | Average of the k held-out fold MSEs |
+| Tuning | Grid → CV error per λ → pick minimum → refit on all training data |
+| Edge minimum | Widen the grid in that direction |
+| Lasso zero coefficient | Not needed for prediction given the others, not "no effect" |
